@@ -29,6 +29,6 @@ rGGIpc@{n}_DivFromTrend=rGGIpc@{n}_DivFromTrend(-1)+GrGGIpc@{n}-steady_state_GrG
 rGSpendingpc@{n}_DivFromTrend=rGSpendingpc@{n}_DivFromTrend(-1)+GrSpendingpc@{n}-steady_state_GrSpendingpc@{n};
 GovDifY@{n} = (GCE@{n}+GGI@{n}-GovRev@{n}) / GDP@{n} * 100;
 NXY@{n}=(Export@{n}-Import@{n}) / GDP@{n} * 100;
-PRDY@{n} = log( YWC@{n} * PWC * ( scriptFI * II * ( scripts - ( 1 - scriptq ) * ( 1 - deltaI ) * scripts_LAG / GII ) + II * scripts * ScriptFRP * JP ) / YWC / GDP@{n} ) * 100;
-GRDY@{n} = log( PHG@{n} * IHG@{n} / GDP@{n} ) * 100;
+PRDY@{n} = ( YWC@{n} * PWC * ( scriptFI * II * ( scripts - ( 1 - scriptq ) * ( 1 - deltaI ) * scripts_LAG / GII ) + II * scripts * ScriptFRP * JP ) / YWC / GDP@{n} ) * 100;
+GRDY@{n} = ( PHG@{n} * IHG@{n} / GDP@{n} ) * 100;
 @#endfor
