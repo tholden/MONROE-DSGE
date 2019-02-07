@@ -1,0 +1,20 @@
+eKLPriorALL  ,eKLPriorALL    , , ,GAMMA_PDF ,1 ,0.2194*2;
+eKLTPriori   ,eKLTPriori     , , ,GAMMA_PDF ,1 ,0.2194;
+eKLNTPriori  ,eKLNTPriori    , , ,GAMMA_PDF ,1 ,0.2194;
+eKLWPriori   ,eKLWPriori     , , ,GAMMA_PDF ,1 ,0.2194;
+
+eKLPriorALL2  ,eKLPriorALL2    , , ,NORMAL_PDF ,0 ,0.2194*2;
+eKLTPriori2   ,eKLTPriori2     , , ,NORMAL_PDF ,0 ,0.2194;
+eKLNTPriori2  ,eKLNTPriori2    , , ,NORMAL_PDF ,0 ,0.2194;
+eKLWPriori2   ,eKLWPriori2     , , ,NORMAL_PDF ,0 ,0.2194;
+
+deltaKPriorALL     ,deltaKPriorALL    , , ,NORMAL_PDF,-2.3 ,0.5;     
+deltaKPTPriori_    ,deltaKPTPriori_   , , ,NORMAL_PDF,0    ,0.2;     
+deltaKPNTPriori_   ,deltaKPNTPriori_  , , ,NORMAL_PDF,0    ,0.2;     
+deltaKPWPriori_    ,deltaKPWPriori_   , , ,NORMAL_PDF,0    ,0.2;     
+deltaKGPriori_     ,deltaKGPriori_    , , ,NORMAL_PDF,0    ,0.2;     
+
+phiLtauSG1PriorALL ,phiLtauSG1PriorALL   , , ,NORMAL_PDF ,0 ,0.2236*2;
+phiLtauKGPriori    ,phiLtauKGPriori      , , ,NORMAL_PDF ,0 ,0.2236;
+phiLtauHGPriori    ,phiLtauHGPriori      , , ,NORMAL_PDF ,0 ,0.2236;
+phiLtauCGPriori    ,phiLtauCGPriori      , , ,NORMAL_PDF ,0 ,0.2236;

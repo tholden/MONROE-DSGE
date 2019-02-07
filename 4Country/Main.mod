@@ -145,8 +145,8 @@ varexo epsilon_P0 epsilon_Y0;
 		@#define EndoVariables = EndoVariables + [ "KPP" + S + Numbers[n+1], "0", "Inf", "gKP"]
 		@#define EndoVariables = EndoVariables + [ "HP" + S + Numbers[n+1], "0", "Inf", "gHP"]
 		@#define EndoVariables = EndoVariables + [ "HPP" + S + Numbers[n+1], "0", "Inf", "gHP"]
-		@#define ShockProcesses = ShockProcesses + [ "deltaKP" + S + Numbers[n+1], "0", "1", "deltaKP" + S + "_", "rhodeltaKP" + S, "sigmadeltaKP" + S ]
-		@#define ShockProcesses = ShockProcesses + [ "deltaHP" + S + Numbers[n+1], "0", "1", "deltaHP" + S + "_", "rhodeltaHP" + S, "sigmadeltaHP" + S ]
+		@#define ShockProcesses = ShockProcesses + [ "deltaKP" + S + Numbers[n+1], "0", "1", "deltaK" + "_", "rhodeltaK", "sigmadeltaK" ]
+		@#define ShockProcesses = ShockProcesses + [ "deltaHP" + S + Numbers[n+1], "0", "1", "deltaH" + "_", "rhodeltaH", "sigmadeltaH" ]
 	@#endfor
 	
 	@#define ShockProcesses = ShockProcesses + [ "m" + Numbers[n+1], "0", "Inf", "m_", "1", "sigmam" ]
@@ -190,8 +190,8 @@ varexo epsilon_P0 epsilon_Y0;
 	@#define EndoVariables = EndoVariables + [ "CG" + Numbers[n+1], "0", "Inf", "gCG"]
 	@#define EndoVariables = EndoVariables + [ "KG" + Numbers[n+1], "0", "Inf", "gKG"]
 	@#define EndoVariables = EndoVariables + [ "HG" + Numbers[n+1], "0", "Inf", "gHG"]
-	@#define ShockProcesses = ShockProcesses + [ "deltaKG" + Numbers[n+1], "0", "1", "deltaKG" + "_", "rhodeltaKG", "sigmadeltaKG" ]
-	@#define ShockProcesses = ShockProcesses + [ "deltaHG" + Numbers[n+1], "0", "1", "deltaHG" + "_", "rhodeltaHG", "sigmadeltaHG" ]
+	@#define ShockProcesses = ShockProcesses + [ "deltaKG" + Numbers[n+1], "0", "1", "deltaK" + "_", "rhodeltaK", "sigmadeltaK" ]
+	@#define ShockProcesses = ShockProcesses + [ "deltaHG" + Numbers[n+1], "0", "1", "deltaH" + "_", "rhodeltaH", "sigmadeltaH" ]
 	
 	//Y yNT yTC are MLV
 	@#define EndoVariables = EndoVariables + [ "P" + Numbers[n+1], "0", "Inf", "gPS" ]
@@ -393,7 +393,6 @@ parameters h varrhoC eC varrhoCP eCP varrhoCD ;
 parameters nuW nuT nuNT nuSW nuST nuSNT nuD nuNDCG nuK nuH nuh;
 parameters rhoQB;
 parameters thetaGKP thetaPKP thetaKU0 thetaKU1 thetaGHP thetaPHP thetaGD thetaPD thetaDU0 thetaDU1;
-parameters thetaGKG thetaGHG;
 parameters eNC alphaNC eT eW FWCtilde FKtilde;
 parameters o eKLT eKLNT eKLW varrhoKL eHLXT eHLXNT eHLXW varrhoHLX eYT eYNT eYW varrhoY;
 
@@ -464,12 +463,8 @@ parameters rhokappah      sigmakappah        kappah_     ;
 @#for S in Sectors2
 parameters rhokappa@{S}   sigmakappa@{S}     kappa@{S}_  ;
 @#endfor
-@#for S in Sectors0
-parameters rhodeltaKP@{S} sigmadeltaKP@{S}   deltaKP@{S}_;
-parameters rhodeltaHP@{S} sigmadeltaHP@{S}   deltaHP@{S}_;
-@#endfor
-parameters rhodeltaKG     sigmadeltaKG       deltaKG_    ;
-parameters rhodeltaHG     sigmadeltaHG       deltaHG_    ;
+parameters rhodeltaK      sigmadeltaK        deltaK_    ;
+parameters rhodeltaH      sigmadeltaH        deltaH_    ;
 parameters rhobeta        sigmabeta          betabarb    ;
 parameters rhoPP0 rhoPY0 rhoYP0 rhoYY0 rho0 sigmaP0 sigmaY0 pT0 yTC0;
 
@@ -492,7 +487,7 @@ parameters  sigma_cy  sigma_iy  sigma_gcy sigma_giy  sigma_xy  sigma_gpcgpy  sig
 @#include "est_calibration.mod"
 
 //////////////////////////////////////Parameter transformation (not calibrated)//////////////////////////////////////////////////
-
+parameters logit_xi;
 parameters logit_rhoGN logit_rhoZ logit_rhodeltaItilde logit_rhoscriptFI logit_rhodeltaD logit_rhokappa0 logit_rhokappah;
 @#for S in Sectors2
 parameters logit_rhokappa@{S};
@@ -508,10 +503,6 @@ parameters logit_alphaCP logit_alphaCD logit_alphah logit_alphaKP logit_alphaD l
 //	parameters eKL@{S}Priori eHLX@{S}Priori eY@{S}Priori;
 @#endfor
 //parameters eKLPriorALL eHLXPriorALL eYPriorALL;
-
-//parameters deltaKPriorALL deltaHPriorALL deltaKPTPriori_ deltaKPNTPriori_ deltaKPWPriori_ deltaKGPriori_ deltaHPTPriori_ deltaHPNTPriori_ deltaHPWPriori_ deltaHGPriori_ ;
-//parameters rhodeltaKPriorALL rhodeltaHPriorALL rhodeltaKPTPriori rhodeltaKPNTPriori rhodeltaKPWPriori rhodeltaKGPriori rhodeltaHPTPriori rhodeltaHPNTPriori rhodeltaHPWPriori rhodeltaHGPriori;
-//parameters sigmadeltaKPriorALL sigmadeltaHPriorALL sigmadeltaKPTPriori sigmadeltaKPNTPriori sigmadeltaKPWPriori sigmadeltaKGPriori sigmadeltaHPTPriori sigmadeltaHPNTPriori sigmadeltaHPWPriori sigmadeltaHGPriori;
 
 //parameters rhoOmegaPriorALL rhoOmegaPriorS0ALL rhoOmegaPriorStepALL rhoOmegaPriorS1ALL rhoOmegaPriorPGALL rhoOmegaPriorALLi rhoOmegaPriorS0ALLi rhoOmegaPriorTALLi rhoOmegaPriorNTALLi rhoOmegaPriorWALLi rhoOmegaPriorKKALLi rhoOmegaPriorHLALLi rhoOmegaPriorKLALLi rhoOmegaPriorHLXALLi rhoOmegaPriorHLXKLALLi rhoOmegaPriorS1ALLi rhoOmegaPriorKALLi rhoOmegaPriorHALLi rhoOmegaPriorCALLi rhoOmegaPriorDii rhoOmegaPriorPALLi rhoOmegaPriorGALLi rhoOmegaPriorDemandALLi rhoOmegaPriorhii rhoOmegaPriorCPii rhoOmegaPriorCii rhoOmegaPriorTradeALLi rhoOmegaPriorYii rhoOmegaPriorTCii rhoOmegaPriorWPii rhoOmegaPriorWCii;
 //parameters sigmaOmegaPriorALL sigmaOmegaPriorS0ALL sigmaOmegaPriorStepALL sigmaOmegaPriorS1ALL sigmaOmegaPriorPGALL sigmaOmegaPriorALLi sigmaOmegaPriorS0ALLi sigmaOmegaPriorTALLi sigmaOmegaPriorNTALLi sigmaOmegaPriorWALLi sigmaOmegaPriorKKALLi sigmaOmegaPriorHLALLi sigmaOmegaPriorKLALLi sigmaOmegaPriorHLXALLi sigmaOmegaPriorHLXKLALLi sigmaOmegaPriorS1ALLi sigmaOmegaPriorKALLi sigmaOmegaPriorHALLi sigmaOmegaPriorCALLi sigmaOmegaPriorDii sigmaOmegaPriorPALLi sigmaOmegaPriorGALLi sigmaOmegaPriorDemandALLi sigmaOmegaPriorhii sigmaOmegaPriorCPii sigmaOmegaPriorCii sigmaOmegaPriorTradeALLi sigmaOmegaPriorYii sigmaOmegaPriorTCii sigmaOmegaPriorWPii sigmaOmegaPriorWCii;
@@ -534,7 +525,7 @@ parameters logit_alphaCP logit_alphaCD logit_alphah logit_alphaKP logit_alphaD l
 //parameters sigmauPriorALL sigmauKGPriori sigmauHGPriori sigmauCGPriori sigmaubPriori sigmaulPriori sigmauDPriori sigmauNDPriori sigmauNTPriori sigmauTXPriori sigmauTMPriori sigmauWXPriori sigmauWMPriori sigmauLaPriori sigmauLbPriori sigmauALLPriori sigmauS1ALLPriori sigmauiotaALLPriori sigmaulbALLPriori sigmauCALLPriori sigmauLALLPriori sigmauHALLPriori sigmauKALLPriori sigmauXALLPriori sigmauTALLPriori sigmauNTALLPriori sigmauWALLPriori;
 //parameters sigmauSG1PriorALL sigmaulbPriorALL sigmauCPriorALL sigmauiotaPriorALL sigmauLPriorALL sigmauPriorHKXALL sigmauPriorS0ALL;
 
-@#for n in 1:175
+@#for n in 1:151
     parameters InternalPrior_@{n};
 @#endfor
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -605,8 +596,8 @@ model(use_dll);
     #thetaPD@{n} = thetaPD;
     #thetaDU0@{n} = thetaDU0;
     #thetaDU1@{n} = thetaDU1;
-    #thetaGKG@{n} = thetaGKG;
-    #thetaGHG@{n} = thetaGHG;
+    #thetaGKG@{n} = thetaGKP;
+    #thetaGHG@{n} = thetaGHP;
     #eNC@{n} = eNC;
     #alphaNC@{n} = alphaNC;
     #eT@{n} = eT;
@@ -1933,19 +1924,19 @@ VI = ( 1 - scriptp ) / scriptp * ScriptFRP * PWC * JP + ( 1 - scriptq ) * ( 1 - 
 //cfc of private physical capital stock
     @#for S in Sectors0
         KPtilde@{S}@{n} = ( 1 - deltaKP@{S}@{n} ) * KPtilde@{S}@{n}_LAG + IKP@{S}@{n} * exp( - thetaGKP@{n} / 2 * ( log( GKP@{S}@{n} / GKP@{S}@{n}_LAG ) ) ^ 2 - thetaPKP@{n} / 2 * ( log( KP@{S}@{n} / KPP@{S}@{n}_LAG) ) ^ 2 );
-        deltaKPtildeAUXD@{S}@{n} = IKP@{S}@{n} * exp( - thetaGKP@{n} / 2 * ( log( GKP@{S}@{n} / GKP@{S}@{n}_LAG ) ) ^ 2 - thetaPKP@{n} / 2 * ( log( KP@{S}@{n} / KPP@{S}@{n}_LAG) ) ^ 2 ) + ( 1 - deltaKP@{S}_ ) * deltaKPtildeAUXD@{S}@{n}_LAG;
-        deltaKPtildeAUXN@{S}@{n} = IKP@{S}@{n} * exp( - thetaGKP@{n} / 2 * ( log( GKP@{S}@{n} / GKP@{S}@{n}_LAG ) ) ^ 2 - thetaPKP@{n} / 2 * ( log( KP@{S}@{n} / KPP@{S}@{n}_LAG) ) ^ 2 ) * deltaKP@{S}@{n} + ( 1 - deltaKP@{S}_ ) * deltaKPtildeAUXN@{S}@{n}_LAG;
+        deltaKPtildeAUXD@{S}@{n} = IKP@{S}@{n} * exp( - thetaGKP@{n} / 2 * ( log( GKP@{S}@{n} / GKP@{S}@{n}_LAG ) ) ^ 2 - thetaPKP@{n} / 2 * ( log( KP@{S}@{n} / KPP@{S}@{n}_LAG) ) ^ 2 ) + ( 1 - deltaK_ ) * deltaKPtildeAUXD@{S}@{n}_LAG;
+        deltaKPtildeAUXN@{S}@{n} = IKP@{S}@{n} * exp( - thetaGKP@{n} / 2 * ( log( GKP@{S}@{n} / GKP@{S}@{n}_LAG ) ) ^ 2 - thetaPKP@{n} / 2 * ( log( KP@{S}@{n} / KPP@{S}@{n}_LAG) ) ^ 2 ) * deltaKP@{S}@{n} + ( 1 - deltaK_ ) * deltaKPtildeAUXN@{S}@{n}_LAG;
         #deltaKPtilde@{S}@{n} = deltaKPtildeAUXN@{S}@{n}_LAG / deltaKPtildeAUXD@{S}@{n}_LAG;
         #KPcfc@{S}@{n} = deltaKPtilde@{S}@{n} * KPtilde@{S}@{n}_LAG * PKP@{n};
 	@#endfor
 //cfc of public physical capital stock
-    deltaKGtildeAUXD@{n} = IKG@{n} * exp( - thetaGKG@{n} / 2 * ( log( GKG@{n} / GKG@{n}_LAG ) ) ^ 2 ) + ( 1 - deltaKG_ ) * deltaKGtildeAUXD@{n}_LAG;
-    deltaKGtildeAUXN@{n} = IKG@{n} * exp( - thetaGKG@{n} / 2 * ( log( GKG@{n} / GKG@{n}_LAG ) ) ^ 2 ) * deltaKG@{n} + ( 1 - deltaKG_ ) * deltaKGtildeAUXN@{n}_LAG;
+    deltaKGtildeAUXD@{n} = IKG@{n} * exp( - thetaGKG@{n} / 2 * ( log( GKG@{n} / GKG@{n}_LAG ) ) ^ 2 ) + ( 1 - deltaK_ ) * deltaKGtildeAUXD@{n}_LAG;
+    deltaKGtildeAUXN@{n} = IKG@{n} * exp( - thetaGKG@{n} / 2 * ( log( GKG@{n} / GKG@{n}_LAG ) ) ^ 2 ) * deltaKG@{n} + ( 1 - deltaK_ ) * deltaKGtildeAUXN@{n}_LAG;
     #deltaKGtilde@{n} = deltaKGtildeAUXN@{n}_LAG / deltaKGtildeAUXD@{n}_LAG;
     #KGcfc@{n} = deltaKGtilde@{n} * KG@{n}_LAG * PKG@{n};
 //cfc of public R&D capital stock
-    deltaHGtildeAUXD@{n} = IHG@{n} * exp( - thetaGHG@{n} / 2 * ( log( GHG@{n} / GHG@{n}_LAG ) ) ^ 2 ) + ( 1 - deltaHG_ ) * deltaHGtildeAUXD@{n}_LAG;
-    deltaHGtildeAUXN@{n} = IHG@{n} * exp( - thetaGHG@{n} / 2 * ( log( GHG@{n} / GHG@{n}_LAG ) ) ^ 2 ) * deltaHG@{n} + ( 1 - deltaHG_ ) * deltaHGtildeAUXN@{n}_LAG;
+    deltaHGtildeAUXD@{n} = IHG@{n} * exp( - thetaGHG@{n} / 2 * ( log( GHG@{n} / GHG@{n}_LAG ) ) ^ 2 ) + ( 1 - deltaH_ ) * deltaHGtildeAUXD@{n}_LAG;
+    deltaHGtildeAUXN@{n} = IHG@{n} * exp( - thetaGHG@{n} / 2 * ( log( GHG@{n} / GHG@{n}_LAG ) ) ^ 2 ) * deltaHG@{n} + ( 1 - deltaH_ ) * deltaHGtildeAUXN@{n}_LAG;
     #deltaHGtilde@{n} = deltaHGtildeAUXN@{n}_LAG / deltaHGtildeAUXD@{n}_LAG;
     #HGcfc@{n} = deltaHGtilde@{n} * HG@{n}_LAG * PHG@{n};
 //cfc

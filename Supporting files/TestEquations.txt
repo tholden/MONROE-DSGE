@@ -1,0 +1,14 @@
+eKLT       =       eKLPriorALL     *   eKLTPriori    ;
+eKLNT      =       eKLPriorALL     *   eKLNTPriori   ;
+eKLW       =       eKLPriorALL     *   eKLWPriori    ;
+eKLT2      = exp( eKLPriorALL2     +   eKLTPriori2  )  ;
+eKLNT2     = exp( eKLPriorALL2     +   eKLNTPriori2 )  ;
+eKLW2      = exp( eKLPriorALL2     +   eKLWPriori2  )  ;
+deltaKPT_  = 1 / ( 1 + exp( - deltaKPriorALL - deltaKPTPriori_  )); 
+deltaKPNT_ = 1 / ( 1 + exp( - deltaKPriorALL - deltaKPNTPriori_ )); 
+deltaKPW_  = 1 / ( 1 + exp( - deltaKPriorALL - deltaKPWPriori_  )); 
+deltaKG_   = 1 / ( 1 + exp( - deltaKPriorALL - deltaKGPriori_   )); 
+phiLtauKG  = phiLtauSG1PriorALL + phiLtauKGPriori ;
+phiLtauHG  = phiLtauSG1PriorALL + phiLtauHGPriori ;
+phiLtauCG  = phiLtauSG1PriorALL + phiLtauCGPriori ;
+

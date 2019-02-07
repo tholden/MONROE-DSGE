@@ -61,9 +61,9 @@ logit_alphaY    ,logit_alphaY   , , ,NORMAL_PDF   ,0    ,0.5  ;
 betabarl  ,betabarl ,0.0001 ,0.9999 ,BETA_PDF   ,0.96   ,0.005     ;
 
 //country-specific parameters that are assumed to be constant across countries
-sigma         ,sigma       ,       ,       ,GAMMA_PDF    ,1     ,0.5;
-gammaV        ,gammaV      ,       ,       ,GAMMA_PDF    ,10    ,5  ; 
-xi            ,xi          ,0.0001 ,0.9999 ,uniform_pdf  ,0.5   ,(1/12)^(0.5); 
+sigma         ,sigma       ,       ,       ,GAMMA_PDF    ,1     ,0.5  ;
+gammaV        ,gammaV      ,       ,       ,GAMMA_PDF    ,10    ,5    ; 
+logit_xi      ,logit_xi    ,       ,       ,NORMAL_PDF   ,0     ,1.1  ;
 bbeta         ,bbeta       ,       ,       ,GAMMA_PDF    ,0.005 ,0.001;
 
 h             ,h           ,0.0001 ,0.9999 ,BETA_PDF     ,0.5   ,0.05^0.5;
@@ -97,8 +97,6 @@ thetaGD       ,thetaGD     ,       ,       ,GAMMA_PDF    ,10    ,5;
 thetaPD       ,thetaPD     ,       ,       ,GAMMA_PDF    ,10    ,5;
 thetaDU0      ,thetaDU0    ,       ,       ,GAMMA_PDF    ,0.2   ,0.1;
 thetaDU1      ,thetaDU1    ,       ,       ,GAMMA_PDF    ,1     ,0.5;
-thetaGKG      ,thetaGKG    ,       ,       ,GAMMA_PDF    ,10    ,5;
-thetaGHG      ,thetaGHG    ,       ,       ,GAMMA_PDF    ,10    ,5;
 
 eNC           ,eNC         ,       ,       ,GAMMA_PDF    ,1     ,0.5;
 alphaNC       ,alphaNC     ,0.0001 ,0.9999 ,BETA_PDF     ,0.5   ,0.05^0.5;
@@ -300,12 +298,8 @@ logit_rhokappah      ,logit_rhokappah      , , ,NORMAL_PDF   ,0    ,1.1  ;   sig
 @#for S in Sectors2                                                                                                                                                                                            
 logit_rhokappa@{S}   ,logit_rhokappa@{S}   , , ,NORMAL_PDF   ,0    ,1.1  ;   sigmakappa@{S}   ,sigmakappa@{S}   , , ,INV_GAMMA_PDF ,0.005 ,0.1;    kappa@{S}_    ,kappa@{S}_  ,      ,      ,GAMMA_PDF  ,1      ,0.1     ;
 @#endfor
-@#for S in Sectors0
-//rhodeltaKP@{S} ,rhodeltaKP@{S} ,0.0001 ,0.9999 ,BETA_PDF ,0.5 ,0.05^0.5;   sigmadeltaKP@{S} ,sigmadeltaKP@{S} , , ,INV_GAMMA_PDF ,0.005 ,0.1;    deltaKP@{S}_ ,deltaKP@{S}_  ,0.001 ,0.999 ,BETA_PDF   ,0.1    ,0.05;
-//rhodeltaHP@{S} ,rhodeltaHP@{S} ,0.0001 ,0.9999 ,BETA_PDF ,0.5 ,0.05^0.5;   sigmadeltaHP@{S} ,sigmadeltaHP@{S} , , ,INV_GAMMA_PDF ,0.005 ,0.1;    deltaHP@{S}_ ,deltaHP@{S}_  ,0.001 ,0.999 ,BETA_PDF   ,0.0228 ,0.0128;
-@#endfor                                                                                                                                                                                               
-//rhodeltaKG     ,rhodeltaKG     ,0.0001 ,0.9999 ,BETA_PDF ,0.5 ,0.05^0.5;  sigmadeltaKG     ,sigmadeltaKG     , , ,INV_GAMMA_PDF ,0.005 ,0.1;    deltaKG_     ,deltaKG_      ,0.001 ,0.999 ,BETA_PDF   ,0.1    ,0.05;
-//rhodeltaHG     ,rhodeltaHG     ,0.0001 ,0.9999 ,BETA_PDF ,0.5 ,0.05^0.5;  sigmadeltaHG     ,sigmadeltaHG     , , ,INV_GAMMA_PDF ,0.005 ,0.1;    deltaHG_     ,deltaHG_      ,0.001 ,0.999 ,BETA_PDF   ,0.0228 ,0.0128;
+rhodeltaK      ,rhodeltaK      ,0.0001 ,0.9999 ,BETA_PDF ,0.5 ,0.05^0.5;  sigmadeltaK      ,sigmadeltaK      , , ,INV_GAMMA_PDF ,0.005 ,0.1;    deltaK_      ,deltaK_       ,0.001 ,0.999 ,BETA_PDF   ,0.1    ,0.05;
+rhodeltaH      ,rhodeltaH      ,0.0001 ,0.9999 ,BETA_PDF ,0.5 ,0.05^0.5;  sigmadeltaH      ,sigmadeltaH      , , ,INV_GAMMA_PDF ,0.005 ,0.1;    deltaH_      ,deltaH_       ,0.001 ,0.999 ,BETA_PDF   ,0.0228 ,0.0128;
 rhobeta        ,rhobeta        ,0.0001 ,0.9999 ,BETA_PDF ,0.5 ,0.05^0.5;  sigmabeta        ,sigmabeta        , , ,INV_GAMMA_PDF ,0.005 ,0.1;    betabarb     ,betabarb      ,0.001 ,0.999 ,BETA_PDF   ,0.89   ,0.005;
 rhoPP0  ,rhoPP0  ,  ,0.999 ,BETA_PDF      ,0.5   ,0.05^0.5;
 rhoPY0  ,rhoPY0  ,  ,0.999 ,BETA_PDF      ,0.5   ,0.05^0.5;
@@ -356,17 +350,6 @@ sigmaNtilde        ,sigmaNtilde       , , ,INV_GAMMA_PDF ,0.005 ,0.1;  %%Ntilde1
 //eKLPriorALL  ,eKLPriorALL    , , ,GAMMA_PDF ,1 ,0.2194*2;
 //eHLXPriorALL ,eHLXPriorALL   , , ,GAMMA_PDF ,1 ,0.2194*2;
 //eYPriorALL   ,eYPriorALL     , , ,GAMMA_PDF ,1 ,0.2194*2;
-//
-//deltaKPriorALL     ,deltaKPriorALL    , , ,NORMAL_PDF,-2.3 ,0.5;     rhodeltaKPriorALL   ,rhodeltaKPriorALL    , , ,NORMAL_PDF ,0 ,1;        sigmadeltaKPriorALL  ,sigmadeltaKPriorALL   , , ,GAMMA_PDF     ,1     ,0.0981*2;
-//deltaHPriorALL     ,deltaHPriorALL    , , ,NORMAL_PDF,-3.9 ,0.5;     rhodeltaHPriorALL   ,rhodeltaHPriorALL    , , ,NORMAL_PDF ,0 ,1;        sigmadeltaHPriorALL  ,sigmadeltaHPriorALL   , , ,GAMMA_PDF     ,1     ,0.0981*2;
-//deltaKPTPriori_    ,deltaKPTPriori_   , , ,NORMAL_PDF,0    ,0.2;     rhodeltaKPTPriori   ,rhodeltaKPTPriori    , , ,NORMAL_PDF ,0 ,0.2;      sigmadeltaKPTPriori  ,sigmadeltaKPTPriori   , , ,INV_GAMMA_PDF ,0.005 ,0.0981;
-//deltaKPNTPriori_   ,deltaKPNTPriori_  , , ,NORMAL_PDF,0    ,0.2;     rhodeltaKPNTPriori  ,rhodeltaKPNTPriori   , , ,NORMAL_PDF ,0 ,0.2;      sigmadeltaKPNTPriori ,sigmadeltaKPNTPriori  , , ,INV_GAMMA_PDF ,0.005 ,0.0981;
-//deltaKPWPriori_    ,deltaKPWPriori_   , , ,NORMAL_PDF,0    ,0.2;     rhodeltaKPWPriori   ,rhodeltaKPWPriori    , , ,NORMAL_PDF ,0 ,0.2;      sigmadeltaKPWPriori  ,sigmadeltaKPWPriori   , , ,INV_GAMMA_PDF ,0.005 ,0.0981;
-//deltaKGPriori_     ,deltaKGPriori_    , , ,NORMAL_PDF,0    ,0.2;     rhodeltaKGPriori    ,rhodeltaKGPriori     , , ,NORMAL_PDF ,0 ,0.2;      sigmadeltaKGPriori   ,sigmadeltaKGPriori    , , ,INV_GAMMA_PDF ,0.005 ,0.0981;
-//deltaHPTPriori_    ,deltaHPTPriori_   , , ,NORMAL_PDF,0    ,0.2;     rhodeltaHPTPriori   ,rhodeltaHPTPriori    , , ,NORMAL_PDF ,0 ,0.2;      sigmadeltaHPTPriori  ,sigmadeltaHPTPriori   , , ,INV_GAMMA_PDF ,0.005 ,0.0981;
-//deltaHPNTPriori_   ,deltaHPNTPriori_  , , ,NORMAL_PDF,0    ,0.2;     rhodeltaHPNTPriori  ,rhodeltaHPNTPriori   , , ,NORMAL_PDF ,0 ,0.2;      sigmadeltaHPNTPriori ,sigmadeltaHPNTPriori  , , ,INV_GAMMA_PDF ,0.005 ,0.0981;
-//deltaHPWPriori_    ,deltaHPWPriori_   , , ,NORMAL_PDF,0    ,0.2;     rhodeltaHPWPriori   ,rhodeltaHPWPriori    , , ,NORMAL_PDF ,0 ,0.2;      sigmadeltaHPWPriori  ,sigmadeltaHPWPriori   , , ,INV_GAMMA_PDF ,0.005 ,0.0981;
-//deltaHGPriori_     ,deltaHGPriori_    , , ,NORMAL_PDF,0    ,0.2;     rhodeltaHGPriori    ,rhodeltaHGPriori     , , ,NORMAL_PDF ,0 ,0.2;      sigmadeltaHGPriori   ,sigmadeltaHGPriori    , , ,INV_GAMMA_PDF ,0.005 ,0.0981;
 //
 //rhoOmegaPriorALL          ,rhoOmegaPriorALL          , , ,NORMAL_PDF ,0 ,1;           sigmaOmegaPriorALL        ,sigmaOmegaPriorALL         , , ,GAMMA_PDF     ,1      ,0.0397*2;
 //rhoOmegaPriorS0ALL        ,rhoOmegaPriorS0ALL        , , ,NORMAL_PDF ,0 ,0.5;         sigmaOmegaPriorS0ALL      ,sigmaOmegaPriorS0ALL       , , ,GAMMA_PDF     ,1      ,0.0397*2;
@@ -515,7 +498,7 @@ sigmaNtilde        ,sigmaNtilde       , , ,INV_GAMMA_PDF ,0.005 ,0.1;  %%Ntilde1
 //sigmauNTALLPriori      ,sigmauNTALLPriori   , , ,INV_GAMMA_PDF ,0.001 ,0.0199;
 //sigmauWALLPriori       ,sigmauWALLPriori    , , ,INV_GAMMA_PDF ,0.001 ,0.0199;
 
-@#for n in 1:175
+@#for n in 1:151
     InternalPrior_@{n} ,InternalPrior_@{n} , , ,normal_pdf ,0 ,1;
 @#endfor
 @#endif
