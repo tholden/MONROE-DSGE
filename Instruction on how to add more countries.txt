@@ -1,0 +1,20 @@
+=====================step2GetSteadyResids_generator================
+1. change @#define SN = 
+2. add new Ntilde to input
+3. generate ss solver, and make the MEX version
+=====================step3GetSteady================
+1. take a new guess on SolutionInit if necessary (usually not)
+=====================step4steady_state_model=================
+1. add new Ntilde to the input of step3GetSteady
+2. add measurement equation for new countries
+=====================main mode file================
+1. change @#define SN = xx
+2. declare new obserbales as endogenous and new measurement errors
+3. add new measurement errors to shock block
+4. add new measurement equations
+5. add new variables to stoch_simul and estimation, change the dataset to be loaded
+=====================prior=====================
+1. declare varobs
+=====================other things=====================
+add new Ntildle to currentbest
+put data in the folder

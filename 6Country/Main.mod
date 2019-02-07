@@ -2315,17 +2315,23 @@ shocks;
 end;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                                       //
-//                                       prior and observables                                                           //
+//                                     load estimated parameters(CurrentBest)                                            //
+//                                       set priors and declare observables                                              //
 //                                                                                                                       //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//the number of parameters increases along with SN only because of Ntilde
+//However, Ntilde is calibrated in est_calibration.mod, so we don't need to load them from CurrentBest
+//M_.params contain all parameters except measurement error declared by dynare built-in capability
+//for M_.params this being passed to estimation, set initial value of prior to the parameter itself.
+//if we use dynare built-in capability for specifying measurement error, we need something like 
+//estim_params_.var_endo( 1:NumberOfMeasurementError, 2 ) = CurrentBest.best_xparam1( 1:NumberOfMeasurementError );
 CurrentBest = load( 'CurrentBest' );
 CountrySpecificParamIndices = find(~cellfun(@isempty,regexp(cellstr(M_.param_names),'^Ntilde\d+_$','once')));
 EndOfFirstBlock = min( CountrySpecificParamIndices ) - 1;
 LengthOfSecondBlock = length( M_.params ) - max( CountrySpecificParamIndices );
-M_.params( 1 : EndOfFirstBlock ) = CurrentBest.best_M_params( 1 : EndOfFirstBlock ); %all parameters except measurement error declared by dynare, for this being passed to estimation, set initial value of prior to the parameter itself.
+M_.params( 1 : EndOfFirstBlock ) = CurrentBest.best_M_params( 1 : EndOfFirstBlock ); 
 M_.params( ( end - LengthOfSecondBlock + 1 ) : end ) = CurrentBest.best_M_params( ( end - LengthOfSecondBlock + 1 ) : end ); %all parameters except measurement error declared by dynare, for this being passed to estimation, set initial value of prior to the parameter itself.
 @#include "est_prior.mod"
-//estim_params_.var_endo( 1:37, 2 ) = CurrentBest.best_xparam1( 1:37 ); %use this line if measurement error are declared by dynare, the first 37 are std of measurement errors, xparam is estimated parameters, column of var_endo is as prior decalration, column2=initial value
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                                       //
 //                                              start calculation                                                        //
