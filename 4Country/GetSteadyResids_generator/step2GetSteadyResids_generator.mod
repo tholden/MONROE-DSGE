@@ -753,6 +753,9 @@ GRGDPW_ = log( ( GDPW_ / GDPWqlag_ * GDPWplag_ / GDPWplagqlag_ ) ^ ( 1 / 2 ) );
     GDIqlag@{n}_ = GGIqlag@{n}_ + PDIqlag@{n}_;
     GDIInflation@{n}_ = log( ( GDI@{n}_ / GDIplag@{n}_ * GDIqlag@{n}_ / GDIplagqlag@{n}_ ) ^ ( 1 / 2 ) );
 
+%GERD (Gross domestic expenditure on R&D, or R&D intensity)
+	GERD@{n}_ = ( PHG@{n}_ * IHG@{n}_ + YWC@{n}_ * PWC_ * ( scriptFI_ * II_ * ( scripts_ - ( 1 - scriptq ) * ( 1 - deltaItilde_ ) * scripts_ / GII_ ) + II_ * scripts_ * ScriptFRP_ * JP_ ) / YWC_ ) / GDP@{n}_;
+
 %Export and deflator
     Export@{n}_ = ( 1 + ( 1 - phiiotaTX ) * iotaTX_ ) * YT0@{n}_ * PT@{n}_ ...
 	@#for m in 1:SN

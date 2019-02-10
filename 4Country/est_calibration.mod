@@ -10,6 +10,7 @@ psi          =0.1;                               %engineering sector, elasticity
 psib         =0.1;                               %welfare elasticity of borrower immigration
 psil         =0.1;                               %welfare elasticity of lender immigration
 hpop_        =6.5;                               %transforming the unit of hours in data to the unit of hours in model
+rdy_         =0;                                 %indicator of RD data quality. Allow the model to ignore RD data if necessary
 
 //country-specific parameters but must be constant across countries as required by the model
 alphaCP      =0.98;                               %share of CP in C
