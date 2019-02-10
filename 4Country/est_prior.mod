@@ -519,8 +519,8 @@ gryW gpopW
   @#for n in 1:SN
 	popshare@{n}
   @#endfor
-WBihy1 ESrdy1 BEAcy1  JSTiy1  BEAgcy1  BEAgiy1  JSTxy1  BEAgpcgpy1  BEAgpigpy1  BEAgpgcgpy1 BEAgpgigpy1 BEAgpxgpy1  BEAgpmgpy1  BEAhpop1   BEAwhy1   BEAcfcy1  JSTexpostr1  FREDlrni1 JSTtauy1
-WBihy2 ESrdy2 PWTcy2  JSTiy2  JSTgy2            JSTxy2  PWTgpcgpy2  PWTgpigpy2  PWTgpgcgpy2             PWTgpxgpy2  PWTgpmgpy2  PWThpop2   PWTwhy2   PWTdelta2 JSTexpostr2  DBlrni2   JSTtauy2
-WBihy3 ESrdy3 MILLcy3 MILLiy3 MILLgcy3 MILLgiy3 MILLxy3 MILLgpcgpy3 MILLgpigpy3 MILLgpgcgpy3            MILLgpxgpy3 MILLgpmgpy3 MILLhpop3  MILLwhy3  MILLcfcy3 MILLexpostr3 MILLlrni3 MILLtauy3
-WBihy4 ESrdy4 PWTcy4  JSTiy4  JSTgy4            JSTxy4  PWTgpcgpy4  PWTgpigpy4  PWTgpgcgpy4             PWTgpxgpy4  PWTgpmgpy4  PWThpop4   PWTwhy4   PWTdelta4 JSTexpostr4  BDFlrni4  JSTtauy4
+ESihy1 ESrdy1 BEAcy1  JSTiy1  BEAgcy1  BEAgiy1  JSTxy1  BEAgpcgpy1  BEAgpigpy1  BEAgpgcgpy1 BEAgpgigpy1 BEAgpxgpy1  BEAgpmgpy1  BEAhpop1   BEAwhy1   BEAcfcy1  JSTexpostr1  FREDlrni1 JSTtauy1
+ESihy2 ESrdy2 PWTcy2  JSTiy2  JSTgy2            JSTxy2  PWTgpcgpy2  PWTgpigpy2  PWTgpgcgpy2             PWTgpxgpy2  PWTgpmgpy2  PWThpop2   PWTwhy2   PWTdelta2 JSTexpostr2  DBlrni2   JSTtauy2
+ESihy3 ESrdy3 MILLcy3 MILLiy3 MILLgcy3 MILLgiy3 MILLxy3 MILLgpcgpy3 MILLgpigpy3 MILLgpgcgpy3            MILLgpxgpy3 MILLgpmgpy3 MILLhpop3  MILLwhy3  MILLcfcy3 MILLexpostr3 MILLlrni3 MILLtauy3
+ESihy4 ESrdy4 PWTcy4  JSTiy4  JSTgy4            JSTxy4  PWTgpcgpy4  PWTgpigpy4  PWTgpgcgpy4             PWTgpxgpy4  PWTgpmgpy4  PWThpop4   PWTwhy4   PWTdelta4 JSTexpostr4  BDFlrni4  JSTtauy4
 ;
