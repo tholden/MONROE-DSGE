@@ -43,7 +43,7 @@ psi       ,psi     ,       ,       ,GAMMA_PDF    ,0.1         ,0.05         ;
 psib      ,psib    ,       ,       ,GAMMA_PDF    ,0.00001     ,0.00001/2    ;
 psil      ,psil    ,       ,       ,GAMMA_PDF    ,0.00001     ,0.00001/2    ;
 hpop_     ,hpop_   ,       ,       ,GAMMA_PDF    ,6.5         ,0.1          ;
-rdy_      ,rdy_    ,       ,       ,NORMAL_PDF   ,0           ,0.3          ;
+rdy_      ,rdy_    ,       ,       ,NORMAL_PDF   ,0           ,0.2          ;
 @#endif
 
 @#if 1
@@ -319,7 +319,7 @@ sigmam             ,sigmam            , , ,INV_GAMMA_PDF ,0.005 ,0.1;    m_     
 sigmavarpi         ,sigmavarpi        , , ,INV_GAMMA_PDF ,0.005 ,0.1;    varpi_        ,varpi_         ,0.001  ,0.999  ,BETA_PDF    ,0.5  ,0.05^0.5;    
 sigmaeT0           ,sigmaeT0          , , ,INV_GAMMA_PDF ,0.005 ,0.1;    eT0_          ,eT0_           ,       ,       ,GAMMA_PDF   ,1    ,0.5;      
 sigmaalpha_resid   ,sigmaalpha_resid  , , ,INV_GAMMA_PDF ,0.005 ,0.1;    alpha_resid_  ,alpha_resid_   ,0.0001 ,0.9999 ,BETA_pdf    ,0.25 ,0.05;
-sigmaalpha_pubedu  ,sigmaalpha_pubedu , , ,INV_GAMMA_PDF ,0.005 ,0.1;    alpha_pubedu_ ,alpha_pubedu_  ,0.0001 ,0.9999 ,BETA_pdf    ,0.33 ,0.05;
+sigmaalpha_pubedu  ,sigmaalpha_pubedu , , ,INV_GAMMA_PDF ,0.005 ,0.1;    alpha_pubedu_ ,alpha_pubedu_  ,0.0001 ,0.9999 ,BETA_pdf    ,0.0615 ,0.01;
 sigmaNtilde        ,sigmaNtilde       , , ,INV_GAMMA_PDF ,0.005 ,0.1;  %%Ntilde1_       Ntilde2_             
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -519,8 +519,8 @@ gryW gpopW
   @#for n in 1:SN
 	popshare@{n}
   @#endfor
-ESihy1 ESrdy1 BEAcy1  JSTiy1  BEAgcy1  BEAgiy1  JSTxy1  BEAgpcgpy1  BEAgpigpy1  BEAgpgcgpy1 BEAgpgigpy1 BEAgpxgpy1  BEAgpmgpy1  BEAhpop1   BEAwhy1   BEAcfcy1  JSTexpostr1  FREDlrni1 JSTtauy1
-ESihy2 ESrdy2 PWTcy2  JSTiy2  JSTgy2            JSTxy2  PWTgpcgpy2  PWTgpigpy2  PWTgpgcgpy2             PWTgpxgpy2  PWTgpmgpy2  PWThpop2   PWTwhy2   PWTdelta2 JSTexpostr2  DBlrni2   JSTtauy2
-ESihy3 ESrdy3 MILLcy3 MILLiy3 MILLgcy3 MILLgiy3 MILLxy3 MILLgpcgpy3 MILLgpigpy3 MILLgpgcgpy3            MILLgpxgpy3 MILLgpmgpy3 MILLhpop3  MILLwhy3  MILLcfcy3 MILLexpostr3 MILLlrni3 MILLtauy3
-ESihy4 ESrdy4 PWTcy4  JSTiy4  JSTgy4            JSTxy4  PWTgpcgpy4  PWTgpigpy4  PWTgpgcgpy4             PWTgpxgpy4  PWTgpmgpy4  PWThpop4   PWTwhy4   PWTdelta4 JSTexpostr4  BDFlrni4  JSTtauy4
+OECDihy1 ESrdy1 BEAcy1  JSTiy1  BEAgcy1  BEAgiy1  JSTxy1  BEAgpcgpy1  BEAgpigpy1  BEAgpgcgpy1 BEAgpgigpy1 BEAgpxgpy1  BEAgpmgpy1  BEAhpop1   BEAwhy1   BEAcfcy1  JSTexpostr1  FREDlrni1 JSTtauy1
+OECDihy2 ESrdy2 PWTcy2  JSTiy2  JSTgy2            JSTxy2  PWTgpcgpy2  PWTgpigpy2  PWTgpgcgpy2             PWTgpxgpy2  PWTgpmgpy2  PWThpop2   PWTwhy2   PWTdelta2 JSTexpostr2  DBlrni2   JSTtauy2
+OECDihy3 ESrdy3 MILLcy3 MILLiy3 MILLgcy3 MILLgiy3 MILLxy3 MILLgpcgpy3 MILLgpigpy3 MILLgpgcgpy3            MILLgpxgpy3 MILLgpmgpy3 MILLhpop3  MILLwhy3  MILLcfcy3 MILLexpostr3 MILLlrni3 MILLtauy3
+OECDihy4 ESrdy4 PWTcy4  JSTiy4  JSTgy4            JSTxy4  PWTgpcgpy4  PWTgpigpy4  PWTgpgcgpy4             PWTgpxgpy4  PWTgpmgpy4  PWThpop4   PWTwhy4   PWTdelta4 JSTexpostr4  BDFlrni4  JSTtauy4
 ;

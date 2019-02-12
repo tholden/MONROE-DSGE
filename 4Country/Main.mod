@@ -356,12 +356,12 @@ var
   @#for n in 1:SN
 	popshare@{n}
   @#endfor
-  ESihy1 ESrdy1 BEAcy1  JSTiy1  BEAgcy1  BEAgiy1  JSTxy1  BEAgpcgpy1  BEAgpigpy1  BEAgpgcgpy1 BEAgpgigpy1 BEAgpxgpy1  BEAgpmgpy1  BEAhpop1   BEAwhy1   BEAcfcy1  JSTexpostr1  FREDlrni1 JSTtauy1
-  ESihy2 ESrdy2 PWTcy2  JSTiy2  JSTgy2            JSTxy2  PWTgpcgpy2  PWTgpigpy2  PWTgpgcgpy2             PWTgpxgpy2  PWTgpmgpy2  PWThpop2   PWTwhy2   PWTdelta2 JSTexpostr2  DBlrni2   JSTtauy2
-  ESihy3 ESrdy3 MILLcy3 MILLiy3 MILLgcy3 MILLgiy3 MILLxy3 MILLgpcgpy3 MILLgpigpy3 MILLgpgcgpy3            MILLgpxgpy3 MILLgpmgpy3 MILLhpop3  MILLwhy3  MILLcfcy3 MILLexpostr3 MILLlrni3 MILLtauy3
-  ESihy4 ESrdy4 PWTcy4  JSTiy4  JSTgy4            JSTxy4  PWTgpcgpy4  PWTgpigpy4  PWTgpgcgpy4             PWTgpxgpy4  PWTgpmgpy4  PWThpop4   PWTwhy4   PWTdelta4 JSTexpostr4  BDFlrni4  JSTtauy4;
-//ESihy5 ESrdy5 PWTcy5  JSTiy5  JSTgy5            JSTxy5  PWTgpcgpy5  PWTgpigpy5  PWTgpgcgpy5             PWTgpxgpy5  PWTgpmgpy5  PWThpop5   PWTwhy5   PWTcfcy5  JSTexpostr5            JSTtauy5
-//ESihy6 ESrdy6 PWTcy6  JSTiy6  JSTgy6            JSTxy6  PWTgpcgpy6  PWTgpigpy6  PWTgpgcgpy6             PWTgpxgpy6  PWTgpmgpy6  PWThpop6   PWTwhy6   PWTcfcy6  JSTexpostr6            JSTtauy6
+  OECDihy1 ESrdy1 BEAcy1  JSTiy1  BEAgcy1  BEAgiy1  JSTxy1  BEAgpcgpy1  BEAgpigpy1  BEAgpgcgpy1 BEAgpgigpy1 BEAgpxgpy1  BEAgpmgpy1  BEAhpop1   BEAwhy1   BEAcfcy1  JSTexpostr1  FREDlrni1 JSTtauy1
+  OECDihy2 ESrdy2 PWTcy2  JSTiy2  JSTgy2            JSTxy2  PWTgpcgpy2  PWTgpigpy2  PWTgpgcgpy2             PWTgpxgpy2  PWTgpmgpy2  PWThpop2   PWTwhy2   PWTdelta2 JSTexpostr2  DBlrni2   JSTtauy2
+  OECDihy3 ESrdy3 MILLcy3 MILLiy3 MILLgcy3 MILLgiy3 MILLxy3 MILLgpcgpy3 MILLgpigpy3 MILLgpgcgpy3            MILLgpxgpy3 MILLgpmgpy3 MILLhpop3  MILLwhy3  MILLcfcy3 MILLexpostr3 MILLlrni3 MILLtauy3
+  OECDihy4 ESrdy4 PWTcy4  JSTiy4  JSTgy4            JSTxy4  PWTgpcgpy4  PWTgpigpy4  PWTgpgcgpy4             PWTgpxgpy4  PWTgpmgpy4  PWThpop4   PWTwhy4   PWTdelta4 JSTexpostr4  BDFlrni4  JSTtauy4;
+//OECDihy5 ESrdy5 PWTcy5  JSTiy5  JSTgy5            JSTxy5  PWTgpcgpy5  PWTgpigpy5  PWTgpgcgpy5             PWTgpxgpy5  PWTgpmgpy5  PWThpop5   PWTwhy5   PWTcfcy5  JSTexpostr5            JSTtauy5
+//OECDihy6 ESrdy6 PWTcy6  JSTiy6  JSTgy6            JSTxy6  PWTgpcgpy6  PWTgpigpy6  PWTgpgcgpy6             PWTgpxgpy6  PWTgpmgpy6  PWThpop6   PWTwhy6   PWTcfcy6  JSTexpostr6            JSTtauy6
 varexo
   epsilon_gryW epsilon_gpopW
   @#for n in 1:SN-1
@@ -370,12 +370,12 @@ varexo
   @#for n in 1:SN
 	epsilon_popshare@{n}
   @#endfor
-  epsilon_ESihy1 epsilon_ESrdy1 epsilon_BEAcy1  epsilon_JSTiy1  epsilon_BEAgcy1  epsilon_BEAgiy1   epsilon_JSTxy1     epsilon_BEAgpcgpy1  epsilon_BEAgpigpy1  epsilon_BEAgpgcgpy1 epsilon_BEAgpgigpy1 epsilon_BEAgpxgpy1  epsilon_BEAgpmgpy1  epsilon_BEAhpop1   epsilon_BEAwhy1   epsilon_BEAcfcy1  epsilon_JSTexpostr1  epsilon_FREDlrni1 epsilon_JSTtauy1
-  epsilon_ESihy2 epsilon_ESrdy2 epsilon_PWTcy2  epsilon_JSTiy2  epsilon_JSTgy2                     epsilon_JSTxy2     epsilon_PWTgpcgpy2  epsilon_PWTgpigpy2  epsilon_PWTgpgcgpy2                     epsilon_PWTgpxgpy2  epsilon_PWTgpmgpy2  epsilon_PWThpop2   epsilon_PWTwhy2   epsilon_PWTdelta2 epsilon_JSTexpostr2  epsilon_DBlrni2   epsilon_JSTtauy2
-  epsilon_ESihy3 epsilon_ESrdy3 epsilon_MILLcy3 epsilon_MILLiy3 epsilon_MILLgcy3 epsilon_MILLgiy3  epsilon_MILLxy3    epsilon_MILLgpcgpy3 epsilon_MILLgpigpy3 epsilon_MILLgpgcgpy3                    epsilon_MILLgpxgpy3 epsilon_MILLgpmgpy3 epsilon_MILLhpop3  epsilon_MILLwhy3  epsilon_MILLcfcy3 epsilon_MILLexpostr3 epsilon_MILLlrni3 epsilon_MILLtauy3
-  epsilon_ESihy4 epsilon_ESrdy4 epsilon_PWTcy4  epsilon_JSTiy4  epsilon_JSTgy4                     epsilon_JSTxy4     epsilon_PWTgpcgpy4  epsilon_PWTgpigpy4  epsilon_PWTgpgcgpy4                     epsilon_PWTgpxgpy4  epsilon_PWTgpmgpy4  epsilon_PWThpop4   epsilon_PWTwhy4   epsilon_PWTdelta4 epsilon_JSTexpostr4  epsilon_BDFlrni4  epsilon_JSTtauy4;
-//epsilon_ESihy5 epsilon_ESrdy5 epsilon_PWTcy5  epsilon_JSTiy5  epsilon_JSTgy5                     epsilon_JSTxy5     epsilon_PWTgpcgpy5  epsilon_PWTgpigpy5  epsilon_PWTgpgcgpy5                     epsilon_PWTgpxgpy5  epsilon_PWTgpmgpy5  epsilon_PWThpop5   epsilon_PWTwhy5   epsilon_PWTcfcy5  epsilon_JSTexpostr5                    epsilon_JSTtauy5
-//epsilon_ESihy6 epsilon_ESrdy6 epsilon_PWTcy6  epsilon_JSTiy6  epsilon_JSTgy6                     epsilon_JSTxy6     epsilon_PWTgpcgpy6  epsilon_PWTgpigpy6  epsilon_PWTgpgcgpy6                     epsilon_PWTgpxgpy6  epsilon_PWTgpmgpy6  epsilon_PWThpop6   epsilon_PWTwhy6   epsilon_PWTcfcy6  epsilon_JSTexpostr6                    epsilon_JSTtauy6
+  epsilon_OECDihy1 epsilon_ESrdy1 epsilon_BEAcy1  epsilon_JSTiy1  epsilon_BEAgcy1  epsilon_BEAgiy1   epsilon_JSTxy1     epsilon_BEAgpcgpy1  epsilon_BEAgpigpy1  epsilon_BEAgpgcgpy1 epsilon_BEAgpgigpy1 epsilon_BEAgpxgpy1  epsilon_BEAgpmgpy1  epsilon_BEAhpop1   epsilon_BEAwhy1   epsilon_BEAcfcy1  epsilon_JSTexpostr1  epsilon_FREDlrni1 epsilon_JSTtauy1
+  epsilon_OECDihy2 epsilon_ESrdy2 epsilon_PWTcy2  epsilon_JSTiy2  epsilon_JSTgy2                     epsilon_JSTxy2     epsilon_PWTgpcgpy2  epsilon_PWTgpigpy2  epsilon_PWTgpgcgpy2                     epsilon_PWTgpxgpy2  epsilon_PWTgpmgpy2  epsilon_PWThpop2   epsilon_PWTwhy2   epsilon_PWTdelta2 epsilon_JSTexpostr2  epsilon_DBlrni2   epsilon_JSTtauy2
+  epsilon_OECDihy3 epsilon_ESrdy3 epsilon_MILLcy3 epsilon_MILLiy3 epsilon_MILLgcy3 epsilon_MILLgiy3  epsilon_MILLxy3    epsilon_MILLgpcgpy3 epsilon_MILLgpigpy3 epsilon_MILLgpgcgpy3                    epsilon_MILLgpxgpy3 epsilon_MILLgpmgpy3 epsilon_MILLhpop3  epsilon_MILLwhy3  epsilon_MILLcfcy3 epsilon_MILLexpostr3 epsilon_MILLlrni3 epsilon_MILLtauy3
+  epsilon_OECDihy4 epsilon_ESrdy4 epsilon_PWTcy4  epsilon_JSTiy4  epsilon_JSTgy4                     epsilon_JSTxy4     epsilon_PWTgpcgpy4  epsilon_PWTgpigpy4  epsilon_PWTgpgcgpy4                     epsilon_PWTgpxgpy4  epsilon_PWTgpmgpy4  epsilon_PWThpop4   epsilon_PWTwhy4   epsilon_PWTdelta4 epsilon_JSTexpostr4  epsilon_BDFlrni4  epsilon_JSTtauy4;
+//epsilon_OECDihy5 epsilon_ESrdy5 epsilon_PWTcy5  epsilon_JSTiy5  epsilon_JSTgy5                     epsilon_JSTxy5     epsilon_PWTgpcgpy5  epsilon_PWTgpigpy5  epsilon_PWTgpgcgpy5                     epsilon_PWTgpxgpy5  epsilon_PWTgpmgpy5  epsilon_PWThpop5   epsilon_PWTwhy5   epsilon_PWTcfcy5  epsilon_JSTexpostr5                    epsilon_JSTtauy5
+//epsilon_OECDihy6 epsilon_ESrdy6 epsilon_PWTcy6  epsilon_JSTiy6  epsilon_JSTgy6                     epsilon_JSTxy6     epsilon_PWTgpcgpy6  epsilon_PWTgpigpy6  epsilon_PWTgpgcgpy6                     epsilon_PWTgpxgpy6  epsilon_PWTgpmgpy6  epsilon_PWThpop6   epsilon_PWTwhy6   epsilon_PWTcfcy6  epsilon_JSTexpostr6                    epsilon_JSTtauy6
 
 
 //Extra final observables (for IRF)
@@ -2059,8 +2059,8 @@ gpopW   = log(GN) + epsilon_gpopW * sigma_gpopW;
 
 %US
 ESrdy1 - epsilon_ESrdy1 * sigma_rdy = exp(rdy_) * GERD1;
-(BEAcy1 - epsilon_BEAcy1 * sigma_cy) + ( BEAgcy1 - epsilon_BEAgcy1 * sigma_gcy ) * alpha_pubedu1 = PCE1 / GDP1;
-ESihy1 = PHP1 * IHP1 / GDP1 + epsilon_ESihy1 * sigma_ihy;
+(BEAcy1 - epsilon_BEAcy1 * sigma_cy) + (BEAgiy1 - epsilon_BEAgiy1 * sigma_giy + BEAgcy1 - epsilon_BEAgcy1 * sigma_gcy) * alpha_pubedu1 = PCE1 / GDP1;
+OECDihy1 = PHP1 * IHP1 / GDP1 + epsilon_OECDihy1 * sigma_ihy;
 JSTiy1 = GDI1 / GDP1 + epsilon_JSTiy1 * sigma_iy;
 (BEAgiy1 - epsilon_BEAgiy1 * sigma_giy + BEAgcy1 - epsilon_BEAgcy1 * sigma_gcy) * ( 1 - alpha_pubedu1 ) = ( GCE1 + GGI1 ) / GDP1;
 BEAgiy1 = GGI1                 / GDP1          + epsilon_BEAgiy1 * sigma_giy;
@@ -2085,8 +2085,8 @@ JSTtauy1    = GovRev1       / GDP1 + epsilon_JSTtauy1    * sigma_tauy;
 
 %UK
 ESrdy3 - epsilon_ESrdy3 * sigma_rdy = exp(rdy_) * GERD3;
-( MILLcy3 - epsilon_MILLcy3 * sigma_cy ) + ( MILLgcy3 - epsilon_MILLgcy3 * sigma_gcy ) * alpha_pubedu3 = PCE3 / GDP3;
-ESihy3 = PHP3 * IHP3 / GDP3 + epsilon_ESihy3 * sigma_ihy;
+( MILLcy3 - epsilon_MILLcy3 * sigma_cy ) + ( MILLgcy3 - epsilon_MILLgcy3 * sigma_gcy + MILLgiy3 - epsilon_MILLgiy3 * sigma_giy ) * alpha_pubedu3 = PCE3 / GDP3;
+OECDihy3 = PHP3 * IHP3 / GDP3 + epsilon_OECDihy3 * sigma_ihy;
 MILLiy3 = GDI3 / GDP3 + epsilon_MILLiy3 * sigma_iy;
 ( MILLgcy3 - epsilon_MILLgcy3 * sigma_gcy + MILLgiy3 - epsilon_MILLgiy3 * sigma_giy ) * ( 1 - alpha_pubedu3 ) = ( GCE3 + GGI3 ) / GDP3;
 MILLgiy3     = GGI3             / GDP3          + epsilon_MILLgiy3 * sigma_giy;
@@ -2111,7 +2111,7 @@ MILLtauy3    = GovRev3       / GDP3 + epsilon_MILLtauy3    * sigma_tauy;
 %Germany
 ESrdy2 - epsilon_ESrdy2 * sigma_rdy = exp(rdy_) * GERD2;
 ( PWTcy2 - epsilon_PWTcy2 * sigma_cy ) + ( JSTgy2 - epsilon_JSTgy2 * sigma_gcy ) * alpha_pubedu2 = PCE2 / GDP2;
-ESihy2 = PHP2 * IHP2 / GDP2 + epsilon_ESihy2 * sigma_ihy;
+OECDihy2 = PHP2 * IHP2 / GDP2 + epsilon_OECDihy2 * sigma_ihy;
 JSTiy2 = GDI2 / GDP2 + epsilon_JSTiy2 * sigma_iy;
 ( JSTgy2 - epsilon_JSTgy2 * sigma_gcy ) * ( 1 - alpha_pubedu2 ) = ( GCE2 + GGI2 ) / GDP2;
 JSTxy2      = Export2          / GDP2          + epsilon_JSTxy2     * sigma_xy;
@@ -2135,7 +2135,7 @@ JSTtauy2    = GovRev2       / GDP2  + epsilon_JSTtauy2    * sigma_tauy;
 %France
 ESrdy4 - epsilon_ESrdy4 * sigma_rdy = exp(rdy_) * GERD4;
 ( PWTcy4 - epsilon_PWTcy4 * sigma_cy ) + ( JSTgy4 - epsilon_JSTgy4 * sigma_gcy ) * alpha_pubedu4 = PCE4 / GDP4;
-ESihy4 = PHP4 * IHP4 / GDP4 + epsilon_ESihy4 * sigma_ihy;
+OECDihy4 = PHP4 * IHP4 / GDP4 + epsilon_OECDihy4 * sigma_ihy;
 JSTiy4 = GDI4 / GDP4 + epsilon_JSTiy4 * sigma_iy;
 ( JSTgy4 - epsilon_JSTgy4 * sigma_gcy ) * ( 1 - alpha_pubedu4 ) = ( GCE4 + GGI4 ) / GDP4;
 JSTxy4      = Export4          / GDP4          + epsilon_JSTxy4     * sigma_xy;
@@ -2160,7 +2160,7 @@ JSTtauy4    = GovRev4       / GDP4 + epsilon_JSTtauy4    * sigma_tauy;
 %%REU
 %ESrdy5 - epsilon_ESrdy5 * sigma_rdy = exp(rdy_) * GERD5;
 %( PWTcy5 - epsilon_PWTcy5 * sigma_cy ) + ( JSTgy5 - epsilon_JSTgy5 * sigma_gcy ) * alpha_pubedu5 = PCE5 / GDP5;
-%ESihy5 = PHP5 * IHP5 / GDP5 + epsilon_ESihy5 * sigma_ihy;
+%OECDihy5 = PHP5 * IHP5 / GDP5 + epsilon_OECDihy5 * sigma_ihy;
 %JSTiy5 = GDI5 / GDP5 + epsilon_JSTiy5 * sigma_iy;
 %( JSTgy5 - epsilon_JSTgy5 * sigma_gcy ) * ( 1 - alpha_pubedu5 ) = ( GCE5 + GGI5 ) / GDP5;
 %JSTxy5      = Export5          / GDP5          + epsilon_JSTxy5     * sigma_xy;
@@ -2183,7 +2183,7 @@ JSTtauy4    = GovRev4       / GDP4 + epsilon_JSTtauy4    * sigma_tauy;
 %%RMA
 %ESrdy6 - epsilon_ESrdy6 * sigma_rdy = exp(rdy_) * GERD6;
 %( PWTcy6 - epsilon_PWTcy6 * sigma_cy ) + ( JSTgy6 - epsilon_JSTgy6 * sigma_gcy ) * alpha_pubedu6 = PCE6 / GDP6;
-%ESihy6 = PHP6 * IHP6 / GDP6 + epsilon_ESihy6 * sigma_ihy;
+%OECDihy6 = PHP6 * IHP6 / GDP6 + epsilon_OECDihy6 * sigma_ihy;
 %JSTiy6 = GDI6 / GDP6 + epsilon_JSTiy6 * sigma_iy;
 %( JSTgy6 - epsilon_JSTgy6 * sigma_gcy ) * ( 1 - alpha_pubedu6 ) = ( GCE6 + GGI6 ) / GDP6;
 %JSTxy6      = Export6          / GDP6          + epsilon_JSTxy6     * sigma_xy;
@@ -2236,7 +2236,7 @@ shocks;
 	var epsilon_gryW          = 1;
 	var epsilon_gpopW         = 1;
 	
-	var epsilon_ESihy1        = 1;
+	var epsilon_OECDihy1        = 1;
 	var epsilon_ESrdy1        = 1;
 	var epsilon_BEAcy1        = 1;
 	var epsilon_JSTiy1        = 1;
@@ -2256,7 +2256,7 @@ shocks;
 	var epsilon_FREDlrni1     = 1;
 	var epsilon_JSTtauy1      = 1;
 	
-	var epsilon_ESihy2        = 1;
+	var epsilon_OECDihy2        = 1;
 	var epsilon_ESrdy2        = 1;
 	var epsilon_PWTcy2        = 1;
 	var epsilon_JSTiy2        = 1;
@@ -2274,7 +2274,7 @@ shocks;
 	var epsilon_DBlrni2       = 1;
 	var epsilon_JSTtauy2      = 1;
 	
-	var epsilon_ESihy3        = 1;
+	var epsilon_OECDihy3        = 1;
 	var epsilon_ESrdy3        = 1;
     var epsilon_MILLcy3       = 1;
     var epsilon_MILLiy3       = 1;
@@ -2293,7 +2293,7 @@ shocks;
     var epsilon_MILLlrni3     = 1;
     var epsilon_MILLtauy3     = 1;
 	
-	var epsilon_ESihy4        = 1;
+	var epsilon_OECDihy4        = 1;
 	var epsilon_ESrdy4        = 1;
     var epsilon_PWTcy4        = 1;
     var epsilon_JSTiy4        = 1;
@@ -2311,7 +2311,7 @@ shocks;
     var epsilon_BDFlrni4      = 1;
     var epsilon_JSTtauy4      = 1;
 	
-//var epsilon_ESihy5        = 1;
+//var epsilon_OECDihy5        = 1;
 //var epsilon_ESrdy5        = 1;
 //var epsilon_PWTcy5        = 1;
 //var epsilon_JSTiy5        = 1;
@@ -2328,7 +2328,7 @@ shocks;
 //var epsilon_JSTexpostr5   = 1;
 //var epsilon_JSTtauy5      = 1;
 
-//var epsilon_ESihy6        = 1;
+//var epsilon_OECDihy6        = 1;
 //var epsilon_ESrdy6        = 1;
 //var epsilon_PWTcy6        = 1;
 //var epsilon_JSTiy6        = 1;
@@ -2400,7 +2400,7 @@ options_.skip_optimisation = 1;
 steady;
 check;
 
-estimation(order=1, datafile=data_ext6est2, presample=0,prior_trunc=0,
+estimation(order=1, datafile=data_4country, presample=0,prior_trunc=0,
             use_univariate_filters_if_singularity_is_detected=0,
             lik_init = 2,
             //diffuse_filter,
@@ -2419,9 +2419,9 @@ gryW gpopW
   @#for n in 1:SN
 	popshare@{n}
   @#endfor
-ESihy1 ESrdy1 BEAcy1  JSTiy1  BEAgcy1  BEAgiy1  JSTxy1  BEAgpcgpy1  BEAgpigpy1  BEAgpgcgpy1 BEAgpgigpy1 BEAgpxgpy1  BEAgpmgpy1  BEAhpop1   BEAwhy1   BEAcfcy1  JSTexpostr1  FREDlrni1 JSTtauy1
-ESihy2 ESrdy2 PWTcy2  JSTiy2  JSTgy2            JSTxy2  PWTgpcgpy2  PWTgpigpy2  PWTgpgcgpy2             PWTgpxgpy2  PWTgpmgpy2  PWThpop2   PWTwhy2   PWTdelta2 JSTexpostr2  DBlrni2   JSTtauy2
-ESihy3 ESrdy3 MILLcy3 MILLiy3 MILLgcy3 MILLgiy3 MILLxy3 MILLgpcgpy3 MILLgpigpy3 MILLgpgcgpy3            MILLgpxgpy3 MILLgpmgpy3 MILLhpop3  MILLwhy3  MILLcfcy3 MILLexpostr3 MILLlrni3 MILLtauy3
-ESihy4 ESrdy4 PWTcy4  JSTiy4  JSTgy4            JSTxy4  PWTgpcgpy4  PWTgpigpy4  PWTgpgcgpy4             PWTgpxgpy4  PWTgpmgpy4  PWThpop4   PWTwhy4   PWTdelta4 JSTexpostr4  BDFlrni4  JSTtauy4;
+OECDihy1 ESrdy1 BEAcy1  JSTiy1  BEAgcy1  BEAgiy1  JSTxy1  BEAgpcgpy1  BEAgpigpy1  BEAgpgcgpy1 BEAgpgigpy1 BEAgpxgpy1  BEAgpmgpy1  BEAhpop1   BEAwhy1   BEAcfcy1  JSTexpostr1  FREDlrni1 JSTtauy1
+OECDihy2 ESrdy2 PWTcy2  JSTiy2  JSTgy2            JSTxy2  PWTgpcgpy2  PWTgpigpy2  PWTgpgcgpy2             PWTgpxgpy2  PWTgpmgpy2  PWThpop2   PWTwhy2   PWTdelta2 JSTexpostr2  DBlrni2   JSTtauy2
+OECDihy3 ESrdy3 MILLcy3 MILLiy3 MILLgcy3 MILLgiy3 MILLxy3 MILLgpcgpy3 MILLgpigpy3 MILLgpgcgpy3            MILLgpxgpy3 MILLgpmgpy3 MILLhpop3  MILLwhy3  MILLcfcy3 MILLexpostr3 MILLlrni3 MILLtauy3
+OECDihy4 ESrdy4 PWTcy4  JSTiy4  JSTgy4            JSTxy4  PWTgpcgpy4  PWTgpigpy4  PWTgpgcgpy4             PWTgpxgpy4  PWTgpmgpy4  PWThpop4   PWTwhy4   PWTdelta4 JSTexpostr4  BDFlrni4  JSTtauy4;
 
 stoch_simul( periods = 0, irf = 0, order = 1, nocorr, nodecomposition, nofunctions, nomoments, nograph );
