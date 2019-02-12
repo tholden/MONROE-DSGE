@@ -16,6 +16,8 @@ sigma_gryW        ,sigma_gryW      , , , INV_GAMMA_PDF, 0.001, 0.001;
 sigma_yshare      ,sigma_yshare    , , , INV_GAMMA_PDF, 0.001, 0.001;
 sigma_gpopW       ,sigma_gpopW     , , , INV_GAMMA_PDF, 0.001, 0.001;
 sigma_popshare    ,sigma_popshare  , , , INV_GAMMA_PDF, 0.001, 0.001;
+sigma_ihy         ,sigma_ihy       , , , INV_GAMMA_PDF, 0.001, 0.001;
+sigma_rdy         ,sigma_rdy       , , , INV_GAMMA_PDF, 0.001, 0.001;
 sigma_cy          ,sigma_cy        , , , INV_GAMMA_PDF, 0.001, 0.001;
 sigma_iy          ,sigma_iy        , , , INV_GAMMA_PDF, 0.001, 0.001;
 sigma_gcy         ,sigma_gcy       , , , INV_GAMMA_PDF, 0.001, 0.001;
@@ -48,6 +50,7 @@ psi       ,psi     ,       ,       ,GAMMA_PDF    ,0.1         ,0.05         ;
 psib      ,psib    ,       ,       ,GAMMA_PDF    ,0.00001     ,0.00001/2    ;
 psil      ,psil    ,       ,       ,GAMMA_PDF    ,0.00001     ,0.00001/2    ;
 hpop_     ,hpop_   ,       ,       ,GAMMA_PDF    ,6.5         ,0.1          ;
+rdy_      ,rdy_    ,       ,       ,NORMAL_PDF   ,0           ,0.2          ;
 @#endif
 
 @#if 1
@@ -68,9 +71,9 @@ logit_alphaY    ,logit_alphaY   , , ,NORMAL_PDF   ,0    ,0.5  ;
 betabarl  ,betabarl ,0.0001 ,0.9999 ,BETA_PDF   ,0.96   ,0.005     ;
 
 //country-specific parameters that are assumed to be constant across countries
-sigma         ,sigma       ,       ,       ,GAMMA_PDF    ,1     ,0.5;
-gammaV        ,gammaV      ,       ,       ,GAMMA_PDF    ,10    ,5  ; 
-xi            ,xi          ,0.0001 ,0.9999 ,uniform_pdf  ,0.5   ,(1/12)^(0.5); 
+sigma         ,sigma       ,       ,       ,GAMMA_PDF    ,1     ,0.5  ;
+gammaV        ,gammaV      ,       ,       ,GAMMA_PDF    ,10    ,5    ; 
+logit_xi      ,logit_xi    ,       ,       ,NORMAL_PDF   ,0     ,1.1  ;
 bbeta         ,bbeta       ,       ,       ,GAMMA_PDF    ,0.005 ,0.001;
 
 h             ,h           ,0.0001 ,0.9999 ,BETA_PDF     ,0.5   ,0.05^0.5;
@@ -104,8 +107,6 @@ thetaGD       ,thetaGD     ,       ,       ,GAMMA_PDF    ,10    ,5;
 thetaPD       ,thetaPD     ,       ,       ,GAMMA_PDF    ,10    ,5;
 thetaDU0      ,thetaDU0    ,       ,       ,GAMMA_PDF    ,0.2   ,0.1;
 thetaDU1      ,thetaDU1    ,       ,       ,GAMMA_PDF    ,1     ,0.5;
-thetaGKG      ,thetaGKG    ,       ,       ,GAMMA_PDF    ,10    ,5;
-thetaGHG      ,thetaGHG    ,       ,       ,GAMMA_PDF    ,10    ,5;
 
 eNC           ,eNC         ,       ,       ,GAMMA_PDF    ,1     ,0.5;
 alphaNC       ,alphaNC     ,0.0001 ,0.9999 ,BETA_PDF     ,0.5   ,0.05^0.5;
@@ -307,12 +308,8 @@ logit_rhokappah      ,logit_rhokappah      , , ,NORMAL_PDF   ,0    ,1.1  ;   sig
 @#for S in Sectors2                                                                                                                                                                                            
 logit_rhokappa@{S}   ,logit_rhokappa@{S}   , , ,NORMAL_PDF   ,0    ,1.1  ;   sigmakappa@{S}   ,sigmakappa@{S}   , , ,INV_GAMMA_PDF ,0.005 ,0.1;    kappa@{S}_    ,kappa@{S}_  ,      ,      ,GAMMA_PDF  ,1      ,0.1     ;
 @#endfor
-@#for S in Sectors0
-//rhodeltaKP@{S} ,rhodeltaKP@{S} ,0.0001 ,0.9999 ,BETA_PDF ,0.5 ,0.05^0.5;   sigmadeltaKP@{S} ,sigmadeltaKP@{S} , , ,INV_GAMMA_PDF ,0.005 ,0.1;    deltaKP@{S}_ ,deltaKP@{S}_  ,0.001 ,0.999 ,BETA_PDF   ,0.1    ,0.05;
-//rhodeltaHP@{S} ,rhodeltaHP@{S} ,0.0001 ,0.9999 ,BETA_PDF ,0.5 ,0.05^0.5;   sigmadeltaHP@{S} ,sigmadeltaHP@{S} , , ,INV_GAMMA_PDF ,0.005 ,0.1;    deltaHP@{S}_ ,deltaHP@{S}_  ,0.001 ,0.999 ,BETA_PDF   ,0.0228 ,0.0128;
-@#endfor                                                                                                                                                                                               
-//rhodeltaKG     ,rhodeltaKG     ,0.0001 ,0.9999 ,BETA_PDF ,0.5 ,0.05^0.5;  sigmadeltaKG     ,sigmadeltaKG     , , ,INV_GAMMA_PDF ,0.005 ,0.1;    deltaKG_     ,deltaKG_      ,0.001 ,0.999 ,BETA_PDF   ,0.1    ,0.05;
-//rhodeltaHG     ,rhodeltaHG     ,0.0001 ,0.9999 ,BETA_PDF ,0.5 ,0.05^0.5;  sigmadeltaHG     ,sigmadeltaHG     , , ,INV_GAMMA_PDF ,0.005 ,0.1;    deltaHG_     ,deltaHG_      ,0.001 ,0.999 ,BETA_PDF   ,0.0228 ,0.0128;
+rhodeltaK      ,rhodeltaK      ,0.0001 ,0.9999 ,BETA_PDF ,0.5 ,0.05^0.5;  sigmadeltaK      ,sigmadeltaK      , , ,INV_GAMMA_PDF ,0.005 ,0.1;    deltaK_      ,deltaK_       ,0.001 ,0.999 ,BETA_PDF   ,0.1    ,0.05;
+rhodeltaH      ,rhodeltaH      ,0.0001 ,0.9999 ,BETA_PDF ,0.5 ,0.05^0.5;  sigmadeltaH      ,sigmadeltaH      , , ,INV_GAMMA_PDF ,0.005 ,0.1;    deltaH_      ,deltaH_       ,0.001 ,0.999 ,BETA_PDF   ,0.0228 ,0.0128;
 rhobeta        ,rhobeta        ,0.0001 ,0.9999 ,BETA_PDF ,0.5 ,0.05^0.5;  sigmabeta        ,sigmabeta        , , ,INV_GAMMA_PDF ,0.005 ,0.1;    betabarb     ,betabarb      ,0.001 ,0.999 ,BETA_PDF   ,0.89   ,0.005;
 rhoPP0  ,rhoPP0  ,  ,0.999 ,BETA_PDF      ,0.5   ,0.05^0.5;
 rhoPY0  ,rhoPY0  ,  ,0.999 ,BETA_PDF      ,0.5   ,0.05^0.5;
@@ -329,7 +326,7 @@ sigmam             ,sigmam            , , ,INV_GAMMA_PDF ,0.005 ,0.1;    m_     
 sigmavarpi         ,sigmavarpi        , , ,INV_GAMMA_PDF ,0.005 ,0.1;    varpi_        ,varpi_         ,0.001  ,0.999  ,BETA_PDF    ,0.5  ,0.05^0.5;    
 sigmaeT0           ,sigmaeT0          , , ,INV_GAMMA_PDF ,0.005 ,0.1;    eT0_          ,eT0_           ,       ,       ,GAMMA_PDF   ,1    ,0.5;      
 sigmaalpha_resid   ,sigmaalpha_resid  , , ,INV_GAMMA_PDF ,0.005 ,0.1;    alpha_resid_  ,alpha_resid_   ,0.0001 ,0.9999 ,BETA_pdf    ,0.25 ,0.05;
-sigmaalpha_pubedu  ,sigmaalpha_pubedu , , ,INV_GAMMA_PDF ,0.005 ,0.1;    alpha_pubedu_ ,alpha_pubedu_  ,0.0001 ,0.9999 ,BETA_pdf    ,0.33 ,0.05;
+sigmaalpha_pubedu  ,sigmaalpha_pubedu , , ,INV_GAMMA_PDF ,0.005 ,0.1;    alpha_pubedu_ ,alpha_pubedu_  ,0.0001 ,0.9999 ,BETA_pdf    ,0.0615 ,0.01;
 sigmaNtilde        ,sigmaNtilde       , , ,INV_GAMMA_PDF ,0.005 ,0.1;  %%Ntilde1_       Ntilde2_             
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -363,17 +360,6 @@ sigmaNtilde        ,sigmaNtilde       , , ,INV_GAMMA_PDF ,0.005 ,0.1;  %%Ntilde1
 //eKLPriorALL  ,eKLPriorALL    , , ,GAMMA_PDF ,1 ,0.2194*2;
 //eHLXPriorALL ,eHLXPriorALL   , , ,GAMMA_PDF ,1 ,0.2194*2;
 //eYPriorALL   ,eYPriorALL     , , ,GAMMA_PDF ,1 ,0.2194*2;
-//
-//deltaKPriorALL     ,deltaKPriorALL    , , ,NORMAL_PDF,-2.3 ,0.5;     rhodeltaKPriorALL   ,rhodeltaKPriorALL    , , ,NORMAL_PDF ,0 ,1;        sigmadeltaKPriorALL  ,sigmadeltaKPriorALL   , , ,GAMMA_PDF     ,1     ,0.0981*2;
-//deltaHPriorALL     ,deltaHPriorALL    , , ,NORMAL_PDF,-3.9 ,0.5;     rhodeltaHPriorALL   ,rhodeltaHPriorALL    , , ,NORMAL_PDF ,0 ,1;        sigmadeltaHPriorALL  ,sigmadeltaHPriorALL   , , ,GAMMA_PDF     ,1     ,0.0981*2;
-//deltaKPTPriori_    ,deltaKPTPriori_   , , ,NORMAL_PDF,0    ,0.2;     rhodeltaKPTPriori   ,rhodeltaKPTPriori    , , ,NORMAL_PDF ,0 ,0.2;      sigmadeltaKPTPriori  ,sigmadeltaKPTPriori   , , ,INV_GAMMA_PDF ,0.005 ,0.0981;
-//deltaKPNTPriori_   ,deltaKPNTPriori_  , , ,NORMAL_PDF,0    ,0.2;     rhodeltaKPNTPriori  ,rhodeltaKPNTPriori   , , ,NORMAL_PDF ,0 ,0.2;      sigmadeltaKPNTPriori ,sigmadeltaKPNTPriori  , , ,INV_GAMMA_PDF ,0.005 ,0.0981;
-//deltaKPWPriori_    ,deltaKPWPriori_   , , ,NORMAL_PDF,0    ,0.2;     rhodeltaKPWPriori   ,rhodeltaKPWPriori    , , ,NORMAL_PDF ,0 ,0.2;      sigmadeltaKPWPriori  ,sigmadeltaKPWPriori   , , ,INV_GAMMA_PDF ,0.005 ,0.0981;
-//deltaKGPriori_     ,deltaKGPriori_    , , ,NORMAL_PDF,0    ,0.2;     rhodeltaKGPriori    ,rhodeltaKGPriori     , , ,NORMAL_PDF ,0 ,0.2;      sigmadeltaKGPriori   ,sigmadeltaKGPriori    , , ,INV_GAMMA_PDF ,0.005 ,0.0981;
-//deltaHPTPriori_    ,deltaHPTPriori_   , , ,NORMAL_PDF,0    ,0.2;     rhodeltaHPTPriori   ,rhodeltaHPTPriori    , , ,NORMAL_PDF ,0 ,0.2;      sigmadeltaHPTPriori  ,sigmadeltaHPTPriori   , , ,INV_GAMMA_PDF ,0.005 ,0.0981;
-//deltaHPNTPriori_   ,deltaHPNTPriori_  , , ,NORMAL_PDF,0    ,0.2;     rhodeltaHPNTPriori  ,rhodeltaHPNTPriori   , , ,NORMAL_PDF ,0 ,0.2;      sigmadeltaHPNTPriori ,sigmadeltaHPNTPriori  , , ,INV_GAMMA_PDF ,0.005 ,0.0981;
-//deltaHPWPriori_    ,deltaHPWPriori_   , , ,NORMAL_PDF,0    ,0.2;     rhodeltaHPWPriori   ,rhodeltaHPWPriori    , , ,NORMAL_PDF ,0 ,0.2;      sigmadeltaHPWPriori  ,sigmadeltaHPWPriori   , , ,INV_GAMMA_PDF ,0.005 ,0.0981;
-//deltaHGPriori_     ,deltaHGPriori_    , , ,NORMAL_PDF,0    ,0.2;     rhodeltaHGPriori    ,rhodeltaHGPriori     , , ,NORMAL_PDF ,0 ,0.2;      sigmadeltaHGPriori   ,sigmadeltaHGPriori    , , ,INV_GAMMA_PDF ,0.005 ,0.0981;
 //
 //rhoOmegaPriorALL          ,rhoOmegaPriorALL          , , ,NORMAL_PDF ,0 ,1;           sigmaOmegaPriorALL        ,sigmaOmegaPriorALL         , , ,GAMMA_PDF     ,1      ,0.0397*2;
 //rhoOmegaPriorS0ALL        ,rhoOmegaPriorS0ALL        , , ,NORMAL_PDF ,0 ,0.5;         sigmaOmegaPriorS0ALL      ,sigmaOmegaPriorS0ALL       , , ,GAMMA_PDF     ,1      ,0.0397*2;
@@ -522,7 +508,7 @@ sigmaNtilde        ,sigmaNtilde       , , ,INV_GAMMA_PDF ,0.005 ,0.1;  %%Ntilde1
 //sigmauNTALLPriori      ,sigmauNTALLPriori   , , ,INV_GAMMA_PDF ,0.001 ,0.0199;
 //sigmauWALLPriori       ,sigmauWALLPriori    , , ,INV_GAMMA_PDF ,0.001 ,0.0199;
 
-@#for n in 1:175
+@#for n in 1:151
     InternalPrior_@{n} ,InternalPrior_@{n} , , ,normal_pdf ,0 ,1;
 @#endfor
 @#endif
@@ -533,9 +519,15 @@ end;
 //                                                                                                                       //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 varobs
-gryW yshare1 yshare2 yshare3 gpopW popshare1 popshare2 popshare3 popshare4
-BEAcy1  JSTiy1  BEAgcy1  BEAgiy1  JSTxy1  BEAgpcgpy1  BEAgpigpy1  BEAgpgcgpy1 BEAgpgigpy1 BEAgpxgpy1  BEAgpmgpy1  BEAhpop1   BEAwhy1   BEAcfcy1  JSTexpostr1  FREDlrni1 JSTtauy1
-PWTcy2  JSTiy2  JSTgy2            JSTxy2  PWTgpcgpy2  PWTgpigpy2  PWTgpgcgpy2             PWTgpxgpy2  PWTgpmgpy2  PWThpop2   PWTwhy2   PWTdelta2 JSTexpostr2  DBlrni2   JSTtauy2
-MILLcy3 MILLiy3 MILLgcy3 MILLgiy3 MILLxy3 MILLgpcgpy3 MILLgpigpy3 MILLgpgcgpy3            MILLgpxgpy3 MILLgpmgpy3 MILLhpop3  MILLwhy3  MILLcfcy3 MILLexpostr3 MILLlrni3 MILLtauy3
-PWTcy4  JSTiy4  JSTgy4            JSTxy4  PWTgpcgpy4  PWTgpigpy4  PWTgpgcgpy4             PWTgpxgpy4  PWTgpmgpy4  PWThpop4   PWTwhy4   PWTdelta4 JSTexpostr4  BDFlrni4  JSTtauy4
+gryW gpopW
+  @#for n in 1:SN-1
+	yshare@{n}
+  @#endfor
+  @#for n in 1:SN
+	popshare@{n}
+  @#endfor
+OECDihy1 ESrdy1 BEAcy1  JSTiy1  BEAgcy1  BEAgiy1  JSTxy1  BEAgpcgpy1  BEAgpigpy1  BEAgpgcgpy1 BEAgpgigpy1 BEAgpxgpy1  BEAgpmgpy1  BEAhpop1   BEAwhy1   BEAcfcy1  JSTexpostr1  FREDlrni1 JSTtauy1
+OECDihy2 ESrdy2 PWTcy2  JSTiy2  JSTgy2            JSTxy2  PWTgpcgpy2  PWTgpigpy2  PWTgpgcgpy2             PWTgpxgpy2  PWTgpmgpy2  PWThpop2   PWTwhy2   PWTdelta2 JSTexpostr2  DBlrni2   JSTtauy2
+OECDihy3 ESrdy3 MILLcy3 MILLiy3 MILLgcy3 MILLgiy3 MILLxy3 MILLgpcgpy3 MILLgpigpy3 MILLgpgcgpy3            MILLgpxgpy3 MILLgpmgpy3 MILLhpop3  MILLwhy3  MILLcfcy3 MILLexpostr3 MILLlrni3 MILLtauy3
+OECDihy4 ESrdy4 PWTcy4  JSTiy4  JSTgy4            JSTxy4  PWTgpcgpy4  PWTgpigpy4  PWTgpgcgpy4             PWTgpxgpy4  PWTgpmgpy4  PWThpop4   PWTwhy4   PWTdelta4 JSTexpostr4  BDFlrni4  JSTtauy4
 ;

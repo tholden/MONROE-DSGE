@@ -1,3 +1,4 @@
+%useful when investigating SS
 clear variables;
 
 InFileName  = 'step3GetSteadyResids.m';

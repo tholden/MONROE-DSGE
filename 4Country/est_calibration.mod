@@ -10,6 +10,7 @@ psi          =0.1;                               %engineering sector, elasticity
 psib         =0.1;                               %welfare elasticity of borrower immigration
 psil         =0.1;                               %welfare elasticity of lender immigration
 hpop_        =6.5;                               %transforming the unit of hours in data to the unit of hours in model
+rdy_         =0;                                 %indicator of RD data quality. Allow the model to ignore RD data if necessary
 
 //country-specific parameters but must be constant across countries as required by the model
 alphaCP      =0.98;                               %share of CP in C
@@ -64,8 +65,6 @@ thetaGD      =4.18;                              %durable adjustment cost
 thetaPD      =3.89;                              %time to build friction
 thetaDU0     =0.14;                              %parameter of durable depreciation
 thetaDU1     =1.60;                              %elasticity of depreciation to capital utilization
-thetaGKG     =7.20;                              %capital adjustment cost
-thetaGHG     =7.43;                              %capital adjustment cost
 
 eNC          =0.90;                              %substitution elasticity between tradable composite and nontradable
 alphaNC      =0.95;                              %share of nontradable in production of generalized goods
@@ -183,12 +182,8 @@ rhokappah      =0.9;   sigmakappah     =0.001;  kappah_      = 1;
 @#for S in Sectors2
 rhokappa@{S}   =0.9;   sigmakappa@{S}  =0.001;  kappa@{S}_   = 1 ;
 @#endfor
-@#for S in Sectors0
-rhodeltaKP@{S} =0.9;   sigmadeltaKP@{S}=0.001;  deltaKP@{S}_ =0.05;
-rhodeltaHP@{S} =0.9;   sigmadeltaHP@{S}=0.001;  deltaHP@{S}_ =0.1;
-@#endfor
-rhodeltaKG     =0.9;   sigmadeltaKG    =0.001;  deltaKG_     =0.05;
-rhodeltaHG     =0.9;   sigmadeltaHG    =0.001;  deltaHG_     =0.1;
+rhodeltaK      =0.9;   sigmadeltaK     =0.001;  deltaK_      =0.05;
+rhodeltaH      =0.9;   sigmadeltaH     =0.001;  deltaH_      =0.1;
 rhobeta        =0.9;   sigmabeta       =0.001;  betabarb     =0.98;
 rhoPP0 = 0.8; rhoPY0 = 0.1; rhoYP0 = 0.1; rhoYY0 = 0.8; rho0 = 0.9; sigmaP0 = 0.001; sigmaY0 = 0.001;
 pT0 = 1; yTC0 = 1;

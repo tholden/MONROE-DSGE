@@ -1,5 +1,5 @@
 function OptimiseFile( FileName )
-
+%see GenerateGetSteadyDetails
     Changed = true;
 
     while Changed
