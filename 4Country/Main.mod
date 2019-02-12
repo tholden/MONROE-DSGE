@@ -20,6 +20,14 @@
 @#define SectorsG1 = [ "KG", "HG", "CG" ]
 @#define Sectors2 = [ "T", "NT", "W", "ST", "SNT", "SW", "D", "NDCG", "K", "H" ]
 @#define Members = [ "b", "l" ]
+
+parameters InitialStateLogitEigCap InitialStateAllowCorrelation InitialStateLogPower InitialStateLogScale;
+
+InitialStateLogitEigCap = 5;
+InitialStateAllowCorrelation = 0.5;
+InitialStateLogPower = 0;
+InitialStateLogScale = 10;
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                                       //
 //                                              declare endogenous                                                       //
@@ -2342,7 +2350,7 @@ semaphore( 'post', 131313 );
  
 set_dynare_seed( 'clock' );
 
-options_.Harvey_scale_factor = 1e6;
+//options_.Harvey_scale_factor = 1e6;
 options_.sparse_kalman = 0;
 //options_.sequential_optimization_repeats = 10000;
 //options_.sequential_optimization_block_size = 16;
@@ -2360,21 +2368,22 @@ options_.mode_check.neighbourhood_size = 0.1;
 
 options_.hessian.use_outer_product_gradient = 1;
 
-options_.skip_optimisation = 1;
+options_.skip_optimisation = 0;
 
 steady;
 check;
 
 estimation(order=1, datafile=data_ext6est2, presample=0,prior_trunc=0,
             use_univariate_filters_if_singularity_is_detected=0,
-            lik_init = 2,
+            lyapunov = doubling,
+            lik_init = 7,
             //diffuse_filter,
             cova_compute=1, //mode_check, 
             mh_replic=0, mh_nblocks=2, mh_jscale=0.20, mh_drop=0.2,
             //mode_compute=1, optim=('UseParallel',1,'Display','iter','TolX',1e-16,'TolF',1e-16,'MaxIter',32,'InitTrustRegionRadius',0.01,'FinDiffRelStep',1e-6),
             //mode_compute=9, optim=('UseParallel',1,'ResumeRun',0,'ResumeFromBest',1,'SigmaScale',1e-4,'MinSigma',1e-5,'MaxIter',1e12,'DiagonalOnly',1),
-            //mode_compute=1313,
-            mode_compute=0, smoother,
+            mode_compute=1313,
+            //mode_compute=0, smoother,
             plot_priors=0, graph_format=fig
             )
 gryW yshare1 yshare2 yshare3 gpopW popshare1 popshare2 popshare3 popshare4

@@ -3,6 +3,13 @@
 //those comment out by %% are fixed parameters
 
 estimated_params;
+
+//initial state parameters
+InitialStateLogitEigCap     , InitialStateLogitEigCap     , , , NORMAL_PDF , 5  , 5;
+InitialStateAllowCorrelation, InitialStateAllowCorrelation, , , UNIFORM_PDF, 0.5, (1/12)^(0.5);
+InitialStateLogPower        , InitialStateLogPower        , , , NORMAL_PDF , 0  , 5;
+InitialStateLogScale        , InitialStateLogScale        , , , NORMAL_PDF , 0  , 10;
+
 //std of measurement errors
 @#if 1
 sigma_gryW        ,sigma_gryW      , , , INV_GAMMA_PDF, 0.001, 0.001;
