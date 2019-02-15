@@ -2390,13 +2390,13 @@ options_.sparse_kalman = 0;
 //options_.sequential_optimization_repeats = 10000;
 //options_.sequential_optimization_block_size = 16;
 
-options_.qz_criterium = 1 + 1e-4;
+options_.qz_criterium = 1 + 2e-4;
 options_.endogenous_qz_criterium = 1;
 
 options_.rootF_cond_penalty = 0.00001;
 options_.A_cond_penalty = 0.0001;
 options_.custom_penalty_scale = 1;
-options_.qz_unit_violation_penalty = 1;
+options_.qz_unit_violation_penalty = 32;
 
 // options_.mode_check.number_of_points = 200;
 options_.mode_check.neighbourhood_size = 0.1;
