@@ -521,10 +521,10 @@ end;
 varobs
 gryW gpopW
   @#for n in 1:SN-1
-	yshare@{n}
+    yshare@{n}
   @#endfor
   @#for n in 1:SN
-	popshare@{n}
+    popshare@{n}
   @#endfor
   @#if SN > 0
     OECDihy1 ESrdy1 BEAcy1  JSTiy1  BEAgcy1  BEAgiy1  JSTxy1  BEAgpcgpy1  BEAgpigpy1  BEAgpgcgpy1 BEAgpgigpy1 BEAgpxgpy1  BEAgpmgpy1  BEAhpop1   BEAwhy1   BEAcfcy1  JSTexpostr1  FREDlrni1 JSTtauy1

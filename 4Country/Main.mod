@@ -72,12 +72,12 @@ log_glambda_GD
 log_glambda_GK
 log_glambda_GH
 log_gPD
-log_gPND	
+log_gPND    
 log_gCG
 ;
 //ROW
 @#for n in 1:SN
-	@#define ShockProcesses = ShockProcesses + [ "eT0" + Numbers[n+1], "0", "Inf", "eT0_", "1", "sigmaeT0" ]
+    @#define ShockProcesses = ShockProcesses + [ "eT0" + Numbers[n+1], "0", "Inf", "eT0_", "1", "sigmaeT0" ]
 @#endfor
 @#define EndoVariables = EndoVariables + [ "YTC" + Numbers[1], "0", "Inf", "gYS" ]
 @#define EndoVariables = EndoVariables + [ "PT" + Numbers[1], "0", "Inf", "gPS" ]
@@ -87,10 +87,10 @@ varexo epsilon_P0 epsilon_Y0;
 @#define PureTrendEndoVariables = PureTrendEndoVariables + [ "N", "GN" ]
 @#define ShockProcesses = ShockProcesses + [ "GN", "0", "Inf", "GN_", "rhoGN", "sigmaGN" ]
 @#for n in 1:SN
-	@#define ShockProcesses = ShockProcesses + [ "Ntilde" + Numbers[n+1], "0", "1", "Ntilde" + Numbers[n+1] + "_", "1", "sigmaNtilde" ]
-	@#define ShockProcesses = ShockProcesses + [ "varpi"  + Numbers[n+1], "0", "1", "varpi_"                     , "1", "sigmavarpi"  ]
+    @#define ShockProcesses = ShockProcesses + [ "Ntilde" + Numbers[n+1], "0", "1", "Ntilde" + Numbers[n+1] + "_", "1", "sigmaNtilde" ]
+    @#define ShockProcesses = ShockProcesses + [ "varpi"  + Numbers[n+1], "0", "1", "varpi_"                     , "1", "sigmavarpi"  ]
     @#for m in Members
-		@#define EndoVariables = EndoVariables + [ "N" + Numbers[n+1] + m, "0", "Inf", "GN" ]
+        @#define EndoVariables = EndoVariables + [ "N" + Numbers[n+1] + m, "0", "Inf", "GN" ]
     @#endfor
 @#endfor
 
@@ -117,130 +117,130 @@ varexo epsilon_P0 epsilon_Y0;
 
 //Household
 @#for n in 1:SN
-	@#define ShockProcesses = ShockProcesses + [ "deltaD" + Numbers[n+1], "0", "1", "deltaD" + "_", "rhodeltaD", "sigmadeltaD" ]
-	@#define ShockProcesses = ShockProcesses + [ "kappa0" + Numbers[n+1], "-Inf", "Inf", "kappa0" + "_", "rhokappa0", "sigmakappa0" ]
+    @#define ShockProcesses = ShockProcesses + [ "deltaD" + Numbers[n+1], "0", "1", "deltaD" + "_", "rhodeltaD", "sigmadeltaD" ]
+    @#define ShockProcesses = ShockProcesses + [ "kappa0" + Numbers[n+1], "-Inf", "Inf", "kappa0" + "_", "rhokappa0", "sigmakappa0" ]
     %kappa0 is habit stock shock. while being positive is normal, negative kappa0 is understandable.
     %we want to aviod kappa0 being too large such that utility becomes negative, or being too negative such that (kappa0+labour terms) becomes negative
-	@#define ShockProcesses = ShockProcesses + [ "kappah" + Numbers[n+1], "0", "Inf", "kappah" + "_", "rhokappah", "sigmakappah" ]
-	@#for S in Sectors2
-		@#define ShockProcesses = ShockProcesses + [ "kappa" + S + Numbers[n+1], "0", "Inf", "kappa" + S + "_", "rhokappa" + S, "sigmakappa" + S ]
-	@#endfor
-	varexo epsilon_beta@{n};
+    @#define ShockProcesses = ShockProcesses + [ "kappah" + Numbers[n+1], "0", "Inf", "kappah" + "_", "rhokappah", "sigmakappah" ]
+    @#for S in Sectors2
+        @#define ShockProcesses = ShockProcesses + [ "kappa" + S + Numbers[n+1], "0", "Inf", "kappa" + S + "_", "rhokappa" + S, "sigmakappa" + S ]
+    @#endfor
+    varexo epsilon_beta@{n};
     @#for m in Members
-		@#define EndoVariables = EndoVariables + [ "CND" + Numbers[n+1] + m, "0", "Inf", "gCND"]
-		@#define EndoVariables = EndoVariables + [ "D" + Numbers[n+1] + m, "0", "Inf", "gD"]
-		@#define EndoVariables = EndoVariables + [ "DU" + Numbers[n+1] + m, "0", "Inf", "1" ]
-		@#define EndoVariables = EndoVariables + [ "DP" + Numbers[n+1] + m, "0", "Inf", "gD"]
-		%ID IND are MLV
-		%CD, CP, C are MLV
-		@#define EndoVariables = EndoVariables + [ "CDBar" + Numbers[n+1] + m, "0", "Inf", "gCDBar"]
-		@#define EndoVariables = EndoVariables + [ "CPBar" + Numbers[n+1] + m, "0", "Inf", "gCPBar"]
-		@#define EndoVariables = EndoVariables + [ "CBar" + Numbers[n+1] + m, "0", "Inf", "gCBar"]
-		@#define EndoVariables = EndoVariables + [ "Lh" + Numbers[n+1] + m, "0", "Inf", "GN" ]
-		@#for S in Sectors2
-			@#define EndoVariables = EndoVariables + [ "L" + S + Numbers[n+1] + m, "0", "Inf", "GN" ]
-		@#endfor
-		%U is MLV
-		@#define EndoVariables = EndoVariables + [ "beta" + Numbers[n+1] + m, "0", "1", "1" ]
-		@#define EndoVariables = EndoVariables + [ "V" + Numbers[n+1] + m, "0", "Inf", "gV"]
-		@#define EndoVariables = EndoVariables + [ "EV" + Numbers[n+1] + m, "0", "Inf", "gV"]
+        @#define EndoVariables = EndoVariables + [ "CND" + Numbers[n+1] + m, "0", "Inf", "gCND"]
+        @#define EndoVariables = EndoVariables + [ "D" + Numbers[n+1] + m, "0", "Inf", "gD"]
+        @#define EndoVariables = EndoVariables + [ "DU" + Numbers[n+1] + m, "0", "Inf", "1" ]
+        @#define EndoVariables = EndoVariables + [ "DP" + Numbers[n+1] + m, "0", "Inf", "gD"]
+        %ID IND are MLV
+        %CD, CP, C are MLV
+        @#define EndoVariables = EndoVariables + [ "CDBar" + Numbers[n+1] + m, "0", "Inf", "gCDBar"]
+        @#define EndoVariables = EndoVariables + [ "CPBar" + Numbers[n+1] + m, "0", "Inf", "gCPBar"]
+        @#define EndoVariables = EndoVariables + [ "CBar" + Numbers[n+1] + m, "0", "Inf", "gCBar"]
+        @#define EndoVariables = EndoVariables + [ "Lh" + Numbers[n+1] + m, "0", "Inf", "GN" ]
+        @#for S in Sectors2
+            @#define EndoVariables = EndoVariables + [ "L" + S + Numbers[n+1] + m, "0", "Inf", "GN" ]
+        @#endfor
+        %U is MLV
+        @#define EndoVariables = EndoVariables + [ "beta" + Numbers[n+1] + m, "0", "1", "1" ]
+        @#define EndoVariables = EndoVariables + [ "V" + Numbers[n+1] + m, "0", "Inf", "gV"]
+        @#define EndoVariables = EndoVariables + [ "EV" + Numbers[n+1] + m, "0", "Inf", "gV"]
     @#endfor
 
-	@#for S in Sectors0
-		%IKP, IHP are MLV
-		@#define EndoVariables = EndoVariables + [ "KP" + S + Numbers[n+1], "0", "Inf", "gKP"]
-		@#define EndoVariables = EndoVariables + [ "KU" + S + Numbers[n+1], "0", "Inf", "1" ]
-		@#define EndoVariables = EndoVariables + [ "KPP" + S + Numbers[n+1], "0", "Inf", "gKP"]
-		@#define EndoVariables = EndoVariables + [ "HP" + S + Numbers[n+1], "0", "Inf", "gHP"]
-		@#define EndoVariables = EndoVariables + [ "HPP" + S + Numbers[n+1], "0", "Inf", "gHP"]
-		@#define ShockProcesses = ShockProcesses + [ "deltaKP" + S + Numbers[n+1], "0", "1", "deltaK" + "_", "rhodeltaK", "sigmadeltaK" ]
-		@#define ShockProcesses = ShockProcesses + [ "deltaHP" + S + Numbers[n+1], "0", "1", "deltaH" + "_", "rhodeltaH", "sigmadeltaH" ]
-	@#endfor
-	
-	@#define ShockProcesses = ShockProcesses + [ "m" + Numbers[n+1], "0", "Inf", "m_", "1", "sigmam" ]
+    @#for S in Sectors0
+        %IKP, IHP are MLV
+        @#define EndoVariables = EndoVariables + [ "KP" + S + Numbers[n+1], "0", "Inf", "gKP"]
+        @#define EndoVariables = EndoVariables + [ "KU" + S + Numbers[n+1], "0", "Inf", "1" ]
+        @#define EndoVariables = EndoVariables + [ "KPP" + S + Numbers[n+1], "0", "Inf", "gKP"]
+        @#define EndoVariables = EndoVariables + [ "HP" + S + Numbers[n+1], "0", "Inf", "gHP"]
+        @#define EndoVariables = EndoVariables + [ "HPP" + S + Numbers[n+1], "0", "Inf", "gHP"]
+        @#define ShockProcesses = ShockProcesses + [ "deltaKP" + S + Numbers[n+1], "0", "1", "deltaK" + "_", "rhodeltaK", "sigmadeltaK" ]
+        @#define ShockProcesses = ShockProcesses + [ "deltaHP" + S + Numbers[n+1], "0", "1", "deltaH" + "_", "rhodeltaH", "sigmadeltaH" ]
+    @#endfor
+    
+    @#define ShockProcesses = ShockProcesses + [ "m" + Numbers[n+1], "0", "Inf", "m_", "1", "sigmam" ]
     @#define EndoVariables = EndoVariables + [ "B" + Numbers[n+1], "0", "Inf", "gB"]
     @#define EndoVariables = EndoVariables + [ "QB" + Numbers[n+1], "0", "Inf", "1" ]
     %QB is the shadow price of domestic assets: how much the impatient households are willing to pay for marginal loan, only used to calculate spread
 
-	@#define EndoVariables = EndoVariables + [ "lambda_F" + Numbers[n+1], "0", "Inf", "glambda_B"]
+    @#define EndoVariables = EndoVariables + [ "lambda_F" + Numbers[n+1], "0", "Inf", "glambda_B"]
     @#for m in Members
-		@#define EndoVariables = EndoVariables + [ "lambda_CBar" + Numbers[n+1] + m, "-Inf", "Inf", "glambda_C" ]
-		@#define EndoVariables = EndoVariables + [ "lambda_C" + Numbers[n+1] + m, "-Inf", "Inf", "glambda_C" ]
-		@#define EndoVariables = EndoVariables + [ "lambda_CPBar" + Numbers[n+1] + m, "-Inf", "Inf", "glambda_CPBar"]
-		@#define EndoVariables = EndoVariables + [ "lambda_CP" + Numbers[n+1] + m, "-Inf", "Inf", "glambda_CP"]
-		@#define EndoVariables = EndoVariables + [ "lambda_CDBar" + Numbers[n+1] + m, "-Inf", "Inf", "glambda_CDBar"]
-		@#define EndoVariables = EndoVariables + [ "lambda_CD" + Numbers[n+1] + m, "-Inf", "Inf", "glambda_CD"]
-		@#define EndoVariables = EndoVariables + [ "lambda_B" + Numbers[n+1] + m, "0", "Inf", "glambda_B"]
-		@#define EndoVariables = EndoVariables + [ "lambda_GD" + Numbers[n+1] + m, "-Inf", "Inf", "glambda_GD"]
-	@#endfor
+        @#define EndoVariables = EndoVariables + [ "lambda_CBar" + Numbers[n+1] + m, "-Inf", "Inf", "glambda_C" ]
+        @#define EndoVariables = EndoVariables + [ "lambda_C" + Numbers[n+1] + m, "-Inf", "Inf", "glambda_C" ]
+        @#define EndoVariables = EndoVariables + [ "lambda_CPBar" + Numbers[n+1] + m, "-Inf", "Inf", "glambda_CPBar"]
+        @#define EndoVariables = EndoVariables + [ "lambda_CP" + Numbers[n+1] + m, "-Inf", "Inf", "glambda_CP"]
+        @#define EndoVariables = EndoVariables + [ "lambda_CDBar" + Numbers[n+1] + m, "-Inf", "Inf", "glambda_CDBar"]
+        @#define EndoVariables = EndoVariables + [ "lambda_CD" + Numbers[n+1] + m, "-Inf", "Inf", "glambda_CD"]
+        @#define EndoVariables = EndoVariables + [ "lambda_B" + Numbers[n+1] + m, "0", "Inf", "glambda_B"]
+        @#define EndoVariables = EndoVariables + [ "lambda_GD" + Numbers[n+1] + m, "-Inf", "Inf", "glambda_GD"]
+    @#endfor
     //lambda_D, lambda_K, lambda_H are MLV
     @#for S in Sectors0
-		@#define EndoVariables = EndoVariables + [ "lambda_GK" + S + Numbers[n+1], "-Inf", "Inf", "glambda_GK"]
-		@#define EndoVariables = EndoVariables + [ "lambda_GH" + S + Numbers[n+1], "-Inf", "Inf", "glambda_GH"]
-	@#endfor
+        @#define EndoVariables = EndoVariables + [ "lambda_GK" + S + Numbers[n+1], "-Inf", "Inf", "glambda_GK"]
+        @#define EndoVariables = EndoVariables + [ "lambda_GH" + S + Numbers[n+1], "-Inf", "Inf", "glambda_GH"]
+    @#endfor
 
 //Production and prices
-	//all wages are MLVs
-	
-	@#for S in [ "KP", "HP", "ND" ]
-		@#define EndoVariables = EndoVariables + [ "L" + S + Numbers[n+1], "0", "Inf", "GN" ]
-	@#endfor
-	@#for S in SectorsP1
-		@#define EndoVariables = EndoVariables + [ "Y" + S + Numbers[n+1], "0", "Inf", "gYS"]
-	@#endfor
-	@#define EndoVariables = EndoVariables + [ "PKP" + Numbers[n+1], "0", "Inf", "gPKP"]
-	@#define EndoVariables = EndoVariables + [ "PHP" + Numbers[n+1], "0", "Inf", "gPHP"]
-	@#define EndoVariables = EndoVariables + [ "PD" + Numbers[n+1], "0", "Inf", "gPD"]
-	@#define EndoVariables = EndoVariables + [ "PND" + Numbers[n+1], "0", "Inf", "gPND"]
-	
-	//L, Y, I, P in SectorsG1 are all MLVs
+    //all wages are MLVs
+    
+    @#for S in [ "KP", "HP", "ND" ]
+        @#define EndoVariables = EndoVariables + [ "L" + S + Numbers[n+1], "0", "Inf", "GN" ]
+    @#endfor
+    @#for S in SectorsP1
+        @#define EndoVariables = EndoVariables + [ "Y" + S + Numbers[n+1], "0", "Inf", "gYS"]
+    @#endfor
+    @#define EndoVariables = EndoVariables + [ "PKP" + Numbers[n+1], "0", "Inf", "gPKP"]
+    @#define EndoVariables = EndoVariables + [ "PHP" + Numbers[n+1], "0", "Inf", "gPHP"]
+    @#define EndoVariables = EndoVariables + [ "PD" + Numbers[n+1], "0", "Inf", "gPD"]
+    @#define EndoVariables = EndoVariables + [ "PND" + Numbers[n+1], "0", "Inf", "gPND"]
+    
+    //L, Y, I, P in SectorsG1 are all MLVs
     //Note that KG_LAG is used for production at t, but we detrend it by trend at t-1. This is only a normalization and doesn't matters
-	@#define EndoVariables = EndoVariables + [ "CG" + Numbers[n+1], "0", "Inf", "gCG"]
-	@#define EndoVariables = EndoVariables + [ "KG" + Numbers[n+1], "0", "Inf", "gKG"]
-	@#define EndoVariables = EndoVariables + [ "HG" + Numbers[n+1], "0", "Inf", "gHG"]
-	@#define ShockProcesses = ShockProcesses + [ "deltaKG" + Numbers[n+1], "0", "1", "deltaK" + "_", "rhodeltaK", "sigmadeltaK" ]
-	@#define ShockProcesses = ShockProcesses + [ "deltaHG" + Numbers[n+1], "0", "1", "deltaH" + "_", "rhodeltaH", "sigmadeltaH" ]
-	
-	//Y yNT yTC are MLV
-	@#define EndoVariables = EndoVariables + [ "P" + Numbers[n+1], "0", "Inf", "gPS" ]
+    @#define EndoVariables = EndoVariables + [ "CG" + Numbers[n+1], "0", "Inf", "gCG"]
+    @#define EndoVariables = EndoVariables + [ "KG" + Numbers[n+1], "0", "Inf", "gKG"]
+    @#define EndoVariables = EndoVariables + [ "HG" + Numbers[n+1], "0", "Inf", "gHG"]
+    @#define ShockProcesses = ShockProcesses + [ "deltaKG" + Numbers[n+1], "0", "1", "deltaK" + "_", "rhodeltaK", "sigmadeltaK" ]
+    @#define ShockProcesses = ShockProcesses + [ "deltaHG" + Numbers[n+1], "0", "1", "deltaH" + "_", "rhodeltaH", "sigmadeltaH" ]
+    
+    //Y yNT yTC are MLV
+    @#define EndoVariables = EndoVariables + [ "P" + Numbers[n+1], "0", "Inf", "gPS" ]
 
-	//YNT YTC are MLV
-	@#define EndoVariables = EndoVariables + [ "PTC" + Numbers[n+1], "0", "Inf", "gPS" ]
-	//YTnm YTn are defined as MLV
+    //YNT YTC are MLV
+    @#define EndoVariables = EndoVariables + [ "PTC" + Numbers[n+1], "0", "Inf", "gPS" ]
+    //YTnm YTn are defined as MLV
 
-	//PWCn is defined as MLV and = PWC, YX is MLV
+    //PWCn is defined as MLV and = PWC, YX is MLV
     //YWP can be easily defined as MLV (see my code) but somehow it cause the equation "YHLTemp@{S}@{n} = Xi_LEAD *..." not holding at steady state due to some numerical issues (I guess)
     @#define EndoVariables = EndoVariables + [ "PWP" + Numbers[n+1], "0", "Inf", "gPS" ]
     @#define EndoVariables = EndoVariables + [ "YWP" + Numbers[n+1], "0", "Inf", "gYS" ]
-	@#define EndoVariables = EndoVariables + [ "YWC" + Numbers[n+1], "0", "Inf", "gYWC"]
-	//YWP and PX are MLV, FOC of YX implies that PX is zero if the global economy is symmetric
+    @#define EndoVariables = EndoVariables + [ "YWC" + Numbers[n+1], "0", "Inf", "gYWC"]
+    //YWP and PX are MLV, FOC of YX implies that PX is zero if the global economy is symmetric
     //@#define EndoVariables = EndoVariables + [ "PX" + Numbers[n+1], "-Inf", "Inf", "GAs" ]
-	//YWnm YWn are defined as MLV
+    //YWnm YWn are defined as MLV
 
-	@#define EndoVariables = EndoVariables + [ "X" + Numbers[n+1], "0", "Inf", "gX"]
-	%PscriptX@{n} is MLV
-	
-	@#for S in Sectors0
-		//K RK YHL YKL YHLX are MLV
-		@#define EndoVariables = EndoVariables + [ "RHP" + S + Numbers[n+1], "0", "Inf", "gPHP"]
-		@#define EndoVariables = EndoVariables + [ "PHL" + S + Numbers[n+1], "0", "Inf", "gPHL"]
-		
-		@#define EndoVariables = EndoVariables + [ "PKL" + S + Numbers[n+1], "0", "Inf", "gPKL"]
-		@#define EndoVariables = EndoVariables + [ "RKP" + S + Numbers[n+1], "0", "Inf", "gPKP"]
-		@#define EndoVariables = EndoVariables + [ "KBar" + S + Numbers[n+1], "0", "Inf", "gKBar"]
+    @#define EndoVariables = EndoVariables + [ "X" + Numbers[n+1], "0", "Inf", "gX"]
+    %PscriptX@{n} is MLV
+    
+    @#for S in Sectors0
+        //K RK YHL YKL YHLX are MLV
+        @#define EndoVariables = EndoVariables + [ "RHP" + S + Numbers[n+1], "0", "Inf", "gPHP"]
+        @#define EndoVariables = EndoVariables + [ "PHL" + S + Numbers[n+1], "0", "Inf", "gPHL"]
+        
+        @#define EndoVariables = EndoVariables + [ "PKL" + S + Numbers[n+1], "0", "Inf", "gPKL"]
+        @#define EndoVariables = EndoVariables + [ "RKP" + S + Numbers[n+1], "0", "Inf", "gPKP"]
+        @#define EndoVariables = EndoVariables + [ "KBar" + S + Numbers[n+1], "0", "Inf", "gKBar"]
 
-		@#define EndoVariables = EndoVariables + [ "PHLX" + S + Numbers[n+1], "0", "Inf", "gPHLX"]
-		@#define EndoVariables = EndoVariables + [ "YHLBar" + S + Numbers[n+1], "0", "Inf", "gYHLBar"]
-		@#define EndoVariables = EndoVariables + [ "scriptX" + S + Numbers[n+1], "0", "Inf", "gX"]		
-		
-		@#define EndoVariables = EndoVariables + [ "P" + S + Numbers[n+1], "0", "Inf", "gPS" ]
-		@#define EndoVariables = EndoVariables + [ "YHLXBar" + S + Numbers[n+1], "0", "Inf", "gYHLXBar"]
-	@#endfor
+        @#define EndoVariables = EndoVariables + [ "PHLX" + S + Numbers[n+1], "0", "Inf", "gPHLX"]
+        @#define EndoVariables = EndoVariables + [ "YHLBar" + S + Numbers[n+1], "0", "Inf", "gYHLBar"]
+        @#define EndoVariables = EndoVariables + [ "scriptX" + S + Numbers[n+1], "0", "Inf", "gX"]      
+        
+        @#define EndoVariables = EndoVariables + [ "P" + S + Numbers[n+1], "0", "Inf", "gPS" ]
+        @#define EndoVariables = EndoVariables + [ "YHLXBar" + S + Numbers[n+1], "0", "Inf", "gYHLXBar"]
+    @#endfor
 
 //TFPs
-	@#define ShockProcesses = ShockProcesses + [ "OmegaALL"       + Numbers[n+1], "0", "Inf", "1", "rhoOmegaALL",       "sigmaOmegaALL" ]
+    @#define ShockProcesses = ShockProcesses + [ "OmegaALL"       + Numbers[n+1], "0", "Inf", "1", "rhoOmegaALL",       "sigmaOmegaALL" ]
                                                                                                                         
-	@#define ShockProcesses = ShockProcesses + [ "OmegaS0ALL"     + Numbers[n+1], "0", "Inf", "1", "rhoOmegaS0ALL",     "sigmaOmegaS0ALL" ]
+    @#define ShockProcesses = ShockProcesses + [ "OmegaS0ALL"     + Numbers[n+1], "0", "Inf", "1", "rhoOmegaS0ALL",     "sigmaOmegaS0ALL" ]
                                                                                                                         
     @#define ShockProcesses = ShockProcesses + [ "OmegaTALL"      + Numbers[n+1], "0", "Inf", "1", "rhoOmegaTALL",      "sigmaOmegaTALL" ]
     @#define ShockProcesses = ShockProcesses + [ "OmegaNTALL"     + Numbers[n+1], "0", "Inf", "1", "rhoOmegaNTALL",     "sigmaOmegaNTALL" ]
@@ -252,7 +252,7 @@ varexo epsilon_P0 epsilon_Y0;
     @#define ShockProcesses = ShockProcesses + [ "OmegaHLXALL"    + Numbers[n+1], "0", "Inf", "1", "rhoOmegaHLXALL",    "sigmaOmegaHLXALL" ]
     @#define ShockProcesses = ShockProcesses + [ "OmegaHLXKLALL"  + Numbers[n+1], "0", "Inf", "1", "rhoOmegaHLXKLALL",  "sigmaOmegaHLXKLALL" ]
                                                                                                                         
-	@#define ShockProcesses = ShockProcesses + [ "OmegaS1ALL"     + Numbers[n+1], "0", "Inf", "1", "rhoOmegaS1ALL",     "sigmaOmegaS1ALL" ]
+    @#define ShockProcesses = ShockProcesses + [ "OmegaS1ALL"     + Numbers[n+1], "0", "Inf", "1", "rhoOmegaS1ALL",     "sigmaOmegaS1ALL" ]
                                                                                                                         
     @#define ShockProcesses = ShockProcesses + [ "OmegaKALL"      + Numbers[n+1], "0", "Inf", "1", "rhoOmegaKALL",      "sigmaOmegaKALL" ]
     @#define ShockProcesses = ShockProcesses + [ "OmegaHALL"      + Numbers[n+1], "0", "Inf", "1", "rhoOmegaHALL",      "sigmaOmegaHALL" ]
@@ -264,30 +264,30 @@ varexo epsilon_P0 epsilon_Y0;
 
     @#define ShockProcesses = ShockProcesses + [ "OmegaDemandALL" + Numbers[n+1], "0", "Inf", "1", "rhoOmegaDemandALL", "sigmaOmegaDemandALL" ]
     @#define ShockProcesses = ShockProcesses + [ "Omegahi"        + Numbers[n+1], "0", "Inf", "1", "rhoOmegahi",        "sigmaOmegahi" ]
-	@#define ShockProcesses = ShockProcesses + [ "OmegaCPi"       + Numbers[n+1], "0", "Inf", "1", "rhoOmegaCPi",       "sigmaOmegaCPi" ]
-	@#define ShockProcesses = ShockProcesses + [ "OmegaCi"        + Numbers[n+1], "0", "Inf", "1", "rhoOmegaCi",        "sigmaOmegaCi" ]
+    @#define ShockProcesses = ShockProcesses + [ "OmegaCPi"       + Numbers[n+1], "0", "Inf", "1", "rhoOmegaCPi",       "sigmaOmegaCPi" ]
+    @#define ShockProcesses = ShockProcesses + [ "OmegaCi"        + Numbers[n+1], "0", "Inf", "1", "rhoOmegaCi",        "sigmaOmegaCi" ]
 
     @#define ShockProcesses = ShockProcesses + [ "OmegaTradeALL"  + Numbers[n+1], "0", "Inf", "1", "rhoOmegaTradeALL",  "sigmaOmegaTradeALL" ]
     @#define ShockProcesses = ShockProcesses + [ "OmegaYi"        + Numbers[n+1], "0", "Inf", "1", "rhoOmegaYi",        "sigmaOmegaYi" ]
-	@#define ShockProcesses = ShockProcesses + [ "OmegaTCi"       + Numbers[n+1], "0", "Inf", "1", "rhoOmegaTCi",       "sigmaOmegaTCi" ]
-	@#define ShockProcesses = ShockProcesses + [ "OmegaWPi"       + Numbers[n+1], "0", "Inf", "1", "rhoOmegaWPi",       "sigmaOmegaWPi" ]
-	@#define ShockProcesses = ShockProcesses + [ "OmegaWCi"       + Numbers[n+1], "0", "Inf", "1", "rhoOmegaWCi",       "sigmaOmegaWCi" ]
+    @#define ShockProcesses = ShockProcesses + [ "OmegaTCi"       + Numbers[n+1], "0", "Inf", "1", "rhoOmegaTCi",       "sigmaOmegaTCi" ]
+    @#define ShockProcesses = ShockProcesses + [ "OmegaWPi"       + Numbers[n+1], "0", "Inf", "1", "rhoOmegaWPi",       "sigmaOmegaWPi" ]
+    @#define ShockProcesses = ShockProcesses + [ "OmegaWCi"       + Numbers[n+1], "0", "Inf", "1", "rhoOmegaWCi",       "sigmaOmegaWCi" ]
 
 //Gov variables
-	@#define EndoVariables = EndoVariables + [ "tauKG" + Numbers[n+1], "0", "Inf", "1" ]
-	@#define EndoVariables = EndoVariables + [ "tauHG" + Numbers[n+1], "0", "Inf", "1" ]
-	@#define EndoVariables = EndoVariables + [ "tauCG" + Numbers[n+1], "0", "Inf", "1" ]
-	@#define EndoVariables = EndoVariables + [ "tau" + Numbers[n+1] + "b", "-Inf", "Inf", "1" ]
-	@#define EndoVariables = EndoVariables + [ "tau" + Numbers[n+1] + "l", "-Inf", "Inf", "1" ]
-	@#define EndoVariables = EndoVariables + [ "tauD" + Numbers[n+1], "-Inf", "Inf", "1" ]
-	@#define EndoVariables = EndoVariables + [ "tauND" + Numbers[n+1], "-Inf", "Inf", "1" ]
-	@#define EndoVariables = EndoVariables + [ "tauNT" + Numbers[n+1], "-Inf", "Inf", "1" ]
-	@#define EndoVariables = EndoVariables + [ "tauTC" + Numbers[n+1], "-Inf", "Inf", "1" ]
+    @#define EndoVariables = EndoVariables + [ "tauKG" + Numbers[n+1], "0", "Inf", "1" ]
+    @#define EndoVariables = EndoVariables + [ "tauHG" + Numbers[n+1], "0", "Inf", "1" ]
+    @#define EndoVariables = EndoVariables + [ "tauCG" + Numbers[n+1], "0", "Inf", "1" ]
+    @#define EndoVariables = EndoVariables + [ "tau" + Numbers[n+1] + "b", "-Inf", "Inf", "1" ]
+    @#define EndoVariables = EndoVariables + [ "tau" + Numbers[n+1] + "l", "-Inf", "Inf", "1" ]
+    @#define EndoVariables = EndoVariables + [ "tauD" + Numbers[n+1], "-Inf", "Inf", "1" ]
+    @#define EndoVariables = EndoVariables + [ "tauND" + Numbers[n+1], "-Inf", "Inf", "1" ]
+    @#define EndoVariables = EndoVariables + [ "tauNT" + Numbers[n+1], "-Inf", "Inf", "1" ]
+    @#define EndoVariables = EndoVariables + [ "tauTC" + Numbers[n+1], "-Inf", "Inf", "1" ]
 
-	@#define EndoVariables = EndoVariables + [ "iotaTX" + Numbers[n+1], "-Inf", "Inf", "1" ]
-	@#define EndoVariables = EndoVariables + [ "iotaTM" + Numbers[n+1], "-Inf", "Inf", "1" ]
-	@#define EndoVariables = EndoVariables + [ "iotaWX" + Numbers[n+1], "-Inf", "Inf", "1" ]
-	@#define EndoVariables = EndoVariables + [ "iotaWM" + Numbers[n+1], "-Inf", "Inf", "1" ]
+    @#define EndoVariables = EndoVariables + [ "iotaTX" + Numbers[n+1], "-Inf", "Inf", "1" ]
+    @#define EndoVariables = EndoVariables + [ "iotaTM" + Numbers[n+1], "-Inf", "Inf", "1" ]
+    @#define EndoVariables = EndoVariables + [ "iotaWX" + Numbers[n+1], "-Inf", "Inf", "1" ]
+    @#define EndoVariables = EndoVariables + [ "iotaWM" + Numbers[n+1], "-Inf", "Inf", "1" ]
 
     @#for S in Sectors0
         @#define EndoVariables = EndoVariables + [ "tauH" + S + Numbers[n+1], "-Inf", "Inf", "1" ]
@@ -335,8 +335,8 @@ varexo epsilon_P0 epsilon_Y0;
     @#define ShockProcesses = ShockProcesses + [ "uWALL"    + Numbers[n+1], "-Inf", "Inf", "0", "0", "sigmauWALL"    ]
 
 //variables in measurement equations
-	@#define ShockProcesses = ShockProcesses + [ "alpha_resid" + Numbers[n+1], "0", "1", "alpha_resid_", "1", "sigmaalpha_resid" ]
-	@#define ShockProcesses = ShockProcesses + [ "alpha_pubedu" + Numbers[n+1], "0", "1", "alpha_pubedu_", "1", "sigmaalpha_pubedu" ]
+    @#define ShockProcesses = ShockProcesses + [ "alpha_resid" + Numbers[n+1], "0", "1", "alpha_resid_", "1", "sigmaalpha_resid" ]
+    @#define ShockProcesses = ShockProcesses + [ "alpha_pubedu" + Numbers[n+1], "0", "1", "alpha_pubedu_", "1", "sigmaalpha_pubedu" ]
     @#for m in Members
         @#define EndoVariables = EndoVariables + [ "Dtilde" + Numbers[n+1] + m, "0", "Inf", "gD"]
         @#define EndoVariables = EndoVariables + [ "deltaDtildeAUXD" + Numbers[n+1] + m, "0", "Inf", "gD"]
@@ -349,20 +349,20 @@ varexo epsilon_P0 epsilon_Y0;
         @#define EndoVariables = EndoVariables + [ "deltaKPtildeAUXN" + S + Numbers[n+1], "0", "Inf", "gKP"]
     @#endfor
 
-	@#define EndoVariables = EndoVariables + [ "deltaKGtildeAUXD" + Numbers[n+1], "0", "Inf", "gKG"]
-	@#define EndoVariables = EndoVariables + [ "deltaKGtildeAUXN" + Numbers[n+1], "0", "Inf", "gKG"]
-	@#define EndoVariables = EndoVariables + [ "deltaHGtildeAUXD" + Numbers[n+1], "0", "Inf", "gHG"]
-	@#define EndoVariables = EndoVariables + [ "deltaHGtildeAUXN" + Numbers[n+1], "0", "Inf", "gHG"]
+    @#define EndoVariables = EndoVariables + [ "deltaKGtildeAUXD" + Numbers[n+1], "0", "Inf", "gKG"]
+    @#define EndoVariables = EndoVariables + [ "deltaKGtildeAUXN" + Numbers[n+1], "0", "Inf", "gKG"]
+    @#define EndoVariables = EndoVariables + [ "deltaHGtildeAUXD" + Numbers[n+1], "0", "Inf", "gHG"]
+    @#define EndoVariables = EndoVariables + [ "deltaHGtildeAUXN" + Numbers[n+1], "0", "Inf", "gHG"]
 @#endfor
 
 //Final observables and measurement errors (for estimation)
 var
   gryW gpopW
   @#for n in 1:SN-1
-	yshare@{n}
+    yshare@{n}
   @#endfor
   @#for n in 1:SN
-	popshare@{n}
+    popshare@{n}
   @#endfor
   @#if SN > 0
     OECDihy1 ESrdy1 BEAcy1  JSTiy1  BEAgcy1  BEAgiy1  JSTxy1  BEAgpcgpy1  BEAgpigpy1  BEAgpgcgpy1 BEAgpgigpy1 BEAgpxgpy1  BEAgpmgpy1  BEAhpop1   BEAwhy1   BEAcfcy1  JSTexpostr1  FREDlrni1 JSTtauy1
@@ -385,10 +385,10 @@ var
 varexo
   epsilon_gryW epsilon_gpopW
   @#for n in 1:SN-1
-	epsilon_yshare@{n}
+    epsilon_yshare@{n}
   @#endfor
   @#for n in 1:SN
-	epsilon_popshare@{n}
+    epsilon_popshare@{n}
   @#endfor
   @#if SN > 0
     epsilon_OECDihy1 epsilon_ESrdy1 epsilon_BEAcy1  epsilon_JSTiy1  epsilon_BEAgcy1  epsilon_BEAgiy1   epsilon_JSTxy1     epsilon_BEAgpcgpy1  epsilon_BEAgpigpy1  epsilon_BEAgpgcgpy1 epsilon_BEAgpgigpy1 epsilon_BEAgpxgpy1  epsilon_BEAgpmgpy1  epsilon_BEAhpop1   epsilon_BEAwhy1   epsilon_BEAcfcy1  epsilon_JSTexpostr1  epsilon_FREDlrni1 epsilon_JSTtauy1
@@ -543,7 +543,7 @@ parameters logit_alphaCP logit_alphaCD logit_alphah logit_alphaKP logit_alphaD l
 //parameters nuPriorALL nuPriorS0ALL nuPriorSS0ALL nuPriorS1ALL nuPriorWALL nuPriorTALL nuPriorNTALL nuPriorDi nuPriorNDCGi nuPriorKi nuPriorHi nuPriorhi;
 
 @#for S in Sectors0
-//	parameters eKL@{S}Priori eHLX@{S}Priori eY@{S}Priori;
+//  parameters eKL@{S}Priori eHLX@{S}Priori eY@{S}Priori;
 @#endfor
 //parameters eKLPriorALL eHLXPriorALL eYPriorALL;
 
@@ -628,7 +628,7 @@ model(use_dll);
     #nuK@{n} = nuK;
     #nuH@{n} = nuH;
     #nuh@{n} = nuh;
-	#rhoQB@{n} = rhoQB;
+    #rhoQB@{n} = rhoQB;
     #thetaGKP@{n} = thetaGKP;
     #thetaPKP@{n} = thetaPKP;
     #thetaKU0@{n} = thetaKU0;
@@ -666,36 +666,36 @@ model(use_dll);
 //except the followings (beta, policy responsiveness, and the extent to which a tax is true) (note that policy ss do not enter the dynamic model)
 @#for n in 1:SN
     #betabar@{n}b = betabarb;
-	#rhobeta@{n} = rhobeta;
-	#sigmabeta@{n} = sigmabeta;
-	
-	#phiYtauKG@{n}       =phiYtauKG      ;    #phiLtauKG@{n} =phiLtauKG;  #phiutauKG@{n}  = phiutauKG   ;
-	#phiYtauHG@{n}       =phiYtauHG      ;    #phiLtauHG@{n} =phiLtauHG;  #phiutauHG@{n}  = phiutauHG   ;
-	#phiYtauCG@{n}       =phiYtauCG      ;    #phiLtauCG@{n} =phiLtauCG;  #phiutauCG@{n}  = phiutauCG   ;
-	#phiYtau@{n}b        =phiYtaub       ;    #phiLtau@{n}b  =phiLtaub ;  #phiutau@{n}b   = phiutaub    ;
-	#phiYtau@{n}l        =phiYtaul       ;    #phiLtau@{n}l  =phiLtaul ;  #phiutau@{n}l   = phiutaul    ;
-	#phitauD@{n}         =phitauD        ;                                #phiutauD@{n}   = phiutauD    ;
-	#phitauND@{n}        =phitauND       ;                                #phiutauND@{n}  = phiutauND   ;
-	#phitauNT@{n}        =phitauNT       ;	                              #phiutauNT@{n}  = phiutauNT   ;
-	#phitauTC@{n}        =phitauTC       ;                                #phiutauTC@{n}  = phiutauTC   ;
-	#phiiotaTX@{n}       =phiiotaTX      ;                                #phiuiotaTX@{n} = phiuiotaTX  ;
-	#phiiotaTM@{n}       =phiiotaTM      ;                                #phiuiotaTM@{n} = phiuiotaTM  ;
-	#phiiotaWX@{n}       =phiiotaWX      ;                                #phiuiotaWX@{n} = phiuiotaWX  ;
-	#phiiotaWM@{n}       =phiiotaWM      ;                                #phiuiotaWM@{n} = phiuiotaWM  ;
-	#phitauL@{n}         =phitauL        ;                                #phiutauLa@{n}  = phiutauLa   ;
-	                                                                      #phiutauLb@{n}  = phiutauLb   ;
-	#phitauHW@{n}        =phitauHW       ;                                #phiutauHW@{n}  = phiutauHW   ;
-	#phitauHT@{n}        =phitauHT       ;                                #phiutauHT@{n}  = phiutauHT   ;
-	#phitauHNT@{n}       =phitauHNT      ;                                #phiutauHNT@{n} = phiutauHNT  ;
-	#phitauKW@{n}        =phitauKW       ;                                #phiutauKW@{n}  = phiutauKW   ;
-	#phitauKT@{n}        =phitauKT       ;                                #phiutauKT@{n}  = phiutauKT   ;
-	#phitauKNT@{n}       =phitauKNT      ;                                #phiutauKNT@{n} = phiutauKNT  ;
-	#phitauscriptXW@{n}  =phitauscriptXW ;                                #phiutauXW@{n}  = phiutauXW   ;
-	#phitauscriptXT@{n}  =phitauscriptXT ;                                #phiutauXT@{n}  = phiutauXT   ;
-	#phitauscriptXNT@{n} =phitauscriptXNT;                                #phiutauXNT@{n} = phiutauXNT  ;
-	
-	
-	
+    #rhobeta@{n} = rhobeta;
+    #sigmabeta@{n} = sigmabeta;
+    
+    #phiYtauKG@{n}       =phiYtauKG      ;    #phiLtauKG@{n} =phiLtauKG;  #phiutauKG@{n}  = phiutauKG   ;
+    #phiYtauHG@{n}       =phiYtauHG      ;    #phiLtauHG@{n} =phiLtauHG;  #phiutauHG@{n}  = phiutauHG   ;
+    #phiYtauCG@{n}       =phiYtauCG      ;    #phiLtauCG@{n} =phiLtauCG;  #phiutauCG@{n}  = phiutauCG   ;
+    #phiYtau@{n}b        =phiYtaub       ;    #phiLtau@{n}b  =phiLtaub ;  #phiutau@{n}b   = phiutaub    ;
+    #phiYtau@{n}l        =phiYtaul       ;    #phiLtau@{n}l  =phiLtaul ;  #phiutau@{n}l   = phiutaul    ;
+    #phitauD@{n}         =phitauD        ;                                #phiutauD@{n}   = phiutauD    ;
+    #phitauND@{n}        =phitauND       ;                                #phiutauND@{n}  = phiutauND   ;
+    #phitauNT@{n}        =phitauNT       ;                                #phiutauNT@{n}  = phiutauNT   ;
+    #phitauTC@{n}        =phitauTC       ;                                #phiutauTC@{n}  = phiutauTC   ;
+    #phiiotaTX@{n}       =phiiotaTX      ;                                #phiuiotaTX@{n} = phiuiotaTX  ;
+    #phiiotaTM@{n}       =phiiotaTM      ;                                #phiuiotaTM@{n} = phiuiotaTM  ;
+    #phiiotaWX@{n}       =phiiotaWX      ;                                #phiuiotaWX@{n} = phiuiotaWX  ;
+    #phiiotaWM@{n}       =phiiotaWM      ;                                #phiuiotaWM@{n} = phiuiotaWM  ;
+    #phitauL@{n}         =phitauL        ;                                #phiutauLa@{n}  = phiutauLa   ;
+                                                                          #phiutauLb@{n}  = phiutauLb   ;
+    #phitauHW@{n}        =phitauHW       ;                                #phiutauHW@{n}  = phiutauHW   ;
+    #phitauHT@{n}        =phitauHT       ;                                #phiutauHT@{n}  = phiutauHT   ;
+    #phitauHNT@{n}       =phitauHNT      ;                                #phiutauHNT@{n} = phiutauHNT  ;
+    #phitauKW@{n}        =phitauKW       ;                                #phiutauKW@{n}  = phiutauKW   ;
+    #phitauKT@{n}        =phitauKT       ;                                #phiutauKT@{n}  = phiutauKT   ;
+    #phitauKNT@{n}       =phitauKNT      ;                                #phiutauKNT@{n} = phiutauKNT  ;
+    #phitauscriptXW@{n}  =phitauscriptXW ;                                #phiutauXW@{n}  = phiutauXW   ;
+    #phitauscriptXT@{n}  =phitauscriptXT ;                                #phiutauXT@{n}  = phiutauXT   ;
+    #phitauscriptXNT@{n} =phitauscriptXNT;                                #phiutauXNT@{n} = phiutauXNT  ;
+    
+    
+    
 @#endfor
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                             the trend, the TFPs                                                       //
@@ -781,24 +781,24 @@ model(use_dll);
     #gPHLX_LEAD@{j}=exp(log_gPHLX(@{j}));
     #gYHLBar_LEAD@{j}=exp(log_gYHLBar(@{j}));
     #gYHLXBar_LEAD@{j}=exp(log_gYHLXBar(@{j}));
-	#gCND_LEAD@{j}=exp(log_gCND(@{j}));
-	#gD_LEAD@{j}=exp(log_gD(@{j}));
-	#gCDBar_LEAD@{j}=exp(log_gCDBar(@{j}));
-	#gCPBar_LEAD@{j}=exp(log_gCPBar(@{j}));
-	#gCBar_LEAD@{j}=exp(log_gCBar(@{j}));
+    #gCND_LEAD@{j}=exp(log_gCND(@{j}));
+    #gD_LEAD@{j}=exp(log_gD(@{j}));
+    #gCDBar_LEAD@{j}=exp(log_gCDBar(@{j}));
+    #gCPBar_LEAD@{j}=exp(log_gCPBar(@{j}));
+    #gCBar_LEAD@{j}=exp(log_gCBar(@{j}));
     #gV_LEAD@{j}=exp(log_gV(@{j}));
     #glambda_C_LEAD@{j}=exp(log_glambda_C(@{j}));
-	#glambda_B_LEAD@{j}=exp(log_glambda_B(@{j}));
-	#glambda_CPBar_LEAD@{j}=exp(log_glambda_CPBar(@{j}));
-	#glambda_CP_LEAD@{j}=exp(log_glambda_CP(@{j}));
-	#glambda_CDBar_LEAD@{j}=exp(log_glambda_CDBar(@{j}));
-	#glambda_CD_LEAD@{j}=exp(log_glambda_CD(@{j}));
-	#glambda_GD_LEAD@{j}=exp(log_glambda_GD(@{j}));
-	#glambda_GK_LEAD@{j}=exp(log_glambda_GK(@{j}));
-	#glambda_GH_LEAD@{j}=exp(log_glambda_GH(@{j}));
-	#gPD_LEAD@{j}=exp(log_gPD(@{j}));
-	#gPND_LEAD@{j}=exp(log_gPND(@{j}));
-	#gCG_LEAD@{j}=exp(log_gCG(@{j}));
+    #glambda_B_LEAD@{j}=exp(log_glambda_B(@{j}));
+    #glambda_CPBar_LEAD@{j}=exp(log_glambda_CPBar(@{j}));
+    #glambda_CP_LEAD@{j}=exp(log_glambda_CP(@{j}));
+    #glambda_CDBar_LEAD@{j}=exp(log_glambda_CDBar(@{j}));
+    #glambda_CD_LEAD@{j}=exp(log_glambda_CD(@{j}));
+    #glambda_GD_LEAD@{j}=exp(log_glambda_GD(@{j}));
+    #glambda_GK_LEAD@{j}=exp(log_glambda_GK(@{j}));
+    #glambda_GH_LEAD@{j}=exp(log_glambda_GH(@{j}));
+    #gPD_LEAD@{j}=exp(log_gPD(@{j}));
+    #gPND_LEAD@{j}=exp(log_gPND(@{j}));
+    #gCG_LEAD@{j}=exp(log_gCG(@{j}));
 @#endfor
 
     #gII=exp(log_gII);
@@ -819,25 +819,25 @@ model(use_dll);
     #gPHLX=exp(log_gPHLX);
     #gYHLBar=exp(log_gYHLBar);
     #gYHLXBar=exp(log_gYHLXBar);
-	#gCND=exp(log_gCND);
-	#gD=exp(log_gD);
-	#gCDBar=exp(log_gCDBar);
-	#gCPBar=exp(log_gCPBar);
-	#gCBar=exp(log_gCBar);
+    #gCND=exp(log_gCND);
+    #gD=exp(log_gD);
+    #gCDBar=exp(log_gCDBar);
+    #gCPBar=exp(log_gCPBar);
+    #gCBar=exp(log_gCBar);
     #gV=exp(log_gV);
     #glambda_C=exp(log_glambda_C);
-	#glambda_B=exp(log_glambda_B);
-	#glambda_CPBar=exp(log_glambda_CPBar);
-	#glambda_CP=exp(log_glambda_CP);
-	#glambda_CDBar=exp(log_glambda_CDBar);
-	#glambda_CD=exp(log_glambda_CD);
-	#glambda_GD=exp(log_glambda_GD);
-	#glambda_GK=exp(log_glambda_GK);
-	#glambda_GH=exp(log_glambda_GH);
-	#gPD=exp(log_gPD);
-	#gPND=exp(log_gPND);
-	#gCG=exp(log_gCG);
-@#include "InsertNewModelEquations.mod"	
+    #glambda_B=exp(log_glambda_B);
+    #glambda_CPBar=exp(log_glambda_CPBar);
+    #glambda_CP=exp(log_glambda_CP);
+    #glambda_CDBar=exp(log_glambda_CDBar);
+    #glambda_CD=exp(log_glambda_CD);
+    #glambda_GD=exp(log_glambda_GD);
+    #glambda_GK=exp(log_glambda_GK);
+    #glambda_GH=exp(log_glambda_GH);
+    #gPD=exp(log_gPD);
+    #gPND=exp(log_gPND);
+    #gCG=exp(log_gCG);
+@#include "InsertNewModelEquations.mod" 
 
 log_gII = log( GN * GAs ^ b );
 log_gB = log( GN * GAs ^ a );
@@ -883,7 +883,7 @@ log_glambda_GK = log( exp(log_glambda_CP) * GAs ^ ( alphaCD1 * ( d * alphaD1 * a
 log_glambda_GH = log( exp(log_glambda_CP) * GAs ^ ( alphaCD1 * ( d * alphaD1 * alphah1 - d * alphaND1 ) + d * alphaND1 - d * alphaHP1 ) );
 
 @#for n in 1:SN
-	#OmegaY@{n}_   =OmegaY_     *Ntilde@{n}_    /Ntilde1_;
+    #OmegaY@{n}_   =OmegaY_     *Ntilde@{n}_    /Ntilde1_;
     #Omegah@{n}    =Omegah_     *Omegahi@{n}    *OmegaALL@{n}                                                ;      #Omegah@{n}_LAG    =Omegah_     *Omegahi@{n}_LAG    *OmegaALL@{n}_LAG                                                            ;      #Omegah@{n}_LEAD    =Omegah_     *Omegahi@{n}_LEAD    *OmegaALL@{n}_LEAD                                                               ;
     #OmegaCP@{n}   =OmegaCP_    *OmegaCPi@{n}   *OmegaALL@{n}*OmegaDemandALL@{n}                             ;      #OmegaCP@{n}_LAG   =OmegaCP_    *OmegaCPi@{n}_LAG   *OmegaALL@{n}_LAG*OmegaDemandALL@{n}_LAG                                     ;      #OmegaCP@{n}_LEAD   =OmegaCP_    *OmegaCPi@{n}_LEAD   *OmegaALL@{n}_LEAD*OmegaDemandALL@{n}_LEAD                                       ;
     #OmegaC@{n}    =OmegaC_     *OmegaCi@{n}    *OmegaALL@{n}*OmegaDemandALL@{n}                             ;      #OmegaC@{n}_LAG    =OmegaC_     *OmegaCi@{n}_LAG    *OmegaALL@{n}_LAG*OmegaDemandALL@{n}_LAG                                     ;      #OmegaC@{n}_LEAD    =OmegaC_     *OmegaCi@{n}_LEAD    *OmegaALL@{n}_LEAD*OmegaDemandALL@{n}_LEAD                                       ;
@@ -919,44 +919,44 @@ log_glambda_GH = log( exp(log_glambda_CP) * GAs ^ ( alphaCD1 * ( d * alphaD1 * a
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 @#for n in 1:SN
 //Generalized goods market clearing
-	#Y@{n}_LAG = (
-	@#for S in SectorsP1
-		+ Y@{S}@{n}_LAG
-	@#endfor
-	) / ( 1 - tauKG@{n}_LAG * alphaKG@{n} - tauHG@{n}_LAG * alphaHG@{n} - tauCG@{n}_LAG * alphaCG@{n} );
+    #Y@{n}_LAG = (
+    @#for S in SectorsP1
+        + Y@{S}@{n}_LAG
+    @#endfor
+    ) / ( 1 - tauKG@{n}_LAG * alphaKG@{n} - tauHG@{n}_LAG * alphaHG@{n} - tauCG@{n}_LAG * alphaCG@{n} );
 
-	#Y@{n} = (
-	@#for S in SectorsP1
-		+ Y@{S}@{n}
-	@#endfor
-	) / ( 1 - tauKG@{n} * alphaKG@{n} - tauHG@{n} * alphaHG@{n} - tauCG@{n} * alphaCG@{n} );
+    #Y@{n} = (
+    @#for S in SectorsP1
+        + Y@{S}@{n}
+    @#endfor
+    ) / ( 1 - tauKG@{n} * alphaKG@{n} - tauHG@{n} * alphaHG@{n} - tauCG@{n} * alphaCG@{n} );
 
-	#Y@{n}_LEAD = (
-	@#for S in SectorsP1
-		+ Y@{S}@{n}_LEAD
-	@#endfor
-	) / ( 1 - tauKG@{n}_LEAD * alphaKG@{n} - tauHG@{n}_LEAD * alphaHG@{n} - tauCG@{n}_LEAD * alphaCG@{n} );
+    #Y@{n}_LEAD = (
+    @#for S in SectorsP1
+        + Y@{S}@{n}_LEAD
+    @#endfor
+    ) / ( 1 - tauKG@{n}_LEAD * alphaKG@{n} - tauHG@{n}_LEAD * alphaHG@{n} - tauCG@{n}_LEAD * alphaCG@{n} );
 
 //Def. country specific population
     #N@{n}b_endo = log(V@{n}b/N@{n}b)
-			-(
-			@#for m in 1:SN
-				+log(V@{m}b/N@{m}b)
-			@#endfor
-			)/@{SN};
+            -(
+            @#for m in 1:SN
+                +log(V@{m}b/N@{m}b)
+            @#endfor
+            )/@{SN};
     #N@{n}b_endo_ss=steady_state(N@{n}b_endo);
 
-	N@{n}b=100*N*(Ntilde@{n}*varpi@{n}+psib*(N@{n}b_endo-N@{n}b_endo_ss));
+    N@{n}b=100*N*(Ntilde@{n}*varpi@{n}+psib*(N@{n}b_endo-N@{n}b_endo_ss));
 
     #N@{n}l_endo = log(V@{n}l/N@{n}l)
-			-(
-			@#for m in 1:SN
-			+log(V@{m}l/N@{m}l)
-			@#endfor
-			)/@{SN};
+            -(
+            @#for m in 1:SN
+            +log(V@{m}l/N@{m}l)
+            @#endfor
+            )/@{SN};
     #N@{n}l_endo_ss=steady_state(N@{n}l_endo);
-			
-	N@{n}l=100*N*(Ntilde@{n}*(1-varpi@{n})+psil*(N@{n}l_endo-N@{n}l_endo_ss));
+            
+    N@{n}l=100*N*(Ntilde@{n}*(1-varpi@{n})+psil*(N@{n}l_endo-N@{n}l_endo_ss));
 
     #N@{n}_LAG = N@{n}l_LAG + N@{n}b_LAG;    
     #N@{n} = N@{n}l + N@{n}b;
@@ -964,341 +964,341 @@ log_glambda_GH = log( exp(log_glambda_CP) * GAs ^ ( alphaCD1 * ( d * alphaD1 * a
 @#endfor
 
 //Population of ROW and the world except ROW
-#NN_LAG = 0	
-	@#for n in 1:SN
-		+ N@{n}_LAG
-	@#endfor
-	;
-#NN = 0	
-	@#for n in 1:SN
-		+ N@{n}
-	@#endfor
-	;
-#NN_LEAD = 0	
-	@#for n in 1:SN
-		+ N@{n}_LEAD
-	@#endfor
-	;
-	
+#NN_LAG = 0 
+    @#for n in 1:SN
+        + N@{n}_LAG
+    @#endfor
+    ;
+#NN = 0 
+    @#for n in 1:SN
+        + N@{n}
+    @#endfor
+    ;
+#NN_LEAD = 0    
+    @#for n in 1:SN
+        + N@{n}_LEAD
+    @#endfor
+    ;
+    
 #N0_LAG = 100*N_LAG - NN_LAG;
 #N0 = 100*N - NN;
 #N0_LEAD = 100*N_LEAD - NN_LEAD;
 
 @#for n in 1:SN
-	@#for m in Members
+    @#for m in Members
 //Home production
-		#CD@{n}@{m}_LAG = Omegah@{n}_LAG * ( DU@{n}@{m}_LAG * D@{n}@{m}_LAG ) ^ alphah@{n} * Lh@{n}@{m}_LAG ^ ( 1 - alphah@{n} );
-		#CD@{n}@{m} = Omegah@{n} * ( DU@{n}@{m} * D@{n}@{m} ) ^ alphah@{n} * Lh@{n}@{m} ^ ( 1 - alphah@{n} );
-		#CD@{n}@{m}_LEAD = Omegah@{n}_LEAD * ( DU@{n}@{m}_LEAD * D@{n}@{m}_LEAD ) ^ alphah@{n} * Lh@{n}@{m}_LEAD ^ ( 1 - alphah@{n} );
-		
+        #CD@{n}@{m}_LAG = Omegah@{n}_LAG * ( DU@{n}@{m}_LAG * D@{n}@{m}_LAG ) ^ alphah@{n} * Lh@{n}@{m}_LAG ^ ( 1 - alphah@{n} );
+        #CD@{n}@{m} = Omegah@{n} * ( DU@{n}@{m} * D@{n}@{m} ) ^ alphah@{n} * Lh@{n}@{m} ^ ( 1 - alphah@{n} );
+        #CD@{n}@{m}_LEAD = Omegah@{n}_LEAD * ( DU@{n}@{m}_LEAD * D@{n}@{m}_LEAD ) ^ alphah@{n} * Lh@{n}@{m}_LEAD ^ ( 1 - alphah@{n} );
+        
 //auxilary of durable&nondurable composite
-		CDBar@{n}@{m} = ( CD@{n}@{m} / CND@{n}@{m} ) ^ ( 1 - varrhoCD@{n} ) * CDBar@{n}@{m}_LAG ^ varrhoCD@{n};
+        CDBar@{n}@{m} = ( CD@{n}@{m} / CND@{n}@{m} ) ^ ( 1 - varrhoCD@{n} ) * CDBar@{n}@{m}_LAG ^ varrhoCD@{n};
 
 //Production of durable&nondurable composite
-		#CP@{n}@{m}_LAG = N@{n}@{m}_LAG * OmegaCP@{n}_LAG * CDBar@{n}@{m}_LAG2 ^ alphaCD@{n} * ( alphaCD@{n} * ( CD@{n}@{m}_LAG / N@{n}@{m}_LAG / CDBar@{n}@{m}_LAG2 ) ^ ( ( eCP@{n} - 1 ) / eCP@{n} )  +  ( 1 - alphaCD@{n} ) * ( CND@{n}@{m}_LAG / N@{n}@{m}_LAG ) ^ ( ( eCP@{n} - 1 ) / eCP@{n} ) ) ^ ( eCP@{n} / ( eCP@{n} - 1 ) );
-		#CP@{n}@{m} = N@{n}@{m} * OmegaCP@{n} * CDBar@{n}@{m}_LAG ^ alphaCD@{n} * ( alphaCD@{n} * ( CD@{n}@{m} / N@{n}@{m} / CDBar@{n}@{m}_LAG ) ^ ( ( eCP@{n} - 1 ) / eCP@{n} )  +  ( 1 - alphaCD@{n} ) * ( CND@{n}@{m} / N@{n}@{m} ) ^ ( ( eCP@{n} - 1 ) / eCP@{n} ) ) ^ ( eCP@{n} / ( eCP@{n} - 1 ) );
-		#CP@{n}@{m}_LEAD = N@{n}@{m}_LEAD * OmegaCP@{n}_LEAD * CDBar@{n}@{m} ^ alphaCD@{n} * ( alphaCD@{n} * ( CD@{n}@{m}_LEAD / N@{n}@{m}_LEAD / CDBar@{n}@{m} ) ^ ( ( eCP@{n} - 1 ) / eCP@{n} )  +  ( 1 - alphaCD@{n} ) * ( CND@{n}@{m}_LEAD / N@{n}@{m}_LEAD ) ^ ( ( eCP@{n} - 1 ) / eCP@{n} ) ) ^ ( eCP@{n} / ( eCP@{n} - 1 ) );
-		
+        #CP@{n}@{m}_LAG = N@{n}@{m}_LAG * OmegaCP@{n}_LAG * CDBar@{n}@{m}_LAG2 ^ alphaCD@{n} * ( alphaCD@{n} * ( CD@{n}@{m}_LAG / N@{n}@{m}_LAG / CDBar@{n}@{m}_LAG2 ) ^ ( ( eCP@{n} - 1 ) / eCP@{n} )  +  ( 1 - alphaCD@{n} ) * ( CND@{n}@{m}_LAG / N@{n}@{m}_LAG ) ^ ( ( eCP@{n} - 1 ) / eCP@{n} ) ) ^ ( eCP@{n} / ( eCP@{n} - 1 ) );
+        #CP@{n}@{m} = N@{n}@{m} * OmegaCP@{n} * CDBar@{n}@{m}_LAG ^ alphaCD@{n} * ( alphaCD@{n} * ( CD@{n}@{m} / N@{n}@{m} / CDBar@{n}@{m}_LAG ) ^ ( ( eCP@{n} - 1 ) / eCP@{n} )  +  ( 1 - alphaCD@{n} ) * ( CND@{n}@{m} / N@{n}@{m} ) ^ ( ( eCP@{n} - 1 ) / eCP@{n} ) ) ^ ( eCP@{n} / ( eCP@{n} - 1 ) );
+        #CP@{n}@{m}_LEAD = N@{n}@{m}_LEAD * OmegaCP@{n}_LEAD * CDBar@{n}@{m} ^ alphaCD@{n} * ( alphaCD@{n} * ( CD@{n}@{m}_LEAD / N@{n}@{m}_LEAD / CDBar@{n}@{m} ) ^ ( ( eCP@{n} - 1 ) / eCP@{n} )  +  ( 1 - alphaCD@{n} ) * ( CND@{n}@{m}_LEAD / N@{n}@{m}_LEAD ) ^ ( ( eCP@{n} - 1 ) / eCP@{n} ) ) ^ ( eCP@{n} / ( eCP@{n} - 1 ) );
+        
 //auxilary of private&government composite
-		CPBar@{n}@{m} = ( CP@{n}@{m} / CG@{n} * ( N@{n}b + N@{n}l ) / N@{n}@{m} ) ^ ( 1 - varrhoCP@{n} ) * CPBar@{n}@{m}_LAG ^ varrhoCP@{n};
+        CPBar@{n}@{m} = ( CP@{n}@{m} / CG@{n} * ( N@{n}b + N@{n}l ) / N@{n}@{m} ) ^ ( 1 - varrhoCP@{n} ) * CPBar@{n}@{m}_LAG ^ varrhoCP@{n};
 
 //production of private&government composite
-		#C@{n}@{m}_LAG = N@{n}@{m}_LAG * OmegaC@{n}_LAG * CPBar@{n}@{m}_LAG2 ^ alphaCP@{n} * ( alphaCP@{n} * ( CP@{n}@{m}_LAG / N@{n}@{m}_LAG / CPBar@{n}@{m}_LAG2 ) ^ ( ( eC@{n} - 1 ) / eC@{n} )  +  ( 1 - alphaCP@{n} ) * ( CG@{n}_LAG / ( N@{n}b_LAG + N@{n}l_LAG ) ) ^ ( ( eC@{n} - 1 ) / eC@{n} ) ) ^ ( eC@{n} / ( eC@{n} - 1 ) );
-		#C@{n}@{m} = N@{n}@{m} * OmegaC@{n} * CPBar@{n}@{m}_LAG ^ alphaCP@{n} * ( alphaCP@{n} * ( CP@{n}@{m} / N@{n}@{m} / CPBar@{n}@{m}_LAG ) ^ ( ( eC@{n} - 1 ) / eC@{n} )  +  ( 1 - alphaCP@{n} ) * ( CG@{n} / ( N@{n}b + N@{n}l ) ) ^ ( ( eC@{n} - 1 ) / eC@{n} ) ) ^ ( eC@{n} / ( eC@{n} - 1 ) );
-		#C@{n}@{m}_LEAD = N@{n}@{m}_LEAD * OmegaC@{n}_LEAD * CPBar@{n}@{m} ^ alphaCP@{n} * ( alphaCP@{n} * ( CP@{n}@{m}_LEAD / N@{n}@{m}_LEAD / CPBar@{n}@{m} ) ^ ( ( eC@{n} - 1 ) / eC@{n} )  +  ( 1 - alphaCP@{n} ) * ( CG@{n}_LEAD / ( N@{n}b_LEAD + N@{n}l_LEAD ) ) ^ ( ( eC@{n} - 1 ) / eC@{n} ) ) ^ ( eC@{n} / ( eC@{n} - 1 ) );
-	
+        #C@{n}@{m}_LAG = N@{n}@{m}_LAG * OmegaC@{n}_LAG * CPBar@{n}@{m}_LAG2 ^ alphaCP@{n} * ( alphaCP@{n} * ( CP@{n}@{m}_LAG / N@{n}@{m}_LAG / CPBar@{n}@{m}_LAG2 ) ^ ( ( eC@{n} - 1 ) / eC@{n} )  +  ( 1 - alphaCP@{n} ) * ( CG@{n}_LAG / ( N@{n}b_LAG + N@{n}l_LAG ) ) ^ ( ( eC@{n} - 1 ) / eC@{n} ) ) ^ ( eC@{n} / ( eC@{n} - 1 ) );
+        #C@{n}@{m} = N@{n}@{m} * OmegaC@{n} * CPBar@{n}@{m}_LAG ^ alphaCP@{n} * ( alphaCP@{n} * ( CP@{n}@{m} / N@{n}@{m} / CPBar@{n}@{m}_LAG ) ^ ( ( eC@{n} - 1 ) / eC@{n} )  +  ( 1 - alphaCP@{n} ) * ( CG@{n} / ( N@{n}b + N@{n}l ) ) ^ ( ( eC@{n} - 1 ) / eC@{n} ) ) ^ ( eC@{n} / ( eC@{n} - 1 ) );
+        #C@{n}@{m}_LEAD = N@{n}@{m}_LEAD * OmegaC@{n}_LEAD * CPBar@{n}@{m} ^ alphaCP@{n} * ( alphaCP@{n} * ( CP@{n}@{m}_LEAD / N@{n}@{m}_LEAD / CPBar@{n}@{m} ) ^ ( ( eC@{n} - 1 ) / eC@{n} )  +  ( 1 - alphaCP@{n} ) * ( CG@{n}_LEAD / ( N@{n}b_LEAD + N@{n}l_LEAD ) ) ^ ( ( eC@{n} - 1 ) / eC@{n} ) ) ^ ( eC@{n} / ( eC@{n} - 1 ) );
+    
 //def. habit stock 
-		CBar@{n}@{m} / N@{n}@{m} = ( C@{n}@{m} / N@{n}@{m} ) ^ ( 1 - varrhoC@{n} ) * ( CBar@{n}@{m}_LAG / N@{n}@{m}_LAG ) ^ varrhoC@{n};
+        CBar@{n}@{m} / N@{n}@{m} = ( C@{n}@{m} / N@{n}@{m} ) ^ ( 1 - varrhoC@{n} ) * ( CBar@{n}@{m}_LAG / N@{n}@{m}_LAG ) ^ varrhoC@{n};
 
 //def. one period utility
-		#U@{n}@{m} = N@{n}@{m} * ( C@{n}@{m} / N@{n}@{m} - h@{n} * C@{n}@{m}_LAG / N@{n}@{m}_LAG - CBar@{n}@{m}_LAG / N@{n}@{m}_LAG * ( kappa0@{n}
-		@#for S in Sectors2
-			+ kappa@{S}@{n} / ( 1 + nu@{S}@{n} ) * ( L@{S}@{n}@{m} / N@{n}@{m} ) ^ ( 1 + nu@{S}@{n} )
-		@#endfor
-		+ kappah@{n} / ( 1 + nuh@{n} ) * ( Lh@{n}@{m} / N@{n}@{m} ) ^ ( 1 + nuh@{n} ) ) );
+        #U@{n}@{m} = N@{n}@{m} * ( C@{n}@{m} / N@{n}@{m} - h@{n} * C@{n}@{m}_LAG / N@{n}@{m}_LAG - CBar@{n}@{m}_LAG / N@{n}@{m}_LAG * ( kappa0@{n}
+        @#for S in Sectors2
+            + kappa@{S}@{n} / ( 1 + nu@{S}@{n} ) * ( L@{S}@{n}@{m} / N@{n}@{m} ) ^ ( 1 + nu@{S}@{n} )
+        @#endfor
+        + kappah@{n} / ( 1 + nuh@{n} ) * ( Lh@{n}@{m} / N@{n}@{m} ) ^ ( 1 + nuh@{n} ) ) );
 
-		#U@{n}@{m}_LEAD = N@{n}@{m}_LEAD * ( C@{n}@{m}_LEAD / N@{n}@{m}_LEAD - h@{n} * C@{n}@{m} / N@{n}@{m} - CBar@{n}@{m} / N@{n}@{m} * ( kappa0@{n}_LEAD
-		@#for S in Sectors2
-			+ kappa@{S}@{n}_LEAD / ( 1 + nu@{S}@{n} ) * ( L@{S}@{n}@{m}_LEAD / N@{n}@{m}_LEAD ) ^ ( 1 + nu@{S}@{n} )
-		@#endfor
-		+ kappah@{n}_LEAD / ( 1 + nuh@{n} ) * ( Lh@{n}@{m}_LEAD / N@{n}@{m}_LEAD ) ^ ( 1 + nuh@{n} ) ) );
+        #U@{n}@{m}_LEAD = N@{n}@{m}_LEAD * ( C@{n}@{m}_LEAD / N@{n}@{m}_LEAD - h@{n} * C@{n}@{m} / N@{n}@{m} - CBar@{n}@{m} / N@{n}@{m} * ( kappa0@{n}_LEAD
+        @#for S in Sectors2
+            + kappa@{S}@{n}_LEAD / ( 1 + nu@{S}@{n} ) * ( L@{S}@{n}@{m}_LEAD / N@{n}@{m}_LEAD ) ^ ( 1 + nu@{S}@{n} )
+        @#endfor
+        + kappah@{n}_LEAD / ( 1 + nuh@{n} ) * ( Lh@{n}@{m}_LEAD / N@{n}@{m}_LEAD ) ^ ( 1 + nuh@{n} ) ) );
 
 //def. endogenous discount factor
-		#betass@{n}@{m} = betabar@{n}@{m} - bbeta@{n} * log( ( CND@{n}b + CND@{n}l ) * steady_state (PND@{n} / Y@{n} / P@{n}) );
-		log( beta@{n}@{m} / ( 1 - beta@{n}@{m} ) ) = ( 1 - rhobeta@{n} ) * log( betass@{n}@{m} / ( 1 - betass@{n}@{m} ) ) + rhobeta@{n} * log( beta@{n}@{m}_LAG / ( 1 - beta@{n}@{m}_LAG ) ) + sigmabeta@{n} * epsilon_beta@{n};
+        #betass@{n}@{m} = betabar@{n}@{m} - bbeta@{n} * log( ( CND@{n}b + CND@{n}l ) * steady_state (PND@{n} / Y@{n} / P@{n}) );
+        log( beta@{n}@{m} / ( 1 - beta@{n}@{m} ) ) = ( 1 - rhobeta@{n} ) * log( betass@{n}@{m} / ( 1 - betass@{n}@{m} ) ) + rhobeta@{n} * log( beta@{n}@{m}_LAG / ( 1 - beta@{n}@{m}_LAG ) ) + sigmabeta@{n} * epsilon_beta@{n};
 
 //def. country value 
-		V@{n}@{m} ^ ( 1 - sigma@{n} )= ( 1 - beta@{n}@{m} ) * N@{n}@{m} ^ ( xi@{n} - 1 + sigma@{n} ) * U@{n}@{m} ^ ( 1 - sigma@{n} ) + beta@{n}@{m} * EV@{n}@{m} ^ ( 1 - sigma@{n} );
+        V@{n}@{m} ^ ( 1 - sigma@{n} )= ( 1 - beta@{n}@{m} ) * N@{n}@{m} ^ ( xi@{n} - 1 + sigma@{n} ) * U@{n}@{m} ^ ( 1 - sigma@{n} ) + beta@{n}@{m} * EV@{n}@{m} ^ ( 1 - sigma@{n} );
 
 //def. risk adjusted value
-		1 = V@{n}@{m}_LEAD ^ ( 1 - gammaV@{n} ) / EV@{n}@{m} ^ ( 1 - gammaV@{n} );
+        1 = V@{n}@{m}_LEAD ^ ( 1 - gammaV@{n} ) / EV@{n}@{m} ^ ( 1 - gammaV@{n} );
 
 //def. partialV/partialV_lead
-		#VV@{n}@{m}=beta@{n}@{m}_LAG * V@{n}@{m}_LAG ^ sigma@{n} * EV@{n}@{m}_LAG ^ ( gammaV@{n} - sigma@{n} ) * V@{n}@{m} ^ -gammaV@{n};
-		#VV@{n}@{m}_LEAD=beta@{n}@{m} * V@{n}@{m} ^ sigma@{n} * EV@{n}@{m} ^ ( gammaV@{n} - sigma@{n} ) * V@{n}@{m}_LEAD ^ -gammaV@{n};
+        #VV@{n}@{m}=beta@{n}@{m}_LAG * V@{n}@{m}_LAG ^ sigma@{n} * EV@{n}@{m}_LAG ^ ( gammaV@{n} - sigma@{n} ) * V@{n}@{m} ^ -gammaV@{n};
+        #VV@{n}@{m}_LEAD=beta@{n}@{m} * V@{n}@{m} ^ sigma@{n} * EV@{n}@{m} ^ ( gammaV@{n} - sigma@{n} ) * V@{n}@{m}_LEAD ^ -gammaV@{n};
 
 //def. of durable growth rate
-		#GD@{n}@{m}_LAG2 = D@{n}@{m}_LAG2 / D@{n}@{m}_LAG3;
-		#GD@{n}@{m}_LAG = D@{n}@{m}_LAG / D@{n}@{m}_LAG2;
+        #GD@{n}@{m}_LAG2 = D@{n}@{m}_LAG2 / D@{n}@{m}_LAG3;
+        #GD@{n}@{m}_LAG = D@{n}@{m}_LAG / D@{n}@{m}_LAG2;
         #GD@{n}@{m} = D@{n}@{m} / D@{n}@{m}_LAG;
         #GD@{n}@{m}_LEAD = D@{n}@{m}_LEAD / D@{n}@{m};
 //Law of motion for durable
-		#ID@{n}@{m}_LAG = ( D@{n}@{m}_LAG - ( 1 - deltaD@{n}_LAG - thetaDU0@{n} / ( 1+thetaDU1@{n} ) * DU@{n}@{m}_LAG ^ ( 1+thetaDU1@{n} ) ) * D@{n}@{m}_LAG2 ) / exp( - thetaGD@{n} / 2 * ( log( GD@{n}@{m}_LAG / GD@{n}@{m}_LAG2 ) ) ^ 2 - thetaPD@{n} / 2 * ( log( D@{n}@{m}_LAG / DP@{n}@{m}_LAG2 ) ) ^ 2 );
-		#ID@{n}@{m} = ( D@{n}@{m} - ( 1 - deltaD@{n} - thetaDU0@{n} / ( 1+thetaDU1@{n} ) * DU@{n}@{m} ^ ( 1+thetaDU1@{n} ) ) * D@{n}@{m}_LAG ) / exp( - thetaGD@{n} / 2 * ( log( GD@{n}@{m} / GD@{n}@{m}_LAG ) ) ^ 2 - thetaPD@{n} / 2 * ( log( D@{n}@{m} / DP@{n}@{m}_LAG ) ) ^ 2 );
-		#ID@{n}@{m}_LEAD = ( D@{n}@{m}_LEAD - ( 1 - deltaD@{n}_LEAD - thetaDU0@{n} / ( 1+thetaDU1@{n} ) * DU@{n}@{m}_LEAD ^ ( 1+thetaDU1@{n} ) ) * D@{n}@{m} ) / exp( - thetaGD@{n} / 2 * ( log( GD@{n}@{m}_LEAD / GD@{n}@{m} ) ) ^ 2 - thetaPD@{n} / 2 * ( log( D@{n}@{m}_LEAD / DP@{n}@{m} ) ) ^ 2 );
+        #ID@{n}@{m}_LAG = ( D@{n}@{m}_LAG - ( 1 - deltaD@{n}_LAG - thetaDU0@{n} / ( 1+thetaDU1@{n} ) * DU@{n}@{m}_LAG ^ ( 1+thetaDU1@{n} ) ) * D@{n}@{m}_LAG2 ) / exp( - thetaGD@{n} / 2 * ( log( GD@{n}@{m}_LAG / GD@{n}@{m}_LAG2 ) ) ^ 2 - thetaPD@{n} / 2 * ( log( D@{n}@{m}_LAG / DP@{n}@{m}_LAG2 ) ) ^ 2 );
+        #ID@{n}@{m} = ( D@{n}@{m} - ( 1 - deltaD@{n} - thetaDU0@{n} / ( 1+thetaDU1@{n} ) * DU@{n}@{m} ^ ( 1+thetaDU1@{n} ) ) * D@{n}@{m}_LAG ) / exp( - thetaGD@{n} / 2 * ( log( GD@{n}@{m} / GD@{n}@{m}_LAG ) ) ^ 2 - thetaPD@{n} / 2 * ( log( D@{n}@{m} / DP@{n}@{m}_LAG ) ) ^ 2 );
+        #ID@{n}@{m}_LEAD = ( D@{n}@{m}_LEAD - ( 1 - deltaD@{n}_LEAD - thetaDU0@{n} / ( 1+thetaDU1@{n} ) * DU@{n}@{m}_LEAD ^ ( 1+thetaDU1@{n} ) ) * D@{n}@{m} ) / exp( - thetaGD@{n} / 2 * ( log( GD@{n}@{m}_LEAD / GD@{n}@{m} ) ) ^ 2 - thetaPD@{n} / 2 * ( log( D@{n}@{m}_LEAD / DP@{n}@{m} ) ) ^ 2 );
 //def. of nondurable investment
-		#IND@{n}@{m} = CND@{n}@{m};
-		#IND@{n}@{m}_LAG = CND@{n}@{m}_LAG;
-	@#endfor
-	@#for S in Sectors0
+        #IND@{n}@{m} = CND@{n}@{m};
+        #IND@{n}@{m}_LAG = CND@{n}@{m}_LAG;
+    @#endfor
+    @#for S in Sectors0
 //def. of capital growth rate
         #GKP@{S}@{n}_LAG2 = KP@{S}@{n}_LAG2 / KP@{S}@{n}_LAG3;
         #GKP@{S}@{n}_LAG = KP@{S}@{n}_LAG / KP@{S}@{n}_LAG2;
-		#GKP@{S}@{n} = KP@{S}@{n} / KP@{S}@{n}_LAG;
+        #GKP@{S}@{n} = KP@{S}@{n} / KP@{S}@{n}_LAG;
         #GKP@{S}@{n}_LEAD = KP@{S}@{n}_LEAD / KP@{S}@{n};
 //Law of motion for capital
-		#IKP@{S}@{n}_LAG = ( KP@{S}@{n}_LAG - ( 1 - deltaKP@{S}@{n}_LAG - thetaKU0@{n} / ( 1+thetaKU1@{n} ) * KU@{S}@{n}_LAG ^ ( 1+thetaKU1@{n} ) ) * KP@{S}@{n}_LAG2 ) / exp( - thetaGKP@{n} / 2 * ( log( GKP@{S}@{n}_LAG / GKP@{S}@{n}_LAG2 ) ) ^ 2 - thetaPKP@{n} / 2 * ( log( KP@{S}@{n}_LAG / KPP@{S}@{n}_LAG2 ) ) ^ 2 );
-		#IKP@{S}@{n} = ( KP@{S}@{n} - ( 1 - deltaKP@{S}@{n} - thetaKU0@{n} / ( 1+thetaKU1@{n} ) * KU@{S}@{n} ^ ( 1+thetaKU1@{n} ) ) * KP@{S}@{n}_LAG ) / exp( - thetaGKP@{n} / 2 * ( log( GKP@{S}@{n} / GKP@{S}@{n}_LAG ) ) ^ 2 - thetaPKP@{n} / 2 * ( log( KP@{S}@{n} / KPP@{S}@{n}_LAG ) ) ^ 2 );
-		#IKP@{S}@{n}_LEAD = ( KP@{S}@{n}_LEAD - ( 1 - deltaKP@{S}@{n}_LEAD - thetaKU0@{n} / ( 1+thetaKU1@{n} ) * KU@{S}@{n}_LEAD ^ ( 1+thetaKU1@{n} ) ) * KP@{S}@{n} ) / exp( - thetaGKP@{n} / 2 * ( log( GKP@{S}@{n}_LEAD / GKP@{S}@{n} ) ) ^ 2 - thetaPKP@{n} / 2 * ( log( KP@{S}@{n}_LEAD / KPP@{S}@{n} ) ) ^ 2 );
+        #IKP@{S}@{n}_LAG = ( KP@{S}@{n}_LAG - ( 1 - deltaKP@{S}@{n}_LAG - thetaKU0@{n} / ( 1+thetaKU1@{n} ) * KU@{S}@{n}_LAG ^ ( 1+thetaKU1@{n} ) ) * KP@{S}@{n}_LAG2 ) / exp( - thetaGKP@{n} / 2 * ( log( GKP@{S}@{n}_LAG / GKP@{S}@{n}_LAG2 ) ) ^ 2 - thetaPKP@{n} / 2 * ( log( KP@{S}@{n}_LAG / KPP@{S}@{n}_LAG2 ) ) ^ 2 );
+        #IKP@{S}@{n} = ( KP@{S}@{n} - ( 1 - deltaKP@{S}@{n} - thetaKU0@{n} / ( 1+thetaKU1@{n} ) * KU@{S}@{n} ^ ( 1+thetaKU1@{n} ) ) * KP@{S}@{n}_LAG ) / exp( - thetaGKP@{n} / 2 * ( log( GKP@{S}@{n} / GKP@{S}@{n}_LAG ) ) ^ 2 - thetaPKP@{n} / 2 * ( log( KP@{S}@{n} / KPP@{S}@{n}_LAG ) ) ^ 2 );
+        #IKP@{S}@{n}_LEAD = ( KP@{S}@{n}_LEAD - ( 1 - deltaKP@{S}@{n}_LEAD - thetaKU0@{n} / ( 1+thetaKU1@{n} ) * KU@{S}@{n}_LEAD ^ ( 1+thetaKU1@{n} ) ) * KP@{S}@{n} ) / exp( - thetaGKP@{n} / 2 * ( log( GKP@{S}@{n}_LEAD / GKP@{S}@{n} ) ) ^ 2 - thetaPKP@{n} / 2 * ( log( KP@{S}@{n}_LEAD / KPP@{S}@{n} ) ) ^ 2 );
 //def. of capital growth rate
-		#GHP@{S}@{n}_LAG2 = HP@{S}@{n}_LAG2 / HP@{S}@{n}_LAG3;
-		#GHP@{S}@{n}_LAG = HP@{S}@{n}_LAG / HP@{S}@{n}_LAG2;
+        #GHP@{S}@{n}_LAG2 = HP@{S}@{n}_LAG2 / HP@{S}@{n}_LAG3;
+        #GHP@{S}@{n}_LAG = HP@{S}@{n}_LAG / HP@{S}@{n}_LAG2;
         #GHP@{S}@{n} = HP@{S}@{n} / HP@{S}@{n}_LAG;
         #GHP@{S}@{n}_LEAD = HP@{S}@{n}_LEAD / HP@{S}@{n};
 //Law of motion for capital
-		#IHP@{S}@{n}_LAG = ( HP@{S}@{n}_LAG - ( 1 - deltaHP@{S}@{n}_LAG ) * HP@{S}@{n}_LAG2 ) / exp( - thetaGHP@{n} / 2 * ( log( GHP@{S}@{n}_LAG / GHP@{S}@{n}_LAG2 ) ) ^ 2 - thetaPHP@{n} / 2 * ( log( HP@{S}@{n}_LAG / HPP@{S}@{n}_LAG2 ) ) ^ 2 );
-		#IHP@{S}@{n} = ( HP@{S}@{n} - ( 1 - deltaHP@{S}@{n} ) * HP@{S}@{n}_LAG ) / exp( - thetaGHP@{n} / 2 * ( log( GHP@{S}@{n} / GHP@{S}@{n}_LAG ) ) ^ 2 - thetaPHP@{n} / 2 * ( log( HP@{S}@{n} / HPP@{S}@{n}_LAG ) ) ^ 2 );
-		#IHP@{S}@{n}_LEAD = ( HP@{S}@{n}_LEAD - ( 1 - deltaHP@{S}@{n}_LEAD ) * HP@{S}@{n} ) / exp( - thetaGHP@{n} / 2 * ( log( GHP@{S}@{n}_LEAD / GHP@{S}@{n} ) ) ^ 2 - thetaPHP@{n} / 2 * ( log( HP@{S}@{n}_LEAD / HPP@{S}@{n} ) ) ^ 2 );
-	@#endfor
-	
+        #IHP@{S}@{n}_LAG = ( HP@{S}@{n}_LAG - ( 1 - deltaHP@{S}@{n}_LAG ) * HP@{S}@{n}_LAG2 ) / exp( - thetaGHP@{n} / 2 * ( log( GHP@{S}@{n}_LAG / GHP@{S}@{n}_LAG2 ) ) ^ 2 - thetaPHP@{n} / 2 * ( log( HP@{S}@{n}_LAG / HPP@{S}@{n}_LAG2 ) ) ^ 2 );
+        #IHP@{S}@{n} = ( HP@{S}@{n} - ( 1 - deltaHP@{S}@{n} ) * HP@{S}@{n}_LAG ) / exp( - thetaGHP@{n} / 2 * ( log( GHP@{S}@{n} / GHP@{S}@{n}_LAG ) ) ^ 2 - thetaPHP@{n} / 2 * ( log( HP@{S}@{n} / HPP@{S}@{n}_LAG ) ) ^ 2 );
+        #IHP@{S}@{n}_LEAD = ( HP@{S}@{n}_LEAD - ( 1 - deltaHP@{S}@{n}_LEAD ) * HP@{S}@{n} ) / exp( - thetaGHP@{n} / 2 * ( log( GHP@{S}@{n}_LEAD / GHP@{S}@{n} ) ) ^ 2 - thetaPHP@{n} / 2 * ( log( HP@{S}@{n}_LEAD / HPP@{S}@{n} ) ) ^ 2 );
+    @#endfor
+    
 //foc of financial asset (def. of STD)
-	Xi = VV@{n}l * lambda_B@{n}l / lambda_B@{n}l_LAG;
+    Xi = VV@{n}l * lambda_B@{n}l / lambda_B@{n}l_LAG;
 
-	@#if n == 1
-		Q = Xi_LEAD;
-	@#endif
-	
-	Q = lambda_F@{n} / lambda_B@{n}b + VV@{n}b_LEAD * ( lambda_B@{n}b_LEAD / lambda_B@{n}b - lambda_F@{n}_LEAD / lambda_B@{n}b * rhoQB@{n} );
+    @#if n == 1
+        Q = Xi_LEAD;
+    @#endif
+    
+    Q = lambda_F@{n} / lambda_B@{n}b + VV@{n}b_LEAD * ( lambda_B@{n}b_LEAD / lambda_B@{n}b - lambda_F@{n}_LEAD / lambda_B@{n}b * rhoQB@{n} );
 
     QB@{n} = VV@{n}b_LEAD * lambda_B@{n}b_LEAD / lambda_B@{n}b;
 
-	@#for m in Members
+    @#for m in Members
 //FOC of final comsuption composite
-		V@{n}@{m} ^ sigma@{n} * ( 1 - beta@{n}@{m} ) * N@{n}@{m} ^ ( xi@{n} - 1 + sigma@{n} ) * U@{n}@{m} ^ -sigma@{n}
+        V@{n}@{m} ^ sigma@{n} * ( 1 - beta@{n}@{m} ) * N@{n}@{m} ^ ( xi@{n} - 1 + sigma@{n} ) * U@{n}@{m} ^ -sigma@{n}
         -VV@{n}@{m}_LEAD * V@{n}@{m}_LEAD ^ sigma@{n} * ( 1 - beta@{n}@{m}_LEAD ) * N@{n}@{m}_LEAD ^ ( xi@{n} - 1 + sigma@{n} ) * U@{n}@{m}_LEAD ^ -sigma@{n} * h@{n} * N@{n}@{m}_LEAD / N@{n}@{m}
-		+lambda_CBar@{n}@{m} * ( 1 - varrhoC@{n} ) * ( C@{n}@{m} / N@{n}@{m} ) ^ -varrhoC@{n} * ( CBar@{n}@{m}_LAG / N@{n}@{m}_LAG ) ^ varrhoC@{n}
-		+lambda_C@{n}@{m};
+        +lambda_CBar@{n}@{m} * ( 1 - varrhoC@{n} ) * ( C@{n}@{m} / N@{n}@{m} ) ^ -varrhoC@{n} * ( CBar@{n}@{m}_LAG / N@{n}@{m}_LAG ) ^ varrhoC@{n}
+        +lambda_C@{n}@{m};
 
 //FOC of final consumption habit
-		- VV@{n}@{m}_LEAD * V@{n}@{m}_LEAD ^ sigma@{n} * ( 1 - beta@{n}@{m}_LEAD ) * N@{n}@{m}_LEAD ^ ( xi@{n} - 1 + sigma@{n} ) * U@{n}@{m}_LEAD ^ -sigma@{n} * N@{n}@{m}_LEAD / N@{n}@{m} * ( kappa0@{n}_LEAD
-		@#for S in Sectors2
-			+ kappa@{S}@{n}_LEAD / ( 1 + nu@{S}@{n} ) * ( L@{S}@{n}@{m}_LEAD / N@{n}@{m}_LEAD ) ^ ( 1 + nu@{S}@{n} )
-		@#endfor
-		+ kappah@{n}_LEAD / ( 1 + nuh@{n} ) * ( Lh@{n}@{m}_LEAD / N@{n}@{m}_LEAD ) ^ ( 1 + nuh@{n} ) )
-		- lambda_CBar@{n}@{m}
-		+ VV@{n}@{m}_LEAD * lambda_CBar@{n}@{m}_LEAD * ( C@{n}@{m}_LEAD / N@{n}@{m}_LEAD ) ^ ( 1 - varrhoC@{n} ) * ( CBar@{n}@{m} / N@{n}@{m} ) ^ ( varrhoC@{n} - 1 ) * N@{n}@{m}_LEAD / N@{n}@{m} * varrhoC@{n};
+        - VV@{n}@{m}_LEAD * V@{n}@{m}_LEAD ^ sigma@{n} * ( 1 - beta@{n}@{m}_LEAD ) * N@{n}@{m}_LEAD ^ ( xi@{n} - 1 + sigma@{n} ) * U@{n}@{m}_LEAD ^ -sigma@{n} * N@{n}@{m}_LEAD / N@{n}@{m} * ( kappa0@{n}_LEAD
+        @#for S in Sectors2
+            + kappa@{S}@{n}_LEAD / ( 1 + nu@{S}@{n} ) * ( L@{S}@{n}@{m}_LEAD / N@{n}@{m}_LEAD ) ^ ( 1 + nu@{S}@{n} )
+        @#endfor
+        + kappah@{n}_LEAD / ( 1 + nuh@{n} ) * ( Lh@{n}@{m}_LEAD / N@{n}@{m}_LEAD ) ^ ( 1 + nuh@{n} ) )
+        - lambda_CBar@{n}@{m}
+        + VV@{n}@{m}_LEAD * lambda_CBar@{n}@{m}_LEAD * ( C@{n}@{m}_LEAD / N@{n}@{m}_LEAD ) ^ ( 1 - varrhoC@{n} ) * ( CBar@{n}@{m} / N@{n}@{m} ) ^ ( varrhoC@{n} - 1 ) * N@{n}@{m}_LEAD / N@{n}@{m} * varrhoC@{n};
 
 //FOC of private consumption composite
-		- lambda_C@{n}@{m} * OmegaC@{n} * CPBar@{n}@{m}_LAG ^ ( ( alphaCP@{n} - 1 ) * ( eC@{n} - 1 ) / eC@{n} ) * alphaCP@{n} * ( C@{n}@{m} / CP@{n}@{m} / OmegaC@{n} ) ^ ( 1 / eC@{n} )
-		- lambda_CPBar@{n}@{m} * ( 1 / CG@{n} * ( N@{n}b + N@{n}l ) / N@{n}@{m} ) ^ ( 1 - varrhoCP@{n} ) * CPBar@{n}@{m}_LAG ^ varrhoCP@{n} * ( 1 - varrhoCP@{n} ) * CP@{n}@{m} ^ ( -varrhoCP@{n} )
-		+ lambda_CP@{n}@{m};
+        - lambda_C@{n}@{m} * OmegaC@{n} * CPBar@{n}@{m}_LAG ^ ( ( alphaCP@{n} - 1 ) * ( eC@{n} - 1 ) / eC@{n} ) * alphaCP@{n} * ( C@{n}@{m} / CP@{n}@{m} / OmegaC@{n} ) ^ ( 1 / eC@{n} )
+        - lambda_CPBar@{n}@{m} * ( 1 / CG@{n} * ( N@{n}b + N@{n}l ) / N@{n}@{m} ) ^ ( 1 - varrhoCP@{n} ) * CPBar@{n}@{m}_LAG ^ varrhoCP@{n} * ( 1 - varrhoCP@{n} ) * CP@{n}@{m} ^ ( -varrhoCP@{n} )
+        + lambda_CP@{n}@{m};
 
 //FOC of private consumption auxilary
-		- VV@{n}@{m}_LEAD * lambda_C@{n}@{m}_LEAD * ( alphaCP@{n} * C@{n}@{m}_LEAD / CPBar@{n}@{m} - OmegaC@{n}_LEAD * CPBar@{n}@{m} ^ ( ( alphaCP@{n} - 1 ) * ( 1 - 1 / eC@{n} ) - 1 ) * ( C@{n}@{m}_LEAD / OmegaC@{n}_LEAD ) ^ ( 1 / eC@{n} ) * alphaCP@{n} * CP@{n}@{m}_LEAD ^ ( 1 - 1 / eC@{n} ) )
-		- VV@{n}@{m}_LEAD * lambda_CPBar@{n}@{m}_LEAD * ( CP@{n}@{m}_LEAD / CG@{n}_LEAD * ( N@{n}b_LEAD + N@{n}l_LEAD ) / N@{n}@{m}_LEAD ) ^ ( 1 - varrhoCP@{n} ) * varrhoCP@{n} * CPBar@{n}@{m} ^ ( varrhoCP@{n} - 1 )
-		+ lambda_CPBar@{n}@{m};
-		
+        - VV@{n}@{m}_LEAD * lambda_C@{n}@{m}_LEAD * ( alphaCP@{n} * C@{n}@{m}_LEAD / CPBar@{n}@{m} - OmegaC@{n}_LEAD * CPBar@{n}@{m} ^ ( ( alphaCP@{n} - 1 ) * ( 1 - 1 / eC@{n} ) - 1 ) * ( C@{n}@{m}_LEAD / OmegaC@{n}_LEAD ) ^ ( 1 / eC@{n} ) * alphaCP@{n} * CP@{n}@{m}_LEAD ^ ( 1 - 1 / eC@{n} ) )
+        - VV@{n}@{m}_LEAD * lambda_CPBar@{n}@{m}_LEAD * ( CP@{n}@{m}_LEAD / CG@{n}_LEAD * ( N@{n}b_LEAD + N@{n}l_LEAD ) / N@{n}@{m}_LEAD ) ^ ( 1 - varrhoCP@{n} ) * varrhoCP@{n} * CPBar@{n}@{m} ^ ( varrhoCP@{n} - 1 )
+        + lambda_CPBar@{n}@{m};
+        
 //FOC of durable consumption
-		- lambda_CP@{n}@{m} * OmegaCP@{n} * CDBar@{n}@{m}_LAG ^ ( ( alphaCD@{n} - 1 ) * ( eCP@{n} - 1 ) / eCP@{n} ) * alphaCD@{n} * ( CP@{n}@{m} / CD@{n}@{m} / OmegaCP@{n} ) ^ ( 1 / eCP@{n} )
-		- lambda_CDBar@{n}@{m} * CND@{n}@{m} ^ ( varrhoCD@{n} - 1 ) * CDBar@{n}@{m}_LAG ^ varrhoCD@{n} * ( 1 - varrhoCD@{n} ) * CD@{n}@{m} ^ ( -varrhoCD@{n} )
-		+ lambda_CD@{n}@{m};
+        - lambda_CP@{n}@{m} * OmegaCP@{n} * CDBar@{n}@{m}_LAG ^ ( ( alphaCD@{n} - 1 ) * ( eCP@{n} - 1 ) / eCP@{n} ) * alphaCD@{n} * ( CP@{n}@{m} / CD@{n}@{m} / OmegaCP@{n} ) ^ ( 1 / eCP@{n} )
+        - lambda_CDBar@{n}@{m} * CND@{n}@{m} ^ ( varrhoCD@{n} - 1 ) * CDBar@{n}@{m}_LAG ^ varrhoCD@{n} * ( 1 - varrhoCD@{n} ) * CD@{n}@{m} ^ ( -varrhoCD@{n} )
+        + lambda_CD@{n}@{m};
 
 //FOC of durable consumption auxilary
-		- VV@{n}@{m}_LEAD * lambda_CP@{n}@{m}_LEAD * ( alphaCD@{n} * CP@{n}@{m}_LEAD / CDBar@{n}@{m} - OmegaCP@{n}_LEAD * CDBar@{n}@{m} ^ ( ( alphaCD@{n} - 1 ) * ( 1 - 1 / eCP@{n} ) - 1 ) * ( CP@{n}@{m}_LEAD / OmegaCP@{n}_LEAD ) ^ ( 1 / eCP@{n} ) * alphaCD@{n} * CD@{n}@{m}_LEAD ^ ( 1 - 1 / eCP@{n} ) )
-		- VV@{n}@{m}_LEAD * lambda_CDBar@{n}@{m}_LEAD * ( CD@{n}@{m}_LEAD / CND@{n}@{m}_LEAD ) ^ ( 1 - varrhoCD@{n} ) * varrhoCD@{n} * CDBar@{n}@{m} ^ ( varrhoCD@{n} - 1 )
-		+ lambda_CDBar@{n}@{m};
-		
+        - VV@{n}@{m}_LEAD * lambda_CP@{n}@{m}_LEAD * ( alphaCD@{n} * CP@{n}@{m}_LEAD / CDBar@{n}@{m} - OmegaCP@{n}_LEAD * CDBar@{n}@{m} ^ ( ( alphaCD@{n} - 1 ) * ( 1 - 1 / eCP@{n} ) - 1 ) * ( CP@{n}@{m}_LEAD / OmegaCP@{n}_LEAD ) ^ ( 1 / eCP@{n} ) * alphaCD@{n} * CD@{n}@{m}_LEAD ^ ( 1 - 1 / eCP@{n} ) )
+        - VV@{n}@{m}_LEAD * lambda_CDBar@{n}@{m}_LEAD * ( CD@{n}@{m}_LEAD / CND@{n}@{m}_LEAD ) ^ ( 1 - varrhoCD@{n} ) * varrhoCD@{n} * CDBar@{n}@{m} ^ ( varrhoCD@{n} - 1 )
+        + lambda_CDBar@{n}@{m};
+        
 //FOC of nondurable consumption
-		- lambda_CP@{n}@{m} * OmegaCP@{n} * CDBar@{n}@{m}_LAG ^ ( alphaCD@{n} * ( eCP@{n} - 1 ) / eCP@{n} ) * ( 1 - alphaCD@{n} ) * ( CP@{n}@{m} / CND@{n}@{m} / OmegaCP@{n} ) ^ ( 1 / eCP@{n} )
-		- lambda_CDBar@{n}@{m} * CD@{n}@{m} ^ ( 1 - varrhoCD@{n} ) * CDBar@{n}@{m}_LAG ^ varrhoCD@{n} * ( varrhoCD@{n} - 1 ) * CND@{n}@{m} ^ ( varrhoCD@{n} - 2 )
-		- lambda_B@{n}@{m} * PND@{n} * ( 1 + tauND@{n} );
-	
+        - lambda_CP@{n}@{m} * OmegaCP@{n} * CDBar@{n}@{m}_LAG ^ ( alphaCD@{n} * ( eCP@{n} - 1 ) / eCP@{n} ) * ( 1 - alphaCD@{n} ) * ( CP@{n}@{m} / CND@{n}@{m} / OmegaCP@{n} ) ^ ( 1 / eCP@{n} )
+        - lambda_CDBar@{n}@{m} * CD@{n}@{m} ^ ( 1 - varrhoCD@{n} ) * CDBar@{n}@{m}_LAG ^ varrhoCD@{n} * ( varrhoCD@{n} - 1 ) * CND@{n}@{m} ^ ( varrhoCD@{n} - 2 )
+        - lambda_B@{n}@{m} * PND@{n} * ( 1 + tauND@{n} );
+    
 //FOC of durable investment
-		#lambda_D@{n}@{m} = ( 1 + tauD@{n} ) * lambda_B@{n}@{m} * PD@{n} * exp( thetaGD@{n} / 2 * ( log( GD@{n}@{m} / GD@{n}@{m}_LAG ) ) ^ 2 + thetaPD@{n} / 2 * ( log( D@{n}@{m} / DP@{n}@{m}_LAG ) ) ^ 2 );
-		#lambda_D@{n}@{m}_LEAD = ( 1 + tauD@{n}_LEAD ) * lambda_B@{n}@{m}_LEAD * PD@{n}_LEAD * exp( thetaGD@{n} / 2 * ( log( GD@{n}@{m}_LEAD / GD@{n}@{m} ) ) ^ 2 + thetaPD@{n} / 2 * ( log( D@{n}@{m}_LEAD / DP@{n}@{m} ) ) ^2 );
-	
+        #lambda_D@{n}@{m} = ( 1 + tauD@{n} ) * lambda_B@{n}@{m} * PD@{n} * exp( thetaGD@{n} / 2 * ( log( GD@{n}@{m} / GD@{n}@{m}_LAG ) ) ^ 2 + thetaPD@{n} / 2 * ( log( D@{n}@{m} / DP@{n}@{m}_LAG ) ) ^ 2 );
+        #lambda_D@{n}@{m}_LEAD = ( 1 + tauD@{n}_LEAD ) * lambda_B@{n}@{m}_LEAD * PD@{n}_LEAD * exp( thetaGD@{n} / 2 * ( log( GD@{n}@{m}_LEAD / GD@{n}@{m} ) ) ^ 2 + thetaPD@{n} / 2 * ( log( D@{n}@{m}_LEAD / DP@{n}@{m} ) ) ^2 );
+    
 //FOC of durable stock
-		- lambda_CD@{n}@{m} * alphah@{n} * CD@{n}@{m} / D@{n}@{m}
-		- lambda_D@{n}@{m} * ( exp( -thetaGD@{n} / 2 * ( log( GD@{n}@{m} / GD@{n}@{m}_LAG ) ) ^ 2 - thetaPD@{n} / 2 * ( log( D@{n}@{m} / DP@{n}@{m}_LAG ) ) ^ 2 ) * thetaPD@{n} * log( D@{n}@{m} / DP@{n}@{m}_LAG ) * ID@{n}@{m} / D@{n}@{m} + 1 )
-		+ VV@{n}@{m}_LEAD * lambda_D@{n}@{m}_LEAD * ( 1 - deltaD@{n}_LEAD - thetaDU0@{n} / ( 1+thetaDU1@{n} ) * DU@{n}@{m}_LEAD ^ ( 1+thetaDU1@{n} ) )
-		- lambda_GD@{n}@{m}
-		+ VV@{n}@{m}_LEAD * lambda_GD@{n}@{m}_LEAD * GD@{n}@{m}_LEAD
-		@#if m == "b"
-		+ lambda_F@{n} * ( 1 - rhoQB@{n} ) * m@{n} * PD@{n}
-		@#endif
-		;
+        - lambda_CD@{n}@{m} * alphah@{n} * CD@{n}@{m} / D@{n}@{m}
+        - lambda_D@{n}@{m} * ( exp( -thetaGD@{n} / 2 * ( log( GD@{n}@{m} / GD@{n}@{m}_LAG ) ) ^ 2 - thetaPD@{n} / 2 * ( log( D@{n}@{m} / DP@{n}@{m}_LAG ) ) ^ 2 ) * thetaPD@{n} * log( D@{n}@{m} / DP@{n}@{m}_LAG ) * ID@{n}@{m} / D@{n}@{m} + 1 )
+        + VV@{n}@{m}_LEAD * lambda_D@{n}@{m}_LEAD * ( 1 - deltaD@{n}_LEAD - thetaDU0@{n} / ( 1+thetaDU1@{n} ) * DU@{n}@{m}_LEAD ^ ( 1+thetaDU1@{n} ) )
+        - lambda_GD@{n}@{m}
+        + VV@{n}@{m}_LEAD * lambda_GD@{n}@{m}_LEAD * GD@{n}@{m}_LEAD
+        @#if m == "b"
+        + lambda_F@{n} * ( 1 - rhoQB@{n} ) * m@{n} * PD@{n}
+        @#endif
+        ;
 
 //FOC of durable stock growth
-		- lambda_D@{n}@{m} * ID@{n}@{m} / GD@{n}@{m} * exp( -thetaGD@{n} / 2 * ( log( GD@{n}@{m} / GD@{n}@{m}_LAG ) ) ^ 2 - thetaPD@{n} / 2 * ( log( D@{n}@{m} / DP@{n}@{m}_LAG ) ) ^ 2 ) * thetaGD@{n} * log( GD@{n}@{m} / GD@{n}@{m}_LAG )
-		+ VV@{n}@{m}_LEAD * lambda_D@{n}@{m}_LEAD * ID@{n}@{m}_LEAD / GD@{n}@{m} * exp( -thetaGD@{n} / 2 * ( log( GD@{n}@{m}_LEAD / GD@{n}@{m} ) ) ^ 2 - thetaPD@{n} / 2 * ( log( D@{n}@{m}_LEAD / DP@{n}@{m} ) ) ^ 2 ) * thetaGD@{n} * log( GD@{n}@{m}_LEAD / GD@{n}@{m} )
-		+ lambda_GD@{n}@{m} * D@{n}@{m}_LAG;
+        - lambda_D@{n}@{m} * ID@{n}@{m} / GD@{n}@{m} * exp( -thetaGD@{n} / 2 * ( log( GD@{n}@{m} / GD@{n}@{m}_LAG ) ) ^ 2 - thetaPD@{n} / 2 * ( log( D@{n}@{m} / DP@{n}@{m}_LAG ) ) ^ 2 ) * thetaGD@{n} * log( GD@{n}@{m} / GD@{n}@{m}_LAG )
+        + VV@{n}@{m}_LEAD * lambda_D@{n}@{m}_LEAD * ID@{n}@{m}_LEAD / GD@{n}@{m} * exp( -thetaGD@{n} / 2 * ( log( GD@{n}@{m}_LEAD / GD@{n}@{m} ) ) ^ 2 - thetaPD@{n} / 2 * ( log( D@{n}@{m}_LEAD / DP@{n}@{m} ) ) ^ 2 ) * thetaGD@{n} * log( GD@{n}@{m}_LEAD / GD@{n}@{m} )
+        + lambda_GD@{n}@{m} * D@{n}@{m}_LAG;
 
 //FOC of planned durable stock
-		VV@{n}@{m}_LEAD * lambda_D@{n}@{m}_LEAD * ID@{n}@{m}_LEAD / DP@{n}@{m} * exp( -thetaGD@{n} / 2 * ( log( GD@{n}@{m}_LEAD / GD@{n}@{m} ) ) ^ 2 - thetaPD@{n} / 2 * ( log( D@{n}@{m}_LEAD / DP@{n}@{m} ) ) ^ 2 ) * thetaPD@{n} * log( D@{n}@{m}_LEAD / DP@{n}@{m} );
+        VV@{n}@{m}_LEAD * lambda_D@{n}@{m}_LEAD * ID@{n}@{m}_LEAD / DP@{n}@{m} * exp( -thetaGD@{n} / 2 * ( log( GD@{n}@{m}_LEAD / GD@{n}@{m} ) ) ^ 2 - thetaPD@{n} / 2 * ( log( D@{n}@{m}_LEAD / DP@{n}@{m} ) ) ^ 2 ) * thetaPD@{n} * log( D@{n}@{m}_LEAD / DP@{n}@{m} );
 
 //FOC of durable utilization
-		- lambda_CD@{n}@{m} * alphah@{n} * CD@{n}@{m} / DU@{n}@{m}
-		- lambda_D@{n}@{m} * thetaDU0@{n} * DU@{n}@{m} ^ thetaDU1@{n} * D@{n}@{m}_LAG;
-	
+        - lambda_CD@{n}@{m} * alphah@{n} * CD@{n}@{m} / DU@{n}@{m}
+        - lambda_D@{n}@{m} * thetaDU0@{n} * DU@{n}@{m} ^ thetaDU1@{n} * D@{n}@{m}_LAG;
+    
 //labor supply
-	- kappah@{n} * ( Lh@{n}@{m} / N@{n}@{m} ) ^ nuh@{n} * ( CBar@{n}@{m}_LAG / N@{n}@{m}_LAG ) * V@{n}@{m} ^ sigma@{n} * ( 1 - beta@{n}@{m} ) * N@{n}@{m} ^ ( xi@{n} - 1 + sigma@{n} ) * U@{n}@{m} ^ -sigma@{n}
-	- lambda_CD@{n}@{m} * ( 1 - alphah@{n} ) * CD@{n}@{m} / Lh@{n}@{m};
-	@#endfor
+    - kappah@{n} * ( Lh@{n}@{m} / N@{n}@{m} ) ^ nuh@{n} * ( CBar@{n}@{m}_LAG / N@{n}@{m}_LAG ) * V@{n}@{m} ^ sigma@{n} * ( 1 - beta@{n}@{m} ) * N@{n}@{m} ^ ( xi@{n} - 1 + sigma@{n} ) * U@{n}@{m} ^ -sigma@{n}
+    - lambda_CD@{n}@{m} * ( 1 - alphah@{n} ) * CD@{n}@{m} / Lh@{n}@{m};
+    @#endfor
 
-	@#for m in ["l"]
-	@#for S in Sectors2
-		#W@{S}@{n} = kappa@{S}@{n} * ( L@{S}@{n}@{m} / N@{n}@{m} ) ^ nu@{S}@{n} * ( CBar@{n}@{m}_LAG / N@{n}@{m}_LAG ) * V@{n}@{m} ^ sigma@{n} * ( 1 - beta@{n}@{m} ) * N@{n}@{m} ^ ( xi@{n} - 1 + sigma@{n} ) * U@{n}@{m} ^ -sigma@{n} / lambda_B@{n}@{m} / ( 1 - tauL@{S}@{n} );
-	@#endfor
-	@#endfor
-	
-	@#for m in ["b"]
-	@#for S in [ "W", "T", "NT", "D", "NDCG", "K", "H" ]
-		W@{S}@{n} = kappa@{S}@{n} * ( L@{S}@{n}@{m} / N@{n}@{m} ) ^ nu@{S}@{n} * ( CBar@{n}@{m}_LAG / N@{n}@{m}_LAG ) * V@{n}@{m} ^ sigma@{n} * ( 1 - beta@{n}@{m} ) * N@{n}@{m} ^ ( xi@{n} - 1 + sigma@{n} ) * U@{n}@{m} ^ -sigma@{n} / lambda_B@{n}@{m} / ( 1 - tauL@{S}@{n} );
-	@#endfor
-	@#endfor
-	
-	@#for m in ["b"]
-	@#for S in [ "W", "T", "NT" ]
-		W@{S}@{n} = kappaS@{S}@{n} * ( LS@{S}@{n}@{m} / N@{n}@{m} ) ^ nuS@{S}@{n} * ( CBar@{n}@{m}_LAG / N@{n}@{m}_LAG ) * V@{n}@{m} ^ sigma@{n} * ( 1 - beta@{n}@{m} ) * N@{n}@{m} ^ ( xi@{n} - 1 + sigma@{n} ) * U@{n}@{m} ^ -sigma@{n} / lambda_B@{n}@{m} / ( 1 - tauL@{S}@{n} );
-	@#endfor
-	@#endfor
-	
-	@#for S in Sectors0
+    @#for m in ["l"]
+    @#for S in Sectors2
+        #W@{S}@{n} = kappa@{S}@{n} * ( L@{S}@{n}@{m} / N@{n}@{m} ) ^ nu@{S}@{n} * ( CBar@{n}@{m}_LAG / N@{n}@{m}_LAG ) * V@{n}@{m} ^ sigma@{n} * ( 1 - beta@{n}@{m} ) * N@{n}@{m} ^ ( xi@{n} - 1 + sigma@{n} ) * U@{n}@{m} ^ -sigma@{n} / lambda_B@{n}@{m} / ( 1 - tauL@{S}@{n} );
+    @#endfor
+    @#endfor
+    
+    @#for m in ["b"]
+    @#for S in [ "W", "T", "NT", "D", "NDCG", "K", "H" ]
+        W@{S}@{n} = kappa@{S}@{n} * ( L@{S}@{n}@{m} / N@{n}@{m} ) ^ nu@{S}@{n} * ( CBar@{n}@{m}_LAG / N@{n}@{m}_LAG ) * V@{n}@{m} ^ sigma@{n} * ( 1 - beta@{n}@{m} ) * N@{n}@{m} ^ ( xi@{n} - 1 + sigma@{n} ) * U@{n}@{m} ^ -sigma@{n} / lambda_B@{n}@{m} / ( 1 - tauL@{S}@{n} );
+    @#endfor
+    @#endfor
+    
+    @#for m in ["b"]
+    @#for S in [ "W", "T", "NT" ]
+        W@{S}@{n} = kappaS@{S}@{n} * ( LS@{S}@{n}@{m} / N@{n}@{m} ) ^ nuS@{S}@{n} * ( CBar@{n}@{m}_LAG / N@{n}@{m}_LAG ) * V@{n}@{m} ^ sigma@{n} * ( 1 - beta@{n}@{m} ) * N@{n}@{m} ^ ( xi@{n} - 1 + sigma@{n} ) * U@{n}@{m} ^ -sigma@{n} / lambda_B@{n}@{m} / ( 1 - tauL@{S}@{n} );
+    @#endfor
+    @#endfor
+    
+    @#for S in Sectors0
 //FOC of investment
-		#lambda_K@{S}@{n} = lambda_B@{n}l * PKP@{n} * exp( thetaGKP@{n} / 2 * ( log( GKP@{S}@{n} / GKP@{S}@{n}_LAG ) ) ^ 2 + thetaPKP@{n} / 2 * ( log( KP@{S}@{n} / KPP@{S}@{n}_LAG ) ) ^ 2 );
-		#lambda_K@{S}@{n}_LEAD = lambda_B@{n}l_LEAD * PKP@{n}_LEAD * exp( thetaGKP@{n} / 2 * ( log( GKP@{S}@{n}_LEAD / GKP@{S}@{n} ) ) ^ 2 + thetaPKP@{n} / 2 * ( log( KP@{S}@{n}_LEAD / KPP@{S}@{n} ) ) ^2 );
-		
+        #lambda_K@{S}@{n} = lambda_B@{n}l * PKP@{n} * exp( thetaGKP@{n} / 2 * ( log( GKP@{S}@{n} / GKP@{S}@{n}_LAG ) ) ^ 2 + thetaPKP@{n} / 2 * ( log( KP@{S}@{n} / KPP@{S}@{n}_LAG ) ) ^ 2 );
+        #lambda_K@{S}@{n}_LEAD = lambda_B@{n}l_LEAD * PKP@{n}_LEAD * exp( thetaGKP@{n} / 2 * ( log( GKP@{S}@{n}_LEAD / GKP@{S}@{n} ) ) ^ 2 + thetaPKP@{n} / 2 * ( log( KP@{S}@{n}_LEAD / KPP@{S}@{n} ) ) ^2 );
+        
 //FOC of capital growth rate
-		lambda_GK@{S}@{n}=
-		+ lambda_K@{S}@{n} * IKP@{S}@{n} / KP@{S}@{n} * exp( -thetaGKP@{n} / 2 * ( log( GKP@{S}@{n} / GKP@{S}@{n}_LAG ) ) ^ 2 - thetaPKP@{n} / 2 * ( log( KP@{S}@{n} / KPP@{S}@{n}_LAG ) ) ^ 2 ) * thetaGKP@{n} * log( GKP@{S}@{n} / GKP@{S}@{n}_LAG )
-		- VV@{n}l_LEAD * lambda_K@{S}@{n}_LEAD * IKP@{S}@{n}_LEAD / KP@{S}@{n} * exp( -thetaGKP@{n} / 2 * ( log( GKP@{S}@{n}_LEAD / GKP@{S}@{n} ) ) ^ 2 - thetaPKP@{n} / 2 * ( log( KP@{S}@{n}_LEAD / KPP@{S}@{n} ) ) ^ 2 ) * thetaGKP@{n} * log( GKP@{S}@{n}_LEAD / GKP@{S}@{n} );
-		
+        lambda_GK@{S}@{n}=
+        + lambda_K@{S}@{n} * IKP@{S}@{n} / KP@{S}@{n} * exp( -thetaGKP@{n} / 2 * ( log( GKP@{S}@{n} / GKP@{S}@{n}_LAG ) ) ^ 2 - thetaPKP@{n} / 2 * ( log( KP@{S}@{n} / KPP@{S}@{n}_LAG ) ) ^ 2 ) * thetaGKP@{n} * log( GKP@{S}@{n} / GKP@{S}@{n}_LAG )
+        - VV@{n}l_LEAD * lambda_K@{S}@{n}_LEAD * IKP@{S}@{n}_LEAD / KP@{S}@{n} * exp( -thetaGKP@{n} / 2 * ( log( GKP@{S}@{n}_LEAD / GKP@{S}@{n} ) ) ^ 2 - thetaPKP@{n} / 2 * ( log( KP@{S}@{n}_LEAD / KPP@{S}@{n} ) ) ^ 2 ) * thetaGKP@{n} * log( GKP@{S}@{n}_LEAD / GKP@{S}@{n} );
+        
 //FOC of capital stock
-		lambda_B@{n}l * KU@{S}@{n} * RKP@{S}@{n} * ( 1 - tauK@{S}@{n} )
-		- lambda_K@{S}@{n} * ( exp( -thetaGKP@{n} / 2 * ( log( GKP@{S}@{n} / GKP@{S}@{n}_LAG ) ) ^ 2 - thetaPKP@{n} / 2 * ( log( KP@{S}@{n} / KPP@{S}@{n}_LAG ) ) ^ 2 ) * thetaPKP@{n} * log( KP@{S}@{n} / KPP@{S}@{n}_LAG ) * IKP@{S}@{n} / KP@{S}@{n} + 1 )
-		+ VV@{n}l_LEAD * lambda_K@{S}@{n}_LEAD * ( 1 - deltaKP@{S}@{n}_LEAD - thetaKU0@{n} / ( 1+thetaKU1@{n} ) * KU@{S}@{n}_LEAD ^ ( 1+thetaKU1@{n} ) )
-		- lambda_GK@{S}@{n}
-		+ VV@{n}l_LEAD * lambda_GK@{S}@{n}_LEAD * GKP@{S}@{n}_LEAD;
-		
+        lambda_B@{n}l * KU@{S}@{n} * RKP@{S}@{n} * ( 1 - tauK@{S}@{n} )
+        - lambda_K@{S}@{n} * ( exp( -thetaGKP@{n} / 2 * ( log( GKP@{S}@{n} / GKP@{S}@{n}_LAG ) ) ^ 2 - thetaPKP@{n} / 2 * ( log( KP@{S}@{n} / KPP@{S}@{n}_LAG ) ) ^ 2 ) * thetaPKP@{n} * log( KP@{S}@{n} / KPP@{S}@{n}_LAG ) * IKP@{S}@{n} / KP@{S}@{n} + 1 )
+        + VV@{n}l_LEAD * lambda_K@{S}@{n}_LEAD * ( 1 - deltaKP@{S}@{n}_LEAD - thetaKU0@{n} / ( 1+thetaKU1@{n} ) * KU@{S}@{n}_LEAD ^ ( 1+thetaKU1@{n} ) )
+        - lambda_GK@{S}@{n}
+        + VV@{n}l_LEAD * lambda_GK@{S}@{n}_LEAD * GKP@{S}@{n}_LEAD;
+        
 //FOC of planned capital stock
-		VV@{n}l_LEAD * lambda_K@{S}@{n}_LEAD * IKP@{S}@{n}_LEAD / KPP@{S}@{n} * exp( -thetaGKP@{n} / 2 * ( log( GKP@{S}@{n}_LEAD / GKP@{S}@{n} ) ) ^ 2 - thetaPKP@{n} / 2 * ( log( KP@{S}@{n}_LEAD / KPP@{S}@{n} ) ) ^ 2 ) * thetaPKP@{n} * log( KP@{S}@{n}_LEAD / KPP@{S}@{n} );
+        VV@{n}l_LEAD * lambda_K@{S}@{n}_LEAD * IKP@{S}@{n}_LEAD / KPP@{S}@{n} * exp( -thetaGKP@{n} / 2 * ( log( GKP@{S}@{n}_LEAD / GKP@{S}@{n} ) ) ^ 2 - thetaPKP@{n} / 2 * ( log( KP@{S}@{n}_LEAD / KPP@{S}@{n} ) ) ^ 2 ) * thetaPKP@{n} * log( KP@{S}@{n}_LEAD / KPP@{S}@{n} );
 
 //FOC of capital utilization
-		lambda_B@{n}l * RKP@{S}@{n} * KP@{S}@{n} * ( 1 - tauK@{S}@{n} ) = lambda_K@{S}@{n} * thetaKU0@{n} * KU@{S}@{n} ^ thetaKU1@{n} * KP@{S}@{n}_LAG;
+        lambda_B@{n}l * RKP@{S}@{n} * KP@{S}@{n} * ( 1 - tauK@{S}@{n} ) = lambda_K@{S}@{n} * thetaKU0@{n} * KU@{S}@{n} ^ thetaKU1@{n} * KP@{S}@{n}_LAG;
 
 //FOC of Human capital investment
-		#lambda_H@{S}@{n} = lambda_B@{n}l * PHP@{n} * exp( thetaGHP@{n} / 2 * ( log( GHP@{S}@{n} / GHP@{S}@{n}_LAG ) ) ^ 2 + thetaPHP@{n} / 2 * ( log( HP@{S}@{n} / HPP@{S}@{n}_LAG ) ) ^ 2 );
-		#lambda_H@{S}@{n}_LEAD = lambda_B@{n}l_LEAD * PHP@{n}_LEAD * exp( thetaGHP@{n} / 2 * ( log( GHP@{S}@{n}_LEAD / GHP@{S}@{n} ) ) ^ 2 + thetaPHP@{n} / 2 * ( log( HP@{S}@{n}_LEAD / HPP@{S}@{n} ) ) ^2 );
+        #lambda_H@{S}@{n} = lambda_B@{n}l * PHP@{n} * exp( thetaGHP@{n} / 2 * ( log( GHP@{S}@{n} / GHP@{S}@{n}_LAG ) ) ^ 2 + thetaPHP@{n} / 2 * ( log( HP@{S}@{n} / HPP@{S}@{n}_LAG ) ) ^ 2 );
+        #lambda_H@{S}@{n}_LEAD = lambda_B@{n}l_LEAD * PHP@{n}_LEAD * exp( thetaGHP@{n} / 2 * ( log( GHP@{S}@{n}_LEAD / GHP@{S}@{n} ) ) ^ 2 + thetaPHP@{n} / 2 * ( log( HP@{S}@{n}_LEAD / HPP@{S}@{n} ) ) ^2 );
 
 //FOC of human capital growth rate
-		lambda_GH@{S}@{n}=
-		+ lambda_H@{S}@{n} * IHP@{S}@{n} / HP@{S}@{n} * exp( -thetaGHP@{n} / 2 * ( log( GHP@{S}@{n} / GHP@{S}@{n}_LAG ) ) ^ 2 - thetaPHP@{n} / 2 * ( log( HP@{S}@{n} / HPP@{S}@{n}_LAG ) ) ^ 2 ) * thetaGHP@{n} * log( GHP@{S}@{n} / GHP@{S}@{n}_LAG )
-		- VV@{n}l_LEAD * lambda_H@{S}@{n}_LEAD * IHP@{S}@{n}_LEAD / HP@{S}@{n} * exp( -thetaGHP@{n} / 2 * ( log( GHP@{S}@{n}_LEAD / GHP@{S}@{n} ) ) ^ 2 - thetaPHP@{n} / 2 * ( log( HP@{S}@{n}_LEAD / HPP@{S}@{n} ) ) ^ 2 ) * thetaGHP@{n} * log( GHP@{S}@{n}_LEAD / GHP@{S}@{n} );
-		
+        lambda_GH@{S}@{n}=
+        + lambda_H@{S}@{n} * IHP@{S}@{n} / HP@{S}@{n} * exp( -thetaGHP@{n} / 2 * ( log( GHP@{S}@{n} / GHP@{S}@{n}_LAG ) ) ^ 2 - thetaPHP@{n} / 2 * ( log( HP@{S}@{n} / HPP@{S}@{n}_LAG ) ) ^ 2 ) * thetaGHP@{n} * log( GHP@{S}@{n} / GHP@{S}@{n}_LAG )
+        - VV@{n}l_LEAD * lambda_H@{S}@{n}_LEAD * IHP@{S}@{n}_LEAD / HP@{S}@{n} * exp( -thetaGHP@{n} / 2 * ( log( GHP@{S}@{n}_LEAD / GHP@{S}@{n} ) ) ^ 2 - thetaPHP@{n} / 2 * ( log( HP@{S}@{n}_LEAD / HPP@{S}@{n} ) ) ^ 2 ) * thetaGHP@{n} * log( GHP@{S}@{n}_LEAD / GHP@{S}@{n} );
+        
 //FOC of human capital stock
-		lambda_B@{n}l * RHP@{S}@{n} * ( 1 - tauH@{S}@{n} )
-		- lambda_H@{S}@{n} * ( exp( -thetaGHP@{n} / 2 * ( log( GHP@{S}@{n} / GHP@{S}@{n}_LAG ) ) ^ 2 - thetaPHP@{n} / 2 * ( log( HP@{S}@{n} / HPP@{S}@{n}_LAG ) ) ^ 2 ) * thetaPHP@{n} * log( HP@{S}@{n} / HPP@{S}@{n}_LAG ) * IHP@{S}@{n} / HP@{S}@{n} + 1 )
-		+ VV@{n}l_LEAD * lambda_H@{S}@{n}_LEAD * ( 1 - deltaHP@{S}@{n}_LEAD )
-		- lambda_GH@{S}@{n}
-		+ VV@{n}l_LEAD * lambda_GH@{S}@{n}_LEAD * GHP@{S}@{n}_LEAD;
-		
+        lambda_B@{n}l * RHP@{S}@{n} * ( 1 - tauH@{S}@{n} )
+        - lambda_H@{S}@{n} * ( exp( -thetaGHP@{n} / 2 * ( log( GHP@{S}@{n} / GHP@{S}@{n}_LAG ) ) ^ 2 - thetaPHP@{n} / 2 * ( log( HP@{S}@{n} / HPP@{S}@{n}_LAG ) ) ^ 2 ) * thetaPHP@{n} * log( HP@{S}@{n} / HPP@{S}@{n}_LAG ) * IHP@{S}@{n} / HP@{S}@{n} + 1 )
+        + VV@{n}l_LEAD * lambda_H@{S}@{n}_LEAD * ( 1 - deltaHP@{S}@{n}_LEAD )
+        - lambda_GH@{S}@{n}
+        + VV@{n}l_LEAD * lambda_GH@{S}@{n}_LEAD * GHP@{S}@{n}_LEAD;
+        
 //FOC of human planned capital stock
-		VV@{n}l_LEAD * lambda_H@{S}@{n}_LEAD * IHP@{S}@{n}_LEAD / HPP@{S}@{n} * exp( -thetaGHP@{n} / 2 * ( log( GHP@{S}@{n}_LEAD / GHP@{S}@{n} ) ) ^ 2 - thetaPHP@{n} / 2 * ( log( HP@{S}@{n}_LEAD / HPP@{S}@{n} ) ) ^ 2 ) * thetaPHP@{n} * log( HP@{S}@{n}_LEAD / HPP@{S}@{n} );
-	@#endfor
+        VV@{n}l_LEAD * lambda_H@{S}@{n}_LEAD * IHP@{S}@{n}_LEAD / HPP@{S}@{n} * exp( -thetaGHP@{n} / 2 * ( log( GHP@{S}@{n}_LEAD / GHP@{S}@{n} ) ) ^ 2 - thetaPHP@{n} / 2 * ( log( HP@{S}@{n}_LEAD / HPP@{S}@{n} ) ) ^ 2 ) * thetaPHP@{n} * log( HP@{S}@{n}_LEAD / HPP@{S}@{n} );
+    @#endfor
 
 //Impatient's budget and collateral constraints
-	- ID@{n}b * PD@{n} * ( 1 + tauD@{n} ) - IND@{n}b * PND@{n} * ( 1 + tauND@{n} )
-	- B@{n}_LAG + Q * B@{n}
-	- tau@{n}b * Y@{n} * P@{n}
-	@#for S in [ "W", "T", "NT", "D", "NDCG", "K", "H" ]
-		+ W@{S}@{n} * ( 1 - tauL@{S}@{n} ) * L@{S}@{n}b
-	@#endfor
-	@#for S in [ "W", "T", "NT" ]
-		+ W@{S}@{n} * ( 1 - tauL@{S}@{n} ) * LS@{S}@{n}b
-	@#endfor
-	;
-	rhoQB@{n} * B@{n}_LAG - B@{n} + ( 1 - rhoQB@{n} ) * m@{n} * D@{n}b * PD@{n};
+    - ID@{n}b * PD@{n} * ( 1 + tauD@{n} ) - IND@{n}b * PND@{n} * ( 1 + tauND@{n} )
+    - B@{n}_LAG + Q * B@{n}
+    - tau@{n}b * Y@{n} * P@{n}
+    @#for S in [ "W", "T", "NT", "D", "NDCG", "K", "H" ]
+        + W@{S}@{n} * ( 1 - tauL@{S}@{n} ) * L@{S}@{n}b
+    @#endfor
+    @#for S in [ "W", "T", "NT" ]
+        + W@{S}@{n} * ( 1 - tauL@{S}@{n} ) * LS@{S}@{n}b
+    @#endfor
+    ;
+    rhoQB@{n} * B@{n}_LAG - B@{n} + ( 1 - rhoQB@{n} ) * m@{n} * D@{n}b * PD@{n};
 
 //household aggregae
-	@#for S in Sectors1
-		#L@{S}@{n}_LAG = L@{S}@{n}b_LAG + L@{S}@{n}l_LAG;
-		#L@{S}@{n} = L@{S}@{n}b + L@{S}@{n}l;
-		#L@{S}@{n}_LEAD = L@{S}@{n}b_LEAD + L@{S}@{n}l_LEAD;
-	@#endfor
-	@#for S in  ["W", "T", "NT" ]
-		#L@{S}@{n}_LAG = L@{S}@{n}b_LAG + LS@{S}@{n}b_LAG + L@{S}@{n}l_LAG;
-		#L@{S}@{n} = L@{S}@{n}b + LS@{S}@{n}b + L@{S}@{n}l;
-		#L@{S}@{n}_LEAD = L@{S}@{n}b_LEAD + LS@{S}@{n}b_LEAD + L@{S}@{n}l_LEAD;
-	@#endfor
-	@#for S in  ["SW", "ST", "SNT" ]
-		#L@{S}@{n}_LAG = L@{S}@{n}l_LAG;
-		#L@{S}@{n} = L@{S}@{n}l;
-		#L@{S}@{n}_LEAD = L@{S}@{n}l_LEAD;
-	@#endfor
+    @#for S in Sectors1
+        #L@{S}@{n}_LAG = L@{S}@{n}b_LAG + L@{S}@{n}l_LAG;
+        #L@{S}@{n} = L@{S}@{n}b + L@{S}@{n}l;
+        #L@{S}@{n}_LEAD = L@{S}@{n}b_LEAD + L@{S}@{n}l_LEAD;
+    @#endfor
+    @#for S in  ["W", "T", "NT" ]
+        #L@{S}@{n}_LAG = L@{S}@{n}b_LAG + LS@{S}@{n}b_LAG + L@{S}@{n}l_LAG;
+        #L@{S}@{n} = L@{S}@{n}b + LS@{S}@{n}b + L@{S}@{n}l;
+        #L@{S}@{n}_LEAD = L@{S}@{n}b_LEAD + LS@{S}@{n}b_LEAD + L@{S}@{n}l_LEAD;
+    @#endfor
+    @#for S in  ["SW", "ST", "SNT" ]
+        #L@{S}@{n}_LAG = L@{S}@{n}l_LAG;
+        #L@{S}@{n} = L@{S}@{n}l;
+        #L@{S}@{n}_LEAD = L@{S}@{n}l_LEAD;
+    @#endfor
 
-	#ID@{n} = ID@{n}b + ID@{n}l;
-	#IND@{n} = IND@{n}b + IND@{n}l;
-	#ID@{n}_LAG = ID@{n}b_LAG + ID@{n}l_LAG;
-	#IND@{n}_LAG = IND@{n}b_LAG + IND@{n}l_LAG;
+    #ID@{n} = ID@{n}b + ID@{n}l;
+    #IND@{n} = IND@{n}b + IND@{n}l;
+    #ID@{n}_LAG = ID@{n}b_LAG + ID@{n}l_LAG;
+    #IND@{n}_LAG = IND@{n}b_LAG + IND@{n}l_LAG;
 
 //Total demand of IK
-	#IKP@{n} =
-	@#for S in Sectors0
-		+ IKP@{S}@{n}
-	@#endfor
-	;
-	#IKP@{n}_LAG =
-	@#for S in Sectors0
-		+ IKP@{S}@{n}_LAG
-	@#endfor
-	;
+    #IKP@{n} =
+    @#for S in Sectors0
+        + IKP@{S}@{n}
+    @#endfor
+    ;
+    #IKP@{n}_LAG =
+    @#for S in Sectors0
+        + IKP@{S}@{n}_LAG
+    @#endfor
+    ;
 
 //Total demand of IH IH
-	#IHP@{n} =
-	@#for S in Sectors0
-		+ IHP@{S}@{n}
-	@#endfor
-	;
-	#IHP@{n}_LAG =
-	@#for S in Sectors0
-		+ IHP@{S}@{n}_LAG
-	@#endfor
-	;
+    #IHP@{n} =
+    @#for S in Sectors0
+        + IHP@{S}@{n}
+    @#endfor
+    ;
+    #IHP@{n}_LAG =
+    @#for S in Sectors0
+        + IHP@{S}@{n}_LAG
+    @#endfor
+    ;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                            production of final goods                                                  //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
-	@#for S in SectorsP1
-		//can't define Y@{S}@{n} and P@{S}@{n} as MLV because
-		//we need to define Y@{n}, and household take P@{S}@{n} as given
-		I@{S}@{n} = Omega@{S}@{n} * Y@{S}@{n} ^ alpha@{S}@{n} * L@{S}@{n} ^ ( 1 - alpha@{S}@{n} );
-		P@{S}@{n} * alpha@{S}@{n} * I@{S}@{n} / Y@{S}@{n} = P@{n};
-	@#endfor
-	PKP@{n} * ( 1 - alphaKP@{n} ) * IKP@{n} / LKP@{n} = WK@{n};
-	PHP@{n} * ( 1 - alphaHP@{n} ) * IHP@{n} / LHP@{n} = WH@{n};
-	PD@{n} * ( 1 - alphaD@{n} ) * ID@{n} / LD@{n} = WD@{n};
-	PND@{n} * ( 1 - alphaND@{n} ) * IND@{n} / LND@{n} = WNDCG@{n};
+    
+    @#for S in SectorsP1
+        //can't define Y@{S}@{n} and P@{S}@{n} as MLV because
+        //we need to define Y@{n}, and household take P@{S}@{n} as given
+        I@{S}@{n} = Omega@{S}@{n} * Y@{S}@{n} ^ alpha@{S}@{n} * L@{S}@{n} ^ ( 1 - alpha@{S}@{n} );
+        P@{S}@{n} * alpha@{S}@{n} * I@{S}@{n} / Y@{S}@{n} = P@{n};
+    @#endfor
+    PKP@{n} * ( 1 - alphaKP@{n} ) * IKP@{n} / LKP@{n} = WK@{n};
+    PHP@{n} * ( 1 - alphaHP@{n} ) * IHP@{n} / LHP@{n} = WH@{n};
+    PD@{n} * ( 1 - alphaD@{n} ) * ID@{n} / LD@{n} = WD@{n};
+    PND@{n} * ( 1 - alphaND@{n} ) * IND@{n} / LND@{n} = WNDCG@{n};
 
-	#LKG@{n} = LK@{n} - LKP@{n};
-	#LHG@{n} = LH@{n} - LHP@{n};
-	#LCG@{n} = LNDCG@{n} - LND@{n};
-	#LKG@{n}_LAG = LK@{n}_LAG - LKP@{n}_LAG;
-	#LHG@{n}_LAG = LH@{n}_LAG - LHP@{n}_LAG;
-	#LCG@{n}_LAG = LNDCG@{n}_LAG - LND@{n}_LAG;
+    #LKG@{n} = LK@{n} - LKP@{n};
+    #LHG@{n} = LH@{n} - LHP@{n};
+    #LCG@{n} = LNDCG@{n} - LND@{n};
+    #LKG@{n}_LAG = LK@{n}_LAG - LKP@{n}_LAG;
+    #LHG@{n}_LAG = LH@{n}_LAG - LHP@{n}_LAG;
+    #LCG@{n}_LAG = LNDCG@{n}_LAG - LND@{n}_LAG;
 
-	@#for S in SectorsG1
-		#Y@{S}@{n} = tau@{S}@{n} * alpha@{S}@{n} * Y@{n};
-		#Y@{S}@{n}_LAG = tau@{S}@{n}_LAG * alpha@{S}@{n} * Y@{n}_LAG;
+    @#for S in SectorsG1
+        #Y@{S}@{n} = tau@{S}@{n} * alpha@{S}@{n} * Y@{n};
+        #Y@{S}@{n}_LAG = tau@{S}@{n}_LAG * alpha@{S}@{n} * Y@{n}_LAG;
     @#endfor
     #IKG@{n} = OmegaKG@{n} * YKG@{n} ^ alphaKG@{n} * LKG@{n} ^ ( 1 - alphaKG@{n} );
     #IKG@{n}_LAG = OmegaKG@{n}_LAG * YKG@{n}_LAG ^ alphaKG@{n} * LKG@{n}_LAG ^ ( 1 - alphaKG@{n} );
@@ -1306,224 +1306,224 @@ log_glambda_GH = log( exp(log_glambda_CP) * GAs ^ ( alphaCD1 * ( d * alphaD1 * a
     #IHG@{n}_LAG = OmegaHG@{n}_LAG * YHG@{n}_LAG ^ alphaHG@{n} * LHG@{n}_LAG ^ ( 1 - alphaHG@{n} );
     #ICG@{n} = OmegaCG@{n} * YCG@{n} ^ alphaCG@{n} * LCG@{n} ^ ( 1 - alphaCG@{n} );
     #ICG@{n}_LAG = OmegaCG@{n}_LAG * YCG@{n}_LAG ^ alphaCG@{n} * LCG@{n}_LAG ^ ( 1 - alphaCG@{n} );
-	@#for S in SectorsG1	
-		#P@{S}@{n} = P@{n} * Y@{S}@{n} / alpha@{S}@{n} / I@{S}@{n};
-		#P@{S}@{n}_LAG = P@{n}_LAG * Y@{S}@{n}_LAG / alpha@{S}@{n} / I@{S}@{n}_LAG;
-	@#endfor
+    @#for S in SectorsG1    
+        #P@{S}@{n} = P@{n} * Y@{S}@{n} / alpha@{S}@{n} / I@{S}@{n};
+        #P@{S}@{n}_LAG = P@{n}_LAG * Y@{S}@{n}_LAG / alpha@{S}@{n} / I@{S}@{n}_LAG;
+    @#endfor
 
-	PKG@{n} * ( 1 - alphaKG@{n} ) * IKG@{n} / LKG@{n} = WK@{n};
-	PHG@{n} * ( 1 - alphaHG@{n} ) * IHG@{n} / LHG@{n} = WH@{n};
-	PCG@{n} * ( 1 - alphaCG@{n} ) * ICG@{n} / LCG@{n} = WNDCG@{n};
-	
-	#GKG@{n} = KG@{n} / KG@{n}_LAG;
-	#GKG@{n}_LAG = KG@{n}_LAG / KG@{n}_LAG2;
-	#GHG@{n} = HG@{n} / HG@{n}_LAG;
-	#GHG@{n}_LAG = HG@{n}_LAG / HG@{n}_LAG2;
-	CG@{n} = ICG@{n};
-	KG@{n} = ( 1 - deltaKG@{n} ) * KG@{n}_LAG + IKG@{n} * exp( - thetaGKG@{n} / 2 * ( log( GKG@{n} / GKG@{n}_LAG ) ) ^ 2 );
-	HG@{n} = ( 1 - deltaHG@{n} ) * HG@{n}_LAG + IHG@{n} * exp( - thetaGHG@{n} / 2 * ( log( GHG@{n} / GHG@{n}_LAG ) ) ^ 2 );
-	
+    PKG@{n} * ( 1 - alphaKG@{n} ) * IKG@{n} / LKG@{n} = WK@{n};
+    PHG@{n} * ( 1 - alphaHG@{n} ) * IHG@{n} / LHG@{n} = WH@{n};
+    PCG@{n} * ( 1 - alphaCG@{n} ) * ICG@{n} / LCG@{n} = WNDCG@{n};
+    
+    #GKG@{n} = KG@{n} / KG@{n}_LAG;
+    #GKG@{n}_LAG = KG@{n}_LAG / KG@{n}_LAG2;
+    #GHG@{n} = HG@{n} / HG@{n}_LAG;
+    #GHG@{n}_LAG = HG@{n}_LAG / HG@{n}_LAG2;
+    CG@{n} = ICG@{n};
+    KG@{n} = ( 1 - deltaKG@{n} ) * KG@{n}_LAG + IKG@{n} * exp( - thetaGKG@{n} / 2 * ( log( GKG@{n} / GKG@{n}_LAG ) ) ^ 2 );
+    HG@{n} = ( 1 - deltaHG@{n} ) * HG@{n}_LAG + IHG@{n} * exp( - thetaGHG@{n} / 2 * ( log( GHG@{n} / GHG@{n}_LAG ) ) ^ 2 );
+    
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                     production of almost final goods                                                  //
 //                                    trade of tradable goods and widgets                                                //
 //                                                 The ROW                                                               //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
+    
 //scale parameters in final good production
-	#yNT@{n} = STEADY_STATE( alphaNC@{n} * P@{n} / PNT@{n} / ( 1 + tauNT@{n} ) * OmegaY@{n} );
-	#yTC@{n} = STEADY_STATE( ( 1 - alphaNC@{n} ) * P@{n} / PTC@{n} / ( 1 + tauTC@{n} ) * OmegaY@{n} );
+    #yNT@{n} = STEADY_STATE( alphaNC@{n} * P@{n} / PNT@{n} / ( 1 + tauNT@{n} ) * OmegaY@{n} );
+    #yTC@{n} = STEADY_STATE( ( 1 - alphaNC@{n} ) * P@{n} / PTC@{n} / ( 1 + tauTC@{n} ) * OmegaY@{n} );
 
 //demand of nontradable
-	#YNT@{n} = ( alphaNC@{n} * OmegaY@{n} * P@{n} / ( PNT@{n} * yNT@{n} * ( 1 + tauNT@{n} ) ) ) ^ eNC@{n} * yNT@{n} * Y@{n} / OmegaY@{n};
-	#YNT@{n}_LEAD = ( alphaNC@{n} * OmegaY@{n}_LEAD * P@{n}_LEAD / ( PNT@{n}_LEAD * yNT@{n} * ( 1 + tauNT@{n}_LEAD ) ) ) ^ eNC@{n} * yNT@{n} * Y@{n}_LEAD / OmegaY@{n}_LEAD;
+    #YNT@{n} = ( alphaNC@{n} * OmegaY@{n} * P@{n} / ( PNT@{n} * yNT@{n} * ( 1 + tauNT@{n} ) ) ) ^ eNC@{n} * yNT@{n} * Y@{n} / OmegaY@{n};
+    #YNT@{n}_LEAD = ( alphaNC@{n} * OmegaY@{n}_LEAD * P@{n}_LEAD / ( PNT@{n}_LEAD * yNT@{n} * ( 1 + tauNT@{n}_LEAD ) ) ) ^ eNC@{n} * yNT@{n} * Y@{n}_LEAD / OmegaY@{n}_LEAD;
 
 //demand of tradable composite
-	#YTC@{n}_LAG = ( ( 1 - alphaNC@{n} ) * OmegaY@{n}_LAG * P@{n}_LAG / ( PTC@{n}_LAG * yTC@{n} * ( 1 + tauTC@{n}_LAG ) ) ) ^ eNC@{n} * yTC@{n} * Y@{n}_LAG / OmegaY@{n}_LAG;
-	#YTC@{n} = ( ( 1 - alphaNC@{n} ) * OmegaY@{n} * P@{n} / ( PTC@{n} * yTC@{n} * ( 1 + tauTC@{n} ) ) ) ^ eNC@{n} * yTC@{n} * Y@{n} / OmegaY@{n};
-	#YTC@{n}_LEAD = ( ( 1 - alphaNC@{n} ) * OmegaY@{n}_LEAD * P@{n}_LEAD / ( PTC@{n}_LEAD * yTC@{n} * ( 1 + tauTC@{n}_LEAD ) ) ) ^ eNC@{n} * yTC@{n} * Y@{n}_LEAD / OmegaY@{n}_LEAD;
+    #YTC@{n}_LAG = ( ( 1 - alphaNC@{n} ) * OmegaY@{n}_LAG * P@{n}_LAG / ( PTC@{n}_LAG * yTC@{n} * ( 1 + tauTC@{n}_LAG ) ) ) ^ eNC@{n} * yTC@{n} * Y@{n}_LAG / OmegaY@{n}_LAG;
+    #YTC@{n} = ( ( 1 - alphaNC@{n} ) * OmegaY@{n} * P@{n} / ( PTC@{n} * yTC@{n} * ( 1 + tauTC@{n} ) ) ) ^ eNC@{n} * yTC@{n} * Y@{n} / OmegaY@{n};
+    #YTC@{n}_LEAD = ( ( 1 - alphaNC@{n} ) * OmegaY@{n}_LEAD * P@{n}_LEAD / ( PTC@{n}_LEAD * yTC@{n} * ( 1 + tauTC@{n}_LEAD ) ) ) ^ eNC@{n} * yTC@{n} * Y@{n}_LEAD / OmegaY@{n}_LEAD;
 
 //production of final goods
-	Y@{n} = OmegaY@{n} * ( alphaNC@{n} * ( YNT@{n} / yNT@{n} ) ^ ( ( eNC@{n} - 1 ) / eNC@{n} ) + ( 1 - alphaNC@{n} ) * ( YTC@{n} / yTC@{n} ) ^ ( ( eNC@{n} - 1 ) / eNC@{n} ) ) ^ ( eNC@{n} / ( eNC@{n} - 1 ) );
+    Y@{n} = OmegaY@{n} * ( alphaNC@{n} * ( YNT@{n} / yNT@{n} ) ^ ( ( eNC@{n} - 1 ) / eNC@{n} ) + ( 1 - alphaNC@{n} ) * ( YTC@{n} / yTC@{n} ) ^ ( ( eNC@{n} - 1 ) / eNC@{n} ) ) ^ ( eNC@{n} / ( eNC@{n} - 1 ) );
 
 @#if n == 1
 //ROW VAR, note that the VAR is defined on detrended PT0 and YTC0!
-	#YTC0ss = steady_state(YTC1 * N0 / N1) * yTC0;
-	#PT0ss = steady_state(PT1) * pT0;
-	log(PT0 ) = log(PT0ss) * ( 1 - rhoPP0 ) - log(YTC0ss) * rhoPY0 + log(PT0_LAG * gPS) * rhoPP0 + log(YTC0_LAG * gYS) * rhoPY0 + sigmaP0 * epsilon_P0;
-	log(YTC0) = log(PT0ss) * -rhoYP0 + ( 1 - rhoYY0 ) * log(YTC0ss) + log(PT0_LAG * gPS) * rhoYP0 + log(YTC0_LAG * gYS) * rhoYY0 + sigmaY0 * ( epsilon_P0 * rho0 + epsilon_Y0 * ( 1 - rho0 ^ 2 )^( 1 / 2 ) );
+    #YTC0ss = steady_state(YTC1 * N0 / N1) * yTC0;
+    #PT0ss = steady_state(PT1) * pT0;
+    log(PT0 ) = log(PT0ss) * ( 1 - rhoPP0 ) - log(YTC0ss) * rhoPY0 + log(PT0_LAG * gPS) * rhoPP0 + log(YTC0_LAG * gYS) * rhoPY0 + sigmaP0 * epsilon_P0;
+    log(YTC0) = log(PT0ss) * -rhoYP0 + ( 1 - rhoYY0 ) * log(YTC0ss) + log(PT0_LAG * gPS) * rhoYP0 + log(YTC0_LAG * gYS) * rhoYY0 + sigmaY0 * ( epsilon_P0 * rho0 + epsilon_Y0 * ( 1 - rho0 ^ 2 )^( 1 / 2 ) );
 
 //ROW demand of tradable goods
-	#iotaTM0=0; #iotaTM0_LAG=0; #iotaTM0_LEAD=0;
-	#iotaTX0=0; #iotaTX0_LAG=0; #iotaTX0_LEAD=0;
-	@#for m in 1:SN
-		#YT0@{m}_LAG = ( PT0_LAG / ( PT@{m}_LAG * ( 1 + iotaTM@{n}_LAG + iotaTX@{m}_LAG ) ) ) ^ eT0@{m} * YTC0_LAG * steady_state(N@{m});
-		#YT0@{m} = ( PT0 / ( PT@{m} * ( 1 + iotaTM@{n} + iotaTX@{m} ) ) ) ^ eT0@{m} * YTC0 * steady_state(N@{m});
-		#YT0@{m}_LEAD = ( PT0_LEAD / ( PT@{m}_LEAD * ( 1 + iotaTM@{n}_LEAD + iotaTX@{m}_LEAD ) ) ) ^ eT0@{m} * YTC0_LEAD * steady_state(N@{m});
-	@#endfor
+    #iotaTM0=0; #iotaTM0_LAG=0; #iotaTM0_LEAD=0;
+    #iotaTX0=0; #iotaTX0_LAG=0; #iotaTX0_LEAD=0;
+    @#for m in 1:SN
+        #YT0@{m}_LAG = ( PT0_LAG / ( PT@{m}_LAG * ( 1 + iotaTM@{n}_LAG + iotaTX@{m}_LAG ) ) ) ^ eT0@{m} * YTC0_LAG * steady_state(N@{m});
+        #YT0@{m} = ( PT0 / ( PT@{m} * ( 1 + iotaTM@{n} + iotaTX@{m} ) ) ) ^ eT0@{m} * YTC0 * steady_state(N@{m});
+        #YT0@{m}_LEAD = ( PT0_LEAD / ( PT@{m}_LEAD * ( 1 + iotaTM@{n}_LEAD + iotaTX@{m}_LEAD ) ) ) ^ eT0@{m} * YTC0_LEAD * steady_state(N@{m});
+    @#endfor
 @#endif
 
 //demand of tradable goods
-	@#for m in 0:SN
-		#YT@{n}@{m}_LAG = ( PTC@{n}_LAG * OmegaTC@{n}_LAG / ( PT@{m}_LAG *
-		@#if n == m
-			1
-		@#else
-			( 1 + iotaTM@{n}_LAG + iotaTX@{m}_LAG )
-		@#endif
-		) ) ^ eT@{n} * YTC@{n}_LAG / OmegaTC@{n}_LAG * steady_state(N@{m});
+    @#for m in 0:SN
+        #YT@{n}@{m}_LAG = ( PTC@{n}_LAG * OmegaTC@{n}_LAG / ( PT@{m}_LAG *
+        @#if n == m
+            1
+        @#else
+            ( 1 + iotaTM@{n}_LAG + iotaTX@{m}_LAG )
+        @#endif
+        ) ) ^ eT@{n} * YTC@{n}_LAG / OmegaTC@{n}_LAG * steady_state(N@{m});
 
-		#YT@{n}@{m} = ( PTC@{n} * OmegaTC@{n} / ( PT@{m} *
-		@#if n == m
-			1
-		@#else
-			( 1 + iotaTM@{n} + iotaTX@{m} )
-		@#endif
-		) ) ^ eT@{n} * YTC@{n} / OmegaTC@{n} * steady_state(N@{m});
+        #YT@{n}@{m} = ( PTC@{n} * OmegaTC@{n} / ( PT@{m} *
+        @#if n == m
+            1
+        @#else
+            ( 1 + iotaTM@{n} + iotaTX@{m} )
+        @#endif
+        ) ) ^ eT@{n} * YTC@{n} / OmegaTC@{n} * steady_state(N@{m});
 
-		#YT@{n}@{m}_LEAD = ( PTC@{n}_LEAD * OmegaTC@{n}_LEAD / ( PT@{m}_LEAD *
-		@#if n == m
-			1
-		@#else
-			( 1 + iotaTM@{n}_LEAD + iotaTX@{m}_LEAD )
-		@#endif
-		) ) ^ eT@{n} * YTC@{n}_LEAD / OmegaTC@{n}_LEAD * steady_state(N@{m});
-	@#endfor
-			
+        #YT@{n}@{m}_LEAD = ( PTC@{n}_LEAD * OmegaTC@{n}_LEAD / ( PT@{m}_LEAD *
+        @#if n == m
+            1
+        @#else
+            ( 1 + iotaTM@{n}_LEAD + iotaTX@{m}_LEAD )
+        @#endif
+        ) ) ^ eT@{n} * YTC@{n}_LEAD / OmegaTC@{n}_LEAD * steady_state(N@{m});
+    @#endfor
+            
 //production of tradable composite
-	YTC@{n} = OmegaTC@{n} * ( 0 
-	@#for m in 0:SN
-		+ YT@{n}@{m} ^ ( ( eT@{n} - 1 ) / eT@{n} ) * steady_state(N@{m}) ^ ( 1 / eT@{n} )
-	@#endfor
-	) ^ ( eT@{n} / ( eT@{n} - 1 ) );
+    YTC@{n} = OmegaTC@{n} * ( 0 
+    @#for m in 0:SN
+        + YT@{n}@{m} ^ ( ( eT@{n} - 1 ) / eT@{n} ) * steady_state(N@{m}) ^ ( 1 / eT@{n} )
+    @#endfor
+    ) ^ ( eT@{n} / ( eT@{n} - 1 ) );
 @#endfor
 
 @#for n in 1:SN
 //tradable good market clearing
-	#YT@{n}_LAG = YT0@{n}_LAG * ( 1 + ( 1 - phiiotaTX@{n} ) * iotaTX@{n}_LAG )
-	@#for m in 1:SN
-		+ YT@{m}@{n}_LAG * 
-		@#if n == m
-			1
-		@#else
-			( 1 + ( 1 - phiiotaTX@{n} ) * iotaTX@{n}_LAG + ( 1 - phiiotaTM@{m} ) * iotaTM@{m}_LAG )
-		@#endif
-	@#endfor
+    #YT@{n}_LAG = YT0@{n}_LAG * ( 1 + ( 1 - phiiotaTX@{n} ) * iotaTX@{n}_LAG )
+    @#for m in 1:SN
+        + YT@{m}@{n}_LAG * 
+        @#if n == m
+            1
+        @#else
+            ( 1 + ( 1 - phiiotaTX@{n} ) * iotaTX@{n}_LAG + ( 1 - phiiotaTM@{m} ) * iotaTM@{m}_LAG )
+        @#endif
+    @#endfor
     ;
-	#YT@{n} = YT0@{n} * ( 1 + ( 1 - phiiotaTX@{n} ) * iotaTX@{n} )
-	@#for m in 1:SN
-		+ YT@{m}@{n} * 
-		@#if n == m
-			1
-		@#else
-			( 1 + ( 1 - phiiotaTX@{n} ) * iotaTX@{n} + ( 1 - phiiotaTM@{m} ) * iotaTM@{m} )
-		@#endif
-	@#endfor
-	;
-	#YT@{n}_LEAD = YT0@{n}_LEAD * ( 1 + ( 1 - phiiotaTX@{n} ) * iotaTX@{n}_LEAD )
-	@#for m in 1:SN
-		+ YT@{m}@{n}_LEAD * 
-		@#if n == m
-			1
-		@#else
-			( 1 + ( 1 - phiiotaTX@{n} ) * iotaTX@{n}_LEAD + ( 1 - phiiotaTM@{m} ) * iotaTM@{m}_LEAD )
-		@#endif
-	@#endfor
-	;
+    #YT@{n} = YT0@{n} * ( 1 + ( 1 - phiiotaTX@{n} ) * iotaTX@{n} )
+    @#for m in 1:SN
+        + YT@{m}@{n} * 
+        @#if n == m
+            1
+        @#else
+            ( 1 + ( 1 - phiiotaTX@{n} ) * iotaTX@{n} + ( 1 - phiiotaTM@{m} ) * iotaTM@{m} )
+        @#endif
+    @#endfor
+    ;
+    #YT@{n}_LEAD = YT0@{n}_LEAD * ( 1 + ( 1 - phiiotaTX@{n} ) * iotaTX@{n}_LEAD )
+    @#for m in 1:SN
+        + YT@{m}@{n}_LEAD * 
+        @#if n == m
+            1
+        @#else
+            ( 1 + ( 1 - phiiotaTX@{n} ) * iotaTX@{n}_LEAD + ( 1 - phiiotaTM@{m} ) * iotaTM@{m}_LEAD )
+        @#endif
+    @#endfor
+    ;
 @#endfor
 
 @#for n in 1:SN
 //production of widget composite and claim
     #FWC@{n} = FWCtilde * steady_state(YWC@{n});
-	YWP@{n} = ( ( YWC@{n} + FWC@{n} ) / OmegaWC@{n} / HG@{n}_LAG ^ alphaHW@{n} ) ^ ( 1 / ( 1 - alphaHW@{n} ) );
-	#YX@{n} = YWC@{n};
+    YWP@{n} = ( ( YWC@{n} + FWC@{n} ) / OmegaWC@{n} / HG@{n}_LAG ^ alphaHW@{n} ) ^ ( 1 / ( 1 - alphaHW@{n} ) );
+    #YX@{n} = YWC@{n};
 
 //demand of private widget composite (and price of claim)
-	#PX@{n} = PWP@{n} * YWP@{n} / ( YWC@{n} + FWC@{n} ) / ( 1 - alphaHW@{n} ) - PWC;
+    #PX@{n} = PWP@{n} * YWP@{n} / ( YWC@{n} + FWC@{n} ) / ( 1 - alphaHW@{n} ) - PWC;
 %   it's more nature to define PWP as MLV, but PX has steady state = 0, So I make PX MLV
-	
+    
 //demand for private widget variaty
-	@#for m in 1:SN
-		#YW@{n}@{m}_LAG = ( PWP@{n}_LAG * OmegaWP@{n}_LAG / ( PW@{m}_LAG *
-		@#if n == m
-			1
-		@#else
-			( 1 + iotaWM@{n}_LAG + iotaWX@{m}_LAG )
-		@#endif
-		)) ^ eW@{n} * YWP@{n}_LAG / OmegaWP@{n}_LAG * steady_state( N@{m} / NN );
+    @#for m in 1:SN
+        #YW@{n}@{m}_LAG = ( PWP@{n}_LAG * OmegaWP@{n}_LAG / ( PW@{m}_LAG *
+        @#if n == m
+            1
+        @#else
+            ( 1 + iotaWM@{n}_LAG + iotaWX@{m}_LAG )
+        @#endif
+        )) ^ eW@{n} * YWP@{n}_LAG / OmegaWP@{n}_LAG * steady_state( N@{m} / NN );
 
-		#YW@{n}@{m} = ( PWP@{n} * OmegaWP@{n} / ( PW@{m} *
-		@#if n == m
-			1
-		@#else
-			( 1 + iotaWM@{n} + iotaWX@{m} )
-		@#endif
-		)) ^ eW@{n} * YWP@{n} / OmegaWP@{n} * steady_state( N@{m} / NN );
+        #YW@{n}@{m} = ( PWP@{n} * OmegaWP@{n} / ( PW@{m} *
+        @#if n == m
+            1
+        @#else
+            ( 1 + iotaWM@{n} + iotaWX@{m} )
+        @#endif
+        )) ^ eW@{n} * YWP@{n} / OmegaWP@{n} * steady_state( N@{m} / NN );
 
-		#YW@{n}@{m}_LEAD = ( PWP@{n}_LEAD * OmegaWP@{n}_LEAD / ( PW@{m}_LEAD *
-		@#if n == m
-			1
-		@#else
-			( 1 + iotaWM@{n}_LEAD + iotaWX@{m}_LEAD )
-		@#endif
-		)) ^ eW@{n} * YWP@{n}_LEAD / OmegaWP@{n}_LEAD * steady_state( N@{m} / NN );
-	@#endfor
+        #YW@{n}@{m}_LEAD = ( PWP@{n}_LEAD * OmegaWP@{n}_LEAD / ( PW@{m}_LEAD *
+        @#if n == m
+            1
+        @#else
+            ( 1 + iotaWM@{n}_LEAD + iotaWX@{m}_LEAD )
+        @#endif
+        )) ^ eW@{n} * YWP@{n}_LEAD / OmegaWP@{n}_LEAD * steady_state( N@{m} / NN );
+    @#endfor
 
-//production of private widget composite	
-	YWP@{n} = OmegaWP@{n} * ( 
-	@#for m in 1:SN
-		+ YW@{n}@{m} ^ ( ( eW@{n} - 1 ) / eW@{n} ) * steady_state( N@{m} / NN ) ^ ( 1 / eW@{n} )
-	@#endfor
-	 ) ^ ( eW@{n} / ( eW@{n} - 1 ) );
+//production of private widget composite    
+    YWP@{n} = OmegaWP@{n} * ( 
+    @#for m in 1:SN
+        + YW@{n}@{m} ^ ( ( eW@{n} - 1 ) / eW@{n} ) * steady_state( N@{m} / NN ) ^ ( 1 / eW@{n} )
+    @#endfor
+     ) ^ ( eW@{n} / ( eW@{n} - 1 ) );
 @#endfor
 
 @#for n in 1:SN
 //private widget trade clearing
-	#YW@{n}_LAG = 0
-	@#for m in 1:SN
-		+ YW@{m}@{n}_LAG * 
-		@#if n == m
-			1
-		@#else
-			( 1 + ( 1 - phiiotaWX@{n} ) * iotaWX@{n}_LAG + ( 1 - phiiotaWM@{m} ) * iotaWM@{m}_LAG )
-		@#endif
-	@#endfor
-	;
-	#YW@{n} = 0
-	@#for m in 1:SN
-		+ YW@{m}@{n} * 
-		@#if n == m
-			1
-		@#else
-			( 1 + ( 1 - phiiotaWX@{n} ) * iotaWX@{n} + ( 1 - phiiotaWM@{m} ) * iotaWM@{m} )
-		@#endif
-	@#endfor
-	;
-	#YW@{n}_LEAD = 0
-	@#for m in 1:SN
-		+ YW@{m}@{n}_LEAD * 
-		@#if n == m
-			1
-		@#else
-			( 1 + ( 1 - phiiotaWX@{n} ) * iotaWX@{n}_LEAD + ( 1 - phiiotaWM@{m} ) * iotaWM@{m}_LEAD )
-		@#endif
-	@#endfor
-	;
+    #YW@{n}_LAG = 0
+    @#for m in 1:SN
+        + YW@{m}@{n}_LAG * 
+        @#if n == m
+            1
+        @#else
+            ( 1 + ( 1 - phiiotaWX@{n} ) * iotaWX@{n}_LAG + ( 1 - phiiotaWM@{m} ) * iotaWM@{m}_LAG )
+        @#endif
+    @#endfor
+    ;
+    #YW@{n} = 0
+    @#for m in 1:SN
+        + YW@{m}@{n} * 
+        @#if n == m
+            1
+        @#else
+            ( 1 + ( 1 - phiiotaWX@{n} ) * iotaWX@{n} + ( 1 - phiiotaWM@{m} ) * iotaWM@{m} )
+        @#endif
+    @#endfor
+    ;
+    #YW@{n}_LEAD = 0
+    @#for m in 1:SN
+        + YW@{m}@{n}_LEAD * 
+        @#if n == m
+            1
+        @#else
+            ( 1 + ( 1 - phiiotaWX@{n} ) * iotaWX@{n}_LEAD + ( 1 - phiiotaWM@{m} ) * iotaWM@{m}_LEAD )
+        @#endif
+    @#endfor
+    ;
 @#endfor
 
 //global total widget supply
 #YWC_LAG = 0
 @#for n in 1:SN
-	+ YWC@{n}_LAG
+    + YWC@{n}_LAG
 @#endfor
 ;
 #YWC = 0
 @#for n in 1:SN
-	+ YWC@{n}
+    + YWC@{n}
 @#endfor
 ;
 #YWC_LEAD = 0
 @#for n in 1:SN
-	+ YWC@{n}_LEAD
+    + YWC@{n}_LEAD
 @#endfor
 ;
 
@@ -1544,79 +1544,79 @@ log_glambda_GH = log( exp(log_glambda_CP) * GAs ^ ( alphaCD1 * ( d * alphaD1 * a
 
 @#for n in 1:SN
 //scriptX
-	#scriptX@{n} = 0
-	@#for S in Sectors0
-	  + scriptX@{S}@{n}
-	@#endfor
-	;
-	#scriptX@{n}_LEAD = 0
-	@#for S in Sectors0
-	  + scriptX@{S}@{n}_LEAD
-	@#endfor
-	;
-	
-	scriptX@{n} = X@{n} * exp( -o@{n} * ( log( X@{n} / X ) - log( YX@{n} / YWC ) ) ^ 2 );
-	
-	#PscriptX@{n} = 1 / ( exp( -o@{n} * ( log( X@{n} / X ) - log( YX@{n} / YWC ) ) ^ 2 ) - scriptX@{n} * 2 * o@{n} * ( log( X@{n} / X ) - log( YX@{n} / YWC ) ) * (X - X@{n}) / X@{n} / X );
+    #scriptX@{n} = 0
+    @#for S in Sectors0
+      + scriptX@{S}@{n}
+    @#endfor
+    ;
+    #scriptX@{n}_LEAD = 0
+    @#for S in Sectors0
+      + scriptX@{S}@{n}_LEAD
+    @#endfor
+    ;
+    
+    scriptX@{n} = X@{n} * exp( -o@{n} * ( log( X@{n} / X ) - log( YX@{n} / YWC ) ) ^ 2 );
+    
+    #PscriptX@{n} = 1 / ( exp( -o@{n} * ( log( X@{n} / X ) - log( YX@{n} / YWC ) ) ^ 2 ) - scriptX@{n} * 2 * o@{n} * ( log( X@{n} / X ) - log( YX@{n} / YWC ) ) * (X - X@{n}) / X@{n} / X );
 
     PscriptX@{n} * ( scriptX@{n} * 2 * o@{n} * ( log( X@{n} / X ) - log( YX@{n} / YWC ) ) * (YWC - YX@{n}) / YX@{n} / YWC ) = PX@{n};
 
-	@#for S in Sectors0
+    @#for S in Sectors0
 //HL production
-		#YHL@{S}@{n} = OmegaHL@{S}@{n} * HP@{S}@{n} ^ alphaHL@{n} * LS@{S}@{n} ^ ( 1 - alphaHL@{n} );
-		#YHL@{S}@{n}_LEAD = OmegaHL@{S}@{n}_LEAD * HP@{S}@{n}_LEAD ^ alphaHL@{n} * LS@{S}@{n}_LEAD ^ ( 1 - alphaHL@{n} );
-		
-		LS@{S}@{n} = ( 1 - alphaHL@{n} ) * PHL@{S}@{n} * YHL@{S}@{n} / WS@{S}@{n};
-		
-		HP@{S}@{n} = alphaHL@{n} * PHL@{S}@{n} * YHL@{S}@{n} / RHP@{S}@{n};
+        #YHL@{S}@{n} = OmegaHL@{S}@{n} * HP@{S}@{n} ^ alphaHL@{n} * LS@{S}@{n} ^ ( 1 - alphaHL@{n} );
+        #YHL@{S}@{n}_LEAD = OmegaHL@{S}@{n}_LEAD * HP@{S}@{n}_LEAD ^ alphaHL@{n} * LS@{S}@{n}_LEAD ^ ( 1 - alphaHL@{n} );
+        
+        LS@{S}@{n} = ( 1 - alphaHL@{n} ) * PHL@{S}@{n} * YHL@{S}@{n} / WS@{S}@{n};
+        
+        HP@{S}@{n} = alphaHL@{n} * PHL@{S}@{n} * YHL@{S}@{n} / RHP@{S}@{n};
 
 //KGKP
 //Note that FK growth at stochastic rate is detrended by the stochastic trend like other variables in the equation.
 //For example, fixed cost in <Clearing Up the Fiscal Multiplier Morass> also grow at the stochastic trend (technology)
         #FK@{S}@{n} = steady_state(OmegaKW@{n} * KG@{n}_LAG ^ alphaK@{n} * ( KUW@{n} * KPW@{n} ) ^ ( 1 - alphaK@{n} )) * FKtilde / ( 1 + FKtilde );
         #FK@{S}@{n}_LEAD = steady_state(OmegaKW@{n}_LEAD * KG@{n} ^ alphaK@{n} * ( KUW@{n}_LEAD * KPW@{n}_LEAD ) ^ ( 1 - alphaK@{n} )) * FKtilde / ( 1 + FKtilde );
-		#K@{S}@{n} = OmegaK@{S}@{n} * KG@{n}_LAG ^ alphaK@{n} * ( KU@{S}@{n} * KP@{S}@{n} ) ^ ( 1 - alphaK@{n} ) - FK@{S}@{n};
-		#K@{S}@{n}_LEAD = OmegaK@{S}@{n}_LEAD * KG@{n} ^ alphaK@{n} * ( KU@{S}@{n}_LEAD * KP@{S}@{n}_LEAD ) ^ ( 1 - alphaK@{n} ) - FK@{S}@{n}_LEAD;
-		
-		#RK@{S}@{n} = RKP@{S}@{n} * KU@{S}@{n} * KP@{S}@{n} / ( 1 - alphaK@{n} ) / ( K@{S}@{n} + FK@{S}@{n} );
+        #K@{S}@{n} = OmegaK@{S}@{n} * KG@{n}_LAG ^ alphaK@{n} * ( KU@{S}@{n} * KP@{S}@{n} ) ^ ( 1 - alphaK@{n} ) - FK@{S}@{n};
+        #K@{S}@{n}_LEAD = OmegaK@{S}@{n}_LEAD * KG@{n} ^ alphaK@{n} * ( KU@{S}@{n}_LEAD * KP@{S}@{n}_LEAD ) ^ ( 1 - alphaK@{n} ) - FK@{S}@{n}_LEAD;
+        
+        #RK@{S}@{n} = RKP@{S}@{n} * KU@{S}@{n} * KP@{S}@{n} / ( 1 - alphaK@{n} ) / ( K@{S}@{n} + FK@{S}@{n} );
         #RK@{S}@{n}_LEAD = RKP@{S}@{n}_LEAD * KU@{S}@{n}_LEAD * KP@{S}@{n}_LEAD / ( 1 - alphaK@{n} ) / ( K@{S}@{n}_LEAD + FK@{S}@{n}*steady_state( exp(log_gKG) ^ alphaK1 * exp(log_gKP) ^ ( 1 - alphaK1 ) ) );
-		
+        
 //KL production
-		#YKL@{S}@{n} = OmegaKL@{S}@{n} * KBar@{S}@{n}_LAG ^ alphaKL@{n} * ( alphaKL@{n} * ( K@{S}@{n} / KBar@{S}@{n}_LAG ) ^ ( ( eKL@{S}@{n} - 1 ) / eKL@{S}@{n} ) + ( 1 - alphaKL@{n} ) * L@{S}@{n} ^ ( ( eKL@{S}@{n} - 1 ) / eKL@{S}@{n} ) ) ^ ( eKL@{S}@{n} / ( eKL@{S}@{n} - 1 ) );
-		#YKL@{S}@{n}_LEAD = OmegaKL@{S}@{n}_LEAD * KBar@{S}@{n} ^ alphaKL@{n} * ( alphaKL@{n} * ( K@{S}@{n}_LEAD / KBar@{S}@{n} ) ^ ( ( eKL@{S}@{n} - 1 ) / eKL@{S}@{n} ) + ( 1 - alphaKL@{n} ) * L@{S}@{n}_LEAD ^ ( ( eKL@{S}@{n} - 1 ) / eKL@{S}@{n} ) ) ^ ( eKL@{S}@{n} / ( eKL@{S}@{n} - 1 ) );
-		
-		KBar@{S}@{n} = ( K@{S}@{n} / L@{S}@{n} ) ^ ( 1 - varrhoKL@{n} ) * KBar@{S}@{n}_LAG ^ varrhoKL@{n};
+        #YKL@{S}@{n} = OmegaKL@{S}@{n} * KBar@{S}@{n}_LAG ^ alphaKL@{n} * ( alphaKL@{n} * ( K@{S}@{n} / KBar@{S}@{n}_LAG ) ^ ( ( eKL@{S}@{n} - 1 ) / eKL@{S}@{n} ) + ( 1 - alphaKL@{n} ) * L@{S}@{n} ^ ( ( eKL@{S}@{n} - 1 ) / eKL@{S}@{n} ) ) ^ ( eKL@{S}@{n} / ( eKL@{S}@{n} - 1 ) );
+        #YKL@{S}@{n}_LEAD = OmegaKL@{S}@{n}_LEAD * KBar@{S}@{n} ^ alphaKL@{n} * ( alphaKL@{n} * ( K@{S}@{n}_LEAD / KBar@{S}@{n} ) ^ ( ( eKL@{S}@{n} - 1 ) / eKL@{S}@{n} ) + ( 1 - alphaKL@{n} ) * L@{S}@{n}_LEAD ^ ( ( eKL@{S}@{n} - 1 ) / eKL@{S}@{n} ) ) ^ ( eKL@{S}@{n} / ( eKL@{S}@{n} - 1 ) );
+        
+        KBar@{S}@{n} = ( K@{S}@{n} / L@{S}@{n} ) ^ ( 1 - varrhoKL@{n} ) * KBar@{S}@{n}_LAG ^ varrhoKL@{n};
 
-		#KTemp@{S}@{n} = K@{S}@{n} * ( alphaKL@{n} * PKL@{S}@{n} * OmegaKL@{S}@{n} * KBar@{S}@{n}_LAG ^ ( ( alphaKL@{n}  - 1 ) * ( eKL@{S}@{n} - 1 ) / eKL@{S}@{n} ) * ( YKL@{S}@{n} / K@{S}@{n} / OmegaKL@{S}@{n} ) ^ ( 1 / eKL@{S}@{n} ) - RK@{S}@{n} );
+        #KTemp@{S}@{n} = K@{S}@{n} * ( alphaKL@{n} * PKL@{S}@{n} * OmegaKL@{S}@{n} * KBar@{S}@{n}_LAG ^ ( ( alphaKL@{n}  - 1 ) * ( eKL@{S}@{n} - 1 ) / eKL@{S}@{n} ) * ( YKL@{S}@{n} / K@{S}@{n} / OmegaKL@{S}@{n} ) ^ ( 1 / eKL@{S}@{n} ) - RK@{S}@{n} );
 
-		KTemp@{S}@{n} = L@{S}@{n} * ( W@{S}@{n} - ( 1 - alphaKL@{n} ) * PKL@{S}@{n} * OmegaKL@{S}@{n} * KBar@{S}@{n}_LAG ^ ( alphaKL@{n} * ( eKL@{S}@{n} - 1 ) / eKL@{S}@{n} ) * ( YKL@{S}@{n} / L@{S}@{n} / OmegaKL@{S}@{n} ) ^ ( 1 / eKL@{S}@{n} ) );
+        KTemp@{S}@{n} = L@{S}@{n} * ( W@{S}@{n} - ( 1 - alphaKL@{n} ) * PKL@{S}@{n} * OmegaKL@{S}@{n} * KBar@{S}@{n}_LAG ^ ( alphaKL@{n} * ( eKL@{S}@{n} - 1 ) / eKL@{S}@{n} ) * ( YKL@{S}@{n} / L@{S}@{n} / OmegaKL@{S}@{n} ) ^ ( 1 / eKL@{S}@{n} ) );
 
-		1 = Xi_LEAD / KTemp@{S}@{n} * ( K@{S}@{n}_LEAD * alphaKL@{n} * PKL@{S}@{n}_LEAD * OmegaKL@{S}@{n}_LEAD * KBar@{S}@{n} ^ ( ( alphaKL@{n} - 1 ) * ( eKL@{S}@{n} - 1 ) / eKL@{S}@{n} ) * ( YKL@{S}@{n}_LEAD / K@{S}@{n}_LEAD / OmegaKL@{S}@{n}_LEAD ) ^ ( 1 / eKL@{S}@{n} ) - ( 1 - varrhoKL@{n} ) * alphaKL@{n} * PKL@{S}@{n}_LEAD * YKL@{S}@{n}_LEAD - varrhoKL@{n} * RK@{S}@{n}_LEAD * K@{S}@{n}_LEAD );
-		
+        1 = Xi_LEAD / KTemp@{S}@{n} * ( K@{S}@{n}_LEAD * alphaKL@{n} * PKL@{S}@{n}_LEAD * OmegaKL@{S}@{n}_LEAD * KBar@{S}@{n} ^ ( ( alphaKL@{n} - 1 ) * ( eKL@{S}@{n} - 1 ) / eKL@{S}@{n} ) * ( YKL@{S}@{n}_LEAD / K@{S}@{n}_LEAD / OmegaKL@{S}@{n}_LEAD ) ^ ( 1 / eKL@{S}@{n} ) - ( 1 - varrhoKL@{n} ) * alphaKL@{n} * PKL@{S}@{n}_LEAD * YKL@{S}@{n}_LEAD - varrhoKL@{n} * RK@{S}@{n}_LEAD * K@{S}@{n}_LEAD );
+        
 //HLX production
-		#YHLX@{S}@{n} = OmegaHLX@{S}@{n} * YHLBar@{S}@{n}_LAG ^ alphaHLX@{n} * ( alphaHLX@{n} * ( YHL@{S}@{n} / YHLBar@{S}@{n}_LAG ) ^ ( ( eHLX@{S}@{n} - 1 ) / eHLX@{S}@{n} ) + ( 1 - alphaHLX@{n} ) * scriptX@{S}@{n} ^ ( ( eHLX@{S}@{n} - 1 ) / eHLX@{S}@{n} ) ) ^ ( eHLX@{S}@{n} / ( eHLX@{S}@{n} - 1 ) );
-		#YHLX@{S}@{n}_LEAD = OmegaHLX@{S}@{n}_LEAD * YHLBar@{S}@{n} ^ alphaHLX@{n} * ( alphaHLX@{n} * ( YHL@{S}@{n}_LEAD / YHLBar@{S}@{n} ) ^ ( ( eHLX@{S}@{n} - 1 ) / eHLX@{S}@{n} ) + ( 1 - alphaHLX@{n} ) * scriptX@{S}@{n}_LEAD ^ ( ( eHLX@{S}@{n} - 1 ) / eHLX@{S}@{n} ) ) ^ ( eHLX@{S}@{n} / ( eHLX@{S}@{n} - 1 ) );
-		
-		YHLBar@{S}@{n} = ( YHL@{S}@{n} / scriptX@{S}@{n} ) ^ ( 1 - varrhoHLX@{n} ) * YHLBar@{S}@{n}_LAG ^ varrhoHLX@{n};
+        #YHLX@{S}@{n} = OmegaHLX@{S}@{n} * YHLBar@{S}@{n}_LAG ^ alphaHLX@{n} * ( alphaHLX@{n} * ( YHL@{S}@{n} / YHLBar@{S}@{n}_LAG ) ^ ( ( eHLX@{S}@{n} - 1 ) / eHLX@{S}@{n} ) + ( 1 - alphaHLX@{n} ) * scriptX@{S}@{n} ^ ( ( eHLX@{S}@{n} - 1 ) / eHLX@{S}@{n} ) ) ^ ( eHLX@{S}@{n} / ( eHLX@{S}@{n} - 1 ) );
+        #YHLX@{S}@{n}_LEAD = OmegaHLX@{S}@{n}_LEAD * YHLBar@{S}@{n} ^ alphaHLX@{n} * ( alphaHLX@{n} * ( YHL@{S}@{n}_LEAD / YHLBar@{S}@{n} ) ^ ( ( eHLX@{S}@{n} - 1 ) / eHLX@{S}@{n} ) + ( 1 - alphaHLX@{n} ) * scriptX@{S}@{n}_LEAD ^ ( ( eHLX@{S}@{n} - 1 ) / eHLX@{S}@{n} ) ) ^ ( eHLX@{S}@{n} / ( eHLX@{S}@{n} - 1 ) );
+        
+        YHLBar@{S}@{n} = ( YHL@{S}@{n} / scriptX@{S}@{n} ) ^ ( 1 - varrhoHLX@{n} ) * YHLBar@{S}@{n}_LAG ^ varrhoHLX@{n};
 
-		#YHLTemp@{S}@{n} = YHL@{S}@{n} * ( alphaHLX@{n} * PHLX@{S}@{n} * OmegaHLX@{S}@{n} * YHLBar@{S}@{n}_LAG ^ ( ( alphaHLX@{n}  - 1 ) * ( eHLX@{S}@{n} - 1 ) / eHLX@{S}@{n} ) * ( YHLX@{S}@{n} / YHL@{S}@{n} / OmegaHLX@{S}@{n} ) ^ ( 1 / eHLX@{S}@{n} ) - PHL@{S}@{n} );
+        #YHLTemp@{S}@{n} = YHL@{S}@{n} * ( alphaHLX@{n} * PHLX@{S}@{n} * OmegaHLX@{S}@{n} * YHLBar@{S}@{n}_LAG ^ ( ( alphaHLX@{n}  - 1 ) * ( eHLX@{S}@{n} - 1 ) / eHLX@{S}@{n} ) * ( YHLX@{S}@{n} / YHL@{S}@{n} / OmegaHLX@{S}@{n} ) ^ ( 1 / eHLX@{S}@{n} ) - PHL@{S}@{n} );
 
-		YHLTemp@{S}@{n} = scriptX@{S}@{n} * ( ( 1 + tauscriptX@{S}@{n} ) * PscriptX@{n} - ( 1 - alphaHLX@{n} ) * PHLX@{S}@{n} * OmegaHLX@{S}@{n} * YHLBar@{S}@{n}_LAG ^ ( alphaHLX@{n} * ( eHLX@{S}@{n} - 1 ) / eHLX@{S}@{n} ) * ( YHLX@{S}@{n} / scriptX@{S}@{n} / OmegaHLX@{S}@{n} ) ^ ( 1 / eHLX@{S}@{n} ) );
+        YHLTemp@{S}@{n} = scriptX@{S}@{n} * ( ( 1 + tauscriptX@{S}@{n} ) * PscriptX@{n} - ( 1 - alphaHLX@{n} ) * PHLX@{S}@{n} * OmegaHLX@{S}@{n} * YHLBar@{S}@{n}_LAG ^ ( alphaHLX@{n} * ( eHLX@{S}@{n} - 1 ) / eHLX@{S}@{n} ) * ( YHLX@{S}@{n} / scriptX@{S}@{n} / OmegaHLX@{S}@{n} ) ^ ( 1 / eHLX@{S}@{n} ) );
 
-		YHLTemp@{S}@{n} = Xi_LEAD * ( YHL@{S}@{n}_LEAD * alphaHLX@{n} * PHLX@{S}@{n}_LEAD * OmegaHLX@{S}@{n}_LEAD * YHLBar@{S}@{n} ^ ( ( alphaHLX@{n} - 1 ) * ( eHLX@{S}@{n} - 1 ) / eHLX@{S}@{n} ) * ( YHLX@{S}@{n}_LEAD / YHL@{S}@{n}_LEAD / OmegaHLX@{S}@{n}_LEAD ) ^ ( 1 / eHLX@{S}@{n} ) - ( 1 - varrhoHLX@{n} ) * alphaHLX@{n} * PHLX@{S}@{n}_LEAD * YHLX@{S}@{n}_LEAD - varrhoHLX@{n} * PHL@{S}@{n}_LEAD * YHL@{S}@{n}_LEAD );
+        YHLTemp@{S}@{n} = Xi_LEAD * ( YHL@{S}@{n}_LEAD * alphaHLX@{n} * PHLX@{S}@{n}_LEAD * OmegaHLX@{S}@{n}_LEAD * YHLBar@{S}@{n} ^ ( ( alphaHLX@{n} - 1 ) * ( eHLX@{S}@{n} - 1 ) / eHLX@{S}@{n} ) * ( YHLX@{S}@{n}_LEAD / YHL@{S}@{n}_LEAD / OmegaHLX@{S}@{n}_LEAD ) ^ ( 1 / eHLX@{S}@{n} ) - ( 1 - varrhoHLX@{n} ) * alphaHLX@{n} * PHLX@{S}@{n}_LEAD * YHLX@{S}@{n}_LEAD - varrhoHLX@{n} * PHL@{S}@{n}_LEAD * YHL@{S}@{n}_LEAD );
 
 //Y production
-		Y@{S}@{n} = Omega@{S}@{n} * YHLXBar@{S}@{n}_LAG ^ alphaY@{n} * ( alphaY@{n} * ( YHLX@{S}@{n} / YHLXBar@{S}@{n}_LAG ) ^ ( ( eY@{S}@{n} - 1 ) / eY@{S}@{n} ) + ( 1 - alphaY@{n} ) * YKL@{S}@{n} ^ ( ( eY@{S}@{n} - 1 ) / eY@{S}@{n} ) ) ^ ( eY@{S}@{n} / ( eY@{S}@{n} - 1 ) );
+        Y@{S}@{n} = Omega@{S}@{n} * YHLXBar@{S}@{n}_LAG ^ alphaY@{n} * ( alphaY@{n} * ( YHLX@{S}@{n} / YHLXBar@{S}@{n}_LAG ) ^ ( ( eY@{S}@{n} - 1 ) / eY@{S}@{n} ) + ( 1 - alphaY@{n} ) * YKL@{S}@{n} ^ ( ( eY@{S}@{n} - 1 ) / eY@{S}@{n} ) ) ^ ( eY@{S}@{n} / ( eY@{S}@{n} - 1 ) );
 
-		YHLXBar@{S}@{n} = ( YHLX@{S}@{n} / YKL@{S}@{n} ) ^ ( 1 - varrhoY@{n} ) * YHLXBar@{S}@{n}_LAG ^ varrhoY@{n};
+        YHLXBar@{S}@{n} = ( YHLX@{S}@{n} / YKL@{S}@{n} ) ^ ( 1 - varrhoY@{n} ) * YHLXBar@{S}@{n}_LAG ^ varrhoY@{n};
 
-		#YHLXTemp@{S}@{n} = YHLX@{S}@{n} * ( alphaY@{n} * P@{S}@{n} * Omega@{S}@{n} * YHLXBar@{S}@{n}_LAG ^ ( ( alphaY@{n}  - 1 ) * ( eY@{S}@{n} - 1 ) / eY@{S}@{n} ) * ( Y@{S}@{n} / YHLX@{S}@{n} / Omega@{S}@{n} ) ^ ( 1 / eY@{S}@{n} ) - PHLX@{S}@{n} );
+        #YHLXTemp@{S}@{n} = YHLX@{S}@{n} * ( alphaY@{n} * P@{S}@{n} * Omega@{S}@{n} * YHLXBar@{S}@{n}_LAG ^ ( ( alphaY@{n}  - 1 ) * ( eY@{S}@{n} - 1 ) / eY@{S}@{n} ) * ( Y@{S}@{n} / YHLX@{S}@{n} / Omega@{S}@{n} ) ^ ( 1 / eY@{S}@{n} ) - PHLX@{S}@{n} );
 
-		YHLXTemp@{S}@{n} = YKL@{S}@{n} * ( PKL@{S}@{n} - ( 1 - alphaY@{n} ) * P@{S}@{n} * Omega@{S}@{n} * YHLXBar@{S}@{n}_LAG ^ ( alphaY@{n} * ( eY@{S}@{n} - 1 ) / eY@{S}@{n} ) * ( Y@{S}@{n} / YKL@{S}@{n} / Omega@{S}@{n} ) ^ ( 1 / eY@{S}@{n} ) );
+        YHLXTemp@{S}@{n} = YKL@{S}@{n} * ( PKL@{S}@{n} - ( 1 - alphaY@{n} ) * P@{S}@{n} * Omega@{S}@{n} * YHLXBar@{S}@{n}_LAG ^ ( alphaY@{n} * ( eY@{S}@{n} - 1 ) / eY@{S}@{n} ) * ( Y@{S}@{n} / YKL@{S}@{n} / Omega@{S}@{n} ) ^ ( 1 / eY@{S}@{n} ) );
 
-		YHLXTemp@{S}@{n} = Xi_LEAD * ( YHLX@{S}@{n}_LEAD * alphaY@{n} * P@{S}@{n}_LEAD * Omega@{S}@{n}_LEAD * YHLXBar@{S}@{n} ^ ( ( alphaY@{n} - 1 ) * ( eY@{S}@{n} - 1 ) / eY@{S}@{n} ) * ( Y@{S}@{n}_LEAD / YHLX@{S}@{n}_LEAD / Omega@{S}@{n}_LEAD ) ^ ( 1 / eY@{S}@{n} ) - ( 1 - varrhoY@{n} ) * alphaY@{n} * P@{S}@{n}_LEAD * Y@{S}@{n}_LEAD - varrhoY@{n} * PHLX@{S}@{n}_LEAD * YHLX@{S}@{n}_LEAD );
+        YHLXTemp@{S}@{n} = Xi_LEAD * ( YHLX@{S}@{n}_LEAD * alphaY@{n} * P@{S}@{n}_LEAD * Omega@{S}@{n}_LEAD * YHLXBar@{S}@{n} ^ ( ( alphaY@{n} - 1 ) * ( eY@{S}@{n} - 1 ) / eY@{S}@{n} ) * ( Y@{S}@{n}_LEAD / YHLX@{S}@{n}_LEAD / Omega@{S}@{n}_LEAD ) ^ ( 1 / eY@{S}@{n} ) - ( 1 - varrhoY@{n} ) * alphaY@{n} * P@{S}@{n}_LEAD * Y@{S}@{n}_LEAD - varrhoY@{n} * PHLX@{S}@{n}_LEAD * YHLX@{S}@{n}_LEAD );
 
-	@#endfor
+    @#endfor
 @#endfor
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1625,44 +1625,44 @@ log_glambda_GH = log( exp(log_glambda_CP) * GAs ^ ( alphaCD1 * ( d * alphaD1 * a
 @#for n in 1:SN
 
     #HoursWorkedPerCapita@{n} = log( ( 0
-	@#for S in Sectors2
-	  + L@{S}@{n}l + L@{S}@{n}b
-	@#endfor
+    @#for S in Sectors2
+      + L@{S}@{n}l + L@{S}@{n}b
+    @#endfor
     ) / N@{n} );
 
     #HoursWorkedPerCapita@{n}_ss = steady_state( log( ( 0
-	@#for S in Sectors2
-	  + L@{S}@{n}l + L@{S}@{n}b
-	@#endfor
+    @#for S in Sectors2
+      + L@{S}@{n}l + L@{S}@{n}b
+    @#endfor
     ) / N@{n} ) );
 
 //spending
-	log(tauKG@{n}) = log(tauKG@{n}_LAG) + phiYtauKG@{n} * ( Y@{n} / Y@{n}_LAG - steady_state( Y@{n} / Y@{n}_LAG ) ) + phiLtauKG@{n} * ( HoursWorkedPerCapita@{n} - HoursWorkedPerCapita@{n}_ss ) + phiutauKG@{n} * ( uALL@{n} + uS1ALL@{n} ) + uKG@{n};
-	log(tauHG@{n}) = log(tauHG@{n}_LAG) + phiYtauHG@{n} * ( Y@{n} / Y@{n}_LAG - steady_state( Y@{n} / Y@{n}_LAG ) ) + phiLtauHG@{n} * ( HoursWorkedPerCapita@{n} - HoursWorkedPerCapita@{n}_ss ) + phiutauHG@{n} * ( uALL@{n} + uS1ALL@{n} ) + uHG@{n};
-	log(tauCG@{n}) = log(tauCG@{n}_LAG) + phiYtauCG@{n} * ( Y@{n} / Y@{n}_LAG - steady_state( Y@{n} / Y@{n}_LAG ) ) + phiLtauCG@{n} * ( HoursWorkedPerCapita@{n} - HoursWorkedPerCapita@{n}_ss ) + phiutauCG@{n} * ( uALL@{n} + uS1ALL@{n} ) + uCG@{n};
+    log(tauKG@{n}) = log(tauKG@{n}_LAG) + phiYtauKG@{n} * ( Y@{n} / Y@{n}_LAG - steady_state( Y@{n} / Y@{n}_LAG ) ) + phiLtauKG@{n} * ( HoursWorkedPerCapita@{n} - HoursWorkedPerCapita@{n}_ss ) + phiutauKG@{n} * ( uALL@{n} + uS1ALL@{n} ) + uKG@{n};
+    log(tauHG@{n}) = log(tauHG@{n}_LAG) + phiYtauHG@{n} * ( Y@{n} / Y@{n}_LAG - steady_state( Y@{n} / Y@{n}_LAG ) ) + phiLtauHG@{n} * ( HoursWorkedPerCapita@{n} - HoursWorkedPerCapita@{n}_ss ) + phiutauHG@{n} * ( uALL@{n} + uS1ALL@{n} ) + uHG@{n};
+    log(tauCG@{n}) = log(tauCG@{n}_LAG) + phiYtauCG@{n} * ( Y@{n} / Y@{n}_LAG - steady_state( Y@{n} / Y@{n}_LAG ) ) + phiLtauCG@{n} * ( HoursWorkedPerCapita@{n} - HoursWorkedPerCapita@{n}_ss ) + phiutauCG@{n} * ( uALL@{n} + uS1ALL@{n} ) + uCG@{n};
 
 //incomes
-	tau@{n}b  = tau@{n}b_LAG   + phiYtau@{n}b * ( Y@{n} / Y@{n}_LAG - steady_state( Y@{n} / Y@{n}_LAG ) )  + phiLtau@{n}b * ( HoursWorkedPerCapita@{n} - HoursWorkedPerCapita@{n}_ss ) + phiutau@{n}b * ( uALL@{n} + ulbALL@{n} ) + u@{n}b;
-	tau@{n}l  = tau@{n}l_LAG   + phiYtau@{n}l * ( Y@{n} / Y@{n}_LAG - steady_state( Y@{n} / Y@{n}_LAG ) )  + phiLtau@{n}l * ( HoursWorkedPerCapita@{n} - HoursWorkedPerCapita@{n}_ss ) + phiutau@{n}l * ( uALL@{n} + ulbALL@{n} ) + u@{n}l;
-	tauD@{n}  = tauD@{n}_LAG   + phiutauD@{n}  * ( uALL@{n} + uCALL@{n} ) + uD@{n};
-	tauND@{n} = tauND@{n}_LAG  + phiutauND@{n} * ( uALL@{n} + uCALL@{n} ) + uND@{n};
-	tauNT@{n} = tauNT@{n}_LAG  + phiutauNT@{n} * ( uALL@{n} ) + uNT@{n};
-	tauTC@{n} = tauTC@{n}_LAG  + phiutauTC@{n} * ( uALL@{n} ) + uTC@{n};
+    tau@{n}b  = tau@{n}b_LAG   + phiYtau@{n}b * ( Y@{n} / Y@{n}_LAG - steady_state( Y@{n} / Y@{n}_LAG ) )  + phiLtau@{n}b * ( HoursWorkedPerCapita@{n} - HoursWorkedPerCapita@{n}_ss ) + phiutau@{n}b * ( uALL@{n} + ulbALL@{n} ) + u@{n}b;
+    tau@{n}l  = tau@{n}l_LAG   + phiYtau@{n}l * ( Y@{n} / Y@{n}_LAG - steady_state( Y@{n} / Y@{n}_LAG ) )  + phiLtau@{n}l * ( HoursWorkedPerCapita@{n} - HoursWorkedPerCapita@{n}_ss ) + phiutau@{n}l * ( uALL@{n} + ulbALL@{n} ) + u@{n}l;
+    tauD@{n}  = tauD@{n}_LAG   + phiutauD@{n}  * ( uALL@{n} + uCALL@{n} ) + uD@{n};
+    tauND@{n} = tauND@{n}_LAG  + phiutauND@{n} * ( uALL@{n} + uCALL@{n} ) + uND@{n};
+    tauNT@{n} = tauNT@{n}_LAG  + phiutauNT@{n} * ( uALL@{n} ) + uNT@{n};
+    tauTC@{n} = tauTC@{n}_LAG  + phiutauTC@{n} * ( uALL@{n} ) + uTC@{n};
 
-	iotaTX@{n} = iotaTX@{n}_LAG + phiuiotaTX@{n} * ( uALL@{n} + uiotaALL@{n} ) + uTX@{n};
-	iotaTM@{n} = iotaTM@{n}_LAG + phiuiotaTM@{n} * ( uALL@{n} + uiotaALL@{n} ) + uTM@{n};
-	iotaWX@{n} = iotaWX@{n}_LAG + phiuiotaWX@{n} * ( uALL@{n} + uiotaALL@{n} ) + uWX@{n};
-	iotaWM@{n} = iotaWM@{n}_LAG + phiuiotaWM@{n} * ( uALL@{n} + uiotaALL@{n} ) + uWM@{n};
+    iotaTX@{n} = iotaTX@{n}_LAG + phiuiotaTX@{n} * ( uALL@{n} + uiotaALL@{n} ) + uTX@{n};
+    iotaTM@{n} = iotaTM@{n}_LAG + phiuiotaTM@{n} * ( uALL@{n} + uiotaALL@{n} ) + uTM@{n};
+    iotaWX@{n} = iotaWX@{n}_LAG + phiuiotaWX@{n} * ( uALL@{n} + uiotaALL@{n} ) + uWX@{n};
+    iotaWM@{n} = iotaWM@{n}_LAG + phiuiotaWM@{n} * ( uALL@{n} + uiotaALL@{n} ) + uWM@{n};
 
-	@#for S in Sectors0
-		tauH@{S}@{n}       = tauH@{S}@{n}_LAG       + phiutauH@{S}@{n} * ( uALL@{n} + uHALL@{n} + u@{S}ALL@{n} );
-		tauK@{S}@{n}       = tauK@{S}@{n}_LAG       + phiutauK@{S}@{n} * ( uALL@{n} + uKALL@{n} + u@{S}ALL@{n} );
-		tauscriptX@{S}@{n} = tauscriptX@{S}@{n}_LAG + phiutauX@{S}@{n} * ( uALL@{n} + uXALL@{n} + u@{S}ALL@{n} );
-	@#endfor
+    @#for S in Sectors0
+        tauH@{S}@{n}       = tauH@{S}@{n}_LAG       + phiutauH@{S}@{n} * ( uALL@{n} + uHALL@{n} + u@{S}ALL@{n} );
+        tauK@{S}@{n}       = tauK@{S}@{n}_LAG       + phiutauK@{S}@{n} * ( uALL@{n} + uKALL@{n} + u@{S}ALL@{n} );
+        tauscriptX@{S}@{n} = tauscriptX@{S}@{n}_LAG + phiutauX@{S}@{n} * ( uALL@{n} + uXALL@{n} + u@{S}ALL@{n} );
+    @#endfor
 
-	@#for S in Sectors2
-		tauL@{S}@{n} = tauLa@{n} + tauLb@{n} * log( W@{S}@{n} );
-	@#endfor
+    @#for S in Sectors2
+        tauL@{S}@{n} = tauLa@{n} + tauLb@{n} * log( W@{S}@{n} );
+    @#endfor
     tauLa@{n}      = tauLa@{n}_LAG      + phiutauLa@{n} * ( uALL@{n} + uLALL@{n} ) + uLa@{n};
     log(tauLb@{n}) = log(tauLb@{n}_LAG) + phiutauLb@{n} * ( uALL@{n} + uLALL@{n} ) + uLb@{n};
 
@@ -1683,7 +1683,7 @@ log_glambda_GH = log( exp(log_glambda_CP) * GAs ^ ( alphaCD1 * ( d * alphaD1 * a
 #GII_LAG = GERP_LAG * II_LAG  / II_LAG2;
 #GII = GERP * II  / II_LAG;
 #GII_LEAD = GERP_LEAD * II_LEAD / II;
-		
+        
 //depreciation of invented industries
 #deltaI_LAG = deltaItilde * ( GII_LAG / STEADY_STATE( GII ) ) ^ psi;
 #deltaI = deltaItilde * ( GII / STEADY_STATE( GII ) ) ^ psi;
@@ -1745,55 +1745,55 @@ VI = ( 1 - scriptp ) / scriptp * ScriptFRP * PWC * JP + ( 1 - scriptq ) * ( 1 - 
 //GDP and deflator inflation
     #GDP@{n} =
     PKP@{n} * IKP@{n} + PHP@{n} * IHP@{n} + PD@{n} * ID@{n} + PND@{n} * IND@{n} + PKG@{n} * IKG@{n} + PHG@{n} * IHG@{n} + PCG@{n} * ICG@{n}
-			+ ( 1 + ( 1 - phiiotaTX@{n} ) * iotaTX@{n} ) * YT0@{n} * PT@{n}
+            + ( 1 + ( 1 - phiiotaTX@{n} ) * iotaTX@{n} ) * YT0@{n} * PT@{n}
             - ( 1 + ( 1 - phiiotaTM@{n} ) * iotaTM@{n} ) * YT@{n}0 * PT0
-	@#for m in 1:SN
-		@#if n == m
-			+ 0
-		@#else
-			+ ( 1 + ( 1 - phiiotaTX@{n} ) * iotaTX@{n} + ( 1 - phiiotaTM@{m} ) * iotaTM@{m} ) * YT@{m}@{n} * PT@{n} + ( 1 + ( 1 - phiiotaWX@{n} ) * iotaWX@{n} + ( 1 - phiiotaWM@{m} ) * iotaWM@{m} ) * YW@{m}@{n} * PW@{n}
+    @#for m in 1:SN
+        @#if n == m
+            + 0
+        @#else
+            + ( 1 + ( 1 - phiiotaTX@{n} ) * iotaTX@{n} + ( 1 - phiiotaTM@{m} ) * iotaTM@{m} ) * YT@{m}@{n} * PT@{n} + ( 1 + ( 1 - phiiotaWX@{n} ) * iotaWX@{n} + ( 1 - phiiotaWM@{m} ) * iotaWM@{m} ) * YW@{m}@{n} * PW@{n}
             - ( 1 + ( 1 - phiiotaTX@{m} ) * iotaTX@{m} + ( 1 - phiiotaTM@{n} ) * iotaTM@{n} ) * YT@{n}@{m} * PT@{m} - ( 1 + ( 1 - phiiotaWX@{m} ) * iotaWX@{m} + ( 1 - phiiotaWM@{n} ) * iotaWM@{n} ) * YW@{n}@{m} * PW@{m}
-		@#endif
-	@#endfor
+        @#endif
+    @#endfor
     + YWC@{n} * PWC * ( scriptFI * II * ( scripts - ( 1 - scriptq ) * ( 1 - deltaI ) * scripts_LAG / GII ) + II * scripts * ScriptFRP * JP ) / YWC;
     #GDPplagqlag@{n} =
     PKP@{n}_LAG * IKP@{n}_LAG + PHP@{n}_LAG * IHP@{n}_LAG + PD@{n}_LAG * ID@{n}_LAG + PND@{n}_LAG * IND@{n}_LAG + PKG@{n}_LAG * IKG@{n}_LAG + PHG@{n}_LAG * IHG@{n}_LAG + PCG@{n}_LAG * ICG@{n}_LAG
-			+ ( 1 + ( 1 - phiiotaTX@{n} ) * iotaTX@{n}_LAG ) * YT0@{n}_LAG * PT@{n}_LAG
+            + ( 1 + ( 1 - phiiotaTX@{n} ) * iotaTX@{n}_LAG ) * YT0@{n}_LAG * PT@{n}_LAG
             - ( 1 + ( 1 - phiiotaTM@{n} ) * iotaTM@{n}_LAG ) * YT@{n}0_LAG * PT0_LAG
-	@#for m in 1:SN
-		@#if n == m
-			+ 0
-		@#else
-			+ ( 1 + ( 1 - phiiotaTX@{n} ) * iotaTX@{n}_LAG + ( 1 - phiiotaTM@{m} ) * iotaTM@{m}_LAG ) * YT@{m}@{n}_LAG * PT@{n}_LAG + ( 1 + ( 1 - phiiotaWX@{n} ) * iotaWX@{n}_LAG + ( 1 - phiiotaWM@{m} ) * iotaWM@{m}_LAG ) * YW@{m}@{n}_LAG * PW@{n}_LAG
+    @#for m in 1:SN
+        @#if n == m
+            + 0
+        @#else
+            + ( 1 + ( 1 - phiiotaTX@{n} ) * iotaTX@{n}_LAG + ( 1 - phiiotaTM@{m} ) * iotaTM@{m}_LAG ) * YT@{m}@{n}_LAG * PT@{n}_LAG + ( 1 + ( 1 - phiiotaWX@{n} ) * iotaWX@{n}_LAG + ( 1 - phiiotaWM@{m} ) * iotaWM@{m}_LAG ) * YW@{m}@{n}_LAG * PW@{n}_LAG
             - ( 1 + ( 1 - phiiotaTX@{m} ) * iotaTX@{m}_LAG + ( 1 - phiiotaTM@{n} ) * iotaTM@{n}_LAG ) * YT@{n}@{m}_LAG * PT@{m}_LAG - ( 1 + ( 1 - phiiotaWX@{m} ) * iotaWX@{m}_LAG + ( 1 - phiiotaWM@{n} ) * iotaWM@{n}_LAG ) * YW@{n}@{m}_LAG * PW@{m}_LAG
-		@#endif
-	@#endfor
+        @#endif
+    @#endfor
     + YWC@{n}_LAG * PWC_LAG * ( scriptFI_LAG * II_LAG * ( scripts_LAG - ( 1 - scriptq ) * ( 1 - deltaI_LAG ) * scripts_LAG2 / GII_LAG ) + II_LAG * scripts_LAG * ScriptFRP_LAG * JP_LAG ) / YWC_LAG;
     #GDPplag@{n} =
     PKP@{n}_LAG * IKP@{n} + PHP@{n}_LAG * IHP@{n} + PD@{n}_LAG * ID@{n} + PND@{n}_LAG * IND@{n} + PKG@{n}_LAG * IKG@{n} + PHG@{n}_LAG * IHG@{n} + PCG@{n}_LAG * ICG@{n}
-			+ ( 1 + ( 1 - phiiotaTX@{n} ) * iotaTX@{n} ) * YT0@{n} * PT@{n}_LAG
+            + ( 1 + ( 1 - phiiotaTX@{n} ) * iotaTX@{n} ) * YT0@{n} * PT@{n}_LAG
             - ( 1 + ( 1 - phiiotaTM@{n} ) * iotaTM@{n} ) * YT@{n}0 * PT0_LAG
-	@#for m in 1:SN
-		@#if n == m
-			+ 0
-		@#else
-			+ ( 1 + ( 1 - phiiotaTX@{n} ) * iotaTX@{n} + ( 1 - phiiotaTM@{m} ) * iotaTM@{m} ) * YT@{m}@{n} * PT@{n}_LAG + ( 1 + ( 1 - phiiotaWX@{n} ) * iotaWX@{n} + ( 1 - phiiotaWM@{m} ) * iotaWM@{m} ) * YW@{m}@{n} * PW@{n}_LAG
+    @#for m in 1:SN
+        @#if n == m
+            + 0
+        @#else
+            + ( 1 + ( 1 - phiiotaTX@{n} ) * iotaTX@{n} + ( 1 - phiiotaTM@{m} ) * iotaTM@{m} ) * YT@{m}@{n} * PT@{n}_LAG + ( 1 + ( 1 - phiiotaWX@{n} ) * iotaWX@{n} + ( 1 - phiiotaWM@{m} ) * iotaWM@{m} ) * YW@{m}@{n} * PW@{n}_LAG
             - ( 1 + ( 1 - phiiotaTX@{m} ) * iotaTX@{m} + ( 1 - phiiotaTM@{n} ) * iotaTM@{n} ) * YT@{n}@{m} * PT@{m}_LAG - ( 1 + ( 1 - phiiotaWX@{m} ) * iotaWX@{m} + ( 1 - phiiotaWM@{n} ) * iotaWM@{n} ) * YW@{n}@{m} * PW@{m}_LAG
-		@#endif
-	@#endfor
+        @#endif
+    @#endfor
     + YWC@{n} * PWC_LAG * ( scriptFI * II * ( scripts - ( 1 - scriptq ) * ( 1 - deltaI ) * scripts_LAG / GII ) + II * scripts * ScriptFRP * JP ) / YWC;
     #GDPqlag@{n} =
     PKP@{n} * IKP@{n}_LAG + PHP@{n} * IHP@{n}_LAG + PD@{n} * ID@{n}_LAG + PND@{n} * IND@{n}_LAG + PKG@{n} * IKG@{n}_LAG + PHG@{n} * IHG@{n}_LAG + PCG@{n} * ICG@{n}_LAG
-			+ ( 1 + ( 1 - phiiotaTX@{n} ) * iotaTX@{n}_LAG ) * YT0@{n}_LAG * PT@{n}
+            + ( 1 + ( 1 - phiiotaTX@{n} ) * iotaTX@{n}_LAG ) * YT0@{n}_LAG * PT@{n}
             - ( 1 + ( 1 - phiiotaTM@{n} ) * iotaTM@{n}_LAG ) * YT@{n}0_LAG * PT0
-	@#for m in 1:SN
-		@#if n == m
-			+ 0
-		@#else
-			+ ( 1 + ( 1 - phiiotaTX@{n} ) * iotaTX@{n}_LAG + ( 1 - phiiotaTM@{m} ) * iotaTM@{m}_LAG ) * YT@{m}@{n}_LAG * PT@{n} + ( 1 + ( 1 - phiiotaWX@{n} ) * iotaWX@{n}_LAG + ( 1 - phiiotaWM@{m} ) * iotaWM@{m}_LAG ) * YW@{m}@{n}_LAG * PW@{n}
+    @#for m in 1:SN
+        @#if n == m
+            + 0
+        @#else
+            + ( 1 + ( 1 - phiiotaTX@{n} ) * iotaTX@{n}_LAG + ( 1 - phiiotaTM@{m} ) * iotaTM@{m}_LAG ) * YT@{m}@{n}_LAG * PT@{n} + ( 1 + ( 1 - phiiotaWX@{n} ) * iotaWX@{n}_LAG + ( 1 - phiiotaWM@{m} ) * iotaWM@{m}_LAG ) * YW@{m}@{n}_LAG * PW@{n}
             - ( 1 + ( 1 - phiiotaTX@{m} ) * iotaTX@{m}_LAG + ( 1 - phiiotaTM@{n} ) * iotaTM@{n}_LAG ) * YT@{n}@{m}_LAG * PT@{m} - ( 1 + ( 1 - phiiotaWX@{m} ) * iotaWX@{m}_LAG + ( 1 - phiiotaWM@{n} ) * iotaWM@{n}_LAG ) * YW@{n}@{m}_LAG * PW@{m}
-		@#endif
-	@#endfor
+        @#endif
+    @#endfor
     + YWC@{n}_LAG * PWC * ( scriptFI_LAG * II_LAG * ( scripts_LAG - ( 1 - scriptq ) * ( 1 - deltaI_LAG ) * scripts_LAG2 / GII_LAG ) + II_LAG * scripts_LAG * ScriptFRP_LAG * JP_LAG ) / YWC_LAG;
     #GDPInflation@{n} = log( ( GDP@{n} / GDPplag@{n} * GDPqlag@{n} / GDPplagqlag@{n} ) ^ ( 1 / 2 ) );
 @#endfor
@@ -1879,83 +1879,83 @@ VI = ( 1 - scriptp ) / scriptp * ScriptFRP * PWC * JP + ( 1 - scriptq ) * ( 1 - 
     #GDIInflation@{n} = log( ( GDI@{n} / GDIplag@{n} * GDIqlag@{n} / GDIplagqlag@{n} ) ^ ( 1 / 2 ) );
 
 //GERD (Gross domestic expenditure on R&D, or R&D intensity)
-	#GERD@{n} = ( PHG@{n} * IHG@{n} + YWC@{n} * PWC * ( scriptFI * II * ( scripts - ( 1 - scriptq ) * ( 1 - deltaI ) * scripts_LAG / GII ) + II * scripts * ScriptFRP * JP ) / YWC ) / GDP@{n};
+    #GERD@{n} = ( PHG@{n} * IHG@{n} + YWC@{n} * PWC * ( scriptFI * II * ( scripts - ( 1 - scriptq ) * ( 1 - deltaI ) * scripts_LAG / GII ) + II * scripts * ScriptFRP * JP ) / YWC ) / GDP@{n};
 
 //Export and deflator
     #Export@{n} = ( 1 + ( 1 - phiiotaTX@{n} ) * iotaTX@{n} ) * YT0@{n} * PT@{n}
-	@#for m in 1:SN
-		@#if n == m
-			+ 0
-		@#else
-			+ ( 1 + ( 1 - phiiotaTX@{n} ) * iotaTX@{n} + ( 1 - phiiotaTM@{m} ) * iotaTM@{m} ) * YT@{m}@{n} * PT@{n} + ( 1 + ( 1 - phiiotaWX@{n} ) * iotaWX@{n} + ( 1 - phiiotaWM@{m} ) * iotaWM@{m} ) * YW@{m}@{n} * PW@{n}
-		@#endif
-	@#endfor
+    @#for m in 1:SN
+        @#if n == m
+            + 0
+        @#else
+            + ( 1 + ( 1 - phiiotaTX@{n} ) * iotaTX@{n} + ( 1 - phiiotaTM@{m} ) * iotaTM@{m} ) * YT@{m}@{n} * PT@{n} + ( 1 + ( 1 - phiiotaWX@{n} ) * iotaWX@{n} + ( 1 - phiiotaWM@{m} ) * iotaWM@{m} ) * YW@{m}@{n} * PW@{n}
+        @#endif
+    @#endfor
     ;
     #Exportplagqlag@{n} = ( 1 + ( 1 - phiiotaTX@{n} ) * iotaTX@{n}_LAG ) * YT0@{n}_LAG * PT@{n}_LAG
-	@#for m in 1:SN
-		@#if n == m
-			+ 0
-		@#else
-			+ ( 1 + ( 1 - phiiotaTX@{n} ) * iotaTX@{n}_LAG + ( 1 - phiiotaTM@{m} ) * iotaTM@{m}_LAG ) * YT@{m}@{n}_LAG * PT@{n}_LAG + ( 1 + ( 1 - phiiotaWX@{n} ) * iotaWX@{n}_LAG + ( 1 - phiiotaWM@{m} ) * iotaWM@{m}_LAG ) * YW@{m}@{n}_LAG * PW@{n}_LAG
-		@#endif
-	@#endfor
+    @#for m in 1:SN
+        @#if n == m
+            + 0
+        @#else
+            + ( 1 + ( 1 - phiiotaTX@{n} ) * iotaTX@{n}_LAG + ( 1 - phiiotaTM@{m} ) * iotaTM@{m}_LAG ) * YT@{m}@{n}_LAG * PT@{n}_LAG + ( 1 + ( 1 - phiiotaWX@{n} ) * iotaWX@{n}_LAG + ( 1 - phiiotaWM@{m} ) * iotaWM@{m}_LAG ) * YW@{m}@{n}_LAG * PW@{n}_LAG
+        @#endif
+    @#endfor
     ;
     #Exportplag@{n} = ( 1 + ( 1 - phiiotaTX@{n} ) * iotaTX@{n} ) * YT0@{n} * PT@{n}_LAG
-	@#for m in 1:SN
-		@#if n == m
-			+ 0
-		@#else
-			+ ( 1 + ( 1 - phiiotaTX@{n} ) * iotaTX@{n} + ( 1 - phiiotaTM@{m} ) * iotaTM@{m} ) * YT@{m}@{n} * PT@{n}_LAG + ( 1 + ( 1 - phiiotaWX@{n} ) * iotaWX@{n} + ( 1 - phiiotaWM@{m} ) * iotaWM@{m} ) * YW@{m}@{n} * PW@{n}_LAG
-		@#endif
-	@#endfor
+    @#for m in 1:SN
+        @#if n == m
+            + 0
+        @#else
+            + ( 1 + ( 1 - phiiotaTX@{n} ) * iotaTX@{n} + ( 1 - phiiotaTM@{m} ) * iotaTM@{m} ) * YT@{m}@{n} * PT@{n}_LAG + ( 1 + ( 1 - phiiotaWX@{n} ) * iotaWX@{n} + ( 1 - phiiotaWM@{m} ) * iotaWM@{m} ) * YW@{m}@{n} * PW@{n}_LAG
+        @#endif
+    @#endfor
     ;
     #Exportqlag@{n} = ( 1 + ( 1 - phiiotaTX@{n} ) * iotaTX@{n}_LAG ) * YT0@{n}_LAG * PT@{n}
-	@#for m in 1:SN
-		@#if n == m
-			+ 0
-		@#else
-			+ ( 1 + ( 1 - phiiotaTX@{n} ) * iotaTX@{n}_LAG + ( 1 - phiiotaTM@{m} ) * iotaTM@{m}_LAG ) * YT@{m}@{n}_LAG * PT@{n} + ( 1 + ( 1 - phiiotaWX@{n} ) * iotaWX@{n}_LAG + ( 1 - phiiotaWM@{m} ) * iotaWM@{m}_LAG ) * YW@{m}@{n}_LAG * PW@{n}
-		@#endif
-	@#endfor
+    @#for m in 1:SN
+        @#if n == m
+            + 0
+        @#else
+            + ( 1 + ( 1 - phiiotaTX@{n} ) * iotaTX@{n}_LAG + ( 1 - phiiotaTM@{m} ) * iotaTM@{m}_LAG ) * YT@{m}@{n}_LAG * PT@{n} + ( 1 + ( 1 - phiiotaWX@{n} ) * iotaWX@{n}_LAG + ( 1 - phiiotaWM@{m} ) * iotaWM@{m}_LAG ) * YW@{m}@{n}_LAG * PW@{n}
+        @#endif
+    @#endfor
     ;
     #ExportInflation@{n} = log( ( Export@{n} / Exportplag@{n} * Exportqlag@{n} / Exportplagqlag@{n} ) ^ ( 1 / 2 ) );
 
 //Import and deflator
     #Import@{n} = ( 1 + ( 1 - phiiotaTM@{n} ) * iotaTM@{n} ) * YT@{n}0 * PT0
-	@#for m in 1:SN
-		@#if n == m
-			+ 0
-		@#else
+    @#for m in 1:SN
+        @#if n == m
+            + 0
+        @#else
             + ( 1 + ( 1 - phiiotaTX@{m} ) * iotaTX@{m} + ( 1 - phiiotaTM@{n} ) * iotaTM@{n} ) * YT@{n}@{m} * PT@{m} + ( 1 + ( 1 - phiiotaWX@{m} ) * iotaWX@{m} + ( 1 - phiiotaWM@{n} ) * iotaWM@{n} ) * YW@{n}@{m} * PW@{m}
-		@#endif
-	@#endfor
+        @#endif
+    @#endfor
     ;
     #Importplagqlag@{n} = ( 1 + ( 1 - phiiotaTM@{n} ) * iotaTM@{n}_LAG ) * YT@{n}0_LAG * PT0_LAG
-	@#for m in 1:SN
-		@#if n == m
-			+ 0
-		@#else
+    @#for m in 1:SN
+        @#if n == m
+            + 0
+        @#else
             + ( 1 + ( 1 - phiiotaTX@{m} ) * iotaTX@{m}_LAG + ( 1 - phiiotaTM@{n} ) * iotaTM@{n}_LAG ) * YT@{n}@{m}_LAG * PT@{m}_LAG + ( 1 + ( 1 - phiiotaWX@{m} ) * iotaWX@{m}_LAG + ( 1 - phiiotaWM@{n} ) * iotaWM@{n}_LAG ) * YW@{n}@{m}_LAG * PW@{m}_LAG
-		@#endif
-	@#endfor
+        @#endif
+    @#endfor
     ;
     #Importplag@{n} = ( 1 + ( 1 - phiiotaTM@{n} ) * iotaTM@{n} ) * YT@{n}0 * PT0_LAG
-	@#for m in 1:SN
-		@#if n == m
-			+ 0
-		@#else
+    @#for m in 1:SN
+        @#if n == m
+            + 0
+        @#else
             + ( 1 + ( 1 - phiiotaTX@{m} ) * iotaTX@{m} + ( 1 - phiiotaTM@{n} ) * iotaTM@{n} ) * YT@{n}@{m} * PT@{m}_LAG + ( 1 + ( 1 - phiiotaWX@{m} ) * iotaWX@{m} + ( 1 - phiiotaWM@{n} ) * iotaWM@{n} ) * YW@{n}@{m} * PW@{m}_LAG
-		@#endif
-	@#endfor
+        @#endif
+    @#endfor
     ;
     #Importqlag@{n} = ( 1 + ( 1 - phiiotaTM@{n} ) * iotaTM@{n}_LAG ) * YT@{n}0_LAG * PT0
-	@#for m in 1:SN
-		@#if n == m
-			+ 0
-		@#else
+    @#for m in 1:SN
+        @#if n == m
+            + 0
+        @#else
             + ( 1 + ( 1 - phiiotaTX@{m} ) * iotaTX@{m}_LAG + ( 1 - phiiotaTM@{n} ) * iotaTM@{n}_LAG ) * YT@{n}@{m}_LAG * PT@{m} + ( 1 + ( 1 - phiiotaWX@{m} ) * iotaWX@{m}_LAG + ( 1 - phiiotaWM@{n} ) * iotaWM@{n}_LAG ) * YW@{n}@{m}_LAG * PW@{m}
-		@#endif
-	@#endfor
+        @#endif
+    @#endfor
     ;
     #ImportInflation@{n} = log( ( Import@{n} / Importplag@{n} * Importqlag@{n} / Importplagqlag@{n} ) ^ ( 1 / 2 ) );
 
@@ -1966,7 +1966,7 @@ VI = ( 1 - scriptp ) / scriptp * ScriptFRP * PWC * JP + ( 1 - scriptq ) * ( 1 - 
         deltaDtildeAUXN@{n}@{m} = ID@{n}@{m} * exp( - thetaGD@{n} / 2 * ( log( GD@{n}@{m} / GD@{n}@{m}_LAG ) ) ^ 2 - thetaPD@{n} / 2 * ( log( D@{n}@{m} / DP@{n}@{m}_LAG ) ) ^ 2 ) * deltaD@{n} + ( 1 - deltaD_ ) * deltaDtildeAUXN@{n}@{m}_LAG;
         #deltaDtilde@{n}@{m} = deltaDtildeAUXN@{n}@{m}_LAG / deltaDtildeAUXD@{n}@{m}_LAG;
         #Dcfc@{n}@{m} = deltaDtilde@{n}@{m} * Dtilde@{n}@{m}_LAG * PD@{n};
-	@#endfor
+    @#endfor
 //cfc of private physical capital stock
     @#for S in Sectors0
         KPtilde@{S}@{n} = ( 1 - deltaKP@{S}@{n} ) * KPtilde@{S}@{n}_LAG + IKP@{S}@{n} * exp( - thetaGKP@{n} / 2 * ( log( GKP@{S}@{n} / GKP@{S}@{n}_LAG ) ) ^ 2 - thetaPKP@{n} / 2 * ( log( KP@{S}@{n} / KPP@{S}@{n}_LAG) ) ^ 2 );
@@ -1974,7 +1974,7 @@ VI = ( 1 - scriptp ) / scriptp * ScriptFRP * PWC * JP + ( 1 - scriptq ) * ( 1 - 
         deltaKPtildeAUXN@{S}@{n} = IKP@{S}@{n} * exp( - thetaGKP@{n} / 2 * ( log( GKP@{S}@{n} / GKP@{S}@{n}_LAG ) ) ^ 2 - thetaPKP@{n} / 2 * ( log( KP@{S}@{n} / KPP@{S}@{n}_LAG) ) ^ 2 ) * deltaKP@{S}@{n} + ( 1 - deltaK_ ) * deltaKPtildeAUXN@{S}@{n}_LAG;
         #deltaKPtilde@{S}@{n} = deltaKPtildeAUXN@{S}@{n}_LAG / deltaKPtildeAUXD@{S}@{n}_LAG;
         #KPcfc@{S}@{n} = deltaKPtilde@{S}@{n} * KPtilde@{S}@{n}_LAG * PKP@{n};
-	@#endfor
+    @#endfor
 //cfc of public physical capital stock
     deltaKGtildeAUXD@{n} = IKG@{n} * exp( - thetaGKG@{n} / 2 * ( log( GKG@{n} / GKG@{n}_LAG ) ) ^ 2 ) + ( 1 - deltaK_ ) * deltaKGtildeAUXD@{n}_LAG;
     deltaKGtildeAUXN@{n} = IKG@{n} * exp( - thetaGKG@{n} / 2 * ( log( GKG@{n} / GKG@{n}_LAG ) ) ^ 2 ) * deltaKG@{n} + ( 1 - deltaK_ ) * deltaKGtildeAUXN@{n}_LAG;
@@ -1993,25 +1993,25 @@ VI = ( 1 - scriptp ) / scriptp * ScriptFRP * PWC * JP + ( 1 - scriptq ) * ( 1 - 
 
 //Labour+human capital income
     #LabourIncome@{n} = 0
-	@#for S in [ "W", "T", "NT", "D", "NDCG", "K", "H" ]
-	  + W@{S}@{n} * L@{S}@{n}b
-	@#endfor
-	@#for S in [ "W", "T", "NT" ]
-	  + W@{S}@{n} * LS@{S}@{n}b
-	@#endfor
-	@#for S in Sectors2
-	  + W@{S}@{n} * L@{S}@{n}l
-	@#endfor
+    @#for S in [ "W", "T", "NT", "D", "NDCG", "K", "H" ]
+      + W@{S}@{n} * L@{S}@{n}b
+    @#endfor
+    @#for S in [ "W", "T", "NT" ]
+      + W@{S}@{n} * LS@{S}@{n}b
+    @#endfor
+    @#for S in Sectors2
+      + W@{S}@{n} * L@{S}@{n}l
+    @#endfor
     @#for S in Sectors0
       + RHP@{S}@{n} * HP@{S}@{n}
-	@#endfor
+    @#endfor
     ;
 
 //HoursWorkedPerCapita
     #Log_HoursWorkedPerCapita@{n} = log( (
-	@#for S in Sectors2
-	  + L@{S}@{n}l + L@{S}@{n}b
-	@#endfor
+    @#for S in Sectors2
+      + L@{S}@{n}l + L@{S}@{n}b
+    @#endfor
     ) / N@{n} );
 
 //ex post real exchange rate (t-1 to t)
@@ -2019,72 +2019,72 @@ VI = ( 1 - scriptp ) / scriptp * ScriptFRP * PWC * JP + ( 1 - scriptq ) * ( 1 - 
 
 //Spread
     #Spread@{n} = ( log( 1 / QB@{n} ) - log( 1 / Q ) );
-	
+    
 //government revenue
-	#GovRev@{n} = 
+    #GovRev@{n} = 
     (
-	@#for m in 0:SN
-		@#if n == m
-			+ 0
-		@#else
+    @#for m in 0:SN
+        @#if n == m
+            + 0
+        @#else
             + YT@{m}@{n} * PT@{n}
-		@#endif
-	@#endfor
+        @#endif
+    @#endfor
     ) * iotaTX@{n} * phiiotaTX@{n}
     + (
-	@#for m in 0:SN
-		@#if n == m
-			+ 0
-		@#else
+    @#for m in 0:SN
+        @#if n == m
+            + 0
+        @#else
             + YT@{n}@{m} * PT@{m}
-		@#endif
-	@#endfor
+        @#endif
+    @#endfor
     ) * iotaTM@{n} * phiiotaTM@{n}
     + (
-	@#for m in 1:SN
-		@#if n == m
-			+ 0
-		@#else
+    @#for m in 1:SN
+        @#if n == m
+            + 0
+        @#else
             + YW@{m}@{n} * PW@{n}
-		@#endif
-	@#endfor
+        @#endif
+    @#endfor
     ) * iotaWX@{n} * phiiotaWX@{n}
     + (
-	@#for m in 1:SN
-		@#if n == m
-			+ 0
-		@#else
+    @#for m in 1:SN
+        @#if n == m
+            + 0
+        @#else
             + YW@{n}@{m} * PW@{m}
-		@#endif
-	@#endfor
+        @#endif
+    @#endfor
     ) * iotaWM@{n} * phiiotaWM@{n}
-	+ YNT@{n} * PNT@{n} * tauNT@{n} * phitauNT@{n} + YTC@{n} * PTC@{n} * tauTC@{n} * phitauTC@{n}
-	+ ID@{n}b * PD@{n} * tauD@{n} * phitauD@{n} + IND@{n}b * PND@{n} * tauND@{n} * phitauND@{n} + ID@{n}l * PD@{n} * tauD@{n} * phitauD@{n} + IND@{n}l * PND@{n} * tauND@{n} * phitauND@{n}
-	@#for S in [ "W", "T", "NT", "D", "NDCG", "K", "H" ]
-	  + W@{S}@{n} * tauL@{S}@{n} * L@{S}@{n}b * phitauL@{n}
-	@#endfor
-	@#for S in [ "W", "T", "NT" ]
-	  + W@{S}@{n} * tauL@{S}@{n} * LS@{S}@{n}b * phitauL@{n}
-	@#endfor
-	@#for S in Sectors2
-	  + W@{S}@{n} * tauL@{S}@{n} * L@{S}@{n}l * phitauL@{n}
-	@#endfor
-	@#for S in Sectors0
+    + YNT@{n} * PNT@{n} * tauNT@{n} * phitauNT@{n} + YTC@{n} * PTC@{n} * tauTC@{n} * phitauTC@{n}
+    + ID@{n}b * PD@{n} * tauD@{n} * phitauD@{n} + IND@{n}b * PND@{n} * tauND@{n} * phitauND@{n} + ID@{n}l * PD@{n} * tauD@{n} * phitauD@{n} + IND@{n}l * PND@{n} * tauND@{n} * phitauND@{n}
+    @#for S in [ "W", "T", "NT", "D", "NDCG", "K", "H" ]
+      + W@{S}@{n} * tauL@{S}@{n} * L@{S}@{n}b * phitauL@{n}
+    @#endfor
+    @#for S in [ "W", "T", "NT" ]
+      + W@{S}@{n} * tauL@{S}@{n} * LS@{S}@{n}b * phitauL@{n}
+    @#endfor
+    @#for S in Sectors2
+      + W@{S}@{n} * tauL@{S}@{n} * L@{S}@{n}l * phitauL@{n}
+    @#endfor
+    @#for S in Sectors0
       + RHP@{S}@{n} * HP@{S}@{n} * tauH@{S}@{n} * phitauH@{S}@{n}
       + KU@{S}@{n} * RKP@{S}@{n} * KP@{S}@{n} * tauK@{S}@{n} * phitauK@{S}@{n}
       + PscriptX@{n} * scriptX@{S}@{n} * tauscriptX@{S}@{n} * phitauscriptX@{S}@{n}
-	@#endfor
-	+ ( tau@{n}b + tau@{n}l ) * Y@{n} * P@{n};
+    @#endfor
+    + ( tau@{n}b + tau@{n}l ) * Y@{n} * P@{n};
 @#endfor
 
 %World
 gryW    = GRGDPW  + epsilon_gryW  * sigma_gryW;
 gpopW   = log(GN) + epsilon_gpopW * sigma_gpopW;
 @#for n in 1:SN-1
-	yshare@{n} = GDP@{n} / GDPW + epsilon_yshare@{n} * sigma_yshare;
+    yshare@{n} = GDP@{n} / GDPW + epsilon_yshare@{n} * sigma_yshare;
 @#endfor
 @#for n in 1:SN
-	popshare@{n} = N@{n} / N / 100  + epsilon_popshare@{n} * sigma_popshare;
+    popshare@{n} = N@{n} / N / 100  + epsilon_popshare@{n} * sigma_popshare;
 @#endfor
 
 @#if SN > 0
@@ -2257,70 +2257,70 @@ end;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 steady_state_model;
-	@#include "step4steady_state_model.mod"
+    @#include "step4steady_state_model.mod"
 end;
 
 shocks;
-	@#include "InsertNewShockBlockLines.mod"
+    @#include "InsertNewShockBlockLines.mod"
     
-	@#for n in 1:SN
-    	var epsilon_beta@{n}     = 1;
-		var epsilon_popshare@{n} = 1;
-	@#endfor
-	@#for n in 1:SN-1
-		var epsilon_yshare@{n}   = 1;
-	@#endfor
-	
-	var epsilon_P0 = 1;
+    @#for n in 1:SN
+        var epsilon_beta@{n}     = 1;
+        var epsilon_popshare@{n} = 1;
+    @#endfor
+    @#for n in 1:SN-1
+        var epsilon_yshare@{n}   = 1;
+    @#endfor
+    
+    var epsilon_P0 = 1;
     var epsilon_Y0 = 1;
-	var epsilon_gryW          = 1;
-	var epsilon_gpopW         = 1;
-	
+    var epsilon_gryW          = 1;
+    var epsilon_gpopW         = 1;
+    
     @#if SN > 0
-	var epsilon_OECDihy1        = 1;
-	var epsilon_ESrdy1        = 1;
-	var epsilon_BEAcy1        = 1;
-	var epsilon_JSTiy1        = 1;
-	var epsilon_BEAgcy1       = 1;
-	var epsilon_BEAgiy1       = 1;
-	var epsilon_JSTxy1        = 1;
-	var epsilon_BEAgpcgpy1    = 1;
-	var epsilon_BEAgpigpy1    = 1;
-	var epsilon_BEAgpgcgpy1   = 1;
-	var epsilon_BEAgpgigpy1   = 1;
-	var epsilon_BEAgpxgpy1    = 1;
-	var epsilon_BEAgpmgpy1    = 1;
-	var epsilon_BEAhpop1      = 1;
-	var epsilon_BEAwhy1       = 1;
-	var epsilon_BEAcfcy1      = 1;
-	var epsilon_JSTexpostr1   = 1;
-	var epsilon_FREDlrni1     = 1;
-	var epsilon_JSTtauy1      = 1;
-	@#endif
-	
-	@#if SN > 1
-	var epsilon_OECDihy2        = 1;
-	var epsilon_ESrdy2        = 1;
-	var epsilon_PWTcy2        = 1;
-	var epsilon_JSTiy2        = 1;
-	var epsilon_JSTgy2        = 1;
-	var epsilon_JSTxy2        = 1;
-	var epsilon_PWTgpcgpy2    = 1;
-	var epsilon_PWTgpigpy2    = 1;
-	var epsilon_PWTgpgcgpy2   = 1;
-	var epsilon_PWTgpxgpy2    = 1;
-	var epsilon_PWTgpmgpy2    = 1;
-	var epsilon_PWThpop2      = 1;
-	var epsilon_PWTwhy2       = 1;
-	var epsilon_PWTdelta2     = 1;
-	var epsilon_JSTexpostr2   = 1;
-	var epsilon_DBlrni2       = 1;
-	var epsilon_JSTtauy2      = 1;
-	@#endif
-	
-	@#if SN > 2
-	var epsilon_OECDihy3        = 1;
-	var epsilon_ESrdy3        = 1;
+    var epsilon_OECDihy1        = 1;
+    var epsilon_ESrdy1        = 1;
+    var epsilon_BEAcy1        = 1;
+    var epsilon_JSTiy1        = 1;
+    var epsilon_BEAgcy1       = 1;
+    var epsilon_BEAgiy1       = 1;
+    var epsilon_JSTxy1        = 1;
+    var epsilon_BEAgpcgpy1    = 1;
+    var epsilon_BEAgpigpy1    = 1;
+    var epsilon_BEAgpgcgpy1   = 1;
+    var epsilon_BEAgpgigpy1   = 1;
+    var epsilon_BEAgpxgpy1    = 1;
+    var epsilon_BEAgpmgpy1    = 1;
+    var epsilon_BEAhpop1      = 1;
+    var epsilon_BEAwhy1       = 1;
+    var epsilon_BEAcfcy1      = 1;
+    var epsilon_JSTexpostr1   = 1;
+    var epsilon_FREDlrni1     = 1;
+    var epsilon_JSTtauy1      = 1;
+    @#endif
+    
+    @#if SN > 1
+    var epsilon_OECDihy2        = 1;
+    var epsilon_ESrdy2        = 1;
+    var epsilon_PWTcy2        = 1;
+    var epsilon_JSTiy2        = 1;
+    var epsilon_JSTgy2        = 1;
+    var epsilon_JSTxy2        = 1;
+    var epsilon_PWTgpcgpy2    = 1;
+    var epsilon_PWTgpigpy2    = 1;
+    var epsilon_PWTgpgcgpy2   = 1;
+    var epsilon_PWTgpxgpy2    = 1;
+    var epsilon_PWTgpmgpy2    = 1;
+    var epsilon_PWThpop2      = 1;
+    var epsilon_PWTwhy2       = 1;
+    var epsilon_PWTdelta2     = 1;
+    var epsilon_JSTexpostr2   = 1;
+    var epsilon_DBlrni2       = 1;
+    var epsilon_JSTtauy2      = 1;
+    @#endif
+    
+    @#if SN > 2
+    var epsilon_OECDihy3        = 1;
+    var epsilon_ESrdy3        = 1;
     var epsilon_MILLcy3       = 1;
     var epsilon_MILLiy3       = 1;
     var epsilon_MILLgcy3      = 1;
@@ -2338,10 +2338,10 @@ shocks;
     var epsilon_MILLlrni3     = 1;
     var epsilon_MILLtauy3     = 1;
     @#endif
-	
-	@#if SN > 3
-	var epsilon_OECDihy4        = 1;
-	var epsilon_ESrdy4        = 1;
+    
+    @#if SN > 3
+    var epsilon_OECDihy4        = 1;
+    var epsilon_ESrdy4        = 1;
     var epsilon_PWTcy4        = 1;
     var epsilon_JSTiy4        = 1;
     var epsilon_JSTgy4        = 1;
@@ -2358,44 +2358,44 @@ shocks;
     var epsilon_BDFlrni4      = 1;
     var epsilon_JSTtauy4      = 1;
     @#endif
-	
-	@#if SN > 4
-	var epsilon_OECDihy5      = 1;
-	var epsilon_ESrdy5        = 1;
-	var epsilon_PWTcy5        = 1;
-	var epsilon_JSTiy5        = 1;
-	var epsilon_JSTgy5        = 1;
-	var epsilon_JSTxy5        = 1;
-	var epsilon_PWTgpcgpy5    = 1;
-	var epsilon_PWTgpigpy5    = 1;
-	var epsilon_PWTgpgcgpy5   = 1;
-	var epsilon_PWTgpxgpy5    = 1;
-	var epsilon_PWTgpmgpy5    = 1;
-	var epsilon_PWThpop5      = 1;
-	var epsilon_PWTwhy5       = 1;
-	var epsilon_PWTcfcy5      = 1;
-	var epsilon_JSTexpostr5   = 1;
-	var epsilon_JSTtauy5      = 1;
-	@#endif
-	
-	@#if SN > 5
-	var epsilon_OECDihy6        = 1;
-	var epsilon_ESrdy6        = 1;
-	var epsilon_PWTcy6        = 1;
-	var epsilon_JSTiy6        = 1;
-	var epsilon_JSTgy6        = 1;
-	var epsilon_JSTxy6        = 1;
-	var epsilon_PWTgpcgpy6    = 1;
-	var epsilon_PWTgpigpy6    = 1;
-	var epsilon_PWTgpgcgpy6   = 1;
-	var epsilon_PWTgpxgpy6    = 1;
-	var epsilon_PWTgpmgpy6    = 1;
-	var epsilon_PWThpop6      = 1;
-	var epsilon_PWTwhy6       = 1;
-	var epsilon_PWTcfcy6      = 1;
-	var epsilon_JSTexpostr6   = 1;
-	var epsilon_JSTtauy6      = 1;
-	@#endif
+    
+    @#if SN > 4
+    var epsilon_OECDihy5      = 1;
+    var epsilon_ESrdy5        = 1;
+    var epsilon_PWTcy5        = 1;
+    var epsilon_JSTiy5        = 1;
+    var epsilon_JSTgy5        = 1;
+    var epsilon_JSTxy5        = 1;
+    var epsilon_PWTgpcgpy5    = 1;
+    var epsilon_PWTgpigpy5    = 1;
+    var epsilon_PWTgpgcgpy5   = 1;
+    var epsilon_PWTgpxgpy5    = 1;
+    var epsilon_PWTgpmgpy5    = 1;
+    var epsilon_PWThpop5      = 1;
+    var epsilon_PWTwhy5       = 1;
+    var epsilon_PWTcfcy5      = 1;
+    var epsilon_JSTexpostr5   = 1;
+    var epsilon_JSTtauy5      = 1;
+    @#endif
+    
+    @#if SN > 5
+    var epsilon_OECDihy6        = 1;
+    var epsilon_ESrdy6        = 1;
+    var epsilon_PWTcy6        = 1;
+    var epsilon_JSTiy6        = 1;
+    var epsilon_JSTgy6        = 1;
+    var epsilon_JSTxy6        = 1;
+    var epsilon_PWTgpcgpy6    = 1;
+    var epsilon_PWTgpigpy6    = 1;
+    var epsilon_PWTgpgcgpy6   = 1;
+    var epsilon_PWTgpxgpy6    = 1;
+    var epsilon_PWTgpmgpy6    = 1;
+    var epsilon_PWThpop6      = 1;
+    var epsilon_PWTwhy6       = 1;
+    var epsilon_PWTcfcy6      = 1;
+    var epsilon_JSTexpostr6   = 1;
+    var epsilon_JSTtauy6      = 1;
+    @#endif
 end;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                                       //
@@ -2467,10 +2467,10 @@ estimation(order=1, datafile=data_@{SN}country, presample=0,prior_trunc=0,
             )
 gryW gpopW
   @#for n in 1:SN-1
-	yshare@{n}
+    yshare@{n}
   @#endfor
   @#for n in 1:SN
-	popshare@{n}
+    popshare@{n}
   @#endfor
 @#if SN > 0
 OECDihy1 ESrdy1 BEAcy1  JSTiy1  BEAgcy1  BEAgiy1  JSTxy1  BEAgpcgpy1  BEAgpigpy1  BEAgpgcgpy1 BEAgpgigpy1 BEAgpxgpy1  BEAgpmgpy1  BEAhpop1   BEAwhy1   BEAcfcy1  JSTexpostr1  FREDlrni1 JSTtauy1
