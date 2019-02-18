@@ -4,14 +4,16 @@
 
 estimated_params;
 
+@#if 1
 //initial state parameters
 InitialStateLogitEigCap     , InitialStateLogitEigCap     , , , NORMAL_PDF , 5  , 5;
 InitialStateAllowCorrelation, InitialStateAllowCorrelation, , , UNIFORM_PDF, 0.5, (1/12)^(0.5);
 InitialStateLogPower        , InitialStateLogPower        , , , NORMAL_PDF , 0  , 5;
 InitialStateLogScale        , InitialStateLogScale        , , , NORMAL_PDF , 0  , 10;
+@#endif
 
-//std of measurement errors
 @#if 1
+//std of measurement errors
 sigma_gryW        ,sigma_gryW      , , , INV_GAMMA_PDF, 0.001, 0.001;
 sigma_yshare      ,sigma_yshare    , , , INV_GAMMA_PDF, 0.001, 0.001;
 sigma_gpopW       ,sigma_gpopW     , , , INV_GAMMA_PDF, 0.001, 0.001;
