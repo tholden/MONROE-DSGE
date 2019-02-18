@@ -145,8 +145,8 @@ varexo epsilon_P0 epsilon_Y0;
 		@#define EndoVariables = EndoVariables + [ "KPP" + S + Numbers[n+1], "0", "Inf", "gKP"]
 		@#define EndoVariables = EndoVariables + [ "HP" + S + Numbers[n+1], "0", "Inf", "gHP"]
 		@#define EndoVariables = EndoVariables + [ "HPP" + S + Numbers[n+1], "0", "Inf", "gHP"]
-		@#define ShockProcesses = ShockProcesses + [ "deltaKP" + S + Numbers[n+1], "0", "1", "deltaKP" + S + "_", "rhodeltaKP" + S, "sigmadeltaKP" + S ]
-		@#define ShockProcesses = ShockProcesses + [ "deltaHP" + S + Numbers[n+1], "0", "1", "deltaHP" + S + "_", "rhodeltaHP" + S, "sigmadeltaHP" + S ]
+		@#define ShockProcesses = ShockProcesses + [ "deltaKP" + S + Numbers[n+1], "0", "1", "deltaK" + "_", "rhodeltaK", "sigmadeltaK" ]
+		@#define ShockProcesses = ShockProcesses + [ "deltaHP" + S + Numbers[n+1], "0", "1", "deltaH" + "_", "rhodeltaH", "sigmadeltaH" ]
 	@#endfor
 	
 	@#define ShockProcesses = ShockProcesses + [ "m" + Numbers[n+1], "0", "Inf", "m_", "1", "sigmam" ]
@@ -190,8 +190,8 @@ varexo epsilon_P0 epsilon_Y0;
 	@#define EndoVariables = EndoVariables + [ "CG" + Numbers[n+1], "0", "Inf", "gCG"]
 	@#define EndoVariables = EndoVariables + [ "KG" + Numbers[n+1], "0", "Inf", "gKG"]
 	@#define EndoVariables = EndoVariables + [ "HG" + Numbers[n+1], "0", "Inf", "gHG"]
-	@#define ShockProcesses = ShockProcesses + [ "deltaKG" + Numbers[n+1], "0", "1", "deltaKG" + "_", "rhodeltaKG", "sigmadeltaKG" ]
-	@#define ShockProcesses = ShockProcesses + [ "deltaHG" + Numbers[n+1], "0", "1", "deltaHG" + "_", "rhodeltaHG", "sigmadeltaHG" ]
+	@#define ShockProcesses = ShockProcesses + [ "deltaKG" + Numbers[n+1], "0", "1", "deltaK" + "_", "rhodeltaK", "sigmadeltaK" ]
+	@#define ShockProcesses = ShockProcesses + [ "deltaHG" + Numbers[n+1], "0", "1", "deltaH" + "_", "rhodeltaH", "sigmadeltaH" ]
 	
 	//Y yNT yTC are MLV
 	@#define EndoVariables = EndoVariables + [ "P" + Numbers[n+1], "0", "Inf", "gPS" ]
@@ -349,21 +349,33 @@ varexo epsilon_P0 epsilon_Y0;
 
 //Final observables and measurement errors (for estimation)
 var
-  gryW yshare1 yshare2 yshare3 yshare4 yshare5 gpopW popshare1 popshare2 popshare3 popshare4 popshare5 popshare6
-  BEAcy1  JSTiy1  BEAgcy1  BEAgiy1  JSTxy1  BEAgpcgpy1  BEAgpigpy1  BEAgpgcgpy1 BEAgpgigpy1 BEAgpxgpy1  BEAgpmgpy1  BEAhpop1   BEAwhy1   BEAcfcy1  JSTexpostr1  FREDlrni1 JSTtauy1
-  PWTcy2  JSTiy2  JSTgy2            JSTxy2  PWTgpcgpy2  PWTgpigpy2  PWTgpgcgpy2             PWTgpxgpy2  PWTgpmgpy2  PWThpop2   PWTwhy2   PWTdelta2 JSTexpostr2  DBlrni2   JSTtauy2
-  MILLcy3 MILLiy3 MILLgcy3 MILLgiy3 MILLxy3 MILLgpcgpy3 MILLgpigpy3 MILLgpgcgpy3            MILLgpxgpy3 MILLgpmgpy3 MILLhpop3  MILLwhy3  MILLcfcy3 MILLexpostr3 MILLlrni3 MILLtauy3
-  PWTcy4  JSTiy4  JSTgy4            JSTxy4  PWTgpcgpy4  PWTgpigpy4  PWTgpgcgpy4             PWTgpxgpy4  PWTgpmgpy4  PWThpop4   PWTwhy4   PWTdelta4 JSTexpostr4  BDFlrni4  JSTtauy4
-  PWTcy5  JSTiy5  JSTgy5            JSTxy5  PWTgpcgpy5  PWTgpigpy5  PWTgpgcgpy5             PWTgpxgpy5  PWTgpmgpy5  PWThpop5   PWTwhy5   PWTcfcy5  JSTexpostr5            JSTtauy5
-  PWTcy6  JSTiy6  JSTgy6            JSTxy6  PWTgpcgpy6  PWTgpigpy6  PWTgpgcgpy6             PWTgpxgpy6  PWTgpmgpy6  PWThpop6   PWTwhy6   PWTcfcy6  JSTexpostr6            JSTtauy6;
+  gryW gpopW
+  @#for n in 1:SN-1
+	yshare@{n}
+  @#endfor
+  @#for n in 1:SN
+	popshare@{n}
+  @#endfor
+  OECDihy1 ESrdy1 BEAcy1  JSTiy1  BEAgcy1  BEAgiy1  JSTxy1  BEAgpcgpy1  BEAgpigpy1  BEAgpgcgpy1 BEAgpgigpy1 BEAgpxgpy1  BEAgpmgpy1  BEAhpop1   BEAwhy1   BEAcfcy1  JSTexpostr1  FREDlrni1 JSTtauy1
+  OECDihy2 ESrdy2 PWTcy2  JSTiy2  JSTgy2            JSTxy2  PWTgpcgpy2  PWTgpigpy2  PWTgpgcgpy2             PWTgpxgpy2  PWTgpmgpy2  PWThpop2   PWTwhy2   PWTdelta2 JSTexpostr2  DBlrni2   JSTtauy2
+  OECDihy3 ESrdy3 MILLcy3 MILLiy3 MILLgcy3 MILLgiy3 MILLxy3 MILLgpcgpy3 MILLgpigpy3 MILLgpgcgpy3            MILLgpxgpy3 MILLgpmgpy3 MILLhpop3  MILLwhy3  MILLcfcy3 MILLexpostr3 MILLlrni3 MILLtauy3
+  OECDihy4 ESrdy4 PWTcy4  JSTiy4  JSTgy4            JSTxy4  PWTgpcgpy4  PWTgpigpy4  PWTgpgcgpy4             PWTgpxgpy4  PWTgpmgpy4  PWThpop4   PWTwhy4   PWTdelta4 JSTexpostr4  BDFlrni4  JSTtauy4
+  OECDihy5 ESrdy5 PWTcy5  JSTiy5  JSTgy5            JSTxy5  PWTgpcgpy5  PWTgpigpy5  PWTgpgcgpy5             PWTgpxgpy5  PWTgpmgpy5  PWThpop5   PWTwhy5   PWTcfcy5  JSTexpostr5            JSTtauy5
+  OECDihy6 ESrdy6 PWTcy6  JSTiy6  JSTgy6            JSTxy6  PWTgpcgpy6  PWTgpigpy6  PWTgpgcgpy6             PWTgpxgpy6  PWTgpmgpy6  PWThpop6   PWTwhy6   PWTcfcy6  JSTexpostr6            JSTtauy6;
 varexo
-  epsilon_gryW    epsilon_yshare1 epsilon_yshare2 epsilon_yshare3 epsilon_yshare4 epsilon_yshare5 epsilon_gpopW    epsilon_popshare1 epsilon_popshare2  epsilon_popshare3   epsilon_popshare4 epsilon_popshare5 epsilon_popshare6
-  epsilon_BEAcy1  epsilon_JSTiy1  epsilon_BEAgcy1  epsilon_BEAgiy1   epsilon_JSTxy1     epsilon_BEAgpcgpy1  epsilon_BEAgpigpy1  epsilon_BEAgpgcgpy1 epsilon_BEAgpgigpy1 epsilon_BEAgpxgpy1  epsilon_BEAgpmgpy1  epsilon_BEAhpop1   epsilon_BEAwhy1   epsilon_BEAcfcy1  epsilon_JSTexpostr1  epsilon_FREDlrni1 epsilon_JSTtauy1
-  epsilon_PWTcy2  epsilon_JSTiy2  epsilon_JSTgy2                     epsilon_JSTxy2     epsilon_PWTgpcgpy2  epsilon_PWTgpigpy2  epsilon_PWTgpgcgpy2                     epsilon_PWTgpxgpy2  epsilon_PWTgpmgpy2  epsilon_PWThpop2   epsilon_PWTwhy2   epsilon_PWTdelta2 epsilon_JSTexpostr2  epsilon_DBlrni2   epsilon_JSTtauy2
-  epsilon_MILLcy3 epsilon_MILLiy3 epsilon_MILLgcy3 epsilon_MILLgiy3  epsilon_MILLxy3    epsilon_MILLgpcgpy3 epsilon_MILLgpigpy3 epsilon_MILLgpgcgpy3                    epsilon_MILLgpxgpy3 epsilon_MILLgpmgpy3 epsilon_MILLhpop3  epsilon_MILLwhy3  epsilon_MILLcfcy3 epsilon_MILLexpostr3 epsilon_MILLlrni3 epsilon_MILLtauy3
-  epsilon_PWTcy4  epsilon_JSTiy4  epsilon_JSTgy4                     epsilon_JSTxy4     epsilon_PWTgpcgpy4  epsilon_PWTgpigpy4  epsilon_PWTgpgcgpy4                     epsilon_PWTgpxgpy4  epsilon_PWTgpmgpy4  epsilon_PWThpop4   epsilon_PWTwhy4   epsilon_PWTdelta4 epsilon_JSTexpostr4  epsilon_BDFlrni4  epsilon_JSTtauy4
-  epsilon_PWTcy5  epsilon_JSTiy5  epsilon_JSTgy5                     epsilon_JSTxy5     epsilon_PWTgpcgpy5  epsilon_PWTgpigpy5  epsilon_PWTgpgcgpy5                     epsilon_PWTgpxgpy5  epsilon_PWTgpmgpy5  epsilon_PWThpop5   epsilon_PWTwhy5   epsilon_PWTcfcy5  epsilon_JSTexpostr5                    epsilon_JSTtauy5
-  epsilon_PWTcy6  epsilon_JSTiy6  epsilon_JSTgy6                     epsilon_JSTxy6     epsilon_PWTgpcgpy6  epsilon_PWTgpigpy6  epsilon_PWTgpgcgpy6                     epsilon_PWTgpxgpy6  epsilon_PWTgpmgpy6  epsilon_PWThpop6   epsilon_PWTwhy6   epsilon_PWTcfcy6  epsilon_JSTexpostr6                    epsilon_JSTtauy6;
+  epsilon_gryW epsilon_gpopW
+  @#for n in 1:SN-1
+	epsilon_yshare@{n}
+  @#endfor
+  @#for n in 1:SN
+	epsilon_popshare@{n}
+  @#endfor
+  epsilon_OECDihy1 epsilon_ESrdy1 epsilon_BEAcy1  epsilon_JSTiy1  epsilon_BEAgcy1  epsilon_BEAgiy1   epsilon_JSTxy1     epsilon_BEAgpcgpy1  epsilon_BEAgpigpy1  epsilon_BEAgpgcgpy1 epsilon_BEAgpgigpy1 epsilon_BEAgpxgpy1  epsilon_BEAgpmgpy1  epsilon_BEAhpop1   epsilon_BEAwhy1   epsilon_BEAcfcy1  epsilon_JSTexpostr1  epsilon_FREDlrni1 epsilon_JSTtauy1
+  epsilon_OECDihy2 epsilon_ESrdy2 epsilon_PWTcy2  epsilon_JSTiy2  epsilon_JSTgy2                     epsilon_JSTxy2     epsilon_PWTgpcgpy2  epsilon_PWTgpigpy2  epsilon_PWTgpgcgpy2                     epsilon_PWTgpxgpy2  epsilon_PWTgpmgpy2  epsilon_PWThpop2   epsilon_PWTwhy2   epsilon_PWTdelta2 epsilon_JSTexpostr2  epsilon_DBlrni2   epsilon_JSTtauy2
+  epsilon_OECDihy3 epsilon_ESrdy3 epsilon_MILLcy3 epsilon_MILLiy3 epsilon_MILLgcy3 epsilon_MILLgiy3  epsilon_MILLxy3    epsilon_MILLgpcgpy3 epsilon_MILLgpigpy3 epsilon_MILLgpgcgpy3                    epsilon_MILLgpxgpy3 epsilon_MILLgpmgpy3 epsilon_MILLhpop3  epsilon_MILLwhy3  epsilon_MILLcfcy3 epsilon_MILLexpostr3 epsilon_MILLlrni3 epsilon_MILLtauy3
+  epsilon_OECDihy4 epsilon_ESrdy4 epsilon_PWTcy4  epsilon_JSTiy4  epsilon_JSTgy4                     epsilon_JSTxy4     epsilon_PWTgpcgpy4  epsilon_PWTgpigpy4  epsilon_PWTgpgcgpy4                     epsilon_PWTgpxgpy4  epsilon_PWTgpmgpy4  epsilon_PWThpop4   epsilon_PWTwhy4   epsilon_PWTdelta4 epsilon_JSTexpostr4  epsilon_BDFlrni4  epsilon_JSTtauy4
+  epsilon_OECDihy5 epsilon_ESrdy5 epsilon_PWTcy5  epsilon_JSTiy5  epsilon_JSTgy5                     epsilon_JSTxy5     epsilon_PWTgpcgpy5  epsilon_PWTgpigpy5  epsilon_PWTgpgcgpy5                     epsilon_PWTgpxgpy5  epsilon_PWTgpmgpy5  epsilon_PWThpop5   epsilon_PWTwhy5   epsilon_PWTcfcy5  epsilon_JSTexpostr5                    epsilon_JSTtauy5
+  epsilon_OECDihy6 epsilon_ESrdy6 epsilon_PWTcy6  epsilon_JSTiy6  epsilon_JSTgy6                     epsilon_JSTxy6     epsilon_PWTgpcgpy6  epsilon_PWTgpigpy6  epsilon_PWTgpgcgpy6                     epsilon_PWTgpxgpy6  epsilon_PWTgpmgpy6  epsilon_PWThpop6   epsilon_PWTwhy6   epsilon_PWTcfcy6  epsilon_JSTexpostr6                    epsilon_JSTtauy6;
 
 
 //Extra final observables (for IRF)
@@ -382,7 +394,7 @@ varexo
 
 //global parameters
 parameters lambda eta phiR zetaR gamma scriptp scriptq psi psib psil;
-parameters hpop_;
+parameters hpop_ rdy_;
 
 //country-specific parameters but must be constant across countries as required by the model
 parameters alphaCP alphaCD alphah alphaKP alphaD alphaND alphaHP alphaHW alphaHL alphaK alphaKL alphaHLX alphaY betabarl;
@@ -393,7 +405,6 @@ parameters h varrhoC eC varrhoCP eCP varrhoCD ;
 parameters nuW nuT nuNT nuSW nuST nuSNT nuD nuNDCG nuK nuH nuh;
 parameters rhoQB;
 parameters thetaGKP thetaPKP thetaKU0 thetaKU1 thetaGHP thetaPHP thetaGD thetaPD thetaDU0 thetaDU1;
-parameters thetaGKG thetaGHG;
 parameters eNC alphaNC eT eW FWCtilde FKtilde;
 parameters o eKLT eKLNT eKLW varrhoKL eHLXT eHLXNT eHLXW varrhoHLX eYT eYNT eYW varrhoY;
 
@@ -464,12 +475,8 @@ parameters rhokappah      sigmakappah        kappah_     ;
 @#for S in Sectors2
 parameters rhokappa@{S}   sigmakappa@{S}     kappa@{S}_  ;
 @#endfor
-@#for S in Sectors0
-parameters rhodeltaKP@{S} sigmadeltaKP@{S}   deltaKP@{S}_;
-parameters rhodeltaHP@{S} sigmadeltaHP@{S}   deltaHP@{S}_;
-@#endfor
-parameters rhodeltaKG     sigmadeltaKG       deltaKG_    ;
-parameters rhodeltaHG     sigmadeltaHG       deltaHG_    ;
+parameters rhodeltaK      sigmadeltaK        deltaK_    ;
+parameters rhodeltaH      sigmadeltaH        deltaH_    ;
 parameters rhobeta        sigmabeta          betabarb    ;
 parameters rhoPP0 rhoPY0 rhoYP0 rhoYY0 rho0 sigmaP0 sigmaY0 pT0 yTC0;
 
@@ -487,12 +494,12 @@ parameters sigmaNtilde                      ;
 //STD of measurement errors, fixed across countries
 //note that measurement errors are defined manually (not by transformation engine)
 parameters  sigma_gryW sigma_yshare sigma_gpopW sigma_popshare;
-parameters  sigma_cy  sigma_iy  sigma_gcy sigma_giy  sigma_xy  sigma_gpcgpy  sigma_gpigpy  sigma_gpgcgpy  sigma_gpgigpy  sigma_gpxgpy  sigma_gpmgpy  sigma_hpop   sigma_why   sigma_cfcy  sigma_expostr  sigma_lrni sigma_tauy;
+parameters  sigma_ihy sigma_rdy sigma_cy  sigma_iy  sigma_gcy sigma_giy  sigma_xy  sigma_gpcgpy  sigma_gpigpy  sigma_gpgcgpy  sigma_gpgigpy  sigma_gpxgpy  sigma_gpmgpy  sigma_hpop   sigma_why   sigma_cfcy  sigma_expostr  sigma_lrni sigma_tauy;
 
 @#include "est_calibration.mod"
 
 //////////////////////////////////////Parameter transformation (not calibrated)//////////////////////////////////////////////////
-
+parameters logit_xi;
 parameters logit_rhoGN logit_rhoZ logit_rhodeltaItilde logit_rhoscriptFI logit_rhodeltaD logit_rhokappa0 logit_rhokappah;
 @#for S in Sectors2
 parameters logit_rhokappa@{S};
@@ -508,10 +515,6 @@ parameters logit_alphaCP logit_alphaCD logit_alphah logit_alphaKP logit_alphaD l
 //	parameters eKL@{S}Priori eHLX@{S}Priori eY@{S}Priori;
 @#endfor
 //parameters eKLPriorALL eHLXPriorALL eYPriorALL;
-
-//parameters deltaKPriorALL deltaHPriorALL deltaKPTPriori_ deltaKPNTPriori_ deltaKPWPriori_ deltaKGPriori_ deltaHPTPriori_ deltaHPNTPriori_ deltaHPWPriori_ deltaHGPriori_ ;
-//parameters rhodeltaKPriorALL rhodeltaHPriorALL rhodeltaKPTPriori rhodeltaKPNTPriori rhodeltaKPWPriori rhodeltaKGPriori rhodeltaHPTPriori rhodeltaHPNTPriori rhodeltaHPWPriori rhodeltaHGPriori;
-//parameters sigmadeltaKPriorALL sigmadeltaHPriorALL sigmadeltaKPTPriori sigmadeltaKPNTPriori sigmadeltaKPWPriori sigmadeltaKGPriori sigmadeltaHPTPriori sigmadeltaHPNTPriori sigmadeltaHPWPriori sigmadeltaHGPriori;
 
 //parameters rhoOmegaPriorALL rhoOmegaPriorS0ALL rhoOmegaPriorStepALL rhoOmegaPriorS1ALL rhoOmegaPriorPGALL rhoOmegaPriorALLi rhoOmegaPriorS0ALLi rhoOmegaPriorTALLi rhoOmegaPriorNTALLi rhoOmegaPriorWALLi rhoOmegaPriorKKALLi rhoOmegaPriorHLALLi rhoOmegaPriorKLALLi rhoOmegaPriorHLXALLi rhoOmegaPriorHLXKLALLi rhoOmegaPriorS1ALLi rhoOmegaPriorKALLi rhoOmegaPriorHALLi rhoOmegaPriorCALLi rhoOmegaPriorDii rhoOmegaPriorPALLi rhoOmegaPriorGALLi rhoOmegaPriorDemandALLi rhoOmegaPriorhii rhoOmegaPriorCPii rhoOmegaPriorCii rhoOmegaPriorTradeALLi rhoOmegaPriorYii rhoOmegaPriorTCii rhoOmegaPriorWPii rhoOmegaPriorWCii;
 //parameters sigmaOmegaPriorALL sigmaOmegaPriorS0ALL sigmaOmegaPriorStepALL sigmaOmegaPriorS1ALL sigmaOmegaPriorPGALL sigmaOmegaPriorALLi sigmaOmegaPriorS0ALLi sigmaOmegaPriorTALLi sigmaOmegaPriorNTALLi sigmaOmegaPriorWALLi sigmaOmegaPriorKKALLi sigmaOmegaPriorHLALLi sigmaOmegaPriorKLALLi sigmaOmegaPriorHLXALLi sigmaOmegaPriorHLXKLALLi sigmaOmegaPriorS1ALLi sigmaOmegaPriorKALLi sigmaOmegaPriorHALLi sigmaOmegaPriorCALLi sigmaOmegaPriorDii sigmaOmegaPriorPALLi sigmaOmegaPriorGALLi sigmaOmegaPriorDemandALLi sigmaOmegaPriorhii sigmaOmegaPriorCPii sigmaOmegaPriorCii sigmaOmegaPriorTradeALLi sigmaOmegaPriorYii sigmaOmegaPriorTCii sigmaOmegaPriorWPii sigmaOmegaPriorWCii;
@@ -534,7 +537,7 @@ parameters logit_alphaCP logit_alphaCD logit_alphah logit_alphaKP logit_alphaD l
 //parameters sigmauPriorALL sigmauKGPriori sigmauHGPriori sigmauCGPriori sigmaubPriori sigmaulPriori sigmauDPriori sigmauNDPriori sigmauNTPriori sigmauTXPriori sigmauTMPriori sigmauWXPriori sigmauWMPriori sigmauLaPriori sigmauLbPriori sigmauALLPriori sigmauS1ALLPriori sigmauiotaALLPriori sigmaulbALLPriori sigmauCALLPriori sigmauLALLPriori sigmauHALLPriori sigmauKALLPriori sigmauXALLPriori sigmauTALLPriori sigmauNTALLPriori sigmauWALLPriori;
 //parameters sigmauSG1PriorALL sigmaulbPriorALL sigmauCPriorALL sigmauiotaPriorALL sigmauLPriorALL sigmauPriorHKXALL sigmauPriorS0ALL;
 
-@#for n in 1:175
+@#for n in 1:151
     parameters InternalPrior_@{n};
 @#endfor
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -605,8 +608,8 @@ model(use_dll);
     #thetaPD@{n} = thetaPD;
     #thetaDU0@{n} = thetaDU0;
     #thetaDU1@{n} = thetaDU1;
-    #thetaGKG@{n} = thetaGKG;
-    #thetaGHG@{n} = thetaGHG;
+    #thetaGKG@{n} = thetaGKP;
+    #thetaGHG@{n} = thetaGHP;
     #eNC@{n} = eNC;
     #alphaNC@{n} = alphaNC;
     #eT@{n} = eT;
@@ -1844,6 +1847,9 @@ VI = ( 1 - scriptp ) / scriptp * ScriptFRP * PWC * JP + ( 1 - scriptq ) * ( 1 - 
     #GDIqlag@{n} = GGIqlag@{n} + PDIqlag@{n};
     #GDIInflation@{n} = log( ( GDI@{n} / GDIplag@{n} * GDIqlag@{n} / GDIplagqlag@{n} ) ^ ( 1 / 2 ) );
 
+//GERD (Gross domestic expenditure on R&D, or R&D intensity)
+	#GERD@{n} = ( PHG@{n} * IHG@{n} + YWC@{n} * PWC * ( scriptFI * II * ( scripts - ( 1 - scriptq ) * ( 1 - deltaI ) * scripts_LAG / GII ) + II * scripts * ScriptFRP * JP ) / YWC ) / GDP@{n};
+
 //Export and deflator
     #Export@{n} = ( 1 + ( 1 - phiiotaTX@{n} ) * iotaTX@{n} ) * YT0@{n} * PT@{n}
 	@#for m in 1:SN
@@ -1933,19 +1939,19 @@ VI = ( 1 - scriptp ) / scriptp * ScriptFRP * PWC * JP + ( 1 - scriptq ) * ( 1 - 
 //cfc of private physical capital stock
     @#for S in Sectors0
         KPtilde@{S}@{n} = ( 1 - deltaKP@{S}@{n} ) * KPtilde@{S}@{n}_LAG + IKP@{S}@{n} * exp( - thetaGKP@{n} / 2 * ( log( GKP@{S}@{n} / GKP@{S}@{n}_LAG ) ) ^ 2 - thetaPKP@{n} / 2 * ( log( KP@{S}@{n} / KPP@{S}@{n}_LAG) ) ^ 2 );
-        deltaKPtildeAUXD@{S}@{n} = IKP@{S}@{n} * exp( - thetaGKP@{n} / 2 * ( log( GKP@{S}@{n} / GKP@{S}@{n}_LAG ) ) ^ 2 - thetaPKP@{n} / 2 * ( log( KP@{S}@{n} / KPP@{S}@{n}_LAG) ) ^ 2 ) + ( 1 - deltaKP@{S}_ ) * deltaKPtildeAUXD@{S}@{n}_LAG;
-        deltaKPtildeAUXN@{S}@{n} = IKP@{S}@{n} * exp( - thetaGKP@{n} / 2 * ( log( GKP@{S}@{n} / GKP@{S}@{n}_LAG ) ) ^ 2 - thetaPKP@{n} / 2 * ( log( KP@{S}@{n} / KPP@{S}@{n}_LAG) ) ^ 2 ) * deltaKP@{S}@{n} + ( 1 - deltaKP@{S}_ ) * deltaKPtildeAUXN@{S}@{n}_LAG;
+        deltaKPtildeAUXD@{S}@{n} = IKP@{S}@{n} * exp( - thetaGKP@{n} / 2 * ( log( GKP@{S}@{n} / GKP@{S}@{n}_LAG ) ) ^ 2 - thetaPKP@{n} / 2 * ( log( KP@{S}@{n} / KPP@{S}@{n}_LAG) ) ^ 2 ) + ( 1 - deltaK_ ) * deltaKPtildeAUXD@{S}@{n}_LAG;
+        deltaKPtildeAUXN@{S}@{n} = IKP@{S}@{n} * exp( - thetaGKP@{n} / 2 * ( log( GKP@{S}@{n} / GKP@{S}@{n}_LAG ) ) ^ 2 - thetaPKP@{n} / 2 * ( log( KP@{S}@{n} / KPP@{S}@{n}_LAG) ) ^ 2 ) * deltaKP@{S}@{n} + ( 1 - deltaK_ ) * deltaKPtildeAUXN@{S}@{n}_LAG;
         #deltaKPtilde@{S}@{n} = deltaKPtildeAUXN@{S}@{n}_LAG / deltaKPtildeAUXD@{S}@{n}_LAG;
         #KPcfc@{S}@{n} = deltaKPtilde@{S}@{n} * KPtilde@{S}@{n}_LAG * PKP@{n};
 	@#endfor
 //cfc of public physical capital stock
-    deltaKGtildeAUXD@{n} = IKG@{n} * exp( - thetaGKG@{n} / 2 * ( log( GKG@{n} / GKG@{n}_LAG ) ) ^ 2 ) + ( 1 - deltaKG_ ) * deltaKGtildeAUXD@{n}_LAG;
-    deltaKGtildeAUXN@{n} = IKG@{n} * exp( - thetaGKG@{n} / 2 * ( log( GKG@{n} / GKG@{n}_LAG ) ) ^ 2 ) * deltaKG@{n} + ( 1 - deltaKG_ ) * deltaKGtildeAUXN@{n}_LAG;
+    deltaKGtildeAUXD@{n} = IKG@{n} * exp( - thetaGKG@{n} / 2 * ( log( GKG@{n} / GKG@{n}_LAG ) ) ^ 2 ) + ( 1 - deltaK_ ) * deltaKGtildeAUXD@{n}_LAG;
+    deltaKGtildeAUXN@{n} = IKG@{n} * exp( - thetaGKG@{n} / 2 * ( log( GKG@{n} / GKG@{n}_LAG ) ) ^ 2 ) * deltaKG@{n} + ( 1 - deltaK_ ) * deltaKGtildeAUXN@{n}_LAG;
     #deltaKGtilde@{n} = deltaKGtildeAUXN@{n}_LAG / deltaKGtildeAUXD@{n}_LAG;
     #KGcfc@{n} = deltaKGtilde@{n} * KG@{n}_LAG * PKG@{n};
 //cfc of public R&D capital stock
-    deltaHGtildeAUXD@{n} = IHG@{n} * exp( - thetaGHG@{n} / 2 * ( log( GHG@{n} / GHG@{n}_LAG ) ) ^ 2 ) + ( 1 - deltaHG_ ) * deltaHGtildeAUXD@{n}_LAG;
-    deltaHGtildeAUXN@{n} = IHG@{n} * exp( - thetaGHG@{n} / 2 * ( log( GHG@{n} / GHG@{n}_LAG ) ) ^ 2 ) * deltaHG@{n} + ( 1 - deltaHG_ ) * deltaHGtildeAUXN@{n}_LAG;
+    deltaHGtildeAUXD@{n} = IHG@{n} * exp( - thetaGHG@{n} / 2 * ( log( GHG@{n} / GHG@{n}_LAG ) ) ^ 2 ) + ( 1 - deltaH_ ) * deltaHGtildeAUXD@{n}_LAG;
+    deltaHGtildeAUXN@{n} = IHG@{n} * exp( - thetaGHG@{n} / 2 * ( log( GHG@{n} / GHG@{n}_LAG ) ) ^ 2 ) * deltaHG@{n} + ( 1 - deltaH_ ) * deltaHGtildeAUXN@{n}_LAG;
     #deltaHGtilde@{n} = deltaHGtildeAUXN@{n}_LAG / deltaHGtildeAUXD@{n}_LAG;
     #HGcfc@{n} = deltaHGtilde@{n} * HG@{n}_LAG * PHG@{n};
 //cfc
@@ -2042,22 +2048,19 @@ VI = ( 1 - scriptp ) / scriptp * ScriptFRP * PWC * JP + ( 1 - scriptq ) * ( 1 - 
 
 %World
 gryW    = GRGDPW      + epsilon_gryW    * sigma_gryW;
-yshare1 = GDP1 / GDPW + epsilon_yshare1 * sigma_yshare;
-yshare2 = GDP2 / GDPW + epsilon_yshare2 * sigma_yshare;
-yshare3 = GDP3 / GDPW + epsilon_yshare3 * sigma_yshare;
-yshare4 = GDP4 / GDPW + epsilon_yshare4 * sigma_yshare;
-yshare5 = GDP5 / GDPW + epsilon_yshare5 * sigma_yshare;
+gpopW   = log(GN) + epsilon_gpopW * sigma_gpopW;
+@#for n in 1:SN-1
+	yshare@{n} = GDP@{n} / GDPW + epsilon_yshare@{n} * sigma_yshare;
+@#endfor
+@#for n in 1:SN
+	popshare@{n} = N@{n} / N / 100  + epsilon_popshare@{n} * sigma_popshare;
+@#endfor
 
-gpopW     = log(GN) + epsilon_gpopW     * sigma_gpopW;
-popshare1 = N1 / N / 100  + epsilon_popshare1 * sigma_popshare;
-popshare2 = N2 / N / 100  + epsilon_popshare2 * sigma_popshare;
-popshare3 = N3 / N / 100  + epsilon_popshare3 * sigma_popshare;
-popshare4 = N4 / N / 100  + epsilon_popshare4 * sigma_popshare;
-popshare5 = N5 / N / 100  + epsilon_popshare5 * sigma_popshare;
-popshare6 = N6 / N / 100  + epsilon_popshare6 * sigma_popshare;
 
 %US
-(BEAcy1 - epsilon_BEAcy1 * sigma_cy) + ( BEAgcy1 - epsilon_BEAgcy1 * sigma_gcy ) * alpha_pubedu1 = PCE1 / GDP1;
+ESrdy1 - epsilon_ESrdy1 * sigma_rdy = exp(rdy_) * GERD1;
+(BEAcy1 - epsilon_BEAcy1 * sigma_cy) + (BEAgiy1 - epsilon_BEAgiy1 * sigma_giy + BEAgcy1 - epsilon_BEAgcy1 * sigma_gcy) * alpha_pubedu1 = PCE1 / GDP1;
+OECDihy1 = PHP1 * IHP1 / GDP1 + epsilon_OECDihy1 * sigma_ihy;
 JSTiy1 = GDI1 / GDP1 + epsilon_JSTiy1 * sigma_iy;
 (BEAgiy1 - epsilon_BEAgiy1 * sigma_giy + BEAgcy1 - epsilon_BEAgcy1 * sigma_gcy) * ( 1 - alpha_pubedu1 ) = ( GCE1 + GGI1 ) / GDP1;
 BEAgiy1 = GGI1                 / GDP1          + epsilon_BEAgiy1 * sigma_giy;
@@ -2081,7 +2084,9 @@ FREDlrni1   = Spread1              + epsilon_FREDlrni1   * sigma_lrni;
 JSTtauy1    = GovRev1       / GDP1 + epsilon_JSTtauy1    * sigma_tauy;
 
 %UK
-( MILLcy3 - epsilon_MILLcy3 * sigma_cy ) + ( MILLgcy3 - epsilon_MILLgcy3 * sigma_gcy ) * alpha_pubedu3 = PCE3 / GDP3;
+ESrdy3 - epsilon_ESrdy3 * sigma_rdy = exp(rdy_) * GERD3;
+( MILLcy3 - epsilon_MILLcy3 * sigma_cy ) + ( MILLgcy3 - epsilon_MILLgcy3 * sigma_gcy + MILLgiy3 - epsilon_MILLgiy3 * sigma_giy ) * alpha_pubedu3 = PCE3 / GDP3;
+OECDihy3 = PHP3 * IHP3 / GDP3 + epsilon_OECDihy3 * sigma_ihy;
 MILLiy3 = GDI3 / GDP3 + epsilon_MILLiy3 * sigma_iy;
 ( MILLgcy3 - epsilon_MILLgcy3 * sigma_gcy + MILLgiy3 - epsilon_MILLgiy3 * sigma_giy ) * ( 1 - alpha_pubedu3 ) = ( GCE3 + GGI3 ) / GDP3;
 MILLgiy3     = GGI3             / GDP3          + epsilon_MILLgiy3 * sigma_giy;
@@ -2104,7 +2109,9 @@ MILLlrni3    = Spread3              + epsilon_MILLlrni3    * sigma_lrni;
 MILLtauy3    = GovRev3       / GDP3 + epsilon_MILLtauy3    * sigma_tauy;
 
 %Germany
+ESrdy2 - epsilon_ESrdy2 * sigma_rdy = exp(rdy_) * GERD2;
 ( PWTcy2 - epsilon_PWTcy2 * sigma_cy ) + ( JSTgy2 - epsilon_JSTgy2 * sigma_gcy ) * alpha_pubedu2 = PCE2 / GDP2;
+OECDihy2 = PHP2 * IHP2 / GDP2 + epsilon_OECDihy2 * sigma_ihy;
 JSTiy2 = GDI2 / GDP2 + epsilon_JSTiy2 * sigma_iy;
 ( JSTgy2 - epsilon_JSTgy2 * sigma_gcy ) * ( 1 - alpha_pubedu2 ) = ( GCE2 + GGI2 ) / GDP2;
 JSTxy2      = Export2          / GDP2          + epsilon_JSTxy2     * sigma_xy;
@@ -2126,7 +2133,9 @@ DBlrni2     = Spread2               + epsilon_DBlrni2     * sigma_lrni;
 JSTtauy2    = GovRev2       / GDP2  + epsilon_JSTtauy2    * sigma_tauy;
 
 %France
+ESrdy4 - epsilon_ESrdy4 * sigma_rdy = exp(rdy_) * GERD4;
 ( PWTcy4 - epsilon_PWTcy4 * sigma_cy ) + ( JSTgy4 - epsilon_JSTgy4 * sigma_gcy ) * alpha_pubedu4 = PCE4 / GDP4;
+OECDihy4 = PHP4 * IHP4 / GDP4 + epsilon_OECDihy4 * sigma_ihy;
 JSTiy4 = GDI4 / GDP4 + epsilon_JSTiy4 * sigma_iy;
 ( JSTgy4 - epsilon_JSTgy4 * sigma_gcy ) * ( 1 - alpha_pubedu4 ) = ( GCE4 + GGI4 ) / GDP4;
 JSTxy4      = Export4          / GDP4          + epsilon_JSTxy4     * sigma_xy;
@@ -2147,8 +2156,11 @@ JSTexpostr4 = ExPostR4             + epsilon_JSTexpostr4 * sigma_expostr;
 BDFlrni4    = Spread4              + epsilon_BDFlrni4    * sigma_lrni;
 JSTtauy4    = GovRev4       / GDP4 + epsilon_JSTtauy4    * sigma_tauy;
 
+
 %REU
+ESrdy5 - epsilon_ESrdy5 * sigma_rdy = exp(rdy_) * GERD5;
 ( PWTcy5 - epsilon_PWTcy5 * sigma_cy ) + ( JSTgy5 - epsilon_JSTgy5 * sigma_gcy ) * alpha_pubedu5 = PCE5 / GDP5;
+OECDihy5 = PHP5 * IHP5 / GDP5 + epsilon_OECDihy5 * sigma_ihy;
 JSTiy5 = GDI5 / GDP5 + epsilon_JSTiy5 * sigma_iy;
 ( JSTgy5 - epsilon_JSTgy5 * sigma_gcy ) * ( 1 - alpha_pubedu5 ) = ( GCE5 + GGI5 ) / GDP5;
 JSTxy5      = Export5          / GDP5          + epsilon_JSTxy5     * sigma_xy;
@@ -2169,7 +2181,9 @@ JSTexpostr5 = ExPostR5             + epsilon_JSTexpostr5 * sigma_expostr;
 JSTtauy5    = GovRev5       / GDP5 + epsilon_JSTtauy5    * sigma_tauy;
 
 %RMA
+ESrdy6 - epsilon_ESrdy6 * sigma_rdy = exp(rdy_) * GERD6;
 ( PWTcy6 - epsilon_PWTcy6 * sigma_cy ) + ( JSTgy6 - epsilon_JSTgy6 * sigma_gcy ) * alpha_pubedu6 = PCE6 / GDP6;
+OECDihy6 = PHP6 * IHP6 / GDP6 + epsilon_OECDihy6 * sigma_ihy;
 JSTiy6 = GDI6 / GDP6 + epsilon_JSTiy6 * sigma_iy;
 ( JSTgy6 - epsilon_JSTgy6 * sigma_gcy ) * ( 1 - alpha_pubedu6 ) = ( GCE6 + GGI6 ) / GDP6;
 JSTxy6      = Export6          / GDP6          + epsilon_JSTxy6     * sigma_xy;
@@ -2211,16 +2225,19 @@ shocks;
     
 	@#for n in 1:SN
     	var epsilon_beta@{n} = 1;
+		var epsilon_popshare@{n} = 1;
+	@#endfor
+	@#for n in 1:SN-1
+		var epsilon_yshare@{n}   = 1;
     @#endfor
     
 	var epsilon_P0 = 1;
     var epsilon_Y0 = 1;
-	
 	var epsilon_gryW          = 1;
-	var epsilon_yshare1       = 1;
 	var epsilon_gpopW         = 1;
-	var epsilon_popshare1     = 1;
-	var epsilon_popshare2     = 1;
+
+	var epsilon_OECDihy1        = 1;
+	var epsilon_ESrdy1        = 1;
 	var epsilon_BEAcy1        = 1;
 	var epsilon_JSTiy1        = 1;
 	var epsilon_BEAgcy1       = 1;
@@ -2238,6 +2255,9 @@ shocks;
 	var epsilon_JSTexpostr1   = 1;
 	var epsilon_FREDlrni1     = 1;
 	var epsilon_JSTtauy1      = 1;
+	
+	var epsilon_OECDihy2        = 1;
+	var epsilon_ESrdy2        = 1;
 	var epsilon_PWTcy2        = 1;
 	var epsilon_JSTiy2        = 1;
 	var epsilon_JSTgy2        = 1;
@@ -2253,6 +2273,9 @@ shocks;
 	var epsilon_JSTexpostr2   = 1;
 	var epsilon_DBlrni2       = 1;
 	var epsilon_JSTtauy2      = 1;
+	
+	var epsilon_OECDihy3        = 1;
+	var epsilon_ESrdy3        = 1;
     var epsilon_MILLcy3       = 1;
     var epsilon_MILLiy3       = 1;
     var epsilon_MILLgcy3      = 1;
@@ -2269,6 +2292,9 @@ shocks;
     var epsilon_MILLexpostr3  = 1;
     var epsilon_MILLlrni3     = 1;
     var epsilon_MILLtauy3     = 1;
+	
+	var epsilon_OECDihy4        = 1;
+	var epsilon_ESrdy4        = 1;
     var epsilon_PWTcy4        = 1;
     var epsilon_JSTiy4        = 1;
     var epsilon_JSTgy4        = 1;
@@ -2284,34 +2310,40 @@ shocks;
     var epsilon_JSTexpostr4   = 1;
     var epsilon_BDFlrni4      = 1;
     var epsilon_JSTtauy4      = 1;
-    var epsilon_PWTcy5        = 1;
-    var epsilon_JSTiy5        = 1;
-    var epsilon_JSTgy5        = 1;
-    var epsilon_JSTxy5        = 1;
-    var epsilon_PWTgpcgpy5    = 1;
-    var epsilon_PWTgpigpy5    = 1;
-    var epsilon_PWTgpgcgpy5   = 1;
-    var epsilon_PWTgpxgpy5    = 1;
-    var epsilon_PWTgpmgpy5    = 1;
-    var epsilon_PWThpop5      = 1;
-    var epsilon_PWTwhy5       = 1;
-    var epsilon_PWTcfcy5      = 1;
-    var epsilon_JSTexpostr5   = 1;
-    var epsilon_JSTtauy5      = 1;
-    var epsilon_PWTcy6        = 1;
-    var epsilon_JSTiy6        = 1;
-    var epsilon_JSTgy6        = 1;
-    var epsilon_JSTxy6        = 1;
-    var epsilon_PWTgpcgpy6    = 1;
-    var epsilon_PWTgpigpy6    = 1;
-    var epsilon_PWTgpgcgpy6   = 1;
-    var epsilon_PWTgpxgpy6    = 1;
-    var epsilon_PWTgpmgpy6    = 1;
-    var epsilon_PWThpop6      = 1;
-    var epsilon_PWTwhy6       = 1;
-    var epsilon_PWTcfcy6      = 1;
-    var epsilon_JSTexpostr6   = 1;
-    var epsilon_JSTtauy6      = 1;
+	
+	var epsilon_OECDihy5      = 1;
+	var epsilon_ESrdy5        = 1;
+	var epsilon_PWTcy5        = 1;
+	var epsilon_JSTiy5        = 1;
+	var epsilon_JSTgy5        = 1;
+	var epsilon_JSTxy5        = 1;
+	var epsilon_PWTgpcgpy5    = 1;
+	var epsilon_PWTgpigpy5    = 1;
+	var epsilon_PWTgpgcgpy5   = 1;
+	var epsilon_PWTgpxgpy5    = 1;
+	var epsilon_PWTgpmgpy5    = 1;
+	var epsilon_PWThpop5      = 1;
+	var epsilon_PWTwhy5       = 1;
+	var epsilon_PWTcfcy5      = 1;
+	var epsilon_JSTexpostr5   = 1;
+	var epsilon_JSTtauy5      = 1;
+	
+	var epsilon_OECDihy6        = 1;
+	var epsilon_ESrdy6        = 1;
+	var epsilon_PWTcy6        = 1;
+	var epsilon_JSTiy6        = 1;
+	var epsilon_JSTgy6        = 1;
+	var epsilon_JSTxy6        = 1;
+	var epsilon_PWTgpcgpy6    = 1;
+	var epsilon_PWTgpigpy6    = 1;
+	var epsilon_PWTgpgcgpy6   = 1;
+	var epsilon_PWTgpxgpy6    = 1;
+	var epsilon_PWTgpmgpy6    = 1;
+	var epsilon_PWThpop6      = 1;
+	var epsilon_PWTwhy6       = 1;
+	var epsilon_PWTcfcy6      = 1;
+	var epsilon_JSTexpostr6   = 1;
+	var epsilon_JSTtauy6      = 1;
 end;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                                       //
@@ -2368,7 +2400,7 @@ options_.skip_optimisation = 1;
 steady;
 check;
 
-estimation(order=1, datafile=data_ext6est3, presample=0,prior_trunc=0,
+estimation(order=1, datafile=data_6country, presample=0,prior_trunc=0,
             use_univariate_filters_if_singularity_is_detected=0,
             lik_init = 2,
             //diffuse_filter,
@@ -2380,45 +2412,30 @@ estimation(order=1, datafile=data_ext6est3, presample=0,prior_trunc=0,
             mode_compute=0, smoother,
             plot_priors=0, graph_format=fig
             )
-gryW yshare1 yshare2 yshare3 yshare4 yshare5 gpopW popshare1 popshare2 popshare3 popshare4 popshare5 popshare6
-BEAcy1  JSTiy1  BEAgcy1  BEAgiy1  JSTxy1  BEAgpcgpy1  BEAgpigpy1  BEAgpgcgpy1 BEAgpgigpy1 BEAgpxgpy1  BEAgpmgpy1  BEAhpop1   BEAwhy1   BEAcfcy1  JSTexpostr1  FREDlrni1 JSTtauy1
-PWTcy2  JSTiy2  JSTgy2            JSTxy2  PWTgpcgpy2  PWTgpigpy2  PWTgpgcgpy2             PWTgpxgpy2  PWTgpmgpy2  PWThpop2   PWTwhy2   PWTdelta2 JSTexpostr2  DBlrni2   JSTtauy2
-MILLcy3 MILLiy3 MILLgcy3 MILLgiy3 MILLxy3 MILLgpcgpy3 MILLgpigpy3 MILLgpgcgpy3            MILLgpxgpy3 MILLgpmgpy3 MILLhpop3  MILLwhy3  MILLcfcy3 MILLexpostr3 MILLlrni3 MILLtauy3
-PWTcy4  JSTiy4  JSTgy4            JSTxy4  PWTgpcgpy4  PWTgpigpy4  PWTgpgcgpy4             PWTgpxgpy4  PWTgpmgpy4  PWThpop4   PWTwhy4   PWTdelta4 JSTexpostr4  BDFlrni4  JSTtauy4
-PWTcy5  JSTiy5  JSTgy5            JSTxy5  PWTgpcgpy5  PWTgpigpy5  PWTgpgcgpy5             PWTgpxgpy5  PWTgpmgpy5  PWThpop5   PWTwhy5   PWTcfcy5  JSTexpostr5            JSTtauy5
-PWTcy6  JSTiy6  JSTgy6            JSTxy6  PWTgpcgpy6  PWTgpigpy6  PWTgpgcgpy6             PWTgpxgpy6  PWTgpmgpy6  PWThpop6   PWTwhy6   PWTcfcy6  JSTexpostr6            JSTtauy6
+gryW gpopW
+  @#for n in 1:SN-1
+	yshare@{n}
+  @#endfor
+  @#for n in 1:SN
+	popshare@{n}
+  @#endfor
+OECDihy1 ESrdy1 BEAcy1  JSTiy1  BEAgcy1  BEAgiy1  JSTxy1  BEAgpcgpy1  BEAgpigpy1  BEAgpgcgpy1 BEAgpgigpy1 BEAgpxgpy1  BEAgpmgpy1  BEAhpop1   BEAwhy1   BEAcfcy1  JSTexpostr1  FREDlrni1 JSTtauy1
+OECDihy2 ESrdy2 PWTcy2  JSTiy2  JSTgy2            JSTxy2  PWTgpcgpy2  PWTgpigpy2  PWTgpgcgpy2             PWTgpxgpy2  PWTgpmgpy2  PWThpop2   PWTwhy2   PWTdelta2 JSTexpostr2  DBlrni2   JSTtauy2
+OECDihy3 ESrdy3 MILLcy3 MILLiy3 MILLgcy3 MILLgiy3 MILLxy3 MILLgpcgpy3 MILLgpigpy3 MILLgpgcgpy3            MILLgpxgpy3 MILLgpmgpy3 MILLhpop3  MILLwhy3  MILLcfcy3 MILLexpostr3 MILLlrni3 MILLtauy3
+OECDihy4 ESrdy4 PWTcy4  JSTiy4  JSTgy4            JSTxy4  PWTgpcgpy4  PWTgpigpy4  PWTgpgcgpy4             PWTgpxgpy4  PWTgpmgpy4  PWThpop4   PWTwhy4   PWTdelta4 JSTexpostr4  BDFlrni4  JSTtauy4
+OECDihy5 ESrdy5 PWTcy5  JSTiy5  JSTgy5            JSTxy5  PWTgpcgpy5  PWTgpigpy5  PWTgpgcgpy5             PWTgpxgpy5  PWTgpmgpy5  PWThpop5   PWTwhy5   PWTcfcy5  JSTexpostr5            JSTtauy5
+OECDihy6 ESrdy6 PWTcy6  JSTiy6  JSTgy6            JSTxy6  PWTgpcgpy6  PWTgpigpy6  PWTgpgcgpy6             PWTgpxgpy6  PWTgpmgpy6  PWThpop6   PWTwhy6   PWTcfcy6  JSTexpostr6            JSTtauy6
 @#if ExtraVariable
 As_DivFromTrend
-rGDPpc1_DivFromTrend Xpc1_DivFromTrend rPCEpc1_DivFromTrend NXY1 rPDIpc1_DivFromTrend IHPpc1_DivFromTrend PRDY1 rGSpendingpc1_DivFromTrend GovDifY1 GRDY1  BEAhpop1 
-rGDPpc2_DivFromTrend Xpc2_DivFromTrend rPCEpc2_DivFromTrend NXY2 rPDIpc2_DivFromTrend IHPpc2_DivFromTrend PRDY2 rGSpendingpc2_DivFromTrend GovDifY2 GRDY2  PWThpop2 
-rGDPpc3_DivFromTrend Xpc3_DivFromTrend rPCEpc3_DivFromTrend NXY3 rPDIpc3_DivFromTrend IHPpc3_DivFromTrend PRDY3 rGSpendingpc3_DivFromTrend GovDifY3 GRDY3  MILLhpop3
-rGDPpc4_DivFromTrend Xpc4_DivFromTrend rPCEpc4_DivFromTrend NXY4 rPDIpc4_DivFromTrend IHPpc4_DivFromTrend PRDY4 rGSpendingpc4_DivFromTrend GovDifY4 GRDY4  PWThpop4 
-rGDPpc5_DivFromTrend Xpc5_DivFromTrend rPCEpc5_DivFromTrend NXY5 rPDIpc5_DivFromTrend IHPpc5_DivFromTrend PRDY5 rGSpendingpc5_DivFromTrend GovDifY5 GRDY5  PWThpop5 
-rGDPpc6_DivFromTrend Xpc6_DivFromTrend rPCEpc6_DivFromTrend NXY6 rPDIpc6_DivFromTrend IHPpc6_DivFromTrend PRDY6 rGSpendingpc6_DivFromTrend GovDifY6 GRDY6  PWThpop6
+rGDPpc1_DivFromTrend Xpc1_DivFromTrend rPCEpc1_DivFromTrend NXY1 rPDIpc1_DivFromTrend IHPpc1_DivFromTrend PRDY1 rGSpendingpc1_DivFromTrend GovDifY1 GRDY1
+rGDPpc2_DivFromTrend Xpc2_DivFromTrend rPCEpc2_DivFromTrend NXY2 rPDIpc2_DivFromTrend IHPpc2_DivFromTrend PRDY2 rGSpendingpc2_DivFromTrend GovDifY2 GRDY2
+rGDPpc3_DivFromTrend Xpc3_DivFromTrend rPCEpc3_DivFromTrend NXY3 rPDIpc3_DivFromTrend IHPpc3_DivFromTrend PRDY3 rGSpendingpc3_DivFromTrend GovDifY3 GRDY3
+rGDPpc4_DivFromTrend Xpc4_DivFromTrend rPCEpc4_DivFromTrend NXY4 rPDIpc4_DivFromTrend IHPpc4_DivFromTrend PRDY4 rGSpendingpc4_DivFromTrend GovDifY4 GRDY4
+rGDPpc5_DivFromTrend Xpc5_DivFromTrend rPCEpc5_DivFromTrend NXY5 rPDIpc5_DivFromTrend IHPpc5_DivFromTrend PRDY5 rGSpendingpc5_DivFromTrend GovDifY5 GRDY5
+rGDPpc6_DivFromTrend Xpc6_DivFromTrend rPCEpc6_DivFromTrend NXY6 rPDIpc6_DivFromTrend IHPpc6_DivFromTrend PRDY6 rGSpendingpc6_DivFromTrend GovDifY6 GRDY6
 @#endif
 ;
 
-stoch_simul( periods = 0, irf = 0, order = 1, nocorr, nodecomposition, nofunctions, nomoments, nograph );
-
-
-
-%stoch_simul( order = 1, pruning, irf = 40, irf_shocks = ( epsilon_uHG2
-%                                                          //epsilon_Z,
-%                                                          //epsilon_GN, 
-%                                                          //epsilon_Ntilde1, 
-%                                                          //epsilon_OmegaALL1, 
-%                                                          //epsilon_uCG1, 
-%                                                          //epsilon_uHG1, 
-%                                                          //epsilon_uKG1,
-%                                                          //epsilon_uXALL1
-%                                                        ), periods = 0, graph_format=fig, nocorr, nodecomposition, nofunctions, AR=0 );
-%GrGDPpc1 rGDPpc1_DivFromTrend rPCEpc1_DivFromTrend rPDIpc1_DivFromTrend Xpc1_DivFromTrend rGCEpc1_DivFromTrend rGGIpc1_DivFromTrend rGSpendingpc1_DivFromTrend GovDifY1 BEAwhy1 BEAhpop1 NXY1
-%GrGDPpc2 rGDPpc2_DivFromTrend rPCEpc2_DivFromTrend rPDIpc2_DivFromTrend Xpc2_DivFromTrend rGCEpc2_DivFromTrend rGGIpc2_DivFromTrend rGSpendingpc2_DivFromTrend GovDifY2 PWTwhy2 PWThpop2 NXY2
-%GrGDPpc3 rGDPpc3_DivFromTrend rPCEpc3_DivFromTrend rPDIpc3_DivFromTrend Xpc3_DivFromTrend rGCEpc3_DivFromTrend rGGIpc3_DivFromTrend rGSpendingpc3_DivFromTrend GovDifY3 MILLwhy3 MILLhpop3 NXY3
-%GrGDPpc4 rGDPpc4_DivFromTrend rPCEpc4_DivFromTrend rPDIpc4_DivFromTrend Xpc4_DivFromTrend rGCEpc4_DivFromTrend rGGIpc4_DivFromTrend rGSpendingpc4_DivFromTrend GovDifY4 PWTwhy4 PWThpop4 NXY4
-%GrGDPpc5 rGDPpc5_DivFromTrend rPCEpc5_DivFromTrend rPDIpc5_DivFromTrend Xpc5_DivFromTrend rGCEpc5_DivFromTrend rGGIpc5_DivFromTrend rGSpendingpc5_DivFromTrend GovDifY5 PWTwhy5 PWThpop5 NXY5
-%GrGDPpc6 rGDPpc6_DivFromTrend rPCEpc6_DivFromTrend rPDIpc3_DivFromTrend Xpc6_DivFromTrend rGCEpc6_DivFromTrend rGGIpc6_DivFromTrend rGSpendingpc6_DivFromTrend GovDifY6 PWTwhy6 PWThpop6 NXY6;
+%stoch_simul( periods = 0, irf = 0, order = 1, nocorr, nodecomposition, nofunctions, nomoments, nograph );
 %note that extral final observables (rGDPpc1 rPCEpc1 rPDIpc1 Xpc1 rGCEpc1 rGGIpc1 NXY1) are in percentage, 1=1%
 %observables for estimation (BEAly1 BLShourspercapita1, etc) are of 0.01=1%
-
-%stoch_simul( order = 1, pruning, irf = 0, periods = 0, graph_format=fig, nofunctions, AR=1 );

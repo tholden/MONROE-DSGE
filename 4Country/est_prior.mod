@@ -11,7 +11,6 @@ InitialStateLogPower        , InitialStateLogPower        , , , NORMAL_PDF , 0  
 InitialStateLogScale        , InitialStateLogScale        , , , NORMAL_PDF , 0  , 10;
 
 //std of measurement errors
-@#if 1
 sigma_gryW        ,sigma_gryW      , , , INV_GAMMA_PDF, 0.001, 0.001;
 sigma_yshare      ,sigma_yshare    , , , INV_GAMMA_PDF, 0.001, 0.001;
 sigma_gpopW       ,sigma_gpopW     , , , INV_GAMMA_PDF, 0.001, 0.001;
@@ -35,9 +34,7 @@ sigma_cfcy        ,sigma_cfcy      , , , INV_GAMMA_PDF, 0.001, 0.001;
 sigma_expostr     ,sigma_expostr   , , , INV_GAMMA_PDF, 0.001, 0.001;
 sigma_lrni        ,sigma_lrni      , , , INV_GAMMA_PDF, 0.001, 0.001;
 sigma_tauy        ,sigma_tauy      , , , INV_GAMMA_PDF, 0.001, 0.001;
-@#endif
 
-@#if 1
 //global parameters
 lambda    ,lambda  ,       ,       ,GAMMA_PDF    ,1           ,0.1          ;
 eta       ,eta     ,       ,       ,BETA_PDF     ,0.1         ,0.01         ;
@@ -51,9 +48,7 @@ psib      ,psib    ,       ,       ,GAMMA_PDF    ,0.00001     ,0.00001/2    ;
 psil      ,psil    ,       ,       ,GAMMA_PDF    ,0.00001     ,0.00001/2    ;
 hpop_     ,hpop_   ,       ,       ,GAMMA_PDF    ,6.5         ,0.1          ;
 rdy_      ,rdy_    ,       ,       ,NORMAL_PDF   ,0           ,0.2          ;
-@#endif
 
-@#if 1
 //country-specific parameters but must be constant across countries as required by the model
 logit_alphaCP   ,logit_alphaCP  , , ,NORMAL_PDF   ,0    ,0.5  ;
 logit_alphaCD   ,logit_alphaCD  , , ,NORMAL_PDF   ,0    ,0.5  ;
@@ -511,7 +506,6 @@ sigmaNtilde        ,sigmaNtilde       , , ,INV_GAMMA_PDF ,0.005 ,0.1;  %%Ntilde1
 @#for n in 1:151
     InternalPrior_@{n} ,InternalPrior_@{n} , , ,normal_pdf ,0 ,1;
 @#endfor
-@#endif
 end;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                                       //
