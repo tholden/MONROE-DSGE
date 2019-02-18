@@ -22,7 +22,7 @@ phiiotaTX ,phiiotaTM, phiiotaWX, phiiotaWM,...
 Omegah_, OmegaCP_, OmegaC_, OmegaKP_, OmegaHP_, OmegaD_, OmegaND_, OmegaKG_, OmegaHG_, OmegaCG_, OmegaY_, OmegaTC_, OmegaWP_, OmegaWC_, OmegaKT_, OmegaHLT_, OmegaKLT_, OmegaHLXT_, OmegaT_, OmegaKNT_, OmegaHLNT_, OmegaKLNT_, OmegaHLXNT_, OmegaNT_, OmegaKW_, OmegaHLW_, OmegaKLW_, OmegaHLXW_, OmegaW_, ...
 GN_, Z_, deltaItilde_, scriptFI_, deltaD_, kappa0_, kappah_, ...
 kappaT_, kappaNT_, kappaW_, kappaST_, kappaSNT_, kappaSW_, kappaD_, kappaNDCG_, kappaK_, kappaH_, ...
-deltaKPT_, deltaHPT_, deltaKPNT_, deltaHPNT_, deltaKPW_, deltaHPW_, deltaKG_, deltaHG_, betabarb, ...
+deltaK_,deltaH_, betabarb, ...
 pT0, yTC0, m_, varpi_, eT0_, Ntilde1_, Ntilde2_, Ntilde3_, Ntilde4_, Ntilde5_, Ntilde6_)
 
 %this file also serves as the base of steady_state_model in .mod, we need to make the following changes
@@ -538,24 +538,24 @@ II_ = 1 / JP_ * muP_ / ( 1 + muP_ ) * ( ( 1 + mu_ ) / ( 1 + muP_ ) ) ^ ( 1 / lam
 %phsical/human capital related (KPS6_ PKP6_ IKPS6_ are solved from production side)
 
 
-		KUT1_ = ( ( 1 - VV1l_ * glambda_K_ * ( 1 - deltaKPT_ ) ) / ( thetaKU0 / gKP_ - VV1l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
+		KUT1_ = ( ( 1 - VV1l_ * glambda_K_ * ( 1 - deltaK_ ) ) / ( thetaKU0 / gKP_ - VV1l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
 		RKPT1_DIVIDEDPKP1_ = thetaKU0 * KUT1_ ^ thetaKU1 / gKP_ / ( 1 - tauKT_ );
-		RHPT1_DIVIDEDPHP1_ = ( 1 - VV1l_ * glambda_H_ * ( 1 - deltaHPT_ ) ) / ( 1 - tauHT_ );
+		RHPT1_DIVIDEDPHP1_ = ( 1 - VV1l_ * glambda_H_ * ( 1 - deltaH_ ) ) / ( 1 - tauHT_ );
 
 
-		KUNT1_ = ( ( 1 - VV1l_ * glambda_K_ * ( 1 - deltaKPNT_ ) ) / ( thetaKU0 / gKP_ - VV1l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
+		KUNT1_ = ( ( 1 - VV1l_ * glambda_K_ * ( 1 - deltaK_ ) ) / ( thetaKU0 / gKP_ - VV1l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
 		RKPNT1_DIVIDEDPKP1_ = thetaKU0 * KUNT1_ ^ thetaKU1 / gKP_ / ( 1 - tauKNT_ );
-		RHPNT1_DIVIDEDPHP1_ = ( 1 - VV1l_ * glambda_H_ * ( 1 - deltaHPNT_ ) ) / ( 1 - tauHNT_ );
+		RHPNT1_DIVIDEDPHP1_ = ( 1 - VV1l_ * glambda_H_ * ( 1 - deltaH_ ) ) / ( 1 - tauHNT_ );
 
 
-		KUW1_ = ( ( 1 - VV1l_ * glambda_K_ * ( 1 - deltaKPW_ ) ) / ( thetaKU0 / gKP_ - VV1l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
+		KUW1_ = ( ( 1 - VV1l_ * glambda_K_ * ( 1 - deltaK_ ) ) / ( thetaKU0 / gKP_ - VV1l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
 		RKPW1_DIVIDEDPKP1_ = thetaKU0 * KUW1_ ^ thetaKU1 / gKP_ / ( 1 - tauKW_ );
-		RHPW1_DIVIDEDPHP1_ = ( 1 - VV1l_ * glambda_H_ * ( 1 - deltaHPW_ ) ) / ( 1 - tauHW_ );
+		RHPW1_DIVIDEDPHP1_ = ( 1 - VV1l_ * glambda_H_ * ( 1 - deltaH_ ) ) / ( 1 - tauHW_ );
 
 
-		KUT2_ = ( ( 1 - VV2l_ * glambda_K_ * ( 1 - deltaKPT_ ) ) / ( thetaKU0 / gKP_ - VV2l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
+		KUT2_ = ( ( 1 - VV2l_ * glambda_K_ * ( 1 - deltaK_ ) ) / ( thetaKU0 / gKP_ - VV2l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
 		RKPT2_DIVIDEDPKP2_ = thetaKU0 * KUT2_ ^ thetaKU1 / gKP_ / ( 1 - tauKT_ );
-		RHPT2_DIVIDEDPHP2_ = ( 1 - VV2l_ * glambda_H_ * ( 1 - deltaHPT_ ) ) / ( 1 - tauHT_ );
+		RHPT2_DIVIDEDPHP2_ = ( 1 - VV2l_ * glambda_H_ * ( 1 - deltaH_ ) ) / ( 1 - tauHT_ );
 
 
 
@@ -563,14 +563,14 @@ II_ = 1 / JP_ * muP_ / ( 1 + muP_ ) * ( ( 1 + mu_ ) / ( 1 + muP_ ) ) ^ ( 1 / lam
 
 
 
-		KUW2_ = ( ( 1 - VV2l_ * glambda_K_ * ( 1 - deltaKPW_ ) ) / ( thetaKU0 / gKP_ - VV2l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
+		KUW2_ = ( ( 1 - VV2l_ * glambda_K_ * ( 1 - deltaK_ ) ) / ( thetaKU0 / gKP_ - VV2l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
 		RKPW2_DIVIDEDPKP2_ = thetaKU0 * KUW2_ ^ thetaKU1 / gKP_ / ( 1 - tauKW_ );
-		RHPW2_DIVIDEDPHP2_ = ( 1 - VV2l_ * glambda_H_ * ( 1 - deltaHPW_ ) ) / ( 1 - tauHW_ );
+		RHPW2_DIVIDEDPHP2_ = ( 1 - VV2l_ * glambda_H_ * ( 1 - deltaH_ ) ) / ( 1 - tauHW_ );
 
 
-		KUT3_ = ( ( 1 - VV3l_ * glambda_K_ * ( 1 - deltaKPT_ ) ) / ( thetaKU0 / gKP_ - VV3l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
+		KUT3_ = ( ( 1 - VV3l_ * glambda_K_ * ( 1 - deltaK_ ) ) / ( thetaKU0 / gKP_ - VV3l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
 		RKPT3_DIVIDEDPKP3_ = thetaKU0 * KUT3_ ^ thetaKU1 / gKP_ / ( 1 - tauKT_ );
-		RHPT3_DIVIDEDPHP3_ = ( 1 - VV3l_ * glambda_H_ * ( 1 - deltaHPT_ ) ) / ( 1 - tauHT_ );
+		RHPT3_DIVIDEDPHP3_ = ( 1 - VV3l_ * glambda_H_ * ( 1 - deltaH_ ) ) / ( 1 - tauHT_ );
 
 
 
@@ -578,14 +578,14 @@ II_ = 1 / JP_ * muP_ / ( 1 + muP_ ) * ( ( 1 + mu_ ) / ( 1 + muP_ ) ) ^ ( 1 / lam
 
 
 
-		KUW3_ = ( ( 1 - VV3l_ * glambda_K_ * ( 1 - deltaKPW_ ) ) / ( thetaKU0 / gKP_ - VV3l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
+		KUW3_ = ( ( 1 - VV3l_ * glambda_K_ * ( 1 - deltaK_ ) ) / ( thetaKU0 / gKP_ - VV3l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
 		RKPW3_DIVIDEDPKP3_ = thetaKU0 * KUW3_ ^ thetaKU1 / gKP_ / ( 1 - tauKW_ );
-		RHPW3_DIVIDEDPHP3_ = ( 1 - VV3l_ * glambda_H_ * ( 1 - deltaHPW_ ) ) / ( 1 - tauHW_ );
+		RHPW3_DIVIDEDPHP3_ = ( 1 - VV3l_ * glambda_H_ * ( 1 - deltaH_ ) ) / ( 1 - tauHW_ );
 
 
-		KUT4_ = ( ( 1 - VV4l_ * glambda_K_ * ( 1 - deltaKPT_ ) ) / ( thetaKU0 / gKP_ - VV4l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
+		KUT4_ = ( ( 1 - VV4l_ * glambda_K_ * ( 1 - deltaK_ ) ) / ( thetaKU0 / gKP_ - VV4l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
 		RKPT4_DIVIDEDPKP4_ = thetaKU0 * KUT4_ ^ thetaKU1 / gKP_ / ( 1 - tauKT_ );
-		RHPT4_DIVIDEDPHP4_ = ( 1 - VV4l_ * glambda_H_ * ( 1 - deltaHPT_ ) ) / ( 1 - tauHT_ );
+		RHPT4_DIVIDEDPHP4_ = ( 1 - VV4l_ * glambda_H_ * ( 1 - deltaH_ ) ) / ( 1 - tauHT_ );
 
 
 
@@ -593,14 +593,14 @@ II_ = 1 / JP_ * muP_ / ( 1 + muP_ ) * ( ( 1 + mu_ ) / ( 1 + muP_ ) ) ^ ( 1 / lam
 
 
 
-		KUW4_ = ( ( 1 - VV4l_ * glambda_K_ * ( 1 - deltaKPW_ ) ) / ( thetaKU0 / gKP_ - VV4l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
+		KUW4_ = ( ( 1 - VV4l_ * glambda_K_ * ( 1 - deltaK_ ) ) / ( thetaKU0 / gKP_ - VV4l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
 		RKPW4_DIVIDEDPKP4_ = thetaKU0 * KUW4_ ^ thetaKU1 / gKP_ / ( 1 - tauKW_ );
-		RHPW4_DIVIDEDPHP4_ = ( 1 - VV4l_ * glambda_H_ * ( 1 - deltaHPW_ ) ) / ( 1 - tauHW_ );
+		RHPW4_DIVIDEDPHP4_ = ( 1 - VV4l_ * glambda_H_ * ( 1 - deltaH_ ) ) / ( 1 - tauHW_ );
 
 
-		KUT5_ = ( ( 1 - VV5l_ * glambda_K_ * ( 1 - deltaKPT_ ) ) / ( thetaKU0 / gKP_ - VV5l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
+		KUT5_ = ( ( 1 - VV5l_ * glambda_K_ * ( 1 - deltaK_ ) ) / ( thetaKU0 / gKP_ - VV5l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
 		RKPT5_DIVIDEDPKP5_ = thetaKU0 * KUT5_ ^ thetaKU1 / gKP_ / ( 1 - tauKT_ );
-		RHPT5_DIVIDEDPHP5_ = ( 1 - VV5l_ * glambda_H_ * ( 1 - deltaHPT_ ) ) / ( 1 - tauHT_ );
+		RHPT5_DIVIDEDPHP5_ = ( 1 - VV5l_ * glambda_H_ * ( 1 - deltaH_ ) ) / ( 1 - tauHT_ );
 
 
 
@@ -608,14 +608,14 @@ II_ = 1 / JP_ * muP_ / ( 1 + muP_ ) * ( ( 1 + mu_ ) / ( 1 + muP_ ) ) ^ ( 1 / lam
 
 
 
-		KUW5_ = ( ( 1 - VV5l_ * glambda_K_ * ( 1 - deltaKPW_ ) ) / ( thetaKU0 / gKP_ - VV5l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
+		KUW5_ = ( ( 1 - VV5l_ * glambda_K_ * ( 1 - deltaK_ ) ) / ( thetaKU0 / gKP_ - VV5l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
 		RKPW5_DIVIDEDPKP5_ = thetaKU0 * KUW5_ ^ thetaKU1 / gKP_ / ( 1 - tauKW_ );
-		RHPW5_DIVIDEDPHP5_ = ( 1 - VV5l_ * glambda_H_ * ( 1 - deltaHPW_ ) ) / ( 1 - tauHW_ );
+		RHPW5_DIVIDEDPHP5_ = ( 1 - VV5l_ * glambda_H_ * ( 1 - deltaH_ ) ) / ( 1 - tauHW_ );
 
 
-		KUT6_ = ( ( 1 - VV6l_ * glambda_K_ * ( 1 - deltaKPT_ ) ) / ( thetaKU0 / gKP_ - VV6l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
+		KUT6_ = ( ( 1 - VV6l_ * glambda_K_ * ( 1 - deltaK_ ) ) / ( thetaKU0 / gKP_ - VV6l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
 		RKPT6_DIVIDEDPKP6_ = thetaKU0 * KUT6_ ^ thetaKU1 / gKP_ / ( 1 - tauKT_ );
-		RHPT6_DIVIDEDPHP6_ = ( 1 - VV6l_ * glambda_H_ * ( 1 - deltaHPT_ ) ) / ( 1 - tauHT_ );
+		RHPT6_DIVIDEDPHP6_ = ( 1 - VV6l_ * glambda_H_ * ( 1 - deltaH_ ) ) / ( 1 - tauHT_ );
 
 
 
@@ -623,9 +623,9 @@ II_ = 1 / JP_ * muP_ / ( 1 + muP_ ) * ( ( 1 + mu_ ) / ( 1 + muP_ ) ) ^ ( 1 / lam
 
 
 
-		KUW6_ = ( ( 1 - VV6l_ * glambda_K_ * ( 1 - deltaKPW_ ) ) / ( thetaKU0 / gKP_ - VV6l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
+		KUW6_ = ( ( 1 - VV6l_ * glambda_K_ * ( 1 - deltaK_ ) ) / ( thetaKU0 / gKP_ - VV6l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
 		RKPW6_DIVIDEDPKP6_ = thetaKU0 * KUW6_ ^ thetaKU1 / gKP_ / ( 1 - tauKW_ );
-		RHPW6_DIVIDEDPHP6_ = ( 1 - VV6l_ * glambda_H_ * ( 1 - deltaHPW_ ) ) / ( 1 - tauHW_ );
+		RHPW6_DIVIDEDPHP6_ = ( 1 - VV6l_ * glambda_H_ * ( 1 - deltaH_ ) ) / ( 1 - tauHW_ );
 
 %Durable stock and home production related
 
@@ -758,7 +758,7 @@ II_ = 1 / JP_ * muP_ / ( 1 + muP_ ) * ( ( 1 + mu_ ) / ( 1 + muP_ ) ) ^ ( 1 / lam
 	
 	YHG1_ = tauHG_ * alphaHG * Y1_;
 	IHG1_ = OmegaHG_ * YHG1_ ^ alphaHG * LHG1_ ^ ( 1 - alphaHG );
-	HG1_ = IHG1_ / ( 1 - ( 1 - deltaHG_ ) / gHG_ );
+	HG1_ = IHG1_ / ( 1 - ( 1 - deltaH_ ) / gHG_ );
 	PHG1_ = P1_ * YHG1_ / alphaHG / IHG1_;
 	
 %K in 1
@@ -771,7 +771,7 @@ II_ = 1 / JP_ * muP_ / ( 1 + muP_ ) * ( ( 1 + mu_ ) / ( 1 + muP_ ) ) ^ ( 1 / lam
 	
 	YKG1_ = tauKG_ * alphaKG * Y1_;
 	IKG1_ = OmegaKG_ * YKG1_ ^ alphaKG * LKG1_ ^ ( 1 - alphaKG );
-	KG1_ = IKG1_ / ( 1 - ( 1 - deltaKG_ ) / gKG_ );
+	KG1_ = IKG1_ / ( 1 - ( 1 - deltaK_ ) / gKG_ );
 	PKG1_ = P1_ * YKG1_ / alphaKG / IKG1_;
 %ND in 2
     WNDCG2_ = PND2_ * ( 1 - alphaND ) * CND2_ / LND2_;
@@ -817,7 +817,7 @@ II_ = 1 / JP_ * muP_ / ( 1 + muP_ ) * ( ( 1 + mu_ ) / ( 1 + muP_ ) ) ^ ( 1 / lam
 	
 	YHG2_ = tauHG_ * alphaHG * Y2_;
 	IHG2_ = OmegaHG_ * YHG2_ ^ alphaHG * LHG2_ ^ ( 1 - alphaHG );
-	HG2_ = IHG2_ / ( 1 - ( 1 - deltaHG_ ) / gHG_ );
+	HG2_ = IHG2_ / ( 1 - ( 1 - deltaH_ ) / gHG_ );
 
 	
 %K in 2
@@ -830,7 +830,7 @@ II_ = 1 / JP_ * muP_ / ( 1 + muP_ ) * ( ( 1 + mu_ ) / ( 1 + muP_ ) ) ^ ( 1 / lam
 	
 	YKG2_ = tauKG_ * alphaKG * Y2_;
 	IKG2_ = OmegaKG_ * YKG2_ ^ alphaKG * LKG2_ ^ ( 1 - alphaKG );
-	KG2_ = IKG2_ / ( 1 - ( 1 - deltaKG_ ) / gKG_ );
+	KG2_ = IKG2_ / ( 1 - ( 1 - deltaK_ ) / gKG_ );
 
 %ND in 3
     WNDCG3_ = PND3_ * ( 1 - alphaND ) * CND3_ / LND3_;
@@ -876,7 +876,7 @@ II_ = 1 / JP_ * muP_ / ( 1 + muP_ ) * ( ( 1 + mu_ ) / ( 1 + muP_ ) ) ^ ( 1 / lam
 	
 	YHG3_ = tauHG_ * alphaHG * Y3_;
 	IHG3_ = OmegaHG_ * YHG3_ ^ alphaHG * LHG3_ ^ ( 1 - alphaHG );
-	HG3_ = IHG3_ / ( 1 - ( 1 - deltaHG_ ) / gHG_ );
+	HG3_ = IHG3_ / ( 1 - ( 1 - deltaH_ ) / gHG_ );
 
 	
 %K in 3
@@ -889,7 +889,7 @@ II_ = 1 / JP_ * muP_ / ( 1 + muP_ ) * ( ( 1 + mu_ ) / ( 1 + muP_ ) ) ^ ( 1 / lam
 	
 	YKG3_ = tauKG_ * alphaKG * Y3_;
 	IKG3_ = OmegaKG_ * YKG3_ ^ alphaKG * LKG3_ ^ ( 1 - alphaKG );
-	KG3_ = IKG3_ / ( 1 - ( 1 - deltaKG_ ) / gKG_ );
+	KG3_ = IKG3_ / ( 1 - ( 1 - deltaK_ ) / gKG_ );
 
 %ND in 4
     WNDCG4_ = PND4_ * ( 1 - alphaND ) * CND4_ / LND4_;
@@ -935,7 +935,7 @@ II_ = 1 / JP_ * muP_ / ( 1 + muP_ ) * ( ( 1 + mu_ ) / ( 1 + muP_ ) ) ^ ( 1 / lam
 	
 	YHG4_ = tauHG_ * alphaHG * Y4_;
 	IHG4_ = OmegaHG_ * YHG4_ ^ alphaHG * LHG4_ ^ ( 1 - alphaHG );
-	HG4_ = IHG4_ / ( 1 - ( 1 - deltaHG_ ) / gHG_ );
+	HG4_ = IHG4_ / ( 1 - ( 1 - deltaH_ ) / gHG_ );
 
 	
 %K in 4
@@ -948,7 +948,7 @@ II_ = 1 / JP_ * muP_ / ( 1 + muP_ ) * ( ( 1 + mu_ ) / ( 1 + muP_ ) ) ^ ( 1 / lam
 	
 	YKG4_ = tauKG_ * alphaKG * Y4_;
 	IKG4_ = OmegaKG_ * YKG4_ ^ alphaKG * LKG4_ ^ ( 1 - alphaKG );
-	KG4_ = IKG4_ / ( 1 - ( 1 - deltaKG_ ) / gKG_ );
+	KG4_ = IKG4_ / ( 1 - ( 1 - deltaK_ ) / gKG_ );
 
 %ND in 5
     WNDCG5_ = PND5_ * ( 1 - alphaND ) * CND5_ / LND5_;
@@ -994,7 +994,7 @@ II_ = 1 / JP_ * muP_ / ( 1 + muP_ ) * ( ( 1 + mu_ ) / ( 1 + muP_ ) ) ^ ( 1 / lam
 	
 	YHG5_ = tauHG_ * alphaHG * Y5_;
 	IHG5_ = OmegaHG_ * YHG5_ ^ alphaHG * LHG5_ ^ ( 1 - alphaHG );
-	HG5_ = IHG5_ / ( 1 - ( 1 - deltaHG_ ) / gHG_ );
+	HG5_ = IHG5_ / ( 1 - ( 1 - deltaH_ ) / gHG_ );
 
 	
 %K in 5
@@ -1007,7 +1007,7 @@ II_ = 1 / JP_ * muP_ / ( 1 + muP_ ) * ( ( 1 + mu_ ) / ( 1 + muP_ ) ) ^ ( 1 / lam
 	
 	YKG5_ = tauKG_ * alphaKG * Y5_;
 	IKG5_ = OmegaKG_ * YKG5_ ^ alphaKG * LKG5_ ^ ( 1 - alphaKG );
-	KG5_ = IKG5_ / ( 1 - ( 1 - deltaKG_ ) / gKG_ );
+	KG5_ = IKG5_ / ( 1 - ( 1 - deltaK_ ) / gKG_ );
 
 %ND in 6
     WNDCG6_ = PND6_ * ( 1 - alphaND ) * CND6_ / LND6_;
@@ -1053,7 +1053,7 @@ II_ = 1 / JP_ * muP_ / ( 1 + muP_ ) * ( ( 1 + mu_ ) / ( 1 + muP_ ) ) ^ ( 1 / lam
 	
 	YHG6_ = tauHG_ * alphaHG * Y6_;
 	IHG6_ = OmegaHG_ * YHG6_ ^ alphaHG * LHG6_ ^ ( 1 - alphaHG );
-	HG6_ = IHG6_ / ( 1 - ( 1 - deltaHG_ ) / gHG_ );
+	HG6_ = IHG6_ / ( 1 - ( 1 - deltaH_ ) / gHG_ );
 
 	
 %K in 6
@@ -1066,7 +1066,7 @@ II_ = 1 / JP_ * muP_ / ( 1 + muP_ ) * ( ( 1 + mu_ ) / ( 1 + muP_ ) ) ^ ( 1 / lam
 	
 	YKG6_ = tauKG_ * alphaKG * Y6_;
 	IKG6_ = OmegaKG_ * YKG6_ ^ alphaKG * LKG6_ ^ ( 1 - alphaKG );
-	KG6_ = IKG6_ / ( 1 - ( 1 - deltaKG_ ) / gKG_ );
+	KG6_ = IKG6_ / ( 1 - ( 1 - deltaK_ ) / gKG_ );
 
 
 %Labor supply in W/T/NT, SW/ST/SNT, h
@@ -3090,12 +3090,12 @@ YTC0_ = YTC1_ / N1_ * N0_ * yTC0;
 %demand of K in T1
 	%demand in residual
 
-    IKPT1_ = ( 1 - ( 1 - deltaKPT_ - thetaKU0 / ( 1+thetaKU1 ) * KUT1_ ^ ( 1+thetaKU1 ) ) / gKP_ ) * KPT1_;
+    IKPT1_ = ( 1 - ( 1 - deltaK_ - thetaKU0 / ( 1+thetaKU1 ) * KUT1_ ^ ( 1+thetaKU1 ) ) / gKP_ ) * KPT1_;
 
 %demand of H in T1
     HPT1_ = PHLT1_ * YHLT1_ * alphaHL / RHPT1_;
 
-    IHPT1_ = ( 1 - ( 1 - deltaHPT_ ) / gHP_ ) * HPT1_;
+    IHPT1_ = ( 1 - ( 1 - deltaH_ ) / gHP_ ) * HPT1_;
 
 %define all production habit in T1
 
@@ -3116,12 +3116,12 @@ YTC0_ = YTC1_ / N1_ * N0_ * yTC0;
 %demand of K in NT1
 	%demand in residual
 
-    IKPNT1_ = ( 1 - ( 1 - deltaKPNT_ - thetaKU0 / ( 1+thetaKU1 ) * KUNT1_ ^ ( 1+thetaKU1 ) ) / gKP_ ) * KPNT1_;
+    IKPNT1_ = ( 1 - ( 1 - deltaK_ - thetaKU0 / ( 1+thetaKU1 ) * KUNT1_ ^ ( 1+thetaKU1 ) ) / gKP_ ) * KPNT1_;
 
 %demand of H in NT1
     HPNT1_ = PHLNT1_ * YHLNT1_ * alphaHL / RHPNT1_;
 
-    IHPNT1_ = ( 1 - ( 1 - deltaHPNT_ ) / gHP_ ) * HPNT1_;
+    IHPNT1_ = ( 1 - ( 1 - deltaH_ ) / gHP_ ) * HPNT1_;
 
 %define all production habit in NT1
 
@@ -3142,12 +3142,12 @@ YTC0_ = YTC1_ / N1_ * N0_ * yTC0;
 %demand of K in W1
 	%demand in residual
 
-    IKPW1_ = ( 1 - ( 1 - deltaKPW_ - thetaKU0 / ( 1+thetaKU1 ) * KUW1_ ^ ( 1+thetaKU1 ) ) / gKP_ ) * KPW1_;
+    IKPW1_ = ( 1 - ( 1 - deltaK_ - thetaKU0 / ( 1+thetaKU1 ) * KUW1_ ^ ( 1+thetaKU1 ) ) / gKP_ ) * KPW1_;
 
 %demand of H in W1
     HPW1_ = PHLW1_ * YHLW1_ * alphaHL / RHPW1_;
 
-    IHPW1_ = ( 1 - ( 1 - deltaHPW_ ) / gHP_ ) * HPW1_;
+    IHPW1_ = ( 1 - ( 1 - deltaH_ ) / gHP_ ) * HPW1_;
 
 %define all production habit in W1
 
@@ -4068,490 +4068,7 @@ YTC0_ = YTC1_ / N1_ * N0_ * yTC0;
 
 
 
-%Export and deflator
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-%Import and deflator
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-%cfc of durable goods stock
-
-
-
-
-%cfc of private physical capital stock
-
-
-
-
-
-
-%cfc of public physical capital stock
-
-
-%cfc of public R&D capital stock
-
-
-%cfc
-
-
-
-
-
-%Labour income
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-%HoursWorkedPerCapita
-
-
-
-
-
-
-
-
-
-
-
-
-
-%ex post real exchange rate (t-1 to t)
-
-
-%Spread
-
-	
-%government revenue
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-%PCE (personal consumption expenditure + government expenditure on education) and deflator
-
-
-
-
-
-
-%DND (personal consumption expenditure except education) and deflator
-
-
-
-
-
-
-%PDI (private domestic investment) and deflator
-
-
-
-
-
-
-
-
-
-
-
-
-%GCE (government consumption expenditures) and deflator
-
-
-
-
-
-
-%GGI (government gross investment) and deflator
-
-
-
-
-
-
-%GDI (gross domestic investment) and deflator
-
-
-
-
-
-
-%Export and deflator
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-%Import and deflator
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-%cfc of durable goods stock
-
-
-
-
-%cfc of private physical capital stock
-
-
-
-
-
-
-%cfc of public physical capital stock
-
-
-%cfc of public R&D capital stock
-
-
-%cfc
-
-
-
-
-
-%Labour income
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-%HoursWorkedPerCapita
-
-
-
-
-
-
-
-
-
-
-
-
-
-%ex post real exchange rate (t-1 to t)
-
-
-%Spread
-
-	
-%government revenue
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-%PCE (personal consumption expenditure + government expenditure on education) and deflator
-
-
-
-
-
-
-%DND (personal consumption expenditure except education) and deflator
-
-
-
-
-
-
-%PDI (private domestic investment) and deflator
-
-
-
-
-
-
-
-
-
-
-
-
-%GCE (government consumption expenditures) and deflator
-
-
-
-
-
-
-%GGI (government gross investment) and deflator
-
-
-
-
-
-
-%GDI (gross domestic investment) and deflator
-
-
-
-
+%GERD (Gross domestic expenditure on R&D, or R&D intensity)
 
 
 %Export and deflator
@@ -4797,6 +4314,9 @@ YTC0_ = YTC1_ / N1_ * N0_ * yTC0;
 
 
 
+%GERD (Gross domestic expenditure on R&D, or R&D intensity)
+
+
 %Export and deflator
 
 
@@ -5040,6 +4560,9 @@ YTC0_ = YTC1_ / N1_ * N0_ * yTC0;
 
 
 
+%GERD (Gross domestic expenditure on R&D, or R&D intensity)
+
+
 %Export and deflator
 
 
@@ -5281,6 +4804,501 @@ YTC0_ = YTC1_ / N1_ * N0_ * yTC0;
 
 
 
+
+
+%GERD (Gross domestic expenditure on R&D, or R&D intensity)
+
+
+%Export and deflator
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%Import and deflator
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%cfc of durable goods stock
+
+
+
+
+%cfc of private physical capital stock
+
+
+
+
+
+
+%cfc of public physical capital stock
+
+
+%cfc of public R&D capital stock
+
+
+%cfc
+
+
+
+
+
+%Labour income
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%HoursWorkedPerCapita
+
+
+
+
+
+
+
+
+
+
+
+
+
+%ex post real exchange rate (t-1 to t)
+
+
+%Spread
+
+	
+%government revenue
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%PCE (personal consumption expenditure + government expenditure on education) and deflator
+
+
+
+
+
+
+%DND (personal consumption expenditure except education) and deflator
+
+
+
+
+
+
+%PDI (private domestic investment) and deflator
+
+
+
+
+
+
+
+
+
+
+
+
+%GCE (government consumption expenditures) and deflator
+
+
+
+
+
+
+%GGI (government gross investment) and deflator
+
+
+
+
+
+
+%GDI (gross domestic investment) and deflator
+
+
+
+
+
+
+%GERD (Gross domestic expenditure on R&D, or R&D intensity)
+
+
+%Export and deflator
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%Import and deflator
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%cfc of durable goods stock
+
+
+
+
+%cfc of private physical capital stock
+
+
+
+
+
+
+%cfc of public physical capital stock
+
+
+%cfc of public R&D capital stock
+
+
+%cfc
+
+
+
+
+
+%Labour income
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%HoursWorkedPerCapita
+
+
+
+
+
+
+
+
+
+
+
+
+
+%ex post real exchange rate (t-1 to t)
+
+
+%Spread
+
+	
+%government revenue
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%PCE (personal consumption expenditure + government expenditure on education) and deflator
+
+
+
+
+
+
+%DND (personal consumption expenditure except education) and deflator
+
+
+
+
+
+
+%PDI (private domestic investment) and deflator
+
+
+
+
+
+
+
+
+
+
+
+
+%GCE (government consumption expenditures) and deflator
+
+
+
+
+
+
+%GGI (government gross investment) and deflator
+
+
+
+
+
+
+%GDI (gross domestic investment) and deflator
+
+
+
+
+
+
+%GERD (Gross domestic expenditure on R&D, or R&D intensity)
 
 
 %Export and deflator

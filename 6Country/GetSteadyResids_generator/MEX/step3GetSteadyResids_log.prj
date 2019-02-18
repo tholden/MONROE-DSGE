@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.coder" plugin-version="R2016a">
-  <configuration build-checksum="1062855029" file="D:\th0018\THEstim6\GetSteadyResids_generator\MEX\step3GetSteadyResids_log.prj" location="D:\th0018\THEstim6\GetSteadyResids_generator\MEX" name="step3GetSteadyResids_log" target="target.unifiedcoder" target-name="MATLAB Coder">
+  <configuration build-checksum="1156334893" file="C:\Users\dystg\Documents\GitHub\MONROE-DSGE\6Country\GetSteadyResids_generator\MEX\step3GetSteadyResids_log.prj" location="C:\Users\dystg\Documents\GitHub\MONROE-DSGE\6Country\GetSteadyResids_generator\MEX" name="step3GetSteadyResids_log" target="target.unifiedcoder" target-name="MATLAB Coder">
     <profile key="profile.mex">
       <param.BuiltInstrumentedMex>false</param.BuiltInstrumentedMex>
       <param.RanInstrumentedMex>false</param.RanInstrumentedMex>
@@ -16,6 +16,9 @@
       <param.EnableVariableSizing>true</param.EnableVariableSizing>
       <param.DynamicMemoryAllocation>option.DynamicMemoryAllocation.Enabled</param.DynamicMemoryAllocation>
       <param.DynamicMemoryAllocationThreshold>65536</param.DynamicMemoryAllocationThreshold>
+      <param.RowMajor>option.RowMajor.ColumnMajor</param.RowMajor>
+      <param.HighlightPotentialRowMajorIssues>true</param.HighlightPotentialRowMajorIssues>
+      <param.PreserveArrayDimensions>false</param.PreserveArrayDimensions>
       <param.StackUsageMax>200000</param.StackUsageMax>
       <param.FilePartitionMethod>option.FilePartitionMethod.MapMFileToCFile</param.FilePartitionMethod>
       <param.GenerateComments>true</param.GenerateComments>
@@ -29,6 +32,8 @@
       <param.MergeInstrumentationResults>false</param.MergeInstrumentationResults>
       <param.VerificationMode>option.VerificationMode.None</param.VerificationMode>
       <param.VerificationStatus>option.VerificationStatus.Inactive</param.VerificationStatus>
+      <param.EnableMexProfiling>false</param.EnableMexProfiling>
+      <var.BuiltWithMexProfiling>false</var.BuiltWithMexProfiling>
       <param.CustomSourceCode />
       <param.CustomHeaderCode />
       <param.CustomInitializer />
@@ -66,6 +71,9 @@
         <param.SearchPaths />
         <param.EnableVariableSizing />
         <param.DynamicMemoryAllocationThreshold />
+        <param.RowMajor />
+        <param.HighlightPotentialRowMajorIssues />
+        <param.PreserveArrayDimensions />
         <param.StackUsageMax />
         <param.FilePartitionMethod />
         <param.GenerateComments />
@@ -79,6 +87,8 @@
         <param.MergeInstrumentationResults />
         <param.VerificationMode />
         <param.VerificationStatus />
+        <param.EnableMexProfiling />
+        <var.BuiltWithMexProfiling />
         <param.CustomSourceCode />
         <param.CustomHeaderCode />
         <param.CustomInitializer />
@@ -121,6 +131,9 @@
       <param.EnableVariableSizing>true</param.EnableVariableSizing>
       <param.DynamicMemoryAllocation>option.DynamicMemoryAllocation.Threshold</param.DynamicMemoryAllocation>
       <param.DynamicMemoryAllocationThreshold>65536</param.DynamicMemoryAllocationThreshold>
+      <param.RowMajor>option.RowMajor.ColumnMajor</param.RowMajor>
+      <param.HighlightPotentialRowMajorIssues>true</param.HighlightPotentialRowMajorIssues>
+      <param.PreserveArrayDimensions>false</param.PreserveArrayDimensions>
       <param.StackUsageMax>200000</param.StackUsageMax>
       <param.MultiInstanceCode />
       <param.FilePartitionMethod>option.FilePartitionMethod.MapMFileToCFile</param.FilePartitionMethod>
@@ -153,6 +166,8 @@
       <param.LaunchReport>false</param.LaunchReport>
       <param.ReportPotentialDifferences>false</param.ReportPotentialDifferences>
       <param.SILDebugging />
+      <param.SILPILCheckConstantInputs />
+      <param.SILPILSyncGlobalData />
       <param.CodeExecutionProfiling />
       <param.DefaultTestFile />
       <param.MergeInstrumentationResults>false</param.MergeInstrumentationResults>
@@ -247,7 +262,18 @@
       <param.InitFltsAndDblsToZero>true</param.InitFltsAndDblsToZero>
       <param.PassStructByReference />
       <param.CustomLAPACKCallback />
-      <param.UseECoderFeatures>true</param.UseECoderFeatures>
+      <param.CustomFFTCallback />
+      <param.GenerateDefaultInSwitch />
+      <param.EnableTraceability />
+      <param.UseECoderFeatures />
+      <param.psCustomPrjState>false</param.psCustomPrjState>
+      <param.psCustomProjectFile />
+      <param.psCheckConfValue>option.psCheckConfValue.onWarnCheckConfDlg</param.psCheckConfValue>
+      <param.psUniqueOutPutState>true</param.psUniqueOutPutState>
+      <param.psOpenResultsState>true</param.psOpenResultsState>
+      <param.psProductModeValue>option.psProductModeValue.codeProver</param.psProductModeValue>
+      <param.psQuickConfValue>option.psQuickConfValue.proj</param.psQuickConfValue>
+      <param.psOutputFolder>results_$codegenName$</param.psOutputFolder>
       <unset>
         <param.grt.GenCodeOnly />
         <param.WorkingFolder />
@@ -261,6 +287,9 @@
         <param.EnableVariableSizing />
         <param.DynamicMemoryAllocation />
         <param.DynamicMemoryAllocationThreshold />
+        <param.RowMajor />
+        <param.HighlightPotentialRowMajorIssues />
+        <param.PreserveArrayDimensions />
         <param.StackUsageMax />
         <param.MultiInstanceCode />
         <param.FilePartitionMethod />
@@ -293,6 +322,8 @@
         <param.LaunchReport />
         <param.ReportPotentialDifferences />
         <param.SILDebugging />
+        <param.SILPILCheckConstantInputs />
+        <param.SILPILSyncGlobalData />
         <param.CodeExecutionProfiling />
         <param.DefaultTestFile />
         <param.MergeInstrumentationResults />
@@ -373,7 +404,18 @@
         <param.InitFltsAndDblsToZero />
         <param.PassStructByReference />
         <param.CustomLAPACKCallback />
+        <param.CustomFFTCallback />
+        <param.GenerateDefaultInSwitch />
+        <param.EnableTraceability />
         <param.UseECoderFeatures />
+        <param.psCustomPrjState />
+        <param.psCustomProjectFile />
+        <param.psCheckConfValue />
+        <param.psUniqueOutPutState />
+        <param.psOpenResultsState />
+        <param.psProductModeValue />
+        <param.psQuickConfValue />
+        <param.psOutputFolder />
       </unset>
     </profile>
     <profile key="profile.hdl">
@@ -721,14 +763,12 @@
       </unset>
     </profile>
     <param.objective>option.objective.c</param.objective>
-    <param.WorkflowStep>generateCode</param.WorkflowStep>
+    <param.WorkflowStep>workflowSummary</param.WorkflowStep>
     <param.TestSnippets>
       <item>step3GetSteadyResids_log( Solution, lambda,eta,phiR,zetaR,gamma,scriptp,scriptq,alphaCP,alphaCD,alphah,alphaKP,alphaD,alphaND,alphaHP,alphaHW,alphaHL,alphaK,alphaKL,alphaHLX,alphaY,betabarl,sigma,xi,bbeta,h,varrhoC,eC,varrhoCP,eCP,varrhoCD,nuW,nuT,nuNT,nuSW,nuST,nuSNT,nuD,nuNDCG,nuK,nuH,nuh,rhoQB,thetaKU0,thetaKU1,thetaDU0,thetaDU1,alphaNC,eT,eW,FWCtilde,FKtilde,o,eKLT,eKLNT,eKLW,varrhoKL,eHLXT,eHLXNT,eHLXW,varrhoHLX,eYT,eYNT,eYW,varrhoY,tauKG_,tauHG_,tauCG_,taub_,tauD_,tauND_,tauNT_,tauTC_,iotaTX_,iotaTM_,iotaWX_,iotaWM_,tauLa_,tauLb_,tauHW_,tauHT_,tauHNT_,tauKW_,tauKT_,tauKNT_,tauscriptXW_,tauscriptXT_,tauscriptXNT_,phiiotaTX,phiiotaTM,phiiotaWX,phiiotaWM,Omegah_,OmegaCP_,OmegaC_,OmegaKP_,OmegaHP_,OmegaD_,OmegaND_,OmegaKG_,OmegaHG_,OmegaCG_,OmegaY_,OmegaTC_,OmegaWP_,OmegaWC_,OmegaKT_,OmegaHLT_,OmegaKLT_,OmegaHLXT_,OmegaT_,OmegaKNT_,OmegaHLNT_,OmegaKLNT_,OmegaHLXNT_,OmegaNT_,OmegaKW_,OmegaHLW_,OmegaKLW_,OmegaHLXW_,OmegaW_,GN_,Z_,deltaItilde_,scriptFI_,deltaD_,kappa0_,kappah_,kappaT_,kappaNT_,kappaW_,kappaST_,kappaSNT_,kappaSW_,kappaD_,kappaNDCG_,kappaK_,kappaH_,deltaKPT_,deltaHPT_,deltaKPNT_,deltaHPNT_,deltaKPW_,deltaHPW_,deltaKG_,deltaHG_,betabarb,pT0,yTC0,m_,varpi_,eT0_,Ntilde1_,Ntilde2_,Ntilde3_,Ntilde4_ )</item>
       <item>step3GetSteadyResids_log( Solution, lambda,eta,phiR,zetaR,gamma,scriptp,scriptq,alphaCP,alphaCD,alphah,alphaKP,alphaD,alphaND,alphaHP,alphaHW,alphaHL,alphaK,alphaKL,alphaHLX,alphaY,betabarl,sigma,xi,bbeta,h,varrhoC,eC,varrhoCP,eCP,varrhoCD,nuW,nuT,nuNT,nuSW,nuST,nuSNT,nuD,nuNDCG,nuK,nuH,nuh,rhoQB,thetaKU0,thetaKU1,thetaDU0,thetaDU1,alphaNC,eT,eW,FWCtilde,FKtilde,o,eKLT,eKLNT,eKLW,varrhoKL,eHLXT,eHLXNT,eHLXW,varrhoHLX,eYT,eYNT,eYW,varrhoY,tauKG_,tauHG_,tauCG_,taub_,tauD_,tauND_,tauNT_,tauTC_,iotaTX_,iotaTM_,iotaWX_,iotaWM_,tauLa_,tauLb_,tauHW_,tauHT_,tauHNT_,tauKW_,tauKT_,tauKNT_,tauscriptXW_,tauscriptXT_,tauscriptXNT_,phiiotaTX,phiiotaTM,phiiotaWX,phiiotaWM,Omegah_,OmegaCP_,OmegaC_,OmegaKP_,OmegaHP_,OmegaD_,OmegaND_,OmegaKG_,OmegaHG_,OmegaCG_,OmegaY_,OmegaTC_,OmegaWP_,OmegaWC_,OmegaKT_,OmegaHLT_,OmegaKLT_,OmegaHLXT_,OmegaT_,OmegaKNT_,OmegaHLNT_,OmegaKLNT_,OmegaHLXNT_,OmegaNT_,OmegaKW_,OmegaHLW_,OmegaKLW_,OmegaHLXW_,OmegaW_,GN_,Z_,deltaItilde_,scriptFI_,deltaD_,kappa0_,kappah_,kappaT_,kappaNT_,kappaW_,kappaST_,kappaSNT_,kappaSW_,kappaD_,kappaNDCG_,kappaK_,kappaH_,deltaKPT_,deltaHPT_,deltaKPNT_,deltaHPNT_,deltaKPW_,deltaHPW_,deltaKG_,deltaHG_,betabarb,pT0,yTC0,m_,varpi_,eT0_,Ntilde1_,Ntilde2_ )</item>
     </param.TestSnippets>
     <param.DefaultImportExportVariable>config</param.DefaultImportExportVariable>
-    <param.RowMajor>false</param.RowMajor>
-    <param.HighlightPotentialRowMajorIssues>false</param.HighlightPotentialRowMajorIssues>
     <param.ExternalFcnMajority>column</param.ExternalFcnMajority>
     <param.UseGlobals>option.UseGlobals.No</param.UseGlobals>
     <param.outputfile>${PROJECT_ROOT}\step3GetSteadyResids_log_mex.mexw64</param.outputfile>
@@ -745,7 +785,7 @@
     <param.AutoInferUnboundedSizeThreshold>2048</param.AutoInferUnboundedSizeThreshold>
     <param.EnableFixedPointStep>false</param.EnableFixedPointStep>
     <param.EnableScreener>true</param.EnableScreener>
-    <param.AnnotationChecksum>1822584946</param.AnnotationChecksum>
+    <param.AnnotationChecksum>2222153085</param.AnnotationChecksum>
     <var.LegacyTarget />
     <var.MirrorOnOpen>false</var.MirrorOnOpen>
     <param.FixedPointEnabled>false</param.FixedPointEnabled>
@@ -754,14 +794,16 @@
     <param.unifiedParamStorage />
     <var.gc.lastOutputRoot>codegen\mex\step3GetSteadyResids_log</var.gc.lastOutputRoot>
     <var.gc.lastOutputType>MEX_FILE</var.gc.lastOutputType>
-    <var.gc.preBuildChecksum>2268969711</var.gc.preBuildChecksum>
+    <var.gc.preBuildChecksum>980715483</var.gc.preBuildChecksum>
     <var.cfi.lastOutputRoot />
     <var.cfi.preBuildChecksum />
     <var.outdatedOnRestore>false</var.outdatedOnRestore>
-    <var.lastUserSourceChecksum>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;checksum&gt;&lt;includedFiles&gt;&lt;file&gt;D:\th0018\THEstim6\GetSteadyResids_generator\MEX\GetJP.m&lt;/file&gt;&lt;file&gt;D:\th0018\THEstim6\GetSteadyResids_generator\MEX\step3GetSteadyResids_log.m&lt;/file&gt;&lt;/includedFiles&gt;&lt;value&gt;408178912&lt;/value&gt;&lt;/checksum&gt;</var.lastUserSourceChecksum>
-    <var.sourceSetState>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;sourceModel&gt;&lt;primarySourceFiles&gt;&lt;file&gt;D:\th0018\THEstim6\GetSteadyResids_generator\MEX\GetJP.m&lt;/file&gt;&lt;file&gt;D:\th0018\THEstim6\GetSteadyResids_generator\MEX\step3GetSteadyResids_log.m&lt;/file&gt;&lt;/primarySourceFiles&gt;&lt;fixedPointSourceFiles/&gt;&lt;fixedPointSourceRegistered&gt;false&lt;/fixedPointSourceRegistered&gt;&lt;fixedPointSourceSelected&gt;false&lt;/fixedPointSourceSelected&gt;&lt;/sourceModel&gt;</var.sourceSetState>
+    <var.lastUserSourceChecksum>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;checksum&gt;&lt;includedFiles&gt;&lt;file&gt;C:\Users\dystg\Documents\GitHub\MONROE-DSGE\6Country\GetSteadyResids_generator\MEX\GetJP.m&lt;/file&gt;&lt;file&gt;C:\Users\dystg\Documents\GitHub\MONROE-DSGE\6Country\GetSteadyResids_generator\MEX\step3GetSteadyResids_log.m&lt;/file&gt;&lt;file&gt;C:\Users\dystg\OneDrive\my\research\dynare\dynare4.5.6-th04022019\matlab\isoctave.m&lt;/file&gt;&lt;file&gt;C:\Users\dystg\OneDrive\my\research\dynare\dynare4.5.6-th04022019\matlab\matlab_ver_less_than.m&lt;/file&gt;&lt;file&gt;C:\Users\dystg\OneDrive\my\research\dynare\dynare4.5.6-th04022019\matlab\missing\rows_columns\columns.m&lt;/file&gt;&lt;file&gt;C:\Users\dystg\OneDrive\my\research\dynare\dynare4.5.6-th04022019\matlab\missing\rows_columns\rows.m&lt;/file&gt;&lt;file&gt;C:\Users\dystg\OneDrive\my\research\dynare\dynare4.5.6-th04022019\matlab\modules\dates\src\@dates\dates.m&lt;/file&gt;&lt;file&gt;C:\Users\dystg\OneDrive\my\research\dynare\dynare4.5.6-th04022019\matlab\modules\dates\src\@dates\double.m&lt;/file&gt;&lt;file&gt;C:\Users\dystg\OneDrive\my\research\dynare\dynare4.5.6-th04022019\matlab\modules\dates\src\@dates\horzcat.m&lt;/file&gt;&lt;file&gt;C:\Users\dystg\OneDrive\my\research\dynare\dynare4.5.6-th04022019\matlab\modules\dates\src\@dates\isempty.m&lt;/file&gt;&lt;file&gt;C:\Users\dystg\OneDrive\my\research\dynare\dynare4.5.6-th04022019\matlab\modules\dates\src\@dates\isequal.m&lt;/file&gt;&lt;file&gt;C:\Users\dystg\OneDrive\my\research\dynare\dynare4.5.6-th04022019\matlab\modules\dates\src\@dates\length.m&lt;/file&gt;&lt;file&gt;C:\Users\dystg\OneDrive\my\research\dynare\dynare4.5.6-th04022019\matlab\modules\dates\src\@dates\max.m&lt;/file&gt;&lt;file&gt;C:\Users\dystg\OneDrive\my\research\dynare\dynare4.5.6-th04022019\matlab\modules\dates\src\@dates\sort.m&lt;/file&gt;&lt;file&gt;C:\Users\dystg\OneDrive\my\research\dynare\dynare4.5.6-th04022019\matlab\modules\dates\src\@dates\unique.m&lt;/file&gt;&lt;file&gt;C:\Users\dystg\OneDrive\my\research\dynare\dynare4.5.6-th04022019\matlab\modules\dates\src\utilities\convert\date2string.m&lt;/file&gt;&lt;file&gt;C:\Users\dystg\OneDrive\my\research\dynare\dynare4.5.6-th04022019\matlab\modules\dates\src\utilities\convert\freq2string.m&lt;/file&gt;&lt;file&gt;C:\Users\dystg\OneDrive\my\research\dynare\dynare4.5.6-th04022019\matlab\modules\dates\src\utilities\convert\string2freq.m&lt;/file&gt;&lt;file&gt;C:\Users\dystg\OneDrive\my\research\dynare\dynare4.5.6-th04022019\matlab\modules\dates\src\utilities\is\isdates.m&lt;/file&gt;&lt;file&gt;C:\Users\dystg\OneDrive\my\research\dynare\dynare4.5.6-th04022019\matlab\modules\dates\src\utilities\is\isfreq.m&lt;/file&gt;&lt;file&gt;C:\Users\dystg\OneDrive\my\research\dynare\dynare4.5.6-th04022019\matlab\modules\dseries\src\@dseries\cumprod.m&lt;/file&gt;&lt;file&gt;C:\Users\dystg\OneDrive\my\research\dynare\dynare4.5.6-th04022019\matlab\modules\dseries\src\@dseries\cumsum.m&lt;/file&gt;&lt;file&gt;C:\Users\dystg\OneDrive\my\research\dynare\dynare4.5.6-th04022019\matlab\modules\dseries\src\@dseries\exist.m&lt;/file&gt;&lt;file&gt;C:\Users\dystg\OneDrive\my\research\dynare\dynare4.5.6-th04022019\matlab\modules\dseries\src\@dseries\exp.m&lt;/file&gt;&lt;file&gt;C:\Users\dystg\OneDrive\my\research\dynare\dynare4.5.6-th04022019\matlab\modules\dseries\src\@dseries\firstdate.m&lt;/file&gt;&lt;file&gt;C:\Users\dystg\OneDrive\my\research\dynare\dynare4.5.6-th04022019\matlab\modules\dseries\src\@dseries\isnan.m&lt;/file&gt;&lt;file&gt;C:\Users\dystg\OneDrive\my\research\dynare\dynare4.5.6-th04022019\matlab\modules\dseries\src\@dseries\log.m&lt;/file&gt;&lt;file&gt;C:\Users\dystg\OneDrive\my\research\dynare\dynare4.5.6-th04022019\matlab\modules\dseries\src\@dseries\nobs.m&lt;/file&gt;&lt;file&gt;C:\Users\dystg\OneDrive\my\research\dynare\dynare4.5.6-th04022019\matlab\modules\dseries\src\@dseries\vobs.m&lt;/file&gt;&lt;file&gt;C:\Users\dystg\OneDrive\my\research\dynare\dynare4.5.6-th04022019\matlab\modules\dseries\src\utilities\cumulate\cumprodnan.m&lt;/file&gt;&lt;file&gt;C:\Users\dystg\OneDrive\my\research\dynare\dynare4.5.6-th04022019\matlab\modules\dseries\src\utilities\cumulate\cumsumnan.m&lt;/file&gt;&lt;file&gt;C:\Users\dystg\OneDrive\my\research\dynare\dynare4.5.6-th04022019\matlab\modules\dseries\src\utilities\is\isdseries.m&lt;/file&gt;&lt;file&gt;C:\Users\dystg\OneDrive\my\research\dynare\dynare4.5.6-th04022019\matlab\modules\nlma\@KronProd\abs.m&lt;/file&gt;&lt;file&gt;C:\Users\dystg\OneDrive\my\research\dynare\dynare4.5.6-th04022019\matlab\modules\nlma\@KronProd\cellfun.m&lt;/file&gt;&lt;file&gt;C:\Users\dystg\OneDrive\my\research\dynare\dynare4.5.6-th04022019\matlab\modules\nlma\@KronProd\full.m&lt;/file&gt;&lt;file&gt;C:\Users\dystg\OneDrive\my\research\dynare\dynare4.5.6-th04022019\matlab\modules\nlma\@KronProd\kron.m&lt;/file&gt;&lt;file&gt;C:\Users\dystg\OneDrive\my\research\dynare\dynare4.5.6-th04022019\matlab\modules\nlma\@KronProd\KronProd.m&lt;/file&gt;&lt;file&gt;C:\Users\dystg\OneDrive\my\research\dynare\dynare4.5.6-th04022019\matlab\modules\nlma\@KronProd\numel.m&lt;/file&gt;&lt;file&gt;C:\Users\dystg\OneDrive\my\research\dynare\dynare4.5.6-th04022019\matlab\modules\nlma\@KronProd\private\isnum.m&lt;/file&gt;&lt;file&gt;C:\Users\dystg\OneDrive\my\research\dynare\dynare4.5.6-th04022019\matlab\modules\nlma\@KronProd\private\parse_sizevec.m&lt;/file&gt;&lt;file&gt;C:\Users\dystg\OneDrive\my\research\dynare\dynare4.5.6-th04022019\matlab\modules\nlma\@KronProd\private\row0s.m&lt;/file&gt;&lt;file&gt;C:\Users\dystg\OneDrive\my\research\dynare\dynare4.5.6-th04022019\matlab\modules\nlma\@KronProd\size.m&lt;/file&gt;&lt;file&gt;C:\Users\dystg\OneDrive\my\research\dynare\dynare4.5.6-th04022019\matlab\modules\nlma\@KronProd\sparse.m&lt;/file&gt;&lt;file&gt;C:\Users\dystg\OneDrive\my\research\dynare\dynare4.5.6-th04022019\matlab\modules\nlma\@KronProd\transpose.m&lt;/file&gt;&lt;file&gt;C:\Users\dystg\OneDrive\my\research\dynare\dynare4.5.6-th04022019\matlab\utilities\general\isint.m&lt;/file&gt;&lt;/includedFiles&gt;&lt;value&gt;1912722182&lt;/value&gt;&lt;/checksum&gt;</var.lastUserSourceChecksum>
+    <var.sourceSetState>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;sourceModel&gt;&lt;primarySourceFiles&gt;&lt;file&gt;C:\Users\dystg\Documents\GitHub\MONROE-DSGE\6Country\GetSteadyResids_generator\MEX\GetJP.m&lt;/file&gt;&lt;file&gt;C:\Users\dystg\Documents\GitHub\MONROE-DSGE\6Country\GetSteadyResids_generator\MEX\step3GetSteadyResids_log.m&lt;/file&gt;&lt;/primarySourceFiles&gt;&lt;fixedPointSourceFiles/&gt;&lt;fixedPointSourceRegistered&gt;false&lt;/fixedPointSourceRegistered&gt;&lt;fixedPointSourceSelected&gt;false&lt;/fixedPointSourceSelected&gt;&lt;/sourceModel&gt;</var.sourceSetState>
     <param.forceMexBuild>false</param.forceMexBuild>
     <param.configImportActive>false</param.configImportActive>
+    <var.isGpuCoder>false</var.isGpuCoder>
+    <var.notGpuCoder>true</var.notGpuCoder>
     <var.boundToGui>true</var.boundToGui>
     <param.mex.outputfile>step3GetSteadyResids_log_mex</param.mex.outputfile>
     <param.grt.outputfile>step3GetSteadyResids_log</param.grt.outputfile>
@@ -772,8 +814,12 @@
     <param.FeatureFlags />
     <param.FixedPointMode>option.FixedPointMode.None</param.FixedPointMode>
     <param.AutoScaleLoopIndexVariables>false</param.AutoScaleLoopIndexVariables>
-    <param.ComputedFixedPointData />
-    <param.UserFixedPointData />
+    <param.ComputedFixedPointData>
+      <ComputedEntities />
+    </param.ComputedFixedPointData>
+    <param.UserFixedPointData>
+      <UserEntities />
+    </param.UserFixedPointData>
     <param.DefaultWordLength>16</param.DefaultWordLength>
     <param.DefaultFractionLength>4</param.DefaultFractionLength>
     <param.FixedPointSafetyMargin>0</param.FixedPointSafetyMargin>
@@ -792,7 +838,19 @@
     <param.InstrumentedMexFile />
     <param.FixedPointValidationChecksum />
     <param.FixedPointSourceCodeChecksum />
-    <param.FixedPointFunctionReplacements />
+    <param.FixedPointFunctionReplacements>
+      <FunctionReplacements>
+        <Replacement />
+        <Replacement />
+        <Replacement />
+        <Replacement />
+        <Replacement />
+        <Replacement />
+        <Replacement />
+        <Replacement />
+        <Replacement />
+      </FunctionReplacements>
+    </param.FixedPointFunctionReplacements>
     <param.OptimizeWholeNumbers>true</param.OptimizeWholeNumbers>
     <param.ContainerTypes>false</param.ContainerTypes>
     <param.GeneratedFixedPointFileSuffix>_fixpt</param.GeneratedFixedPointFileSuffix>
@@ -813,11 +871,24 @@
     <param.fptSignedness>false</param.fptSignedness>
     <var.FixedPointAnalysisMode>option.FixedPointAnalysisMode.Sim</var.FixedPointAnalysisMode>
     <param.FixedPointUseDesignRanges>false</param.FixedPointUseDesignRanges>
+    <param.gpu.Enabled>false</param.gpu.Enabled>
+    <param.gpu.KernelNamePrefix />
+    <param.gpu.MallocMode>discrete</param.gpu.MallocMode>
+    <param.gpu.MallocThreshold>200</param.gpu.MallocThreshold>
+    <param.gpu.StackLimitPerThread>1024</param.gpu.StackLimitPerThread>
+    <param.gpu.EnableCUBLAS>true</param.gpu.EnableCUBLAS>
+    <param.gpu.EnableCUSOLVER>true</param.gpu.EnableCUSOLVER>
+    <param.gpu.EnableCUFFT>true</param.gpu.EnableCUFFT>
+    <param.gpu.Benchmarking>false</param.gpu.Benchmarking>
+    <param.gpu.SafeBuild>false</param.gpu.SafeBuild>
+    <param.gpu.ComputeCapability>3.5</param.gpu.ComputeCapability>
+    <param.gpu.CustomComputeCapability />
+    <param.gpu.CompilerFlags />
+    <var.checkIssuesGpu>false</var.checkIssuesGpu>
+    <var.hasGpu>false</var.hasGpu>
     <unset>
       <param.objective />
       <param.DefaultImportExportVariable />
-      <param.RowMajor />
-      <param.HighlightPotentialRowMajorIssues />
       <param.ExternalFcnMajority />
       <param.UseGlobals />
       <param.outputfile />
@@ -844,6 +915,8 @@
       <var.outdatedOnRestore />
       <param.forceMexBuild />
       <param.configImportActive />
+      <var.isGpuCoder />
+      <var.notGpuCoder />
       <param.mex.outputfile />
       <param.grt.outputfile />
       <param.artifact />
@@ -852,8 +925,6 @@
       <param.FeatureFlags />
       <param.FixedPointMode />
       <param.AutoScaleLoopIndexVariables />
-      <param.ComputedFixedPointData />
-      <param.UserFixedPointData />
       <param.DefaultWordLength />
       <param.DefaultFractionLength />
       <param.FixedPointSafetyMargin />
@@ -872,7 +943,6 @@
       <param.InstrumentedMexFile />
       <param.FixedPointValidationChecksum />
       <param.FixedPointSourceCodeChecksum />
-      <param.FixedPointFunctionReplacements />
       <param.OptimizeWholeNumbers />
       <param.ContainerTypes />
       <param.GeneratedFixedPointFileSuffix />
@@ -892,16 +962,31 @@
       <param.fptSignedness />
       <var.FixedPointAnalysisMode />
       <param.FixedPointUseDesignRanges />
+      <param.gpu.Enabled />
+      <param.gpu.KernelNamePrefix />
+      <param.gpu.MallocMode />
+      <param.gpu.MallocThreshold />
+      <param.gpu.StackLimitPerThread />
+      <param.gpu.EnableCUBLAS />
+      <param.gpu.EnableCUSOLVER />
+      <param.gpu.EnableCUFFT />
+      <param.gpu.Benchmarking />
+      <param.gpu.SafeBuild />
+      <param.gpu.ComputeCapability />
+      <param.gpu.CustomComputeCapability />
+      <param.gpu.CompilerFlags />
+      <var.checkIssuesGpu />
+      <var.hasGpu />
     </unset>
     <fileset.entrypoints>
       <file custom-data-expanded="false" value="${PROJECT_ROOT}\step3GetSteadyResids_log.m">
-        <Marker>1549117017061</Marker>
+        <Marker>1550472624459</Marker>
       </file>
     </fileset.entrypoints>
     <fileset.testbench />
     <fileset.inputtypes>
       <file custom-data-expanded="false" value="${PROJECT_ROOT}\step3GetSteadyResids_log.m">
-        <Inputs fileName="step3GetSteadyResids_log.m" functionName="step3GetSteadyResids_log">
+        <Inputs fileName="step3GetSteadyResids_log.m" functionName="step3GetSteadyResids_log" nargout="10">
           <Input Name="InVec" typeId="0" />
           <Input Name="lambda" typeId="1" />
           <Input Name="eta" typeId="1" />
@@ -1040,14 +1125,8 @@
           <Input Name="kappaNDCG_" typeId="1" />
           <Input Name="kappaK_" typeId="1" />
           <Input Name="kappaH_" typeId="1" />
-          <Input Name="deltaKPT_" typeId="1" />
-          <Input Name="deltaHPT_" typeId="1" />
-          <Input Name="deltaKPNT_" typeId="1" />
-          <Input Name="deltaHPNT_" typeId="1" />
-          <Input Name="deltaKPW_" typeId="1" />
-          <Input Name="deltaHPW_" typeId="1" />
-          <Input Name="deltaKG_" typeId="1" />
-          <Input Name="deltaHG_" typeId="1" />
+          <Input Name="deltaK_" typeId="1" />
+          <Input Name="deltaH_" typeId="1" />
           <Input Name="betabarb" typeId="1" />
           <Input Name="pT0" typeId="1" />
           <Input Name="yTC0" typeId="1" />
@@ -1068,6 +1147,7 @@
               <InitialValue />
               <UserDefined>false</UserDefined>
               <Complex>true</Complex>
+              <Sparse>false</Sparse>
             </type>
             <type typeId="1">
               <Class>double</Class>
@@ -1076,6 +1156,7 @@
               <InitialValue />
               <UserDefined>false</UserDefined>
               <Complex>false</Complex>
+              <Sparse>false</Sparse>
             </type>
             <type typeId="2">
               <Class>double</Class>
@@ -1084,22 +1165,25 @@
               <InitialValue />
               <UserDefined>true</UserDefined>
               <Complex>false</Complex>
+              <Sparse>false</Sparse>
             </type>
           </idpTable>
         </Inputs>
       </file>
     </fileset.inputtypes>
     <build-deliverables>
-      <file location="D:\th0018\THEstim6\GetSteadyResids_generator\MEX" name="step3GetSteadyResids_log_mex.mexw64" optional="false">D:\th0018\THEstim6\GetSteadyResids_generator\MEX\step3GetSteadyResids_log_mex.mexw64</file>
+      <file location="C:\Users\dystg\Documents\GitHub\MONROE-DSGE\6Country\GetSteadyResids_generator\MEX" name="step3GetSteadyResids_log_mex.mexw64" optional="false">C:\Users\dystg\Documents\GitHub\MONROE-DSGE\6Country\GetSteadyResids_generator\MEX\step3GetSteadyResids_log_mex.mexw64</file>
     </build-deliverables>
     <workflow />
     <matlab>
-      <root>C:\Program Files\MATLAB\R2017a</root>
+      <root>C:\Program Files\MATLAB\R2018a</root>
       <toolboxes>
         <toolbox name="fixedpoint" />
         <toolbox name="matlabcoder" />
         <toolbox name="matlabhdlcoder" />
         <toolbox name="embeddedcoder" />
+        <toolbox name="gpucoder" />
+        <toolbox name="polyspacebugfinder" />
       </toolboxes>
       <toolbox>
         <fixedpoint>
@@ -1121,6 +1205,16 @@
           <enabled>true</enabled>
         </embeddedcoder>
       </toolbox>
+      <toolbox>
+        <gpucoder>
+          <enabled>true</enabled>
+        </gpucoder>
+      </toolbox>
+      <toolbox>
+        <polyspacebugfinder>
+          <enabled>true</enabled>
+        </polyspacebugfinder>
+      </toolbox>
     </matlab>
     <platform>
       <unix>false</unix>
@@ -1131,7 +1225,7 @@
       <vista>false</vista>
       <linux>false</linux>
       <solaris>false</solaris>
-      <osver>6.2</osver>
+      <osver>10.0</osver>
       <os32>false</os32>
       <os64>true</os64>
       <arch>win64</arch>

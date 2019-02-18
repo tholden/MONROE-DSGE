@@ -22,7 +22,7 @@ phiiotaTX ,phiiotaTM, phiiotaWX, phiiotaWM,...
 Omegah_, OmegaCP_, OmegaC_, OmegaKP_, OmegaHP_, OmegaD_, OmegaND_, OmegaKG_, OmegaHG_, OmegaCG_, OmegaY_, OmegaTC_, OmegaWP_, OmegaWC_, OmegaKT_, OmegaHLT_, OmegaKLT_, OmegaHLXT_, OmegaT_, OmegaKNT_, OmegaHLNT_, OmegaKLNT_, OmegaHLXNT_, OmegaNT_, OmegaKW_, OmegaHLW_, OmegaKLW_, OmegaHLXW_, OmegaW_, ...
 GN_, Z_, deltaItilde_, scriptFI_, deltaD_, kappa0_, kappah_, ...
 kappaT_, kappaNT_, kappaW_, kappaST_, kappaSNT_, kappaSW_, kappaD_, kappaNDCG_, kappaK_, kappaH_, ...
-deltaKPT_, deltaHPT_, deltaKPNT_, deltaHPNT_, deltaKPW_, deltaHPW_, deltaKG_, deltaHG_, betabarb, ...
+deltaK_,deltaH_, betabarb, ...
 pT0, yTC0, m_, varpi_, eT0_, Ntilde1_, Ntilde2_, Ntilde3_, Ntilde4_, Ntilde5_, Ntilde6_)
 
 %this file also serves as the base of steady_state_model in .mod, we need to make the following changes
@@ -538,24 +538,24 @@ II_ = 1 / JP_ * muP_ / ( 1 + muP_ ) * ( ( 1 + mu_ ) / ( 1 + muP_ ) ) ^ ( 1 / lam
 %phsical/human capital related (KPS6_ PKP6_ IKPS6_ are solved from production side)
 
 
-		KUT1_ = ( ( 1 - VV1l_ * glambda_K_ * ( 1 - deltaKPT_ ) ) / ( thetaKU0 / gKP_ - VV1l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
+		KUT1_ = ( ( 1 - VV1l_ * glambda_K_ * ( 1 - deltaK_ ) ) / ( thetaKU0 / gKP_ - VV1l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
 		RKPT1_DIVIDEDPKP1_ = thetaKU0 * KUT1_ ^ thetaKU1 / gKP_ / ( 1 - tauKT_ );
-		RHPT1_DIVIDEDPHP1_ = ( 1 - VV1l_ * glambda_H_ * ( 1 - deltaHPT_ ) ) / ( 1 - tauHT_ );
+		RHPT1_DIVIDEDPHP1_ = ( 1 - VV1l_ * glambda_H_ * ( 1 - deltaH_ ) ) / ( 1 - tauHT_ );
 
 
-		KUNT1_ = ( ( 1 - VV1l_ * glambda_K_ * ( 1 - deltaKPNT_ ) ) / ( thetaKU0 / gKP_ - VV1l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
+		KUNT1_ = ( ( 1 - VV1l_ * glambda_K_ * ( 1 - deltaK_ ) ) / ( thetaKU0 / gKP_ - VV1l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
 		RKPNT1_DIVIDEDPKP1_ = thetaKU0 * KUNT1_ ^ thetaKU1 / gKP_ / ( 1 - tauKNT_ );
-		RHPNT1_DIVIDEDPHP1_ = ( 1 - VV1l_ * glambda_H_ * ( 1 - deltaHPNT_ ) ) / ( 1 - tauHNT_ );
+		RHPNT1_DIVIDEDPHP1_ = ( 1 - VV1l_ * glambda_H_ * ( 1 - deltaH_ ) ) / ( 1 - tauHNT_ );
 
 
-		KUW1_ = ( ( 1 - VV1l_ * glambda_K_ * ( 1 - deltaKPW_ ) ) / ( thetaKU0 / gKP_ - VV1l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
+		KUW1_ = ( ( 1 - VV1l_ * glambda_K_ * ( 1 - deltaK_ ) ) / ( thetaKU0 / gKP_ - VV1l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
 		RKPW1_DIVIDEDPKP1_ = thetaKU0 * KUW1_ ^ thetaKU1 / gKP_ / ( 1 - tauKW_ );
-		RHPW1_DIVIDEDPHP1_ = ( 1 - VV1l_ * glambda_H_ * ( 1 - deltaHPW_ ) ) / ( 1 - tauHW_ );
+		RHPW1_DIVIDEDPHP1_ = ( 1 - VV1l_ * glambda_H_ * ( 1 - deltaH_ ) ) / ( 1 - tauHW_ );
 
 
-		KUT2_ = ( ( 1 - VV2l_ * glambda_K_ * ( 1 - deltaKPT_ ) ) / ( thetaKU0 / gKP_ - VV2l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
+		KUT2_ = ( ( 1 - VV2l_ * glambda_K_ * ( 1 - deltaK_ ) ) / ( thetaKU0 / gKP_ - VV2l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
 		RKPT2_DIVIDEDPKP2_ = thetaKU0 * KUT2_ ^ thetaKU1 / gKP_ / ( 1 - tauKT_ );
-		RHPT2_DIVIDEDPHP2_ = ( 1 - VV2l_ * glambda_H_ * ( 1 - deltaHPT_ ) ) / ( 1 - tauHT_ );
+		RHPT2_DIVIDEDPHP2_ = ( 1 - VV2l_ * glambda_H_ * ( 1 - deltaH_ ) ) / ( 1 - tauHT_ );
 
 
 
@@ -563,14 +563,14 @@ II_ = 1 / JP_ * muP_ / ( 1 + muP_ ) * ( ( 1 + mu_ ) / ( 1 + muP_ ) ) ^ ( 1 / lam
 
 
 
-		KUW2_ = ( ( 1 - VV2l_ * glambda_K_ * ( 1 - deltaKPW_ ) ) / ( thetaKU0 / gKP_ - VV2l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
+		KUW2_ = ( ( 1 - VV2l_ * glambda_K_ * ( 1 - deltaK_ ) ) / ( thetaKU0 / gKP_ - VV2l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
 		RKPW2_DIVIDEDPKP2_ = thetaKU0 * KUW2_ ^ thetaKU1 / gKP_ / ( 1 - tauKW_ );
-		RHPW2_DIVIDEDPHP2_ = ( 1 - VV2l_ * glambda_H_ * ( 1 - deltaHPW_ ) ) / ( 1 - tauHW_ );
+		RHPW2_DIVIDEDPHP2_ = ( 1 - VV2l_ * glambda_H_ * ( 1 - deltaH_ ) ) / ( 1 - tauHW_ );
 
 
-		KUT3_ = ( ( 1 - VV3l_ * glambda_K_ * ( 1 - deltaKPT_ ) ) / ( thetaKU0 / gKP_ - VV3l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
+		KUT3_ = ( ( 1 - VV3l_ * glambda_K_ * ( 1 - deltaK_ ) ) / ( thetaKU0 / gKP_ - VV3l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
 		RKPT3_DIVIDEDPKP3_ = thetaKU0 * KUT3_ ^ thetaKU1 / gKP_ / ( 1 - tauKT_ );
-		RHPT3_DIVIDEDPHP3_ = ( 1 - VV3l_ * glambda_H_ * ( 1 - deltaHPT_ ) ) / ( 1 - tauHT_ );
+		RHPT3_DIVIDEDPHP3_ = ( 1 - VV3l_ * glambda_H_ * ( 1 - deltaH_ ) ) / ( 1 - tauHT_ );
 
 
 
@@ -578,14 +578,14 @@ II_ = 1 / JP_ * muP_ / ( 1 + muP_ ) * ( ( 1 + mu_ ) / ( 1 + muP_ ) ) ^ ( 1 / lam
 
 
 
-		KUW3_ = ( ( 1 - VV3l_ * glambda_K_ * ( 1 - deltaKPW_ ) ) / ( thetaKU0 / gKP_ - VV3l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
+		KUW3_ = ( ( 1 - VV3l_ * glambda_K_ * ( 1 - deltaK_ ) ) / ( thetaKU0 / gKP_ - VV3l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
 		RKPW3_DIVIDEDPKP3_ = thetaKU0 * KUW3_ ^ thetaKU1 / gKP_ / ( 1 - tauKW_ );
-		RHPW3_DIVIDEDPHP3_ = ( 1 - VV3l_ * glambda_H_ * ( 1 - deltaHPW_ ) ) / ( 1 - tauHW_ );
+		RHPW3_DIVIDEDPHP3_ = ( 1 - VV3l_ * glambda_H_ * ( 1 - deltaH_ ) ) / ( 1 - tauHW_ );
 
 
-		KUT4_ = ( ( 1 - VV4l_ * glambda_K_ * ( 1 - deltaKPT_ ) ) / ( thetaKU0 / gKP_ - VV4l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
+		KUT4_ = ( ( 1 - VV4l_ * glambda_K_ * ( 1 - deltaK_ ) ) / ( thetaKU0 / gKP_ - VV4l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
 		RKPT4_DIVIDEDPKP4_ = thetaKU0 * KUT4_ ^ thetaKU1 / gKP_ / ( 1 - tauKT_ );
-		RHPT4_DIVIDEDPHP4_ = ( 1 - VV4l_ * glambda_H_ * ( 1 - deltaHPT_ ) ) / ( 1 - tauHT_ );
+		RHPT4_DIVIDEDPHP4_ = ( 1 - VV4l_ * glambda_H_ * ( 1 - deltaH_ ) ) / ( 1 - tauHT_ );
 
 
 
@@ -593,14 +593,14 @@ II_ = 1 / JP_ * muP_ / ( 1 + muP_ ) * ( ( 1 + mu_ ) / ( 1 + muP_ ) ) ^ ( 1 / lam
 
 
 
-		KUW4_ = ( ( 1 - VV4l_ * glambda_K_ * ( 1 - deltaKPW_ ) ) / ( thetaKU0 / gKP_ - VV4l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
+		KUW4_ = ( ( 1 - VV4l_ * glambda_K_ * ( 1 - deltaK_ ) ) / ( thetaKU0 / gKP_ - VV4l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
 		RKPW4_DIVIDEDPKP4_ = thetaKU0 * KUW4_ ^ thetaKU1 / gKP_ / ( 1 - tauKW_ );
-		RHPW4_DIVIDEDPHP4_ = ( 1 - VV4l_ * glambda_H_ * ( 1 - deltaHPW_ ) ) / ( 1 - tauHW_ );
+		RHPW4_DIVIDEDPHP4_ = ( 1 - VV4l_ * glambda_H_ * ( 1 - deltaH_ ) ) / ( 1 - tauHW_ );
 
 
-		KUT5_ = ( ( 1 - VV5l_ * glambda_K_ * ( 1 - deltaKPT_ ) ) / ( thetaKU0 / gKP_ - VV5l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
+		KUT5_ = ( ( 1 - VV5l_ * glambda_K_ * ( 1 - deltaK_ ) ) / ( thetaKU0 / gKP_ - VV5l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
 		RKPT5_DIVIDEDPKP5_ = thetaKU0 * KUT5_ ^ thetaKU1 / gKP_ / ( 1 - tauKT_ );
-		RHPT5_DIVIDEDPHP5_ = ( 1 - VV5l_ * glambda_H_ * ( 1 - deltaHPT_ ) ) / ( 1 - tauHT_ );
+		RHPT5_DIVIDEDPHP5_ = ( 1 - VV5l_ * glambda_H_ * ( 1 - deltaH_ ) ) / ( 1 - tauHT_ );
 
 
 
@@ -608,14 +608,14 @@ II_ = 1 / JP_ * muP_ / ( 1 + muP_ ) * ( ( 1 + mu_ ) / ( 1 + muP_ ) ) ^ ( 1 / lam
 
 
 
-		KUW5_ = ( ( 1 - VV5l_ * glambda_K_ * ( 1 - deltaKPW_ ) ) / ( thetaKU0 / gKP_ - VV5l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
+		KUW5_ = ( ( 1 - VV5l_ * glambda_K_ * ( 1 - deltaK_ ) ) / ( thetaKU0 / gKP_ - VV5l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
 		RKPW5_DIVIDEDPKP5_ = thetaKU0 * KUW5_ ^ thetaKU1 / gKP_ / ( 1 - tauKW_ );
-		RHPW5_DIVIDEDPHP5_ = ( 1 - VV5l_ * glambda_H_ * ( 1 - deltaHPW_ ) ) / ( 1 - tauHW_ );
+		RHPW5_DIVIDEDPHP5_ = ( 1 - VV5l_ * glambda_H_ * ( 1 - deltaH_ ) ) / ( 1 - tauHW_ );
 
 
-		KUT6_ = ( ( 1 - VV6l_ * glambda_K_ * ( 1 - deltaKPT_ ) ) / ( thetaKU0 / gKP_ - VV6l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
+		KUT6_ = ( ( 1 - VV6l_ * glambda_K_ * ( 1 - deltaK_ ) ) / ( thetaKU0 / gKP_ - VV6l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
 		RKPT6_DIVIDEDPKP6_ = thetaKU0 * KUT6_ ^ thetaKU1 / gKP_ / ( 1 - tauKT_ );
-		RHPT6_DIVIDEDPHP6_ = ( 1 - VV6l_ * glambda_H_ * ( 1 - deltaHPT_ ) ) / ( 1 - tauHT_ );
+		RHPT6_DIVIDEDPHP6_ = ( 1 - VV6l_ * glambda_H_ * ( 1 - deltaH_ ) ) / ( 1 - tauHT_ );
 
 
 
@@ -623,9 +623,9 @@ II_ = 1 / JP_ * muP_ / ( 1 + muP_ ) * ( ( 1 + mu_ ) / ( 1 + muP_ ) ) ^ ( 1 / lam
 
 
 
-		KUW6_ = ( ( 1 - VV6l_ * glambda_K_ * ( 1 - deltaKPW_ ) ) / ( thetaKU0 / gKP_ - VV6l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
+		KUW6_ = ( ( 1 - VV6l_ * glambda_K_ * ( 1 - deltaK_ ) ) / ( thetaKU0 / gKP_ - VV6l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
 		RKPW6_DIVIDEDPKP6_ = thetaKU0 * KUW6_ ^ thetaKU1 / gKP_ / ( 1 - tauKW_ );
-		RHPW6_DIVIDEDPHP6_ = ( 1 - VV6l_ * glambda_H_ * ( 1 - deltaHPW_ ) ) / ( 1 - tauHW_ );
+		RHPW6_DIVIDEDPHP6_ = ( 1 - VV6l_ * glambda_H_ * ( 1 - deltaH_ ) ) / ( 1 - tauHW_ );
 
 %Durable stock and home production related
 
@@ -758,7 +758,7 @@ II_ = 1 / JP_ * muP_ / ( 1 + muP_ ) * ( ( 1 + mu_ ) / ( 1 + muP_ ) ) ^ ( 1 / lam
 	
 	YHG1_ = tauHG_ * alphaHG * Y1_;
 	IHG1_ = OmegaHG_ * YHG1_ ^ alphaHG * LHG1_ ^ ( 1 - alphaHG );
-	HG1_ = IHG1_ / ( 1 - ( 1 - deltaHG_ ) / gHG_ );
+	HG1_ = IHG1_ / ( 1 - ( 1 - deltaH_ ) / gHG_ );
 	PHG1_ = P1_ * YHG1_ / alphaHG / IHG1_;
 	
 %K in 1
@@ -771,7 +771,7 @@ II_ = 1 / JP_ * muP_ / ( 1 + muP_ ) * ( ( 1 + mu_ ) / ( 1 + muP_ ) ) ^ ( 1 / lam
 	
 	YKG1_ = tauKG_ * alphaKG * Y1_;
 	IKG1_ = OmegaKG_ * YKG1_ ^ alphaKG * LKG1_ ^ ( 1 - alphaKG );
-	KG1_ = IKG1_ / ( 1 - ( 1 - deltaKG_ ) / gKG_ );
+	KG1_ = IKG1_ / ( 1 - ( 1 - deltaK_ ) / gKG_ );
 	PKG1_ = P1_ * YKG1_ / alphaKG / IKG1_;
 %ND in 2
     WNDCG2_ = PND2_ * ( 1 - alphaND ) * CND2_ / LND2_;
@@ -817,7 +817,7 @@ II_ = 1 / JP_ * muP_ / ( 1 + muP_ ) * ( ( 1 + mu_ ) / ( 1 + muP_ ) ) ^ ( 1 / lam
 	
 	YHG2_ = tauHG_ * alphaHG * Y2_;
 	IHG2_ = OmegaHG_ * YHG2_ ^ alphaHG * LHG2_ ^ ( 1 - alphaHG );
-	HG2_ = IHG2_ / ( 1 - ( 1 - deltaHG_ ) / gHG_ );
+	HG2_ = IHG2_ / ( 1 - ( 1 - deltaH_ ) / gHG_ );
 
 	
 %K in 2
@@ -830,7 +830,7 @@ II_ = 1 / JP_ * muP_ / ( 1 + muP_ ) * ( ( 1 + mu_ ) / ( 1 + muP_ ) ) ^ ( 1 / lam
 	
 	YKG2_ = tauKG_ * alphaKG * Y2_;
 	IKG2_ = OmegaKG_ * YKG2_ ^ alphaKG * LKG2_ ^ ( 1 - alphaKG );
-	KG2_ = IKG2_ / ( 1 - ( 1 - deltaKG_ ) / gKG_ );
+	KG2_ = IKG2_ / ( 1 - ( 1 - deltaK_ ) / gKG_ );
 
 %ND in 3
     WNDCG3_ = PND3_ * ( 1 - alphaND ) * CND3_ / LND3_;
@@ -876,7 +876,7 @@ II_ = 1 / JP_ * muP_ / ( 1 + muP_ ) * ( ( 1 + mu_ ) / ( 1 + muP_ ) ) ^ ( 1 / lam
 	
 	YHG3_ = tauHG_ * alphaHG * Y3_;
 	IHG3_ = OmegaHG_ * YHG3_ ^ alphaHG * LHG3_ ^ ( 1 - alphaHG );
-	HG3_ = IHG3_ / ( 1 - ( 1 - deltaHG_ ) / gHG_ );
+	HG3_ = IHG3_ / ( 1 - ( 1 - deltaH_ ) / gHG_ );
 
 	
 %K in 3
@@ -889,7 +889,7 @@ II_ = 1 / JP_ * muP_ / ( 1 + muP_ ) * ( ( 1 + mu_ ) / ( 1 + muP_ ) ) ^ ( 1 / lam
 	
 	YKG3_ = tauKG_ * alphaKG * Y3_;
 	IKG3_ = OmegaKG_ * YKG3_ ^ alphaKG * LKG3_ ^ ( 1 - alphaKG );
-	KG3_ = IKG3_ / ( 1 - ( 1 - deltaKG_ ) / gKG_ );
+	KG3_ = IKG3_ / ( 1 - ( 1 - deltaK_ ) / gKG_ );
 
 %ND in 4
     WNDCG4_ = PND4_ * ( 1 - alphaND ) * CND4_ / LND4_;
@@ -935,7 +935,7 @@ II_ = 1 / JP_ * muP_ / ( 1 + muP_ ) * ( ( 1 + mu_ ) / ( 1 + muP_ ) ) ^ ( 1 / lam
 	
 	YHG4_ = tauHG_ * alphaHG * Y4_;
 	IHG4_ = OmegaHG_ * YHG4_ ^ alphaHG * LHG4_ ^ ( 1 - alphaHG );
-	HG4_ = IHG4_ / ( 1 - ( 1 - deltaHG_ ) / gHG_ );
+	HG4_ = IHG4_ / ( 1 - ( 1 - deltaH_ ) / gHG_ );
 
 	
 %K in 4
@@ -948,7 +948,7 @@ II_ = 1 / JP_ * muP_ / ( 1 + muP_ ) * ( ( 1 + mu_ ) / ( 1 + muP_ ) ) ^ ( 1 / lam
 	
 	YKG4_ = tauKG_ * alphaKG * Y4_;
 	IKG4_ = OmegaKG_ * YKG4_ ^ alphaKG * LKG4_ ^ ( 1 - alphaKG );
-	KG4_ = IKG4_ / ( 1 - ( 1 - deltaKG_ ) / gKG_ );
+	KG4_ = IKG4_ / ( 1 - ( 1 - deltaK_ ) / gKG_ );
 
 %ND in 5
     WNDCG5_ = PND5_ * ( 1 - alphaND ) * CND5_ / LND5_;
@@ -994,7 +994,7 @@ II_ = 1 / JP_ * muP_ / ( 1 + muP_ ) * ( ( 1 + mu_ ) / ( 1 + muP_ ) ) ^ ( 1 / lam
 	
 	YHG5_ = tauHG_ * alphaHG * Y5_;
 	IHG5_ = OmegaHG_ * YHG5_ ^ alphaHG * LHG5_ ^ ( 1 - alphaHG );
-	HG5_ = IHG5_ / ( 1 - ( 1 - deltaHG_ ) / gHG_ );
+	HG5_ = IHG5_ / ( 1 - ( 1 - deltaH_ ) / gHG_ );
 
 	
 %K in 5
@@ -1007,7 +1007,7 @@ II_ = 1 / JP_ * muP_ / ( 1 + muP_ ) * ( ( 1 + mu_ ) / ( 1 + muP_ ) ) ^ ( 1 / lam
 	
 	YKG5_ = tauKG_ * alphaKG * Y5_;
 	IKG5_ = OmegaKG_ * YKG5_ ^ alphaKG * LKG5_ ^ ( 1 - alphaKG );
-	KG5_ = IKG5_ / ( 1 - ( 1 - deltaKG_ ) / gKG_ );
+	KG5_ = IKG5_ / ( 1 - ( 1 - deltaK_ ) / gKG_ );
 
 %ND in 6
     WNDCG6_ = PND6_ * ( 1 - alphaND ) * CND6_ / LND6_;
@@ -1053,7 +1053,7 @@ II_ = 1 / JP_ * muP_ / ( 1 + muP_ ) * ( ( 1 + mu_ ) / ( 1 + muP_ ) ) ^ ( 1 / lam
 	
 	YHG6_ = tauHG_ * alphaHG * Y6_;
 	IHG6_ = OmegaHG_ * YHG6_ ^ alphaHG * LHG6_ ^ ( 1 - alphaHG );
-	HG6_ = IHG6_ / ( 1 - ( 1 - deltaHG_ ) / gHG_ );
+	HG6_ = IHG6_ / ( 1 - ( 1 - deltaH_ ) / gHG_ );
 
 	
 %K in 6
@@ -1066,7 +1066,7 @@ II_ = 1 / JP_ * muP_ / ( 1 + muP_ ) * ( ( 1 + mu_ ) / ( 1 + muP_ ) ) ^ ( 1 / lam
 	
 	YKG6_ = tauKG_ * alphaKG * Y6_;
 	IKG6_ = OmegaKG_ * YKG6_ ^ alphaKG * LKG6_ ^ ( 1 - alphaKG );
-	KG6_ = IKG6_ / ( 1 - ( 1 - deltaKG_ ) / gKG_ );
+	KG6_ = IKG6_ / ( 1 - ( 1 - deltaK_ ) / gKG_ );
 
 
 %Labor supply in W/T/NT, SW/ST/SNT, h
@@ -3090,12 +3090,12 @@ YTC0_ = YTC1_ / N1_ * N0_ * yTC0;
 %demand of K in T1
 	%demand in residual
 
-    IKPT1_ = ( 1 - ( 1 - deltaKPT_ - thetaKU0 / ( 1+thetaKU1 ) * KUT1_ ^ ( 1+thetaKU1 ) ) / gKP_ ) * KPT1_;
+    IKPT1_ = ( 1 - ( 1 - deltaK_ - thetaKU0 / ( 1+thetaKU1 ) * KUT1_ ^ ( 1+thetaKU1 ) ) / gKP_ ) * KPT1_;
 
 %demand of H in T1
     HPT1_ = PHLT1_ * YHLT1_ * alphaHL / RHPT1_;
 
-    IHPT1_ = ( 1 - ( 1 - deltaHPT_ ) / gHP_ ) * HPT1_;
+    IHPT1_ = ( 1 - ( 1 - deltaH_ ) / gHP_ ) * HPT1_;
 
 %define all production habit in T1
 
@@ -3116,12 +3116,12 @@ YTC0_ = YTC1_ / N1_ * N0_ * yTC0;
 %demand of K in NT1
 	%demand in residual
 
-    IKPNT1_ = ( 1 - ( 1 - deltaKPNT_ - thetaKU0 / ( 1+thetaKU1 ) * KUNT1_ ^ ( 1+thetaKU1 ) ) / gKP_ ) * KPNT1_;
+    IKPNT1_ = ( 1 - ( 1 - deltaK_ - thetaKU0 / ( 1+thetaKU1 ) * KUNT1_ ^ ( 1+thetaKU1 ) ) / gKP_ ) * KPNT1_;
 
 %demand of H in NT1
     HPNT1_ = PHLNT1_ * YHLNT1_ * alphaHL / RHPNT1_;
 
-    IHPNT1_ = ( 1 - ( 1 - deltaHPNT_ ) / gHP_ ) * HPNT1_;
+    IHPNT1_ = ( 1 - ( 1 - deltaH_ ) / gHP_ ) * HPNT1_;
 
 %define all production habit in NT1
 
@@ -3142,12 +3142,12 @@ YTC0_ = YTC1_ / N1_ * N0_ * yTC0;
 %demand of K in W1
 	%demand in residual
 
-    IKPW1_ = ( 1 - ( 1 - deltaKPW_ - thetaKU0 / ( 1+thetaKU1 ) * KUW1_ ^ ( 1+thetaKU1 ) ) / gKP_ ) * KPW1_;
+    IKPW1_ = ( 1 - ( 1 - deltaK_ - thetaKU0 / ( 1+thetaKU1 ) * KUW1_ ^ ( 1+thetaKU1 ) ) / gKP_ ) * KPW1_;
 
 %demand of H in W1
     HPW1_ = PHLW1_ * YHLW1_ * alphaHL / RHPW1_;
 
-    IHPW1_ = ( 1 - ( 1 - deltaHPW_ ) / gHP_ ) * HPW1_;
+    IHPW1_ = ( 1 - ( 1 - deltaH_ ) / gHP_ ) * HPW1_;
 
 %define all production habit in W1
 
@@ -4068,490 +4068,7 @@ YTC0_ = YTC1_ / N1_ * N0_ * yTC0;
 
 
 
-%Export and deflator
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-%Import and deflator
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-%cfc of durable goods stock
-
-
-
-
-%cfc of private physical capital stock
-
-
-
-
-
-
-%cfc of public physical capital stock
-
-
-%cfc of public R&D capital stock
-
-
-%cfc
-
-
-
-
-
-%Labour income
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-%HoursWorkedPerCapita
-
-
-
-
-
-
-
-
-
-
-
-
-
-%ex post real exchange rate (t-1 to t)
-
-
-%Spread
-
-	
-%government revenue
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-%PCE (personal consumption expenditure + government expenditure on education) and deflator
-
-
-
-
-
-
-%DND (personal consumption expenditure except education) and deflator
-
-
-
-
-
-
-%PDI (private domestic investment) and deflator
-
-
-
-
-
-
-
-
-
-
-
-
-%GCE (government consumption expenditures) and deflator
-
-
-
-
-
-
-%GGI (government gross investment) and deflator
-
-
-
-
-
-
-%GDI (gross domestic investment) and deflator
-
-
-
-
-
-
-%Export and deflator
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-%Import and deflator
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-%cfc of durable goods stock
-
-
-
-
-%cfc of private physical capital stock
-
-
-
-
-
-
-%cfc of public physical capital stock
-
-
-%cfc of public R&D capital stock
-
-
-%cfc
-
-
-
-
-
-%Labour income
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-%HoursWorkedPerCapita
-
-
-
-
-
-
-
-
-
-
-
-
-
-%ex post real exchange rate (t-1 to t)
-
-
-%Spread
-
-	
-%government revenue
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-%PCE (personal consumption expenditure + government expenditure on education) and deflator
-
-
-
-
-
-
-%DND (personal consumption expenditure except education) and deflator
-
-
-
-
-
-
-%PDI (private domestic investment) and deflator
-
-
-
-
-
-
-
-
-
-
-
-
-%GCE (government consumption expenditures) and deflator
-
-
-
-
-
-
-%GGI (government gross investment) and deflator
-
-
-
-
-
-
-%GDI (gross domestic investment) and deflator
-
-
-
-
+%GERD (Gross domestic expenditure on R&D, or R&D intensity)
 
 
 %Export and deflator
@@ -4797,6 +4314,9 @@ YTC0_ = YTC1_ / N1_ * N0_ * yTC0;
 
 
 
+%GERD (Gross domestic expenditure on R&D, or R&D intensity)
+
+
 %Export and deflator
 
 
@@ -5040,6 +4560,9 @@ YTC0_ = YTC1_ / N1_ * N0_ * yTC0;
 
 
 
+%GERD (Gross domestic expenditure on R&D, or R&D intensity)
+
+
 %Export and deflator
 
 
@@ -5281,6 +4804,501 @@ YTC0_ = YTC1_ / N1_ * N0_ * yTC0;
 
 
 
+
+
+%GERD (Gross domestic expenditure on R&D, or R&D intensity)
+
+
+%Export and deflator
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%Import and deflator
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%cfc of durable goods stock
+
+
+
+
+%cfc of private physical capital stock
+
+
+
+
+
+
+%cfc of public physical capital stock
+
+
+%cfc of public R&D capital stock
+
+
+%cfc
+
+
+
+
+
+%Labour income
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%HoursWorkedPerCapita
+
+
+
+
+
+
+
+
+
+
+
+
+
+%ex post real exchange rate (t-1 to t)
+
+
+%Spread
+
+	
+%government revenue
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%PCE (personal consumption expenditure + government expenditure on education) and deflator
+
+
+
+
+
+
+%DND (personal consumption expenditure except education) and deflator
+
+
+
+
+
+
+%PDI (private domestic investment) and deflator
+
+
+
+
+
+
+
+
+
+
+
+
+%GCE (government consumption expenditures) and deflator
+
+
+
+
+
+
+%GGI (government gross investment) and deflator
+
+
+
+
+
+
+%GDI (gross domestic investment) and deflator
+
+
+
+
+
+
+%GERD (Gross domestic expenditure on R&D, or R&D intensity)
+
+
+%Export and deflator
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%Import and deflator
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%cfc of durable goods stock
+
+
+
+
+%cfc of private physical capital stock
+
+
+
+
+
+
+%cfc of public physical capital stock
+
+
+%cfc of public R&D capital stock
+
+
+%cfc
+
+
+
+
+
+%Labour income
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%HoursWorkedPerCapita
+
+
+
+
+
+
+
+
+
+
+
+
+
+%ex post real exchange rate (t-1 to t)
+
+
+%Spread
+
+	
+%government revenue
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%PCE (personal consumption expenditure + government expenditure on education) and deflator
+
+
+
+
+
+
+%DND (personal consumption expenditure except education) and deflator
+
+
+
+
+
+
+%PDI (private domestic investment) and deflator
+
+
+
+
+
+
+
+
+
+
+
+
+%GCE (government consumption expenditures) and deflator
+
+
+
+
+
+
+%GGI (government gross investment) and deflator
+
+
+
+
+
+
+%GDI (gross domestic investment) and deflator
+
+
+
+
+
+
+%GERD (Gross domestic expenditure on R&D, or R&D intensity)
 
 
 %Export and deflator
@@ -5482,95 +5500,34 @@ YTC0_ = YTC1_ / N1_ * N0_ * yTC0;
 %%
 ComplexResids = complex(zeros( 28, 1 ));
 Resids = zeros( 28 * 2, 1 );
-    ComplexResids( 1 + ( 1 - 1 ) * 27 ) = PKG1_ * ( 1 - alphaKG ) * IKG1_ / LKG1_ - WK1_;
-    ComplexResids( 2 + ( 1 - 1 ) * 27 ) = PHG1_ * ( 1 - alphaHG ) * IHG1_ / LHG1_ - WH1_;
-    ComplexResids( 3 + ( 1 - 1 ) * 27 ) = PCG1_ * ( 1 - alphaCG ) * CG1_ / LCG1_ - WNDCG1_;
-
-    ComplexResids( 4 + ( 1 - 1 ) * 27 ) = KW1_ - PKLW1_ * YKLW1_ * alphaKL * PKLTempW1_ / ( 1 - varrhoKL * Xi1_ * GN_ * GAs_ ^ a_ ) / RKW1_;
-    ComplexResids( 5 + ( 1 - 1 ) * 27 ) = KT1_ - PKLT1_ * YKLT1_ * alphaKL * PKLTempT1_ / ( 1 - varrhoKL * Xi1_ * GN_ * GAs_ ^ a_ ) / RKT1_ ;
-    ComplexResids( 6 + ( 1 - 1 ) * 27 ) = KNT1_ - PKLNT1_ * YKLNT1_ * alphaKL * PKLTempNT1_ / ( 1 - varrhoKL * Xi1_ * GN_ * GAs_ ^ a_ ) / RKNT1_;
-    ComplexResids( 7 + ( 1 - 1 ) * 27 ) = LW1_ - PKLW1_ * YKLW1_ * ( 1 - alphaKL * PKLTempW1_ / ( 1 - varrhoKL * Xi1_ * GN_ * GAs_ ^ a_ ) ) / WW1_;
-    ComplexResids( 8 + ( 1 - 1 ) * 27 ) = LT1_ - PKLT1_ * YKLT1_ * ( 1 - alphaKL * PKLTempT1_ / ( 1 - varrhoKL * Xi1_ * GN_ * GAs_ ^ a_ ) ) / WT1_;
-    ComplexResids( 9 + ( 1 - 1 ) * 27 ) = LNT1_ - PKLNT1_ * YKLNT1_ * ( 1 - alphaKL * PKLTempNT1_ / ( 1 - varrhoKL * Xi1_ * GN_ * GAs_ ^ a_ ) ) / WNT1_;
-    ComplexResids( 10 + ( 1 - 1 ) * 27 ) = LSW1_ - PHLW1_ * YHLW1_ * ( 1 - alphaHL ) / WSW1_;
-    ComplexResids( 11 + ( 1 - 1 ) * 27 ) = LST1_ - PHLT1_ * YHLT1_ * ( 1 - alphaHL ) / WST1_;
-    ComplexResids( 12 + ( 1 - 1 ) * 27 ) = LSNT1_ - PHLNT1_ * YHLNT1_ * ( 1 - alphaHL ) / WSNT1_;
-    ComplexResids( 13 + ( 1 - 1 ) * 27 ) = IKP1_ - IKPT1_ - IKPNT1_ - IKPW1_;
-    ComplexResids( 14 + ( 1 - 1 ) * 27 ) = IHP1_ - IHPT1_ - IHPNT1_ - IHPW1_;
-
-    ComplexResids( 15 + ( 1 - 1 ) * 27 ) = lambda_B1l_ * PD1_ * ( 1 + tauD_ ) * thetaDU0 * DU1l_ ^ ( thetaDU1 + 1 ) + lambda_CD1l_ * alphah * CD1l_ / D1l_ * gD_;
-    ComplexResids( 16 + ( 1 - 1 ) * 27 ) = lambda_B1b_ * PD1_ * ( 1 + tauD_ ) * thetaDU0 * DU1b_ ^ ( thetaDU1 + 1 ) + lambda_CD1b_ * alphah * CD1b_ / D1b_ * gD_;
-
-    ComplexResids( 17 + ( 1 - 1 ) * 27 ) = - lambda_CP1l_ * OmegaCP_ * ( CDBar1l_ / gCDBar_ ) ^ ( alphaCD * ( eCP - 1 ) / eCP ) * ( 1 - alphaCD ) * ( CP1l_ / CND1l_ / OmegaCP_ ) ^ ( 1 / eCP ) - lambda_CDBar1l_ * CD1l_ ^ ( 1 - varrhoCD ) * ( CDBar1l_ / gCDBar_ ) ^ varrhoCD * ( varrhoCD - 1 ) * CND1l_ ^ ( varrhoCD - 2 ) - lambda_B1l_ * PND1_ * ( 1 + tauND_ );
-    ComplexResids( 18 + ( 1 - 1 ) * 27 ) = - lambda_CP1b_ * OmegaCP_ * ( CDBar1b_ / gCDBar_ ) ^ ( alphaCD * ( eCP - 1 ) / eCP ) * ( 1 - alphaCD ) * ( CP1b_ / CND1b_ / OmegaCP_ ) ^ ( 1 / eCP ) - lambda_CDBar1b_ * CD1b_ ^ ( 1 - varrhoCD ) * ( CDBar1b_ / gCDBar_ ) ^ varrhoCD * ( varrhoCD - 1 ) * CND1b_ ^ ( varrhoCD - 2 ) - lambda_B1b_ * PND1_ * ( 1 + tauND_ );
-
-    ComplexResids( 19 + ( 1 - 1 ) * 27 ) = - lambda_CP1l_ * OmegaCP_ * ( CDBar1l_ / gCDBar_ ) ^ ( ( alphaCD - 1 ) * ( eCP - 1 ) / eCP ) * alphaCD * ( CP1l_ / CD1l_ / OmegaCP_ ) ^ ( 1 / eCP ) - lambda_CDBar1l_ * CND1l_ ^ ( varrhoCD - 1 ) * ( CDBar1l_ / gCDBar_ ) ^ varrhoCD * ( 1 - varrhoCD ) * CD1l_ ^ ( -varrhoCD ) + lambda_CD1l_;
-    ComplexResids( 20 + ( 1 - 1 ) * 27 ) = - lambda_CP1b_ * OmegaCP_ * ( CDBar1b_ / gCDBar_ ) ^ ( ( alphaCD - 1 ) * ( eCP - 1 ) / eCP ) * alphaCD * ( CP1b_ / CD1b_ / OmegaCP_ ) ^ ( 1 / eCP ) - lambda_CDBar1b_ * CND1b_ ^ ( varrhoCD - 1 ) * ( CDBar1b_ / gCDBar_ ) ^ varrhoCD * ( 1 - varrhoCD ) * CD1b_ ^ ( -varrhoCD ) + lambda_CD1b_;
-
-    ComplexResids( 21 + ( 1 - 1 ) * 27 ) = - ID1b_ * PD1_ * ( 1 + tauD_ ) - CND1b_ * PND1_ * ( 1 + tauND_ ) ...
-										- B1_ / ( GN_ * GAs_ ^ a_ ) + Q_ * B1_ ...
-                                        - taub_ * Y1_ * P1_ ...
-											+ WW1_ * ( 1 - tauLW1_ ) * LW1b_ ...
-											+ WT1_ * ( 1 - tauLT1_ ) * LT1b_ ...
-											+ WNT1_ * ( 1 - tauLNT1_ ) * LNT1b_ ...
-											+ WD1_ * ( 1 - tauLD1_ ) * LD1b_ ...
-											+ WNDCG1_ * ( 1 - tauLNDCG1_ ) * LNDCG1b_ ...
-											+ WK1_ * ( 1 - tauLK1_ ) * LK1b_ ...
-											+ WH1_ * ( 1 - tauLH1_ ) * LH1b_ ...
-											+ WW1_ * ( 1 - tauLW1_ ) * LSW1b_ ...
-											+ WT1_ * ( 1 - tauLT1_ ) * LST1b_ ...
-											+ WNT1_ * ( 1 - tauLNT1_ ) * LSNT1b_ ...
-										;
-
-    ComplexResids( 22 + ( 1 - 1 ) * 27 ) = 	( PX1_ + PWC_ ) * ( YWC1_ + FWC1_ ) * ( 1 - alphaHW ) / PWP1_ - YWP1_; 
-
-    ComplexResids( 23 + ( 1 - 1 ) * 27 ) = 	scriptX1_...
-                                          - scriptXT1_...
-                                          - scriptXNT1_...
-                                          - scriptXW1_...
-                                        ;
-    ComplexResids( 24 + ( 1 - 1 ) * 27 ) = 	LKG1_ - (LK1b_ + LK1l_ - LKP1_);
-    ComplexResids( 25 + ( 1 - 1 ) * 27 ) = 	LHG1_ - (LH1b_ + LH1l_ - LHP1_);
-	ComplexResids( 26 + ( 1 - 1 ) * 27 ) =   LNDCG1_ - LND1_ - LCG1_;
-	ComplexResids( 27 + ( 1 - 1 ) * 27 ) =   Y1_ * ( 1 - tauCG_ * alphaCG - tauKG_ * alphaKG - tauHG_ * alphaHG ) - YD1_ - YND1_ - YHP1_ - YKP1_;
-
-%    ComplexResids( 27 * SN + 2 - 1 ) = Xi1_-Xi2_;
-%    ComplexResids( 27 * SN + 3 - 1 ) = Xi1_-Xi3_;
-%    ComplexResids( 27 * SN + 4 - 1 ) = Xi1_-Xi4_;
-%    ComplexResids( 27 * SN + 5 - 1 ) = Xi1_-Xi5_;
-%    ComplexResids( 27 * SN + 6 - 1 ) = Xi1_-Xi6_;
-
-ComplexResids( 28 ) = scriptFI_ * II_ * ( scripts_ - ( 1 - scriptq ) * ( 1 - deltaItilde_ ) * scripts_ / GII_ ) + II_ * scripts_ * ScriptFRP_ * JP_ + X_ * PWC_ ^ ( - ( 1 + lambda ) / lambda ) * ( ( 1 - scripts_ ) * ( AN_ / GAs_ ) ^ ( 1 / lambda ) * ( 1 / ( 1 + eta * lambda ) ) ^ ( ( 1 + lambda ) / lambda ) + scripts_ * ( 1 / ( 1 + muP_ ) ) ^ ( ( 1 + lambda ) / lambda ) ) - YWC_;	
-Resids(1:28)=real(ComplexResids);
-Resids(28+1:28*2)=imag(ComplexResids);
-end
-
-% 	ComplexResids( 1 + ( 1 - 1 ) * 27 ) = log(PKG1_) + log( 1 - alphaKG ) + log(IKG1_)  - log(WK1_) - log(LKG1_);
-% 	ComplexResids( 2 + ( 1 - 1 ) * 27 ) = log(PHG1_) + log( 1 - alphaHG ) + log(IHG1_)  - log(WH1_) - log(LHG1_);
-% 	ComplexResids( 3 + ( 1 - 1 ) * 27 ) = log(PCG1_) + log( 1 - alphaCG ) + log(CG1_)   - log(WNDCG1_) - log(LCG1_);
-% 	
-% 	ComplexResids( 4 + ( 1 - 1 ) * 27 ) = log(KW1_) + log(RKW1_) - log(PKLW1_) - log(YKLW1_) - log(alphaKL) - log(PKLTempW1_ / ( 1 - varrhoKL * Xi1_ * GN_ * GAs_ ^ a_ ));
-% 	ComplexResids( 5 + ( 1 - 1 ) * 27 ) = log(KT1_) + log(RKT1_) - log(PKLT1_) - log(YKLT1_) - log(alphaKL) - log(PKLTempT1_ / ( 1 - varrhoKL * Xi1_ * GN_ * GAs_ ^ a_ ));
-% 	ComplexResids( 6 + ( 1 - 1 ) * 27 ) = log(KNT1_) + log(RKNT1_) - log(PKLNT1_) - log(YKLNT1_) - log(alphaKL) - log(PKLTempNT1_/ ( 1 - varrhoKL * Xi1_ * GN_ * GAs_ ^ a_ ));
-%   ComplexResids( 7 + ( 1 - 1 ) * 27 ) = log(LW1_) + log(WW1_) - log(PKLW1_) - log(YKLW1_) - log( 1 - alphaKL * PKLTempW1_ / ( 1 - varrhoKL * Xi1_ * GN_ * GAs_ ^ a_ ) );
-%   ComplexResids( 8 + ( 1 - 1 ) * 27 ) = log(LT1_) + log(WT1_) - log(PKLT1_) - log(YKLT1_) - log( 1 - alphaKL * PKLTempT1_ / ( 1 - varrhoKL * Xi1_ * GN_ * GAs_ ^ a_ ) );
-%   ComplexResids( 9 + ( 1 - 1 ) * 27 ) = log(LNT1_) + log(WNT1_) - log(PKLNT1_) - log(YKLNT1_) - log( 1 - alphaKL * PKLTempNT1_ / ( 1 - varrhoKL * Xi1_ * GN_ * GAs_ ^ a_ ) );
-%   ComplexResids( 10 + ( 1 - 1 ) * 27 ) = log(LSW1_) + log(WSW1_) - log(PHLW1_) - log(YHLW1_) - log( 1 - alphaHL );
-%   ComplexResids( 11 + ( 1 - 1 ) * 27 ) = log(LST1_) + log(WST1_) - log(PHLT1_) - log(YHLT1_) - log( 1 - alphaHL );
-%   ComplexResids( 12 + ( 1 - 1 ) * 27 ) = log(LSNT1_) + log(WSNT1_) - log(PHLNT1_) - log(YHLNT1_) - log( 1 - alphaHL );
-%   ComplexResids( 13 + ( 1 - 1 ) * 27 ) = log(IKP1_) - log(IKPT1_ + IKPNT1_ + IKPW1_);
-%   ComplexResids( 14 + ( 1 - 1 ) * 27 ) = log(IHP1_) - log(IHPT1_ + IHPNT1_ + IHPW1_);
-% 	
-%   ComplexResids( 15 + ( 1 - 1 ) * 27 ) = log(lambda_B1l_ * PD1_ * ( 1 + tauD_ ) * thetaDU0 * DU1l_ ^ ( thetaDU1 + 1 )) - log(-lambda_CD1l_ * alphah * CD1l_ / D1l_ * gD_);
-%   ComplexResids( 16 + ( 1 - 1 ) * 27 ) = log(lambda_B1b_ * PD1_ * ( 1 + tauD_ ) * thetaDU0 * DU1b_ ^ ( thetaDU1 + 1 )) - log(-lambda_CD1b_ * alphah * CD1b_ / D1b_ * gD_);
+%     ComplexResids( 1 + ( 1 - 1 ) * 27 ) = PKG1_ * ( 1 - alphaKG ) * IKG1_ / LKG1_ - WK1_;
+%     ComplexResids( 2 + ( 1 - 1 ) * 27 ) = PHG1_ * ( 1 - alphaHG ) * IHG1_ / LHG1_ - WH1_;
+%     ComplexResids( 3 + ( 1 - 1 ) * 27 ) = PCG1_ * ( 1 - alphaCG ) * CG1_ / LCG1_ - WNDCG1_;
 % 
-%   ComplexResids( 17 + ( 1 - 1 ) * 27 ) = log(- lambda_CP1l_ * OmegaCP_ * ( CDBar1l_ / gCDBar_ ) ^ ( alphaCD * ( eCP - 1 ) / eCP ) * ( 1 - alphaCD ) * ( CP1l_ / CND1l_ / OmegaCP_ ) ^ ( 1 / eCP ) - lambda_CDBar1l_ * CD1l_ ^ ( 1 - varrhoCD ) * ( CDBar1l_ / gCDBar_ ) ^ varrhoCD * ( varrhoCD - 1 ) * CND1l_ ^ ( varrhoCD - 2 )) - log(lambda_B1l_ * PND1_ * ( 1 + tauND_ ));
-%   ComplexResids( 18 + ( 1 - 1 ) * 27 ) = log(- lambda_CP1b_ * OmegaCP_ * ( CDBar1b_ / gCDBar_ ) ^ ( alphaCD * ( eCP - 1 ) / eCP ) * ( 1 - alphaCD ) * ( CP1b_ / CND1b_ / OmegaCP_ ) ^ ( 1 / eCP ) - lambda_CDBar1b_ * CD1b_ ^ ( 1 - varrhoCD ) * ( CDBar1b_ / gCDBar_ ) ^ varrhoCD * ( varrhoCD - 1 ) * CND1b_ ^ ( varrhoCD - 2 )) - log(lambda_B1b_ * PND1_ * ( 1 + tauND_ ));
+%     ComplexResids( 4 + ( 1 - 1 ) * 27 ) = KW1_ - PKLW1_ * YKLW1_ * alphaKL * PKLTempW1_ / ( 1 - varrhoKL * Xi1_ * GN_ * GAs_ ^ a_ ) / RKW1_;
+%     ComplexResids( 5 + ( 1 - 1 ) * 27 ) = KT1_ - PKLT1_ * YKLT1_ * alphaKL * PKLTempT1_ / ( 1 - varrhoKL * Xi1_ * GN_ * GAs_ ^ a_ ) / RKT1_ ;
+%     ComplexResids( 6 + ( 1 - 1 ) * 27 ) = KNT1_ - PKLNT1_ * YKLNT1_ * alphaKL * PKLTempNT1_ / ( 1 - varrhoKL * Xi1_ * GN_ * GAs_ ^ a_ ) / RKNT1_;
+%     ComplexResids( 7 + ( 1 - 1 ) * 27 ) = LW1_ - PKLW1_ * YKLW1_ * ( 1 - alphaKL * PKLTempW1_ / ( 1 - varrhoKL * Xi1_ * GN_ * GAs_ ^ a_ ) ) / WW1_;
+%     ComplexResids( 8 + ( 1 - 1 ) * 27 ) = LT1_ - PKLT1_ * YKLT1_ * ( 1 - alphaKL * PKLTempT1_ / ( 1 - varrhoKL * Xi1_ * GN_ * GAs_ ^ a_ ) ) / WT1_;
+%     ComplexResids( 9 + ( 1 - 1 ) * 27 ) = LNT1_ - PKLNT1_ * YKLNT1_ * ( 1 - alphaKL * PKLTempNT1_ / ( 1 - varrhoKL * Xi1_ * GN_ * GAs_ ^ a_ ) ) / WNT1_;
+%     ComplexResids( 10 + ( 1 - 1 ) * 27 ) = LSW1_ - PHLW1_ * YHLW1_ * ( 1 - alphaHL ) / WSW1_;
+%     ComplexResids( 11 + ( 1 - 1 ) * 27 ) = LST1_ - PHLT1_ * YHLT1_ * ( 1 - alphaHL ) / WST1_;
+%     ComplexResids( 12 + ( 1 - 1 ) * 27 ) = LSNT1_ - PHLNT1_ * YHLNT1_ * ( 1 - alphaHL ) / WSNT1_;
+%     ComplexResids( 13 + ( 1 - 1 ) * 27 ) = IKP1_ - IKPT1_ - IKPNT1_ - IKPW1_;
+%     ComplexResids( 14 + ( 1 - 1 ) * 27 ) = IHP1_ - IHPT1_ - IHPNT1_ - IHPW1_;
 % 
-%   ComplexResids( 19 + ( 1 - 1 ) * 27 ) = log(- lambda_CP1l_ * OmegaCP_ * ( CDBar1l_ / gCDBar_ ) ^ ( ( alphaCD - 1 ) * ( eCP - 1 ) / eCP ) * alphaCD * ( CP1l_ / CD1l_ / OmegaCP_ ) ^ ( 1 / eCP ) - lambda_CDBar1l_ * CND1l_ ^ ( varrhoCD - 1 ) * ( CDBar1l_ / gCDBar_ ) ^ varrhoCD * ( 1 - varrhoCD ) * CD1l_ ^ ( -varrhoCD )) - log(-lambda_CD1l_);
-%   ComplexResids( 20 + ( 1 - 1 ) * 27 ) = log(- lambda_CP1b_ * OmegaCP_ * ( CDBar1b_ / gCDBar_ ) ^ ( ( alphaCD - 1 ) * ( eCP - 1 ) / eCP ) * alphaCD * ( CP1b_ / CD1b_ / OmegaCP_ ) ^ ( 1 / eCP ) - lambda_CDBar1b_ * CND1b_ ^ ( varrhoCD - 1 ) * ( CDBar1b_ / gCDBar_ ) ^ varrhoCD * ( 1 - varrhoCD ) * CD1b_ ^ ( -varrhoCD )) - log(-lambda_CD1b_);
+%     ComplexResids( 15 + ( 1 - 1 ) * 27 ) = lambda_B1l_ * PD1_ * ( 1 + tauD_ ) * thetaDU0 * DU1l_ ^ ( thetaDU1 + 1 ) + lambda_CD1l_ * alphah * CD1l_ / D1l_ * gD_;
+%     ComplexResids( 16 + ( 1 - 1 ) * 27 ) = lambda_B1b_ * PD1_ * ( 1 + tauD_ ) * thetaDU0 * DU1b_ ^ ( thetaDU1 + 1 ) + lambda_CD1b_ * alphah * CD1b_ / D1b_ * gD_;
 % 
-% 	ComplexResids( 21 + ( 1 - 1 ) * 27 ) = log (Q_ * B1_ ...
+%     ComplexResids( 17 + ( 1 - 1 ) * 27 ) = - lambda_CP1l_ * OmegaCP_ * ( CDBar1l_ / gCDBar_ ) ^ ( alphaCD * ( eCP - 1 ) / eCP ) * ( 1 - alphaCD ) * ( CP1l_ / CND1l_ / OmegaCP_ ) ^ ( 1 / eCP ) - lambda_CDBar1l_ * CD1l_ ^ ( 1 - varrhoCD ) * ( CDBar1l_ / gCDBar_ ) ^ varrhoCD * ( varrhoCD - 1 ) * CND1l_ ^ ( varrhoCD - 2 ) - lambda_B1l_ * PND1_ * ( 1 + tauND_ );
+%     ComplexResids( 18 + ( 1 - 1 ) * 27 ) = - lambda_CP1b_ * OmegaCP_ * ( CDBar1b_ / gCDBar_ ) ^ ( alphaCD * ( eCP - 1 ) / eCP ) * ( 1 - alphaCD ) * ( CP1b_ / CND1b_ / OmegaCP_ ) ^ ( 1 / eCP ) - lambda_CDBar1b_ * CD1b_ ^ ( 1 - varrhoCD ) * ( CDBar1b_ / gCDBar_ ) ^ varrhoCD * ( varrhoCD - 1 ) * CND1b_ ^ ( varrhoCD - 2 ) - lambda_B1b_ * PND1_ * ( 1 + tauND_ );
+% 
+%     ComplexResids( 19 + ( 1 - 1 ) * 27 ) = - lambda_CP1l_ * OmegaCP_ * ( CDBar1l_ / gCDBar_ ) ^ ( ( alphaCD - 1 ) * ( eCP - 1 ) / eCP ) * alphaCD * ( CP1l_ / CD1l_ / OmegaCP_ ) ^ ( 1 / eCP ) - lambda_CDBar1l_ * CND1l_ ^ ( varrhoCD - 1 ) * ( CDBar1l_ / gCDBar_ ) ^ varrhoCD * ( 1 - varrhoCD ) * CD1l_ ^ ( -varrhoCD ) + lambda_CD1l_;
+%     ComplexResids( 20 + ( 1 - 1 ) * 27 ) = - lambda_CP1b_ * OmegaCP_ * ( CDBar1b_ / gCDBar_ ) ^ ( ( alphaCD - 1 ) * ( eCP - 1 ) / eCP ) * alphaCD * ( CP1b_ / CD1b_ / OmegaCP_ ) ^ ( 1 / eCP ) - lambda_CDBar1b_ * CND1b_ ^ ( varrhoCD - 1 ) * ( CDBar1b_ / gCDBar_ ) ^ varrhoCD * ( 1 - varrhoCD ) * CD1b_ ^ ( -varrhoCD ) + lambda_CD1b_;
+% 
+%     ComplexResids( 21 + ( 1 - 1 ) * 27 ) = - ID1b_ * PD1_ * ( 1 + tauD_ ) - CND1b_ * PND1_ * ( 1 + tauND_ ) ...
+% 										- B1_ / ( GN_ * GAs_ ^ a_ ) + Q_ * B1_ ...
+%                                         - taub_ * Y1_ * P1_ ...
 % 											+ WW1_ * ( 1 - tauLW1_ ) * LW1b_ ...
 % 											+ WT1_ * ( 1 - tauLT1_ ) * LT1b_ ...
 % 											+ WNT1_ * ( 1 - tauLNT1_ ) * LNT1b_ ...
@@ -5581,30 +5538,90 @@ end
 % 											+ WW1_ * ( 1 - tauLW1_ ) * LSW1b_ ...
 % 											+ WT1_ * ( 1 - tauLT1_ ) * LST1b_ ...
 % 											+ WNT1_ * ( 1 - tauLNT1_ ) * LSNT1b_ ...
-%                                         ) - log( ID1b_ * PD1_ * ( 1 + tauD_ ) + CND1b_ * PND1_ * ( 1 + tauND_ ) ...
-% 										+ B1_ / ( GN_ * GAs_ ^ a_ ) ...
-%                                         + taub_ * Y1_ * P1_);
+% 										;
 % 
-%     ComplexResids( 22 + ( 1 - 1 ) * 27 ) = 	log(( PX1_ + PWC_ ) * ( YWC1_ + FWC1_ )) + log( 1 - alphaHW ) - log(YWP1_) - log(PWP1_); 										
+%     ComplexResids( 22 + ( 1 - 1 ) * 27 ) = 	( PX1_ + PWC_ ) * ( YWC1_ + FWC1_ ) * ( 1 - alphaHW ) / PWP1_ - YWP1_; 
 % 
-%     ComplexResids( 23 + ( 1 - 1 ) * 27 ) = 	log(scriptX1_) - log(...
-%                                           + scriptXT1_...
-%                                           + scriptXNT1_...
-%                                           + scriptXW1_...
-%                                         );
-% 	ComplexResids( 24 + ( 1 - 1 ) * 27 ) = 	log(LKG1_ + LKP1_) - log(LK1b_ + LK1l_);
-%   ComplexResids( 25 + ( 1 - 1 ) * 27 ) = 	log(LHG1_ + LHP1_) - log(LH1b_ + LH1l_);
-%	ComplexResids( 26 + ( 1 - 1 ) * 27 ) =   log(LNDCG1_) - log( LND1_ + LCG1_);
-%	ComplexResids( 27 + ( 1 - 1 ) * 27 ) =   log(Y1_ * ( 1 - tauCG_ * alphaCG - tauKG_ * alphaKG - tauHG_ * alphaHG )) - log(YD1_ + YND1_ + YHP1_ + YKP1_);
+%     ComplexResids( 23 + ( 1 - 1 ) * 27 ) = 	scriptX1_...
+%                                           - scriptXT1_...
+%                                           - scriptXNT1_...
+%                                           - scriptXW1_...
+%                                         ;
+%     ComplexResids( 24 + ( 1 - 1 ) * 27 ) = 	LKG1_ - (LK1b_ + LK1l_ - LKP1_);
+%     ComplexResids( 25 + ( 1 - 1 ) * 27 ) = 	LHG1_ - (LH1b_ + LH1l_ - LHP1_);
+% 	ComplexResids( 26 + ( 1 - 1 ) * 27 ) =   LNDCG1_ - LND1_ - LCG1_;
+% 	ComplexResids( 27 + ( 1 - 1 ) * 27 ) =   Y1_ * ( 1 - tauCG_ * alphaCG - tauKG_ * alphaKG - tauHG_ * alphaHG ) - YD1_ - YND1_ - YHP1_ - YKP1_;
 % 
-%% 	ComplexResids( 27 * SN + 2 - 1 ) = log(Xi1_)-log(Xi2_);
-%% 	ComplexResids( 27 * SN + 3 - 1 ) = log(Xi1_)-log(Xi3_);
-%% 	ComplexResids( 27 * SN + 4 - 1 ) = log(Xi1_)-log(Xi4_);
-%% 	ComplexResids( 27 * SN + 5 - 1 ) = log(Xi1_)-log(Xi5_);
-%% 	ComplexResids( 27 * SN + 6 - 1 ) = log(Xi1_)-log(Xi6_);
+% %    ComplexResids( 27 * SN + 2 - 1 ) = Xi1_-Xi2_;
+% %    ComplexResids( 27 * SN + 3 - 1 ) = Xi1_-Xi3_;
+% %    ComplexResids( 27 * SN + 4 - 1 ) = Xi1_-Xi4_;
+% %    ComplexResids( 27 * SN + 5 - 1 ) = Xi1_-Xi5_;
+% %    ComplexResids( 27 * SN + 6 - 1 ) = Xi1_-Xi6_;
 % 
-% ComplexResids( 28 ) = log(scriptFI_ * II_ * ( scripts_ - ( 1 - scriptq ) * ( 1 - deltaItilde_ ) * scripts_ / GII_ ) + II_ * scripts_ * ScriptFRP_ * JP_ + X_ * PWC_ ^ ( - ( 1 + lambda ) / lambda ) * ( ( 1 - scripts_ ) * ( AN_ / GAs_ ) ^ ( 1 / lambda ) * ( 1 / ( 1 + eta * lambda ) ) ^ ( ( 1 + lambda ) / lambda ) + scripts_ * ( 1 / ( 1 + muP_ ) ) ^ ( ( 1 + lambda ) / lambda ) )) - log(YWC_);
+% ComplexResids( 28 ) = scriptFI_ * II_ * ( scripts_ - ( 1 - scriptq ) * ( 1 - deltaItilde_ ) * scripts_ / GII_ ) + II_ * scripts_ * ScriptFRP_ * JP_ + X_ * PWC_ ^ ( - ( 1 + lambda ) / lambda ) * ( ( 1 - scripts_ ) * ( AN_ / GAs_ ) ^ ( 1 / lambda ) * ( 1 / ( 1 + eta * lambda ) ) ^ ( ( 1 + lambda ) / lambda ) + scripts_ * ( 1 / ( 1 + muP_ ) ) ^ ( ( 1 + lambda ) / lambda ) ) - YWC_;	
 % Resids(1:28)=real(ComplexResids);
 % Resids(28+1:28*2)=imag(ComplexResids);
 % end
 
+	ComplexResids( 1 + ( 1 - 1 ) * 27 ) = log(PKG1_) + log( 1 - alphaKG ) + log(IKG1_)  - log(WK1_) - log(LKG1_);
+	ComplexResids( 2 + ( 1 - 1 ) * 27 ) = log(PHG1_) + log( 1 - alphaHG ) + log(IHG1_)  - log(WH1_) - log(LHG1_);
+	ComplexResids( 3 + ( 1 - 1 ) * 27 ) = log(PCG1_) + log( 1 - alphaCG ) + log(CG1_)   - log(WNDCG1_) - log(LCG1_);
+	
+	ComplexResids( 4 + ( 1 - 1 ) * 27 ) = log(KW1_) + log(RKW1_) - log(PKLW1_) - log(YKLW1_) - log(alphaKL) - log(PKLTempW1_ / ( 1 - varrhoKL * Xi1_ * GN_ * GAs_ ^ a_ ));
+	ComplexResids( 5 + ( 1 - 1 ) * 27 ) = log(KT1_) + log(RKT1_) - log(PKLT1_) - log(YKLT1_) - log(alphaKL) - log(PKLTempT1_ / ( 1 - varrhoKL * Xi1_ * GN_ * GAs_ ^ a_ ));
+	ComplexResids( 6 + ( 1 - 1 ) * 27 ) = log(KNT1_) + log(RKNT1_) - log(PKLNT1_) - log(YKLNT1_) - log(alphaKL) - log(PKLTempNT1_/ ( 1 - varrhoKL * Xi1_ * GN_ * GAs_ ^ a_ ));
+  ComplexResids( 7 + ( 1 - 1 ) * 27 ) = log(LW1_) + log(WW1_) - log(PKLW1_) - log(YKLW1_) - log( 1 - alphaKL * PKLTempW1_ / ( 1 - varrhoKL * Xi1_ * GN_ * GAs_ ^ a_ ) );
+  ComplexResids( 8 + ( 1 - 1 ) * 27 ) = log(LT1_) + log(WT1_) - log(PKLT1_) - log(YKLT1_) - log( 1 - alphaKL * PKLTempT1_ / ( 1 - varrhoKL * Xi1_ * GN_ * GAs_ ^ a_ ) );
+  ComplexResids( 9 + ( 1 - 1 ) * 27 ) = log(LNT1_) + log(WNT1_) - log(PKLNT1_) - log(YKLNT1_) - log( 1 - alphaKL * PKLTempNT1_ / ( 1 - varrhoKL * Xi1_ * GN_ * GAs_ ^ a_ ) );
+  ComplexResids( 10 + ( 1 - 1 ) * 27 ) = log(LSW1_) + log(WSW1_) - log(PHLW1_) - log(YHLW1_) - log( 1 - alphaHL );
+  ComplexResids( 11 + ( 1 - 1 ) * 27 ) = log(LST1_) + log(WST1_) - log(PHLT1_) - log(YHLT1_) - log( 1 - alphaHL );
+  ComplexResids( 12 + ( 1 - 1 ) * 27 ) = log(LSNT1_) + log(WSNT1_) - log(PHLNT1_) - log(YHLNT1_) - log( 1 - alphaHL );
+  ComplexResids( 13 + ( 1 - 1 ) * 27 ) = log(IKP1_) - log(IKPT1_ + IKPNT1_ + IKPW1_);
+  ComplexResids( 14 + ( 1 - 1 ) * 27 ) = log(IHP1_) - log(IHPT1_ + IHPNT1_ + IHPW1_);
+	
+  ComplexResids( 15 + ( 1 - 1 ) * 27 ) = log(lambda_B1l_ * PD1_ * ( 1 + tauD_ ) * thetaDU0 * DU1l_ ^ ( thetaDU1 + 1 )) - log(-lambda_CD1l_ * alphah * CD1l_ / D1l_ * gD_);
+  ComplexResids( 16 + ( 1 - 1 ) * 27 ) = log(lambda_B1b_ * PD1_ * ( 1 + tauD_ ) * thetaDU0 * DU1b_ ^ ( thetaDU1 + 1 )) - log(-lambda_CD1b_ * alphah * CD1b_ / D1b_ * gD_);
+
+  ComplexResids( 17 + ( 1 - 1 ) * 27 ) = log(- lambda_CP1l_ * OmegaCP_ * ( CDBar1l_ / gCDBar_ ) ^ ( alphaCD * ( eCP - 1 ) / eCP ) * ( 1 - alphaCD ) * ( CP1l_ / CND1l_ / OmegaCP_ ) ^ ( 1 / eCP ) - lambda_CDBar1l_ * CD1l_ ^ ( 1 - varrhoCD ) * ( CDBar1l_ / gCDBar_ ) ^ varrhoCD * ( varrhoCD - 1 ) * CND1l_ ^ ( varrhoCD - 2 )) - log(lambda_B1l_ * PND1_ * ( 1 + tauND_ ));
+  ComplexResids( 18 + ( 1 - 1 ) * 27 ) = log(- lambda_CP1b_ * OmegaCP_ * ( CDBar1b_ / gCDBar_ ) ^ ( alphaCD * ( eCP - 1 ) / eCP ) * ( 1 - alphaCD ) * ( CP1b_ / CND1b_ / OmegaCP_ ) ^ ( 1 / eCP ) - lambda_CDBar1b_ * CD1b_ ^ ( 1 - varrhoCD ) * ( CDBar1b_ / gCDBar_ ) ^ varrhoCD * ( varrhoCD - 1 ) * CND1b_ ^ ( varrhoCD - 2 )) - log(lambda_B1b_ * PND1_ * ( 1 + tauND_ ));
+
+  ComplexResids( 19 + ( 1 - 1 ) * 27 ) = log(- lambda_CP1l_ * OmegaCP_ * ( CDBar1l_ / gCDBar_ ) ^ ( ( alphaCD - 1 ) * ( eCP - 1 ) / eCP ) * alphaCD * ( CP1l_ / CD1l_ / OmegaCP_ ) ^ ( 1 / eCP ) - lambda_CDBar1l_ * CND1l_ ^ ( varrhoCD - 1 ) * ( CDBar1l_ / gCDBar_ ) ^ varrhoCD * ( 1 - varrhoCD ) * CD1l_ ^ ( -varrhoCD )) - log(-lambda_CD1l_);
+  ComplexResids( 20 + ( 1 - 1 ) * 27 ) = log(- lambda_CP1b_ * OmegaCP_ * ( CDBar1b_ / gCDBar_ ) ^ ( ( alphaCD - 1 ) * ( eCP - 1 ) / eCP ) * alphaCD * ( CP1b_ / CD1b_ / OmegaCP_ ) ^ ( 1 / eCP ) - lambda_CDBar1b_ * CND1b_ ^ ( varrhoCD - 1 ) * ( CDBar1b_ / gCDBar_ ) ^ varrhoCD * ( 1 - varrhoCD ) * CD1b_ ^ ( -varrhoCD )) - log(-lambda_CD1b_);
+
+	ComplexResids( 21 + ( 1 - 1 ) * 27 ) = log (Q_ * B1_ ...
+											+ WW1_ * ( 1 - tauLW1_ ) * LW1b_ ...
+											+ WT1_ * ( 1 - tauLT1_ ) * LT1b_ ...
+											+ WNT1_ * ( 1 - tauLNT1_ ) * LNT1b_ ...
+											+ WD1_ * ( 1 - tauLD1_ ) * LD1b_ ...
+											+ WNDCG1_ * ( 1 - tauLNDCG1_ ) * LNDCG1b_ ...
+											+ WK1_ * ( 1 - tauLK1_ ) * LK1b_ ...
+											+ WH1_ * ( 1 - tauLH1_ ) * LH1b_ ...
+											+ WW1_ * ( 1 - tauLW1_ ) * LSW1b_ ...
+											+ WT1_ * ( 1 - tauLT1_ ) * LST1b_ ...
+											+ WNT1_ * ( 1 - tauLNT1_ ) * LSNT1b_ ...
+                                        ) - log( ID1b_ * PD1_ * ( 1 + tauD_ ) + CND1b_ * PND1_ * ( 1 + tauND_ ) ...
+										+ B1_ / ( GN_ * GAs_ ^ a_ ) ...
+                                        + taub_ * Y1_ * P1_);
+
+    ComplexResids( 22 + ( 1 - 1 ) * 27 ) = 	log(( PX1_ + PWC_ ) * ( YWC1_ + FWC1_ )) + log( 1 - alphaHW ) - log(YWP1_) - log(PWP1_); 										
+
+    ComplexResids( 23 + ( 1 - 1 ) * 27 ) = 	log(scriptX1_) - log(...
+                                          + scriptXT1_...
+                                          + scriptXNT1_...
+                                          + scriptXW1_...
+                                        );
+	ComplexResids( 24 + ( 1 - 1 ) * 27 ) = 	log(LKG1_ + LKP1_) - log(LK1b_ + LK1l_);
+  ComplexResids( 25 + ( 1 - 1 ) * 27 ) = 	log(LHG1_ + LHP1_) - log(LH1b_ + LH1l_);
+	ComplexResids( 26 + ( 1 - 1 ) * 27 ) =   log(LNDCG1_) - log( LND1_ + LCG1_);
+	ComplexResids( 27 + ( 1 - 1 ) * 27 ) =   log(Y1_ * ( 1 - tauCG_ * alphaCG - tauKG_ * alphaKG - tauHG_ * alphaHG )) - log(YD1_ + YND1_ + YHP1_ + YKP1_);
+
+% 	ComplexResids( 27 * SN + 2 - 1 ) = log(Xi1_)-log(Xi2_);
+% 	ComplexResids( 27 * SN + 3 - 1 ) = log(Xi1_)-log(Xi3_);
+% 	ComplexResids( 27 * SN + 4 - 1 ) = log(Xi1_)-log(Xi4_);
+% 	ComplexResids( 27 * SN + 5 - 1 ) = log(Xi1_)-log(Xi5_);
+% 	ComplexResids( 27 * SN + 6 - 1 ) = log(Xi1_)-log(Xi6_);
+
+ComplexResids( 28 ) = log(scriptFI_ * II_ * ( scripts_ - ( 1 - scriptq ) * ( 1 - deltaItilde_ ) * scripts_ / GII_ ) + II_ * scripts_ * ScriptFRP_ * JP_ + X_ * PWC_ ^ ( - ( 1 + lambda ) / lambda ) * ( ( 1 - scripts_ ) * ( AN_ / GAs_ ) ^ ( 1 / lambda ) * ( 1 / ( 1 + eta * lambda ) ) ^ ( ( 1 + lambda ) / lambda ) + scripts_ * ( 1 / ( 1 + muP_ ) ) ^ ( ( 1 + lambda ) / lambda ) )) - log(YWC_);
+Resids(1:28)=real(ComplexResids);
+Resids(28+1:28*2)=imag(ComplexResids);
+end

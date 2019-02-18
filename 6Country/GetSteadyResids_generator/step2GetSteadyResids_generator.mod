@@ -22,7 +22,7 @@ phiiotaTX ,phiiotaTM, phiiotaWX, phiiotaWM,...
 Omegah_, OmegaCP_, OmegaC_, OmegaKP_, OmegaHP_, OmegaD_, OmegaND_, OmegaKG_, OmegaHG_, OmegaCG_, OmegaY_, OmegaTC_, OmegaWP_, OmegaWC_, OmegaKT_, OmegaHLT_, OmegaKLT_, OmegaHLXT_, OmegaT_, OmegaKNT_, OmegaHLNT_, OmegaKLNT_, OmegaHLXNT_, OmegaNT_, OmegaKW_, OmegaHLW_, OmegaKLW_, OmegaHLXW_, OmegaW_, ...
 GN_, Z_, deltaItilde_, scriptFI_, deltaD_, kappa0_, kappah_, ...
 kappaT_, kappaNT_, kappaW_, kappaST_, kappaSNT_, kappaSW_, kappaD_, kappaNDCG_, kappaK_, kappaH_, ...
-deltaKPT_, deltaHPT_, deltaKPNT_, deltaHPNT_, deltaKPW_, deltaHPW_, deltaKG_, deltaHG_, betabarb, ...
+deltaK_,deltaH_, betabarb, ...
 pT0, yTC0, m_, varpi_, eT0_, Ntilde1_, Ntilde2_, Ntilde3_, Ntilde4_, Ntilde5_, Ntilde6_)
 
 %this file also serves as the base of steady_state_model in .mod, we need to make the following changes
@@ -278,9 +278,9 @@ VI_ = scriptFI_ * PWC_; %zero profit of invention
 	@#for S in Sectors0
 		lambda_GK@{S}@{n}_=0;
 		lambda_GH@{S}@{n}_=0;
-		KU@{S}@{n}_ = ( ( 1 - VV@{n}l_ * glambda_K_ * ( 1 - deltaKP@{S}_ ) ) / ( thetaKU0 / gKP_ - VV@{n}l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
+		KU@{S}@{n}_ = ( ( 1 - VV@{n}l_ * glambda_K_ * ( 1 - deltaK_ ) ) / ( thetaKU0 / gKP_ - VV@{n}l_ * glambda_K_ * thetaKU0 / ( 1+thetaKU1 ) ) ) ^ ( 1 / ( 1+thetaKU1 ) );
 		RKP@{S}@{n}_DIVIDEDPKP@{n}_ = thetaKU0 * KU@{S}@{n}_ ^ thetaKU1 / gKP_ / ( 1 - tauK@{S}_ );
-		RHP@{S}@{n}_DIVIDEDPHP@{n}_ = ( 1 - VV@{n}l_ * glambda_H_ * ( 1 - deltaHP@{S}_ ) ) / ( 1 - tauH@{S}_ );
+		RHP@{S}@{n}_DIVIDEDPHP@{n}_ = ( 1 - VV@{n}l_ * glambda_H_ * ( 1 - deltaH_ ) ) / ( 1 - tauH@{S}_ );
 	@#endfor
 @#endfor
 
@@ -349,7 +349,7 @@ VI_ = scriptFI_ * PWC_; %zero profit of invention
 	
 	YHG@{n}_ = tauHG_ * alphaHG * Y@{n}_;
 	IHG@{n}_ = OmegaHG_ * YHG@{n}_ ^ alphaHG * LHG@{n}_ ^ ( 1 - alphaHG );
-	HG@{n}_ = IHG@{n}_ / ( 1 - ( 1 - deltaHG_ ) / gHG_ );
+	HG@{n}_ = IHG@{n}_ / ( 1 - ( 1 - deltaH_ ) / gHG_ );
 	PHG@{n}_ = P@{n}_ * YHG@{n}_ / alphaHG / IHG@{n}_;
 	
 %K in @{n}
@@ -363,7 +363,7 @@ VI_ = scriptFI_ * PWC_; %zero profit of invention
 	
 	YKG@{n}_ = tauKG_ * alphaKG * Y@{n}_;
 	IKG@{n}_ = OmegaKG_ * YKG@{n}_ ^ alphaKG * LKG@{n}_ ^ ( 1 - alphaKG );
-	KG@{n}_ = IKG@{n}_ / ( 1 - ( 1 - deltaKG_ ) / gKG_ );
+	KG@{n}_ = IKG@{n}_ / ( 1 - ( 1 - deltaK_ ) / gKG_ );
 	PKG@{n}_ = P@{n}_ * YKG@{n}_ / alphaKG / IKG@{n}_;
 @#endfor
 
@@ -601,12 +601,12 @@ YTC0_ = YTC1_ / N1_ * N0_ * yTC0;
 %demand of K in @{S}@{n}
 	%demand in residual
 	KPP@{S}@{n}_ = KP@{S}@{n}_ * gKP_;
-    IKP@{S}@{n}_ = ( 1 - ( 1 - deltaKP@{S}_ - thetaKU0 / ( 1+thetaKU1 ) * KU@{S}@{n}_ ^ ( 1+thetaKU1 ) ) / gKP_ ) * KP@{S}@{n}_;
+    IKP@{S}@{n}_ = ( 1 - ( 1 - deltaK_ - thetaKU0 / ( 1+thetaKU1 ) * KU@{S}@{n}_ ^ ( 1+thetaKU1 ) ) / gKP_ ) * KP@{S}@{n}_;
 
 %demand of H in @{S}@{n}
     HP@{S}@{n}_ = PHL@{S}@{n}_ * YHL@{S}@{n}_ * alphaHL / RHP@{S}@{n}_;
 	HPP@{S}@{n}_ = HP@{S}@{n}_ * gHP_;
-    IHP@{S}@{n}_ = ( 1 - ( 1 - deltaHP@{S}_ ) / gHP_ ) * HP@{S}@{n}_;
+    IHP@{S}@{n}_ = ( 1 - ( 1 - deltaH_ ) / gHP_ ) * HP@{S}@{n}_;
 
 %define all production habit in @{S}@{n}
     YHLXBar@{S}@{n}_ = YHLX@{S}@{n}_ / YKL@{S}@{n}_ * gYHLXBar_ ^ ( -varrhoY / ( 1 - varrhoY ) );
@@ -670,16 +670,16 @@ YTC0_ = YTC1_ / N1_ * N0_ * yTC0;
         deltaDtildeAUXN@{n}@{m}_ = Dtilde@{n}@{m}_ * deltaD_;
 	@#endfor
     @#for S in Sectors0
-        KPtilde@{S}@{n}_ = IKP@{S}@{n}_ / ( 1 - ( 1 - deltaKP@{S}_ ) / gKP_ );
+        KPtilde@{S}@{n}_ = IKP@{S}@{n}_ / ( 1 - ( 1 - deltaK_ ) / gKP_ );
         deltaKPtildeAUXD@{S}@{n}_ = KPtilde@{S}@{n}_;
-        deltaKPtildeAUXN@{S}@{n}_ = KPtilde@{S}@{n}_ * deltaKP@{S}_;
+        deltaKPtildeAUXN@{S}@{n}_ = KPtilde@{S}@{n}_ * deltaK_;
 	@#endfor
 
-    deltaKGtildeAUXD@{n}_ = IKG@{n}_ / ( 1- ( 1 - deltaKG_ ) / gKG_ );
-    deltaKGtildeAUXN@{n}_ = deltaKGtildeAUXD@{n}_ * deltaKG_;
+    deltaKGtildeAUXD@{n}_ = IKG@{n}_ / ( 1- ( 1 - deltaK_ ) / gKG_ );
+    deltaKGtildeAUXN@{n}_ = deltaKGtildeAUXD@{n}_ * deltaK_;
 
-    deltaHGtildeAUXD@{n}_ = IHG@{n}_ / ( 1 - ( 1 - deltaHG_ ) / gHG_ );
-    deltaHGtildeAUXN@{n}_ = deltaHGtildeAUXD@{n}_ * deltaHG_;
+    deltaHGtildeAUXD@{n}_ = IHG@{n}_ / ( 1 - ( 1 - deltaH_ ) / gHG_ );
+    deltaHGtildeAUXN@{n}_ = deltaHGtildeAUXD@{n}_ * deltaH_;
 @#endfor
 
 GDPW_ = 0 ...
@@ -753,6 +753,9 @@ GRGDPW_ = log( ( GDPW_ / GDPWqlag_ * GDPWplag_ / GDPWplagqlag_ ) ^ ( 1 / 2 ) );
     GDIqlag@{n}_ = GGIqlag@{n}_ + PDIqlag@{n}_;
     GDIInflation@{n}_ = log( ( GDI@{n}_ / GDIplag@{n}_ * GDIqlag@{n}_ / GDIplagqlag@{n}_ ) ^ ( 1 / 2 ) );
 
+%GERD (Gross domestic expenditure on R&D, or R&D intensity)
+	GERD@{n}_ = ( PHG@{n}_ * IHG@{n}_ + YWC@{n}_ * PWC_ * ( scriptFI_ * II_ * ( scripts_ - ( 1 - scriptq ) * ( 1 - deltaItilde_ ) * scripts_ / GII_ ) + II_ * scripts_ * ScriptFRP_ * JP_ ) / YWC_ ) / GDP@{n}_;
+
 %Export and deflator
     Export@{n}_ = ( 1 + ( 1 - phiiotaTX ) * iotaTX_ ) * YT0@{n}_ * PT@{n}_ ...
 	@#for m in 1:SN
@@ -822,14 +825,14 @@ GRGDPW_ = log( ( GDPW_ / GDPWqlag_ * GDPWplag_ / GDPWplagqlag_ ) ^ ( 1 / 2 ) );
 	@#endfor
 %cfc of private physical capital stock
     @#for S in Sectors0
-        deltaKPtilde@{S}@{n}_ = deltaKP@{S}_;
+        deltaKPtilde@{S}@{n}_ = deltaK_;
         KPcfc@{S}@{n}_ = deltaKPtilde@{S}@{n}_ * KPtilde@{S}@{n}_ / gKP_ * PKP@{n}_;
 	@#endfor
 %cfc of public physical capital stock
-    deltaKGtilde@{n}_ = deltaKG_;
+    deltaKGtilde@{n}_ = deltaK_;
     KGcfc@{n}_ = deltaKGtilde@{n}_ * KG@{n}_ / gKG_ * PKG@{n}_;
 %cfc of public R&D capital stock
-    deltaHGtilde@{n}_ = deltaHG_;
+    deltaHGtilde@{n}_ = deltaH_;
     HGcfc@{n}_ = deltaHGtilde@{n}_ * HG@{n}_ / gHG_ * PHG@{n}_;
 %cfc
     CFC@{n}_ = Dcfc@{n}l_ * alpha_resid_ + Dcfc@{n}b_ * alpha_resid_ + KPcfcT@{n}_ + KPcfcNT@{n}_ + KPcfcW@{n}_ + KGcfc@{n}_ + HGcfc@{n}_;
