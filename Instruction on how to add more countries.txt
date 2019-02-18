@@ -7,7 +7,7 @@
 =====================step4steady_state_model=================
 1. add new Ntilde to the input of step3GetSteady
 2. add measurement equation for new countries
-=====================main mode file================
+=====================main mod files (Main.m and MainCore.m)================
 1. change @#define SN = xx
 2. declare new obserbales as endogenous and new measurement errors
 3. add new measurement errors to shock block
