@@ -1,10 +1,11 @@
-function JP = GetJP( betanl, Z, deltaItilde, eta, gamma, lambda, phiR, scriptp, scriptq, zetaR, GN, scriptFI, sigma, xi, d, b, alphaND, alphaD, alphah, alphaCD, alphaCG, alphaCP )
+function [ JP, MaxJPResids ] = GetJPSlow( betanl, Z, deltaItilde, eta, gamma, lambda, phiR, scriptp, scriptq, zetaR, GN, scriptFI, sigma, xi, d, b, alphaND, alphaD, alphah, alphaCD, alphaCG, alphaCP )
 %This is a slightly modified version so that it can be compiled. see extension5 for the original version
     betanl=real(betanl);
     %guess JP (jp)
     jP = log( GetApproxJP( betanl, Z, deltaItilde, eta, gamma, lambda, phiR, scriptp, scriptq, zetaR, GN, scriptFI, sigma, xi, d, b, alphaND, alphaD, alphah, alphaCD, alphaCG, alphaCP ) );
     if imag( jP ) ~= 0
         JP = NaN;
+        MaxJPResids = NaN;
         return
     end
     jP=real(jP);
@@ -27,12 +28,23 @@ function JP = GetJP( betanl, Z, deltaItilde, eta, gamma, lambda, phiR, scriptp, 
         Width = 2 * Width;
         if Width > 1000
             JP = NaN;
+            MaxJPResids = NaN;
             return
         end
     end
     jPL = jPG( StartIndex );
     jPU = jPG( EndIndex );
-
+    
+    dResids = diff( Resids );
+    
+    if all( dResids < 0 )
+        MaxJPResids = Inf;
+    else
+        MaximaStartIndex = max( find( dResids > 0, 1, 'last' ) );
+        [ ~, MaxJPResids ] = fminbnd( @( jP ) -GetResid( exp( jP ), betanl, Z, deltaItilde, eta, gamma, lambda, phiR, scriptp, scriptq, zetaR, GN, scriptFI, sigma, xi, d, b, alphaND, alphaD, alphah, alphaCD, alphaCG, alphaCP ), jPG( MaximaStartIndex ), jPG( min( end, MaximaStartIndex + 2 ) ), optimset( 'display', 'off' ) ); %JP=root of resid, using jp as start point
+        MaxJPResids = -MaxJPResids;
+    end
+    
     %solve JP_ in [ jpL jpU ] as root of GetResid
     JP = fzero( @( jP ) GetResid( exp( jP ), betanl, Z, deltaItilde, eta, gamma, lambda, phiR, scriptp, scriptq, zetaR, GN, scriptFI, sigma, xi, d, b, alphaND, alphaD, alphah, alphaCD, alphaCG, alphaCP ), [ jPL jPU ], optimset( 'display', 'off' ) ); %JP=root of resid, using jp as start point
     JP=complex(exp(JP));
