@@ -182,7 +182,7 @@ rhokappah      =0.9;   sigmakappah     =0.001;  kappah_      = 1;
 @#for S in Sectors2
 rhokappa@{S}   =0.9;   sigmakappa@{S}  =0.001;  kappa@{S}_   = 1 ;
 @#endfor
-rhodeltaK      =0.9;   sigmadeltaK     =0.001;  deltaK_      =0.05;											   
+rhodeltaK      =0.9;   sigmadeltaK     =0.001;  deltaK_      =0.05;
 rhodeltaH      =0.9;   sigmadeltaH     =0.001;  deltaH_      =0.1;
 rhobeta        =0.9;   sigmabeta       =0.001;  betabarb     =0.98;
 rhoPP0 = 0.8; rhoPY0 = 0.1; rhoYP0 = 0.1; rhoYY0 = 0.8; rho0 = 0.9; sigmaP0 = 0.001; sigmaY0 = 0.001;

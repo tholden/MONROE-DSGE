@@ -4,6 +4,7 @@ As_DivFromTrend
 
 @#for n in 1:SN
 GrGDPpc@{n}
+
 //it's deviations from its deterministic trend, so it capture the dynamics of trend
 rGDPpc@{n}_DivFromTrend
 rPCEpc@{n}_DivFromTrend

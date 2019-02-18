@@ -1,5 +1,7 @@
 //real per capita term, deviation from steady state or trend, net rate 1=1%
 var
+As_DivFromTrend
+
 @#for n in 1:SN
 GrGDPpc@{n}
 
@@ -7,6 +9,7 @@ GrGDPpc@{n}
 rGDPpc@{n}_DivFromTrend
 rPCEpc@{n}_DivFromTrend
 rPDIpc@{n}_DivFromTrend
+IHPpc@{n}_DivFromTrend
 Xpc@{n}_DivFromTrend
 rGCEpc@{n}_DivFromTrend
 rGGIpc@{n}_DivFromTrend

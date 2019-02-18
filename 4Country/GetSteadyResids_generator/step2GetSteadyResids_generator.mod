@@ -1,3 +1,5 @@
+@#define SN = 4
+
 %We use dynare pre-processor to process this file further
 %the resulting file, after changing file name to "step2GetSteadyResids", will be further processed by step3GetSteadyResids_generator.m
 %in our old version, we set a variable to nan if they turns to be complex or negative (which may give complex number later). Doing this may introduce 2 problems
@@ -23,7 +25,11 @@ Omegah_, OmegaCP_, OmegaC_, OmegaKP_, OmegaHP_, OmegaD_, OmegaND_, OmegaKG_, Ome
 GN_, Z_, deltaItilde_, scriptFI_, deltaD_, kappa0_, kappah_, ...
 kappaT_, kappaNT_, kappaW_, kappaST_, kappaSNT_, kappaSW_, kappaD_, kappaNDCG_, kappaK_, kappaH_, ...
 deltaK_,deltaH_, betabarb, ...
-pT0, yTC0, m_, varpi_, eT0_, Ntilde1_, Ntilde2_, Ntilde3_, Ntilde4_)
+pT0, yTC0, m_, varpi_, eT0_
+@#for n in 1:SN
+, Ntilde@{n}_
+@#endfor
+);
 
 %this file also serves as the base of steady_state_model in .mod, we need to make the following changes
 %  1.delete ...
@@ -32,7 +38,6 @@ pT0, yTC0, m_, varpi_, eT0_, Ntilde1_, Ntilde2_, Ntilde3_, Ntilde4_)
 %  4.delete getjp, SOC, and all relevant to fzero
 %  5.add any parameters that are equations of other parameters
 
-@#define SN = 4
 @#define Sectors0 = [ "T", "NT", "W" ]
 @#define Sectors1 = [ "K", "H", "D", "NDCG" ]
 @#define SectorsP1 = [ "KP", "HP", "D", "ND" ]

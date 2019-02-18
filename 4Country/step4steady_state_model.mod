@@ -479,7 +479,11 @@ Omegah_, OmegaCP_, OmegaC_, OmegaKP_, OmegaHP_, OmegaD_, OmegaND_, OmegaKG_, Ome
 GN_, Z_, deltaItilde_, scriptFI_, deltaD_, kappa0_, kappah_, 
 kappaT_, kappaNT_, kappaW_, kappaST_, kappaSNT_, kappaSW_, kappaD_, kappaNDCG_, kappaK_, kappaH_, 
 deltaK_, deltaH_, betabarb, 
-pT0, yTC0, m_, varpi_, eT0_, Ntilde1_, Ntilde2_, Ntilde3_, Ntilde4_);
+pT0, yTC0, m_, varpi_, eT0_
+@#for n in 1:SN
+, Ntilde@{n}_
+@#endfor
+);
 
     LW1l_ = exp( GetSolution( 1+(1-1)*28 ) );
     LT1l_ = exp( GetSolution( 2+(1-1)*28 ) );
@@ -1401,6 +1405,7 @@ gpopW = log( GN_ );
 	popshare@{n} = Ntilde@{n}_;
 @#endfor
 
+@#if SN > 0
 %US
 ESrdy1 = exp(rdy_) * GERD1_;
 BEAgiy1 = GGI1_ / GDP1_;
@@ -1421,7 +1426,30 @@ BEAcfcy1 = CFC1_ / GDP1_;
 JSTexpostr1 = ExPostR1_;
 FREDlrni1 = Spread1_;
 JSTtauy1 = GovRev1_ / GDP1_;
+@#endif
 
+@#if SN > 1
+%Germany
+ESrdy2 = exp(rdy_) * GERD2_;
+JSTgy2 = ( GCE2_ + GGI2_ ) / GDP2_ / ( 1 - alpha_pubedu_ );
+PWTcy2 = PCE2_ / GDP2_ - JSTgy2 * alpha_pubedu_;
+OECDihy2 = PHP2_ * IHP2_ / GDP2_;
+JSTiy2 = GDI2_ / GDP2_;
+JSTxy2 = Export2_ / GDP2_;
+PWTgpcgpy2 = DNDInflation2_ - GDPInflation2_;
+PWTgpigpy2 = GDIInflation2_ - GDPInflation2_;
+PWTgpgcgpy2 = GCEInflation2_ - GDPInflation2_;
+PWTgpxgpy2 = ExportInflation2_ - GDPInflation2_;
+PWTgpmgpy2 = ImportInflation2_ - GDPInflation2_;
+PWThpop2 = hpop_;
+PWTwhy2 = LabourIncome2_ / GDP2_;
+PWTdelta2 = deltaALL2_;
+JSTexpostr2 = ExPostR2_;
+DBlrni2 = Spread2_;
+JSTtauy2 = GovRev2_ / GDP2_;
+@#endif
+
+@#if SN > 2
 %UK
 ESrdy3 = exp(rdy_) * GERD3_;
 MILLgiy3 = GGI3_ / GDP3_;
@@ -1441,26 +1469,9 @@ MILLcfcy3 = CFC3_ / GDP3_;
 MILLexpostr3 = ExPostR3_;
 MILLlrni3 = Spread3_;
 MILLtauy3 = GovRev3_ / GDP3_;
+@#endif
 
-%Germany
-ESrdy2 = exp(rdy_) * GERD2_;
-JSTgy2 = ( GCE2_ + GGI2_ ) / GDP2_ / ( 1 - alpha_pubedu_ );
-PWTcy2 = PCE2_ / GDP2_ - JSTgy2 * alpha_pubedu_;
-OECDihy2 = PHP2_ * IHP2_ / GDP2_;
-JSTiy2 = GDI2_ / GDP2_;
-JSTxy2 = Export2_ / GDP2_;
-PWTgpcgpy2 = DNDInflation2_ - GDPInflation2_;
-PWTgpigpy2 = GDIInflation2_ - GDPInflation2_;
-PWTgpgcgpy2 = GCEInflation2_ - GDPInflation2_;
-PWTgpxgpy2 = ExportInflation2_ - GDPInflation2_;
-PWTgpmgpy2 = ImportInflation2_ - GDPInflation2_;
-PWThpop2 = hpop_;
-PWTwhy2 = LabourIncome2_ / GDP2_;
-PWTdelta2 = deltaALL2_;
-JSTexpostr2 = ExPostR2_;
-DBlrni2 = Spread2_;
-JSTtauy2 = GovRev2_ / GDP2_;
-
+@#if SN > 3
 %France
 ESrdy4 = exp(rdy_) * GERD4_;
 JSTgy4 = ( GCE4_ + GGI4_ ) / GDP4_ / ( 1 - alpha_pubedu_ );
@@ -1479,42 +1490,47 @@ PWTdelta4 = deltaALL4_;
 JSTexpostr4 = ExPostR4_;
 BDFlrni4 = Spread4_;
 JSTtauy4 = GovRev4_ / GDP4_;
+@#endif
 
-%%EURO
-%ESrdy5 = exp(rdy_) * GERD5_;
-%JSTgy5 = ( GCE5_ + GGI5_ ) / GDP5_ / ( 1 - alpha_pubedu_ );
-%PWTcy5 = PCE5_ / GDP5_ - JSTgy5 * alpha_pubedu_;
-%OECDihy5 = PHP5_ * IHP5_ / GDP5_;
-%JSTiy5 = GDI5_ / GDP5_;
-%JSTxy5 = Export5_ / GDP5_;
-%PWTgpcgpy5 = DNDInflation5_ - GDPInflation5_;
-%PWTgpigpy5 = GDIInflation5_ - GDPInflation5_;
-%PWTgpgcgpy5 = GCEInflation5_ - GDPInflation5_;
-%PWTgpxgpy5 = ExportInflation5_ - GDPInflation5_;
-%PWTgpmgpy5 = ImportInflation5_ - GDPInflation5_;
-%PWThpop5 = hpop_;
-%PWTwhy5 = LabourIncome5_ / GDP5_;
-%PWTcfcy5 = CFC5_ / GDP5_;
-%JSTexpostr5 = ExPostR5_;
-%JSTtauy5 = GovRev5_ / GDP5_;
+@#if SN > 4
+%EURO
+ESrdy5 = exp(rdy_) * GERD5_;
+JSTgy5 = ( GCE5_ + GGI5_ ) / GDP5_ / ( 1 - alpha_pubedu_ );
+PWTcy5 = PCE5_ / GDP5_ - JSTgy5 * alpha_pubedu_;
+OECDihy5 = PHP5_ * IHP5_ / GDP5_;
+JSTiy5 = GDI5_ / GDP5_;
+JSTxy5 = Export5_ / GDP5_;
+PWTgpcgpy5 = DNDInflation5_ - GDPInflation5_;
+PWTgpigpy5 = GDIInflation5_ - GDPInflation5_;
+PWTgpgcgpy5 = GCEInflation5_ - GDPInflation5_;
+PWTgpxgpy5 = ExportInflation5_ - GDPInflation5_;
+PWTgpmgpy5 = ImportInflation5_ - GDPInflation5_;
+PWThpop5 = hpop_;
+PWTwhy5 = LabourIncome5_ / GDP5_;
+PWTcfcy5 = CFC5_ / GDP5_;
+JSTexpostr5 = ExPostR5_;
+JSTtauy5 = GovRev5_ / GDP5_;
+@#endif
 
-%%ROW
-%ESrdy6 = exp(rdy_) * GERD6_;
-%JSTgy6 = ( GCE6_ + GGI6_ ) / GDP6_ / ( 1 - alpha_pubedu_ );
-%PWTcy6 = PCE6_ / GDP6_ - JSTgy6 * alpha_pubedu_;
-%OECDihy6 = PHP6_ * IHP6_ / GDP6_;
-%JSTiy6 = GDI6_ / GDP6_;
-%JSTxy6 = Export6_ / GDP6_;
-%PWTgpcgpy6 = DNDInflation6_ - GDPInflation6_;
-%PWTgpigpy6 = GDIInflation6_ - GDPInflation6_;
-%PWTgpgcgpy6 = GCEInflation6_ - GDPInflation6_;
-%PWTgpxgpy6 = ExportInflation6_ - GDPInflation6_;
-%PWTgpmgpy6 = ImportInflation6_ - GDPInflation6_;
-%PWThpop6 = hpop_;
-%PWTwhy6 = LabourIncome6_ / GDP6_;
-%PWTcfcy6 = CFC6_ / GDP6_;
-%JSTexpostr6 = ExPostR6_;
-%JSTtauy6 = GovRev6_ / GDP6_;
+@#if SN > 5
+%ROW
+ESrdy6 = exp(rdy_) * GERD6_;
+JSTgy6 = ( GCE6_ + GGI6_ ) / GDP6_ / ( 1 - alpha_pubedu_ );
+PWTcy6 = PCE6_ / GDP6_ - JSTgy6 * alpha_pubedu_;
+OECDihy6 = PHP6_ * IHP6_ / GDP6_;
+JSTiy6 = GDI6_ / GDP6_;
+JSTxy6 = Export6_ / GDP6_;
+PWTgpcgpy6 = DNDInflation6_ - GDPInflation6_;
+PWTgpigpy6 = GDIInflation6_ - GDPInflation6_;
+PWTgpgcgpy6 = GCEInflation6_ - GDPInflation6_;
+PWTgpxgpy6 = ExportInflation6_ - GDPInflation6_;
+PWTgpmgpy6 = ImportInflation6_ - GDPInflation6_;
+PWThpop6 = hpop_;
+PWTwhy6 = LabourIncome6_ / GDP6_;
+PWTcfcy6 = CFC6_ / GDP6_;
+JSTexpostr6 = ExPostR6_;
+JSTtauy6 = GovRev6_ / GDP6_;
+@#endif
 
 log_gII=log(gII_);
 log_gB=log(gB_);

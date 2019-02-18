@@ -1,5 +1,10 @@
-function OptimiseFile( FileName )
-%see GenerateGetSteadyDetails
+function OptimiseFile( FileName, Comment )
+% Optimises an arbitrary Matlab file.
+
+    if nargin < 2
+        Comment = '';
+    end
+
     Changed = true;
 
     while Changed
@@ -56,7 +61,11 @@ function OptimiseFile( FileName )
         FileText = regexprep( FileText, '\(\s*\)', '' );
         
         File = fopen( FileName, 'w' );
-        fprintf( File, '%s', FileText );
+        if isempty( Comment )
+            fprintf( File, '%s', FileText );
+        else
+            fprintf( File, '%% %s\n\n%s', Comment, FileText );
+        end
         fclose( File );
         
     end

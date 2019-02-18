@@ -1,8 +1,10 @@
+As_DivFromTrend=0;
 @#for n in 1:SN
 GrGDPpc@{n} = log(( GDP@{n}_ / GDPqlag@{n}_ * GDPplag@{n}_ / GDPplagqlag@{n}_ ) ^ ( 1 / 2 ) / GN_)*100;
 rGDPpc@{n}_DivFromTrend=0;
 rPCEpc@{n}_DivFromTrend=0;
 rPDIpc@{n}_DivFromTrend=0;
+IHPpc@{n}_DivFromTrend=0;
 Xpc@{n}_DivFromTrend=0;
 rGCEpc@{n}_DivFromTrend=0;
 rGGIpc@{n}_DivFromTrend=0;
