@@ -1,6 +1,8 @@
 //waiting a update of transformation engine.
 //For now, I have to define growth rate (that is a expression) of trends as an endogenous variable instead of MLV
 
+addpath( '../Common' );
+
 @#define ExtraVariable=0
 @#define MaximumLag=3
 @#define MaximumLead=3
