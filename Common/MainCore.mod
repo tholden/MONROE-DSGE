@@ -381,8 +381,10 @@ var
     OECDihy5 ESrdy5 PWTcy5  JSTiy5  JSTgy5            JSTxy5  PWTgpcgpy5  PWTgpigpy5  PWTgpgcgpy5             PWTgpxgpy5  PWTgpmgpy5  PWThpop5   PWTwhy5   PWTcfcy5  JSTexpostr5            JSTtauy5
   @#endif
   @#if SN > 5
-    OECDihy6 ESrdy6 PWTcy6  JSTiy6  JSTgy6            JSTxy6  PWTgpcgpy6  PWTgpigpy6  PWTgpgcgpy6             PWTgpxgpy6  PWTgpmgpy6  PWThpop6   PWTwhy6   PWTcfcy6  JSTexpostr6            JSTtauy6;
+    OECDihy6 ESrdy6 PWTcy6  JSTiy6  JSTgy6            JSTxy6  PWTgpcgpy6  PWTgpigpy6  PWTgpgcgpy6             PWTgpxgpy6  PWTgpmgpy6  PWThpop6   PWTwhy6   PWTcfcy6  JSTexpostr6            JSTtauy6
   @#endif
+;
+
 varexo
   epsilon_gryW epsilon_gpopW
   @#for n in 1:SN-1
@@ -407,8 +409,9 @@ varexo
     epsilon_OECDihy5 epsilon_ESrdy5 epsilon_PWTcy5  epsilon_JSTiy5  epsilon_JSTgy5                     epsilon_JSTxy5     epsilon_PWTgpcgpy5  epsilon_PWTgpigpy5  epsilon_PWTgpgcgpy5                     epsilon_PWTgpxgpy5  epsilon_PWTgpmgpy5  epsilon_PWThpop5   epsilon_PWTwhy5   epsilon_PWTcfcy5  epsilon_JSTexpostr5                    epsilon_JSTtauy5
   @#endif
   @#if SN > 5
-    epsilon_OECDihy6 epsilon_ESrdy6 epsilon_PWTcy6  epsilon_JSTiy6  epsilon_JSTgy6                     epsilon_JSTxy6     epsilon_PWTgpcgpy6  epsilon_PWTgpigpy6  epsilon_PWTgpgcgpy6                     epsilon_PWTgpxgpy6  epsilon_PWTgpmgpy6  epsilon_PWThpop6   epsilon_PWTwhy6   epsilon_PWTcfcy6  epsilon_JSTexpostr6                    epsilon_JSTtauy6;
+    epsilon_OECDihy6 epsilon_ESrdy6 epsilon_PWTcy6  epsilon_JSTiy6  epsilon_JSTgy6                     epsilon_JSTxy6     epsilon_PWTgpcgpy6  epsilon_PWTgpigpy6  epsilon_PWTgpgcgpy6                     epsilon_PWTgpxgpy6  epsilon_PWTgpmgpy6  epsilon_PWThpop6   epsilon_PWTwhy6   epsilon_PWTcfcy6  epsilon_JSTexpostr6                    epsilon_JSTtauy6
   @#endif
+;
 
 //Extra final observables (for IRF)
 @#if ExtraVariable == 1
