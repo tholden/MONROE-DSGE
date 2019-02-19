@@ -1,13 +1,13 @@
 @#define SN = 4
 
-%We use dynare pre-processor to process this file further
-%the resulting file, after changing file name to "step2GetSteadyResids", will be further processed by step3GetSteadyResids_generator.m
+%We use dynare pre-processor to process this file
+%the resulting file, after changing file name to "step3GetSteadyResids", should be further processed by step3GetSteadyResids_generator.m
 %in our old version, we set a variable to nan if they turns to be complex or negative (which may give complex number later). Doing this may introduce 2 problems
 %1. we may get nan at the initial point then the solver stops
 %2. we throw all information the algorithm needs to search on a correct direction.
 %so we decide to make our problem non square by making real part and complex part of residuals =0. so double output than input.
 %Fsolve with Levenberg-Marquardt can handle that, which are based on the nonlinear least-squares algorithms also used in lsqnonlin.
-%when generating mex, allow InVec to be complex. another way is replace log, pow, etc. with log(complex(.
+%when generating mex, allow InVec to be complex. another way is to replace log, pow, etc. with log(complex(.
 function [Resids, JP_, ...
         WD1_, WW1_, WT1_ ,WNT1_ ,WSW1_ ,WST1_ ,WSNT1_, ...
         SOC] = step3GetSteadyResids( InVec, lambda, eta, phiR, zetaR, gamma, scriptp, scriptq, ...
