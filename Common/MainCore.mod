@@ -2451,7 +2451,9 @@ options_.mode_check.neighbourhood_size = 0.1;
 
 options_.hessian.use_outer_product_gradient = 1;
 
-options_.skip_optimisation = 0;
+options_.hessian.only_keep_diag = 1;
+
+options_.skip_optimisation = 1;
 
 steady;
 check;
@@ -2466,7 +2468,7 @@ estimation(order=1, datafile=data_@{SN}country, presample=0,prior_trunc=0,
             //mode_compute=1, optim=('UseParallel',1,'Display','iter','TolX',1e-16,'TolF',1e-16,'MaxIter',32,'InitTrustRegionRadius',0.01,'FinDiffRelStep',1e-6),
             //mode_compute=9, optim=('UseParallel',1,'ResumeRun',0,'ResumeFromBest',1,'SigmaScale',1e-4,'MinSigma',1e-5,'MaxIter',1e12,'DiagonalOnly',1),
             mode_compute=1313,
-            //mode_compute=0, smoother,
+            smoother, forecast = 400,
             plot_priors=0, graph_format=fig
             )
 gryW gpopW
