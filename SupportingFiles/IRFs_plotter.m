@@ -9,8 +9,8 @@ ShockNames=["ROW price" "ROW demand" "Home discount factor" "Home's trade elasti
 NShock=length(ShockList);
 param_names=cellstr(M_.param_names);
 T=40;
-onepercent=false;
-if onepercent
+mkdir 1PercentShock
+cd 1PercentShock
 for ii=1:NShock
     if isempty(ShockList{ii}(9:end-1))
         Shockii=ShockList{ii}(9:end);
@@ -70,7 +70,7 @@ for ii=1:NShock
     f1n.Children(3).XLabel.Position(1)=T*1.125;
     f1n.Children(8).YLabel.Position(1)=f1n.Children(8).YLabel.Position(1)*1.1;
     f1n.Position=[0 0 1920 1080];
-    if eval(['max(abs(oo_.irfs.rGDPpc1_DivFromTrend_',ShockList{ii},'(1:40)))>=0.1'])
+    if eval(['max(abs(oo_.irfs.rGDPpc1_DivFromTrend_',ShockList{ii},'(1:40)))>=0.01'])
         savefig(['sig Foreign responses to a ',ShockNames{ii},' shock'])    
         saveas(gcf,['sig Foreign responses to a ',ShockNames{ii},' shock'],'emf')
     else
@@ -133,7 +133,7 @@ for ii=1:NShock
     f2n.Children(3).XLabel.Position(1)=T*1.125;
     f2n.Children(8).YLabel.Position(1)=f2n.Children(8).YLabel.Position(1)*1.1;
     f2n.Position=[0 0 1920 1080];
-    if eval(['max(abs(oo_.irfs.rGDPpc1_DivFromTrend_',ShockList{ii},'(1:40)))>=0.1'])
+    if eval(['max(abs(oo_.irfs.rGDPpc1_DivFromTrend_',ShockList{ii},'(1:40)))>=0.01'])
         savefig(['sig Home responses to a ',ShockNames{ii},' shock'])    
         saveas(gcf,['sig Home responses to a ',ShockNames{ii},' shock'],'emf')
     else
@@ -141,7 +141,9 @@ for ii=1:NShock
         saveas(gcf,['Home responses to a ',ShockNames{ii},' shock'],'emf')
     end
 end
-else
+cd ..
+mkdir 1StdDevShock
+cd 1StdDevShock
 for ii=1:NShock
     if isempty(ShockList{ii}(9:end-1))
         Shockii=ShockList{ii}(9:end);
@@ -201,7 +203,7 @@ for ii=1:NShock
     f1n.Children(3).XLabel.Position(1)=T*1.125;
     f1n.Children(8).YLabel.Position(1)=f1n.Children(8).YLabel.Position(1)*1.1;
     f1n.Position=[0 0 1920 1080];
-    if eval(['max(abs(oo_.irfs.rGDPpc1_DivFromTrend_',ShockList{ii},'(1:40)))>=0.1'])
+    if eval(['max(abs(oo_.irfs.rGDPpc1_DivFromTrend_',ShockList{ii},'(1:40)))>=0.01'])
         savefig(['sig Foreign responses to a ',ShockNames{ii},' shock'])    
         saveas(gcf,['sig Foreign responses to a ',ShockNames{ii},' shock'],'emf')
     else
@@ -264,7 +266,7 @@ for ii=1:NShock
     f2n.Children(3).XLabel.Position(1)=T*1.125;
     f2n.Children(8).YLabel.Position(1)=f2n.Children(8).YLabel.Position(1)*1.1;
     f2n.Position=[0 0 1920 1080];
-    if eval(['max(abs(oo_.irfs.rGDPpc1_DivFromTrend_',ShockList{ii},'(1:40)))>=0.1'])
+    if eval(['max(abs(oo_.irfs.rGDPpc1_DivFromTrend_',ShockList{ii},'(1:40)))>=0.01'])
         savefig(['sig Home responses to a ',ShockNames{ii},' shock'])    
         saveas(gcf,['sig Home responses to a ',ShockNames{ii},' shock'],'emf')
     else
@@ -272,4 +274,4 @@ for ii=1:NShock
         saveas(gcf,['Home responses to a ',ShockNames{ii},' shock'],'emf')
     end
 end
-end
+cd ..
