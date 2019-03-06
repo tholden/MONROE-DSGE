@@ -12,48 +12,53 @@ T=40;
 mkdir 1PercentShock
 cd 1PercentShock
 for ii=1:NShock
-    if isempty(ShockList{ii}(9:end-1))
-        Shockii=ShockList{ii}(9:end);
+    Shockii = ShockList{ii}(9:end);
+    if length( Shockii ) > 1
+        Shockii = regexprep( Shockii, '[1-9](?!.*\d.*)', '' );
+    end
+    
+    if ( length( Shockii ) > 5 ) && strcmp( Shockii( 1:5 ), 'delta' ) && ismember( Shockii(6), {'D','K','H'} )
+        Shockii = Shockii( 1 : 6 );
     end
     
     f1n=figure(1+2*(ii-1));
     subplot(3,4,1)
-    eval(['plot(oo_.irfs.rGDPpc1_DivFromTrend_',ShockList{ii},'(1:T)/M_.params(find(~cellfun(@isempty,strfind(param_names,[''sigma'',Shockii])))))'])
+    eval(['plot(oo_.irfs.rGDPpc1_DivFromTrend_',ShockList{ii},'(1:T)/M_.params(find(ismember(param_names,[''sigma'',Shockii]))))'])
     title('GDP')
     subplot(3,4,2)
-    eval(['plot(oo_.irfs.rPCEpc1_DivFromTrend_',ShockList{ii},'(1:T)/M_.params(find(~cellfun(@isempty,strfind(param_names,[''sigma'',Shockii])))))'])
+    eval(['plot(oo_.irfs.rPCEpc1_DivFromTrend_',ShockList{ii},'(1:T)/M_.params(find(ismember(param_names,[''sigma'',Shockii]))))'])
     title('Private Consumption')
     subplot(3,4,3)
-    eval(['plot(oo_.irfs.rPDIpc1_DivFromTrend_',ShockList{ii},'(1:T)/M_.params(find(~cellfun(@isempty,strfind(param_names,[''sigma'',Shockii])))))'])
+    eval(['plot(oo_.irfs.rPDIpc1_DivFromTrend_',ShockList{ii},'(1:T)/M_.params(find(ismember(param_names,[''sigma'',Shockii]))))'])
     title('Private Investment')
     subplot(3,4,4)
-    eval(['plot(oo_.irfs.rGSpendingpc1_DivFromTrend_',ShockList{ii},'(1:T)/M_.params(find(~cellfun(@isempty,strfind(param_names,[''sigma'',Shockii])))))'])
+    eval(['plot(oo_.irfs.rGSpendingpc1_DivFromTrend_',ShockList{ii},'(1:T)/M_.params(find(ismember(param_names,[''sigma'',Shockii]))))'])
     title('Government Spending')
     subplot(3,4,5)
-    eval(['plot(oo_.irfs.As_DivFromTrend_',ShockList{ii},'(1:T)/M_.params(find(~cellfun(@isempty,strfind(param_names,[''sigma'',Shockii])))))'])
+    eval(['plot(oo_.irfs.As_DivFromTrend_',ShockList{ii},'(1:T)/M_.params(find(ismember(param_names,[''sigma'',Shockii]))))'])
     title('Frontier Productivity')
     ylabel('Foreign, real per capita, % deviations from SS or trend')
     subplot(3,4,6)
-    eval(['plot(oo_.irfs.BEAhpop1_',ShockList{ii},'(1:T)*100/M_.params(find(~cellfun(@isempty,strfind(param_names,[''sigma'',Shockii])))))'])
+    eval(['plot(oo_.irfs.BEAhpop1_',ShockList{ii},'(1:T)*100/M_.params(find(ismember(param_names,[''sigma'',Shockii]))))'])
     title('Hours Worked')
     subplot(3,4,7)
-    eval(['plot(oo_.irfs.IHPpc1_DivFromTrend_',ShockList{ii},'(1:T)/M_.params(find(~cellfun(@isempty,strfind(param_names,[''sigma'',Shockii])))))'])
+    eval(['plot(oo_.irfs.IHPpc1_DivFromTrend_',ShockList{ii},'(1:T)/M_.params(find(ismember(param_names,[''sigma'',Shockii]))))'])
     title('Private H Investment')
     subplot(3,4,8)
-    eval(['plot(oo_.irfs.GovDifY1_',ShockList{ii},'(1:T)/M_.params(find(~cellfun(@isempty,strfind(param_names,[''sigma'',Shockii])))))'])
+    eval(['plot(oo_.irfs.GovDifY1_',ShockList{ii},'(1:T)/M_.params(find(ismember(param_names,[''sigma'',Shockii]))))'])
     title('Government Deficit / GDP')
     subplot(3,4,9)
-    eval(['plot(oo_.irfs.Xpc1_DivFromTrend_',ShockList{ii},'(1:T)/M_.params(find(~cellfun(@isempty,strfind(param_names,[''sigma'',Shockii])))))'])
+    eval(['plot(oo_.irfs.Xpc1_DivFromTrend_',ShockList{ii},'(1:T)/M_.params(find(ismember(param_names,[''sigma'',Shockii]))))'])
     title('Engineering')
     subplot(3,4,10)
-    eval(['plot(oo_.irfs.NXY1_',ShockList{ii},'(1:T)/M_.params(find(~cellfun(@isempty,strfind(param_names,[''sigma'',Shockii])))))'])
+    eval(['plot(oo_.irfs.NXY1_',ShockList{ii},'(1:T)/M_.params(find(ismember(param_names,[''sigma'',Shockii]))))'])
     title('Net Export / GDP')
     xlabel(['Shock: ',ShockNames{ii},', 1%'])
     subplot(3,4,11)
-    eval(['plot(oo_.irfs.PRDY1_',ShockList{ii},'(1:T)/M_.params(find(~cellfun(@isempty,strfind(param_names,[''sigma'',Shockii])))))'])
+    eval(['plot(oo_.irfs.PRDY1_',ShockList{ii},'(1:T)/M_.params(find(ismember(param_names,[''sigma'',Shockii]))))'])
     title('Private R&D / GDP')
     subplot(3,4,12)
-    eval(['plot(oo_.irfs.GRDY1_',ShockList{ii},'(1:T)/M_.params(find(~cellfun(@isempty,strfind(param_names,[''sigma'',Shockii])))))'])
+    eval(['plot(oo_.irfs.GRDY1_',ShockList{ii},'(1:T)/M_.params(find(ismember(param_names,[''sigma'',Shockii]))))'])
     title('Government R&D / GDP')
     f1n.Children(1).Position=[0.08*4+0.6/4*3, 0.08*1+0.68/3*0, 0.6/4, 0.68/3];
     f1n.Children(2).Position=[0.08*3+0.6/4*2, 0.08*1+0.68/3*0, 0.6/4, 0.68/3];
@@ -67,9 +72,11 @@ for ii=1:NShock
     f1n.Children(10).Position=[0.08*3+0.6/4*2, 0.08*3+0.68/3*2, 0.6/4, 0.68/3];
     f1n.Children(11).Position=[0.08*2+0.6/4*1, 0.08*3+0.68/3*2, 0.6/4, 0.68/3];
     f1n.Children(12).Position=[0.08*1+0.6/4*0, 0.08*3+0.68/3*2, 0.6/4, 0.68/3];
+    drawnow;
     f1n.Children(3).XLabel.Position(1)=T*1.125;
     f1n.Children(8).YLabel.Position(1)=f1n.Children(8).YLabel.Position(1)*1.1;
-    f1n.Position=[0 0 1920 1080];
+    f1n.Position=[200 200 1920 1080];
+    drawnow;
     if eval(['max(abs(oo_.irfs.rGDPpc1_DivFromTrend_',ShockList{ii},'(1:40)))>=0.01'])
         savefig(['sig Foreign responses to a ',ShockNames{ii},' shock'])    
         saveas(gcf,['sig Foreign responses to a ',ShockNames{ii},' shock'],'emf')
@@ -81,42 +88,42 @@ for ii=1:NShock
 
     f2n=figure(2+2*(ii-1));
     subplot(3,4,1)
-    eval(['plot(oo_.irfs.rGDPpc2_DivFromTrend_',ShockList{ii},'(1:T)/M_.params(find(~cellfun(@isempty,strfind(param_names,[''sigma'',Shockii])))))'])
+    eval(['plot(oo_.irfs.rGDPpc2_DivFromTrend_',ShockList{ii},'(1:T)/M_.params(find(ismember(param_names,[''sigma'',Shockii]))))'])
     title('GDP')
     subplot(3,4,2)
-    eval(['plot(oo_.irfs.rPCEpc2_DivFromTrend_',ShockList{ii},'(1:T)/M_.params(find(~cellfun(@isempty,strfind(param_names,[''sigma'',Shockii])))))'])
+    eval(['plot(oo_.irfs.rPCEpc2_DivFromTrend_',ShockList{ii},'(1:T)/M_.params(find(ismember(param_names,[''sigma'',Shockii]))))'])
     title('Private Consumption')
     subplot(3,4,3)
-    eval(['plot(oo_.irfs.rPDIpc2_DivFromTrend_',ShockList{ii},'(1:T)/M_.params(find(~cellfun(@isempty,strfind(param_names,[''sigma'',Shockii])))))'])
+    eval(['plot(oo_.irfs.rPDIpc2_DivFromTrend_',ShockList{ii},'(1:T)/M_.params(find(ismember(param_names,[''sigma'',Shockii]))))'])
     title('Private Investment')
     subplot(3,4,4)
-    eval(['plot(oo_.irfs.rGSpendingpc2_DivFromTrend_',ShockList{ii},'(1:T)/M_.params(find(~cellfun(@isempty,strfind(param_names,[''sigma'',Shockii])))))'])
+    eval(['plot(oo_.irfs.rGSpendingpc2_DivFromTrend_',ShockList{ii},'(1:T)/M_.params(find(ismember(param_names,[''sigma'',Shockii]))))'])
     title('Government Spending')
     subplot(3,4,5)
-    eval(['plot(oo_.irfs.As_DivFromTrend_',ShockList{ii},'(1:T)/M_.params(find(~cellfun(@isempty,strfind(param_names,[''sigma'',Shockii])))))'])
+    eval(['plot(oo_.irfs.As_DivFromTrend_',ShockList{ii},'(1:T)/M_.params(find(ismember(param_names,[''sigma'',Shockii]))))'])
     title('Frontier Productivity')
     ylabel('Home, real per capita, % deviations from SS or trend')
     subplot(3,4,6)
-    eval(['plot(oo_.irfs.PWThpop2_',ShockList{ii},'(1:T)*100/M_.params(find(~cellfun(@isempty,strfind(param_names,[''sigma'',Shockii])))))'])
+    eval(['plot(oo_.irfs.PWThpop2_',ShockList{ii},'(1:T)*100/M_.params(find(ismember(param_names,[''sigma'',Shockii]))))'])
     title('Hours Worked')
     subplot(3,4,7)
-    eval(['plot(oo_.irfs.IHPpc2_DivFromTrend_',ShockList{ii},'(1:T)/M_.params(find(~cellfun(@isempty,strfind(param_names,[''sigma'',Shockii])))))'])
+    eval(['plot(oo_.irfs.IHPpc2_DivFromTrend_',ShockList{ii},'(1:T)/M_.params(find(ismember(param_names,[''sigma'',Shockii]))))'])
     title('Private H Investment')
     subplot(3,4,8)
-    eval(['plot(oo_.irfs.GovDifY2_',ShockList{ii},'(1:T)/M_.params(find(~cellfun(@isempty,strfind(param_names,[''sigma'',Shockii])))))'])
+    eval(['plot(oo_.irfs.GovDifY2_',ShockList{ii},'(1:T)/M_.params(find(ismember(param_names,[''sigma'',Shockii]))))'])
     title('Government Deficit / GDP')
     subplot(3,4,9)
-    eval(['plot(oo_.irfs.Xpc2_DivFromTrend_',ShockList{ii},'(1:T)/M_.params(find(~cellfun(@isempty,strfind(param_names,[''sigma'',Shockii])))))'])
+    eval(['plot(oo_.irfs.Xpc2_DivFromTrend_',ShockList{ii},'(1:T)/M_.params(find(ismember(param_names,[''sigma'',Shockii]))))'])
     title('Engineering')
     subplot(3,4,10)
-    eval(['plot(oo_.irfs.NXY2_',ShockList{ii},'(1:T)/M_.params(find(~cellfun(@isempty,strfind(param_names,[''sigma'',Shockii])))))'])
+    eval(['plot(oo_.irfs.NXY2_',ShockList{ii},'(1:T)/M_.params(find(ismember(param_names,[''sigma'',Shockii]))))'])
     title('Net Export / GDP')
     xlabel(['Shock: ',ShockNames{ii},', 1%'])
     subplot(3,4,11)
-    eval(['plot(oo_.irfs.PRDY2_',ShockList{ii},'(1:T)/M_.params(find(~cellfun(@isempty,strfind(param_names,[''sigma'',Shockii])))))'])
+    eval(['plot(oo_.irfs.PRDY2_',ShockList{ii},'(1:T)/M_.params(find(ismember(param_names,[''sigma'',Shockii]))))'])
     title('Private R&D / GDP')
     subplot(3,4,12)
-    eval(['plot(oo_.irfs.GRDY2_',ShockList{ii},'(1:T)/M_.params(find(~cellfun(@isempty,strfind(param_names,[''sigma'',Shockii])))))'])
+    eval(['plot(oo_.irfs.GRDY2_',ShockList{ii},'(1:T)/M_.params(find(ismember(param_names,[''sigma'',Shockii]))))'])
     title('Government R&D / GDP')
     f2n.Children(1).Position=[0.08*4+0.6/4*3, 0.08*1+0.68/3*0, 0.6/4, 0.68/3];
     f2n.Children(2).Position=[0.08*3+0.6/4*2, 0.08*1+0.68/3*0, 0.6/4, 0.68/3];
@@ -130,9 +137,11 @@ for ii=1:NShock
     f2n.Children(10).Position=[0.08*3+0.6/4*2, 0.08*3+0.68/3*2, 0.6/4, 0.68/3];
     f2n.Children(11).Position=[0.08*2+0.6/4*1, 0.08*3+0.68/3*2, 0.6/4, 0.68/3];
     f2n.Children(12).Position=[0.08*1+0.6/4*0, 0.08*3+0.68/3*2, 0.6/4, 0.68/3];
+    drawnow;
     f2n.Children(3).XLabel.Position(1)=T*1.125;
     f2n.Children(8).YLabel.Position(1)=f2n.Children(8).YLabel.Position(1)*1.1;
-    f2n.Position=[0 0 1920 1080];
+    f2n.Position=[200 200 1920 1080];
+    drawnow;
     if eval(['max(abs(oo_.irfs.rGDPpc1_DivFromTrend_',ShockList{ii},'(1:40)))>=0.01'])
         savefig(['sig Home responses to a ',ShockNames{ii},' shock'])    
         saveas(gcf,['sig Home responses to a ',ShockNames{ii},' shock'],'emf')
@@ -141,12 +150,18 @@ for ii=1:NShock
         saveas(gcf,['Home responses to a ',ShockNames{ii},' shock'],'emf')
     end
 end
+
 cd ..
 mkdir 1StdDevShock
 cd 1StdDevShock
 for ii=1:NShock
-    if isempty(ShockList{ii}(9:end-1))
-        Shockii=ShockList{ii}(9:end);
+    Shockii = ShockList{ii}(9:end);
+    if length( Shockii ) > 1
+        Shockii = regexprep( Shockii, '[1-9](?!.*\d.*)', '' );
+    end
+    
+    if ( length( Shockii ) > 5 ) && strcmp( Shockii( 1:5 ), 'delta' ) && ismember( Shockii(6), {'D','K','H'} )
+        Shockii = Shockii( 1 : 6 );
     end
     
     f1n=figure(1+2*(ii-1));
@@ -200,9 +215,11 @@ for ii=1:NShock
     f1n.Children(10).Position=[0.08*3+0.6/4*2, 0.08*3+0.68/3*2, 0.6/4, 0.68/3];
     f1n.Children(11).Position=[0.08*2+0.6/4*1, 0.08*3+0.68/3*2, 0.6/4, 0.68/3];
     f1n.Children(12).Position=[0.08*1+0.6/4*0, 0.08*3+0.68/3*2, 0.6/4, 0.68/3];
+    drawnow;
     f1n.Children(3).XLabel.Position(1)=T*1.125;
     f1n.Children(8).YLabel.Position(1)=f1n.Children(8).YLabel.Position(1)*1.1;
-    f1n.Position=[0 0 1920 1080];
+    f1n.Position=[200 200 1920 1080];
+    drawnow;
     if eval(['max(abs(oo_.irfs.rGDPpc1_DivFromTrend_',ShockList{ii},'(1:40)))>=0.01'])
         savefig(['sig Foreign responses to a ',ShockNames{ii},' shock'])    
         saveas(gcf,['sig Foreign responses to a ',ShockNames{ii},' shock'],'emf')
@@ -263,9 +280,11 @@ for ii=1:NShock
     f2n.Children(10).Position=[0.08*3+0.6/4*2, 0.08*3+0.68/3*2, 0.6/4, 0.68/3];
     f2n.Children(11).Position=[0.08*2+0.6/4*1, 0.08*3+0.68/3*2, 0.6/4, 0.68/3];
     f2n.Children(12).Position=[0.08*1+0.6/4*0, 0.08*3+0.68/3*2, 0.6/4, 0.68/3];
+    drawnow;
     f2n.Children(3).XLabel.Position(1)=T*1.125;
     f2n.Children(8).YLabel.Position(1)=f2n.Children(8).YLabel.Position(1)*1.1;
-    f2n.Position=[0 0 1920 1080];
+    f2n.Position=[200 200 1920 1080];
+    drawnow;
     if eval(['max(abs(oo_.irfs.rGDPpc1_DivFromTrend_',ShockList{ii},'(1:40)))>=0.01'])
         savefig(['sig Home responses to a ',ShockNames{ii},' shock'])    
         saveas(gcf,['sig Home responses to a ',ShockNames{ii},' shock'],'emf')
