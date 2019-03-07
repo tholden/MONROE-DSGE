@@ -8,7 +8,10 @@
 %where e1 and e2 are N(0,1) and m, k1, k2 are some numbers
 %so the #of parameters to estimate reduces from 3 to 2
 
-%see TEST files for input and output
+%it takes input equation.txt and priors.txt
+%and produce output.txt
+%see TEST files for an example
+
 %output has 3 block:
 %The first is added to the prior file
 %The second is added to the steady state file
