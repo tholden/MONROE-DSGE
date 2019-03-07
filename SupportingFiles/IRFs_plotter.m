@@ -39,6 +39,7 @@ for ii=1:NShock
             disp( Shockii );
             disp( sigmaScales );
             disp( sigmaScale );
+            disp( sigmaScales ./ sigmaScale );
             sigma = sigma * sigmaScale;
         end
     end
