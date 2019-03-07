@@ -96,9 +96,9 @@ for ii=1:NShock
     f1n.Children(11).Position=[0.08*2+0.6/4*1, 0.08*3+0.68/3*2, 0.6/4, 0.68/3];
     f1n.Children(12).Position=[0.08*1+0.6/4*0, 0.08*3+0.68/3*2, 0.6/4, 0.68/3];
     drawnow;
+    f1n.Position=[200 200 1920 1080];
     f1n.Children(3).XLabel.Position(1)=T*1.125;
     f1n.Children(8).YLabel.Position(1)=f1n.Children(8).YLabel.Position(1)*1.1;
-    f1n.Position=[200 200 1920 1080];
     drawnow;
     if eval(['max(abs(oo_.irfs.rGDPpc1_DivFromTrend_',ShockList{ii},'(1:40)))>=0.01'])
         savefig(['sig Foreign responses to a ',ShockNames{ii},' shock'])    
@@ -161,9 +161,9 @@ for ii=1:NShock
     f2n.Children(11).Position=[0.08*2+0.6/4*1, 0.08*3+0.68/3*2, 0.6/4, 0.68/3];
     f2n.Children(12).Position=[0.08*1+0.6/4*0, 0.08*3+0.68/3*2, 0.6/4, 0.68/3];
     drawnow;
+    f2n.Position=[200 200 1920 1080];
     f2n.Children(3).XLabel.Position(1)=T*1.125;
     f2n.Children(8).YLabel.Position(1)=f2n.Children(8).YLabel.Position(1)*1.1;
-    f2n.Position=[200 200 1920 1080];
     drawnow;
     if eval(['max(abs(oo_.irfs.rGDPpc1_DivFromTrend_',ShockList{ii},'(1:40)))>=0.01'])
         savefig(['sig Home responses to a ',ShockNames{ii},' shock'])    
@@ -230,9 +230,9 @@ for ii=1:NShock
     f1n.Children(11).Position=[0.08*2+0.6/4*1, 0.08*3+0.68/3*2, 0.6/4, 0.68/3];
     f1n.Children(12).Position=[0.08*1+0.6/4*0, 0.08*3+0.68/3*2, 0.6/4, 0.68/3];
     drawnow;
+    f1n.Position=[200 200 1920 1080];
     f1n.Children(3).XLabel.Position(1)=T*1.125;
     f1n.Children(8).YLabel.Position(1)=f1n.Children(8).YLabel.Position(1)*1.1;
-    f1n.Position=[200 200 1920 1080];
     drawnow;
     if eval(['max(abs(oo_.irfs.rGDPpc1_DivFromTrend_',ShockList{ii},'(1:40)))>=0.01'])
         savefig(['sig Foreign responses to a ',ShockNames{ii},' shock'])    
@@ -295,9 +295,9 @@ for ii=1:NShock
     f2n.Children(11).Position=[0.08*2+0.6/4*1, 0.08*3+0.68/3*2, 0.6/4, 0.68/3];
     f2n.Children(12).Position=[0.08*1+0.6/4*0, 0.08*3+0.68/3*2, 0.6/4, 0.68/3];
     drawnow;
+    f2n.Position=[200 200 1920 1080];
     f2n.Children(3).XLabel.Position(1)=T*1.125;
     f2n.Children(8).YLabel.Position(1)=f2n.Children(8).YLabel.Position(1)*1.1;
-    f2n.Position=[200 200 1920 1080];
     drawnow;
     if eval(['max(abs(oo_.irfs.rGDPpc1_DivFromTrend_',ShockList{ii},'(1:40)))>=0.01'])
         savefig(['sig Home responses to a ',ShockNames{ii},' shock'])    
