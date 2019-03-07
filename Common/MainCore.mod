@@ -2519,6 +2519,24 @@ rGDPpc6_DivFromTrend Xpc6_DivFromTrend rPCEpc6_DivFromTrend NXY6 rPDIpc6_DivFrom
 @#endif
 ;
 
+conditional_forecast_paths;
+
+    @#for n in 2 : 5
+
+        var OECDihy@{n};
+        periods 1:120;
+        values ( oo_.forecast.Mean.OECDihy@{n} )
+
+        var ESrdy@{n};
+        periods 1:120;
+        values ( oo_.forecast.Mean.ESrdy@{n} )
+    
+    @#endfor
+
+end;
+
+conditional_forecast( parameter_set = posterior_mode, controlled_varexo = ( epsilon_uHALL2, epsilon_uHG2, epsilon_uHALL3, epsilon_uHG3, epsilon_uHALL4, epsilon_uHG4, epsilon_uHALL5, epsilon_uHG5 ), periods = 120, replic = 10000 );
+
 stoch_simul( periods = 0, irf = 0, order = 1, nocorr, nodecomposition, nofunctions, nomoments, nograph );
 
 % note that extral final observables (rGDPpc1 rPCEpc1 rPDIpc1 Xpc1 rGCEpc1 rGGIpc1 NXY1) are in percentage, 1=1%
