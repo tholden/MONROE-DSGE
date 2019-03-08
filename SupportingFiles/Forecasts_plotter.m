@@ -43,11 +43,7 @@ for ii = 1 : 6
     PlotForecast( 'Private Investment / GDP', [ Provider2 'iy' sii ], 0, 100, t0, T, oo_, [ 0, 100 ] );
     
     subplot(3,4,4)
-    if ( ii == 1 ) || ( ii == 3 )
-        PlotForecast( 'Government Spending / GDP', { [ Provider3 'gcy' sii ], [ Provider3 'giy' sii ] }, 0, 100, t0, T, oo_, [ 0, 100 ] );
-    else
-        PlotForecast( 'Government Spending / GDP', [ Provider3 'gy' sii ], 0, 100, t0, T, oo_, [ 0, 100 ] );
-    end
+    PlotForecast( 'Government Spending / GDP', [ Provider3 'gy' sii ], 0, 100, t0, T, oo_, [ 0, 100 ] );
     
     subplot(3,4,5)
     PlotForecast( 'Frontier Productivity', 'As_DivFromTrend', 100 * oo_.steady_state( ismember( cellstr( M_.endo_names ), 'log_GAs' ) ), 1, t0, T, oo_ );
@@ -104,31 +100,16 @@ for ii = 1 : 6
 
 end
 
-function PlotForecast( Title, VariableNames, GrowthRate, Scale, t0, T, oo_, Limits )
+function PlotForecast( Title, VariableName, GrowthRate, Scale, t0, T, oo_, Limits )
 
     if nargin < 8
         Limits = [ -Inf, Inf ];
     end
     
-    if ~iscell( VariableNames )
-        VariableNames = { VariableNames };
-    end
-    
-    Smoothed = 0;
-    Mean     = 0;
-    Min      = 0;
-    Max      = 0;
-    
-    for i = 1 : length( VariableNames )
-        
-        VariableName = VariableNames{ i };
-
-        Smoothed = Smoothed + oo_.SmoothedVariables.( VariableName );
-        Mean     = Mean     + oo_.forecast.Mean.( VariableName );
-        Min      = Min      + oo_.forecast.HPDinf.( VariableName );
-        Max      = Max      + oo_.forecast.HPDsup.( VariableName );
-    
-    end
+    Smoothed = oo_.SmoothedVariables.( VariableName );
+    Mean     = oo_.forecast.Mean.( VariableName );
+    Min      = oo_.forecast.HPDinf.( VariableName ); % Not entirely kosher. Should strictly introduce a new variable to capture the covariance. Leaving for now.
+    Max      = oo_.forecast.HPDsup.( VariableName );
     
     tIndex = find( T == t0, 1 );
     
