@@ -3,7 +3,7 @@
 
 addpath( '../Common' );
 
-@#define ExtraVariable=0
+@#define ExtraVariable=1
 @#define MaximumLag=3
 @#define MaximumLead=3
 @#define UsingGrowthSyntax = 1
