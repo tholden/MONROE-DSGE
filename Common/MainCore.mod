@@ -2536,13 +2536,13 @@ conditional_forecast_paths;
     @#for n in 2 : 5
 
         var OECDihy@{n};
-        @#for t in 1 : @{CFH}
+        @#for t in 1 : CFH
             periods @{t};
             values ( ihyPath@{n}( @{t} ) );
         @#endfor
 
         var ESrdy@{n};
-        @#for t in 1 : @{CFH}
+        @#for t in 1 : CFH
             periods  @{t};
             values ( rdyPath@{n}( @{t} ) );
         @#endfor
