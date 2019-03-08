@@ -108,7 +108,7 @@ function PlotForecast( Title, VariableName, GrowthRate, Scale, t0, T, oo_, Limit
     
     Smoothed = oo_.SmoothedVariables.( VariableName );
     Mean     = oo_.forecast.Mean.( VariableName );
-    Min      = oo_.forecast.HPDinf.( VariableName ); % Not entirely kosher. Should strictly introduce a new variable to capture the covariance. Leaving for now.
+    Min      = oo_.forecast.HPDinf.( VariableName );
     Max      = oo_.forecast.HPDsup.( VariableName );
     
     tIndex = find( T == t0, 1 );
