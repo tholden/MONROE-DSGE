@@ -2499,13 +2499,13 @@ OECDihy6 ESrdy6 PWTcy6  JSTiy6  JSTgy6            JSTxy6  PWTgpcgpy6  PWTgpigpy6
 @#if ExtraVariable
 As_DivFromTrend
 @#if SN > 0
-rGDPpc1_DivFromTrend Xpc1_DivFromTrend rPCEpc1_DivFromTrend NXY1 rPDIpc1_DivFromTrend IHPpc1_DivFromTrend PRDY1 rGSpendingpc1_DivFromTrend GovDifY1 GRDY1
+rGDPpc1_DivFromTrend Xpc1_DivFromTrend rPCEpc1_DivFromTrend NXY1 rPDIpc1_DivFromTrend IHPpc1_DivFromTrend PRDY1 rGSpendingpc1_DivFromTrend GovDifY1 GRDY1 BEAgy1
 @#endif
 @#if SN > 1
 rGDPpc2_DivFromTrend Xpc2_DivFromTrend rPCEpc2_DivFromTrend NXY2 rPDIpc2_DivFromTrend IHPpc2_DivFromTrend PRDY2 rGSpendingpc2_DivFromTrend GovDifY2 GRDY2
 @#endif
 @#if SN > 2
-rGDPpc3_DivFromTrend Xpc3_DivFromTrend rPCEpc3_DivFromTrend NXY3 rPDIpc3_DivFromTrend IHPpc3_DivFromTrend PRDY3 rGSpendingpc3_DivFromTrend GovDifY3 GRDY3
+rGDPpc3_DivFromTrend Xpc3_DivFromTrend rPCEpc3_DivFromTrend NXY3 rPDIpc3_DivFromTrend IHPpc3_DivFromTrend PRDY3 rGSpendingpc3_DivFromTrend GovDifY3 GRDY3 MILLgy3
 @#endif
 @#if SN > 3
 rGDPpc4_DivFromTrend Xpc4_DivFromTrend rPCEpc4_DivFromTrend NXY4 rPDIpc4_DivFromTrend IHPpc4_DivFromTrend PRDY4 rGSpendingpc4_DivFromTrend GovDifY4 GRDY4
