@@ -1,4 +1,8 @@
 As_DivFromTrend=As_DivFromTrend(-1)+log_GAs*100-steady_state(log_GAs)*100;
+
+BEAgy1 = BEAgcy1 + BEAgiy1;
+MILLgy3 = MILLgcy3 + MILLgiy3;
+
 @#for n in 1:SN
 GrGDPpc@{n}  = log(( GDP@{n} / GDPqlag@{n} * GDPplag@{n} / GDPplagqlag@{n} ) ^ ( 1 / 2 ) / (N@{n} / N@{n}_LAG))*100;
 #GrPCEpc@{n} = log(( PCE@{n} / PCEqlag@{n} * PCEplag@{n} / PCEplagqlag@{n} ) ^ ( 1 / 2 ) / (N@{n} / N@{n}_LAG))*100;
@@ -27,8 +31,14 @@ Xpc@{n}_DivFromTrend=Xpc@{n}_DivFromTrend(-1)+GrXpc@{n}-steady_state_GrXpc@{n};
 rGCEpc@{n}_DivFromTrend=rGCEpc@{n}_DivFromTrend(-1)+GrGCEpc@{n}-steady_state_GrGCEpc@{n};
 rGGIpc@{n}_DivFromTrend=rGGIpc@{n}_DivFromTrend(-1)+GrGGIpc@{n}-steady_state_GrGGIpc@{n};
 rGSpendingpc@{n}_DivFromTrend=rGSpendingpc@{n}_DivFromTrend(-1)+GrSpendingpc@{n}-steady_state_GrSpendingpc@{n};
-GovDifY@{n} = (GCE@{n}+GGI@{n}-GovRev@{n}) / GDP@{n} * 100;
 NXY@{n}=(Export@{n}-Import@{n}) / GDP@{n} * 100;
 PRDY@{n} = ( YWC@{n} * PWC * ( scriptFI * II * ( scripts - ( 1 - scriptq ) * ( 1 - deltaI ) * scripts_LAG / GII ) + II * scripts * ScriptFRP * JP ) / YWC / GDP@{n} ) * 100;
 GRDY@{n} = ( PHG@{n} * IHG@{n} / GDP@{n} ) * 100;
 @#endfor
+
+GovDifY1 = ( BEAgy1 - JSTtauy1 ) * 100;
+GovDifY2 = ( JSTgy2 - JSTtauy2 ) * 100;
+GovDifY3 = ( MILLgy3 - MILLtauy3 ) * 100;
+GovDifY4 = ( JSTgy4 - JSTtauy4 ) * 100;
+GovDifY5 = ( JSTgy5 - JSTtauy5 ) * 100;
+GovDifY6 = ( JSTgy6 - JSTtauy6 ) * 100;

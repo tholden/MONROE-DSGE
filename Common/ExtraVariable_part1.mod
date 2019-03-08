@@ -21,3 +21,5 @@ PRDY@{n}
 GRDY@{n}
 @#endfor
 ;
+
+var BEAgy1 MILLgy3;
