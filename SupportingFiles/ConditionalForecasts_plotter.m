@@ -134,10 +134,10 @@ function PlotForecast( Title, VariableName, GrowthRate, Scale, t0, T, oo_, cond,
     
     L = length( T );
     
-    plot( T, Cond( 1 : L ) * Scale, '-b' );
+    plot( T, Cond( 1 : L ) * Scale, '-g' );
     hold on;
-    plot( T, Uncond( 1 : L )  * Scale, '-g' );
-    plot( T, UncondAlt( 1 : L )  * Scale, '-r' );
+    plot( T, Uncond( 1 : L )  * Scale, '-b' );
+    % plot( T, UncondAlt( 1 : L )  * Scale, '-r' );
     hold off;
     title( Title );
     
