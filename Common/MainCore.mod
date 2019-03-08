@@ -2551,9 +2551,11 @@ conditional_forecast_paths;
 
 end;
 
-conditional_forecast( parameter_set = posterior_mode, controlled_varexo = ( epsilon_uHALL2, epsilon_uHG2, epsilon_uHALL3, epsilon_uHG3, epsilon_uHALL4, epsilon_uHG4, epsilon_uHALL5, epsilon_uHG5 ), periods = 120, replic = 10000 );
+options_.deterministic_conditional_forecast = 1;
 
-stoch_simul( periods = 0, irf = 0, order = 1, nocorr, nodecomposition, nofunctions, nomoments, nograph );
+conditional_forecast( parameter_set = posterior_mode, controlled_varexo = ( epsilon_uHALL2, epsilon_uHG2, epsilon_uHALL3, epsilon_uHG3, epsilon_uHALL4, epsilon_uHG4, epsilon_uHALL5, epsilon_uHG5 ), periods = 120 );
+
+stoch_simul( periods = 0, irf = 40, order = 1, nocorr, nodecomposition, nofunctions, nomoments, nograph );
 
 % note that extral final observables (rGDPpc1 rPCEpc1 rPDIpc1 Xpc1 rGCEpc1 rGGIpc1 NXY1) are in percentage, 1=1%
 % observables for estimation (BEAly1 BLShourspercapita1, etc) are of 0.01=1%
