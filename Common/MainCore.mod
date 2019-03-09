@@ -540,7 +540,7 @@ parameters logit_rhoGN logit_rhoZ logit_rhodeltaItilde logit_rhoscriptFI logit_r
 parameters logit_rhokappa@{S};
 @#endfor
 
-parameters logit_alphaCP logit_alphaCD logit_alphah logit_alphaKP logit_alphaD logit_alphaND logit_alphaHP logit_alphaHW logit_alphaHL logit_alphaK logit_alphaKL logit_alphaHLX logit_alphaY;
+parameters logit_alphaCP logit_alphaCD logit_alphah logit_alphaKP logit_alphaD logit_alphaND logit_alphaHP logit_alphaHW logit_alphaHL logit_alphaK logit_alphaKL logit_alphaHLX logit_alphaY logit_alphaNC;
 
 //////////////////////////////////////Parameter hierarchical structure (not calibrated)//////////////////////////////////////////////////
 
