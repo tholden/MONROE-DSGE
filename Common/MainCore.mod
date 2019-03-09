@@ -2568,6 +2568,8 @@ options_.deterministic_conditional_forecast = 1;
 conditional_forecast( parameter_set = posterior_mode, controlled_varexo = ( epsilon_uHALL2, epsilon_uHG2, epsilon_uHALL3, epsilon_uHG3, epsilon_uHALL4, epsilon_uHG4, epsilon_uHALL5, epsilon_uHG5 ), periods = 120 );
 
 stoch_simul( periods = 0, irf = 40, order = 1, nocorr, nodecomposition, nofunctions, nomoments, nograph );
-
+% As_DivFromTrend
+% rGDPpc1_DivFromTrend Xpc1_DivFromTrend rPCEpc1_DivFromTrend NXY1 rPDIpc1_DivFromTrend IHPpc1_DivFromTrend PRDY1 rGSpendingpc1_DivFromTrend GovDifY1 GRDY1  BEAhpop1 
+% rGDPpc2_DivFromTrend Xpc2_DivFromTrend rPCEpc2_DivFromTrend NXY2 rPDIpc2_DivFromTrend IHPpc2_DivFromTrend PRDY2 rGSpendingpc2_DivFromTrend GovDifY2 GRDY2  PWThpop2;
 % note that extral final observables (rGDPpc1 rPCEpc1 rPDIpc1 Xpc1 rGCEpc1 rGGIpc1 NXY1) are in percentage, 1=1%
 % observables for estimation (BEAly1 BLShourspercapita1, etc) are of 0.01=1%
