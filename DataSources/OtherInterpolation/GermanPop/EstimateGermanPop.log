@@ -1,0 +1,246 @@
+Starting Dynare (version 4.5.3).
+Starting preprocessing of the model file ...
+Substitution of exo lags: added 3 auxiliary variables and equations.
+Found 11 equation(s).
+Evaluating expressions...done
+Computing static model derivatives:
+ - order 1
+Computing dynamic model derivatives:
+ - order 1
+Processing outputs ...
+done
+Preprocessing completed.
+dynare.m',223,0)">line 223</a>)
+evalin('base',fname) ;} 
+dynare EstimateGermanPop
+
+Configuring Dynare ...
+[mex] Generalized QZ.
+[mex] Sylvester equation solution.
+[mex] Kronecker products.
+[mex] Sparse kronecker products.
+[mex] Local state space iteration (second order).
+[mex] Bytecode evaluation.
+[mex] k-order perturbation solver.
+[mex] k-order solution simulation.
+[mex] Quasi Monte-Carlo sequence (Sobol).
+[mex] Markov Switching SBVAR.
+
+Using 64-bit preprocessor
+Starting Dynare (version 4.5.3).
+Starting preprocessing of the model file ...
+Substitution of exo lags: added 3 auxiliary variables and equations.
+Found 11 equation(s).
+Evaluating expressions...done
+Computing static model derivatives:
+ - order 1
+Computing dynamic model derivatives:
+ - order 1
+Processing outputs ...
+done
+Preprocessing completed.
+
+
+STEADY-STATE RESULTS:
+
+DJST_TREND       		 0
+DJST_TREND_SHOCK 		 0
+JST              		 10.6165
+JST_SHOCK        		 0
+JST2             		 10.6165
+JST2_SHOCK       		 0
+JST_TREND        		 10.6165
+PWT              		 10.6165
+
+EIGENVALUES:
+         Modulus             Real        Imaginary
+
+               0               -0                0
+               0               -0                0
+               0               -0                0
+             0.5              0.5                0
+             0.5              0.5                0
+             0.5              0.5                0
+               1                1                0
+               1                1                0
+
+
+There are 0 eigenvalue(s) larger than 1 in modulus 
+for 0 forward-looking variable(s)
+
+The rank condition is verified.
+
+Initial value of the log posterior (or likelihood): -309650.5251
+Your initial point x0 is not between bounds lb and ub; FMINCON
+shifted x0 to strictly satisfy the bounds.
+
+                                            First-order      Norm of
+ Iter F-count            f(x)  Feasibility   optimality         step
+    0      25    5.954053e+07    0.000e+00    1.172e+11
+    1      50    1.328052e+05    0.000e+00    2.049e+08    6.148e-01
+    2      75    2.552406e+03    0.000e+00    1.786e+06    4.204e-01
+    3     101    1.400931e+03    0.000e+00    1.067e+06    6.110e-03
+    4     126    1.292425e+03    0.000e+00    9.989e+05    7.044e-01
+    5     154    1.255956e+03    0.000e+00    1.172e+06    3.980e-02
+    6     180    8.375942e+02    0.000e+00    9.185e+05    5.319e-01
+    7     205   -6.989742e+01    0.000e+00    1.980e+05    4.653e-01
+    8     231   -8.491066e+01    0.000e+00    4.452e+05    4.247e-01
+    9     256   -1.773559e+02    0.000e+00    2.305e+05    2.698e-01
+   10     281   -1.827757e+02    0.000e+00    2.339e+05    3.734e-01
+   11     307   -1.974240e+02    0.000e+00    2.996e+05    1.876e-01
+   12     334   -2.014263e+02    0.000e+00    2.974e+05    2.958e-01
+   13     362   -2.118776e+02    0.000e+00    2.470e+05    1.227e-01
+   14     387   -2.253159e+02    0.000e+00    2.536e+05    1.985e-01
+   15     412   -2.351490e+02    0.000e+00    2.526e+05    3.190e-01
+   16     438   -2.368080e+02    0.000e+00    2.529e+05    1.829e-01
+   17     463   -2.869157e+02    0.000e+00    2.319e+05    3.425e-01
+   18     488   -3.637393e+02    0.000e+00    1.848e+05    1.768e-01
+   19     514   -4.497724e+02    0.000e+00    1.199e+05    3.240e-01
+   20     539   -4.716157e+02    0.000e+00    1.055e+05    3.868e-01
+   21     564   -4.813865e+02    0.000e+00    1.004e+05    2.002e-01
+   22     589   -5.433612e+02    0.000e+00    5.331e+04    2.772e-01
+   23     614   -5.475890e+02    0.000e+00    5.046e+04    8.896e-01
+   24     639   -5.838964e+02    0.000e+00    1.815e+04    4.251e-01
+   25     664   -5.881374e+02    0.000e+00    1.804e+04    1.348e-01
+   26     689   -5.924624e+02    0.000e+00    1.714e+04    2.579e-01
+   27     714   -5.935069e+02    0.000e+00    1.652e+04    3.082e-01
+   28     739   -5.990195e+02    0.000e+00    1.309e+04    4.845e-01
+   29     764   -6.011197e+02    0.000e+00    1.184e+04    5.742e-01
+   30     789   -6.015065e+02    0.000e+00    7.911e+03    1.196e+00
+
+                                            First-order      Norm of
+ Iter F-count            f(x)  Feasibility   optimality         step
+   31     814   -6.051718e+02    0.000e+00    8.338e+03    1.006e+00
+   32     842   -6.049308e+02    0.000e+00    8.226e+03    1.258e-01
+   33     867   -6.068651e+02    0.000e+00    7.773e+03    1.453e-01
+   34     892   -6.100965e+02    0.000e+00    6.235e+03    3.832e-01
+   35     917   -6.150130e+02    0.000e+00    6.442e+03    2.268e-01
+   36     942   -6.173270e+02    0.000e+00    6.180e+03    1.806e-01
+   37     967   -6.215655e+02    0.000e+00    7.155e+03    6.245e-02
+   38     992   -6.269398e+02    0.000e+00    1.538e+04    1.381e-01
+   39    1017   -6.305286e+02    0.000e+00    1.555e+04    2.325e-01
+   40    1042   -6.408840e+02    0.000e+00    1.914e+04    3.238e-01
+   41    1067   -6.608714e+02    0.000e+00    6.744e+04    6.613e-01
+   42    1092   -6.687084e+02    0.000e+00    1.837e+06    7.018e-01
+   43    1117   -7.185107e+02    0.000e+00    2.137e+04    4.182e-01
+   44    1142   -7.377101e+02    0.000e+00    1.129e+05    6.160e-01
+   45    1167   -7.388059e+02    0.000e+00    1.129e+05    2.198e-02
+   46    1193   -7.411435e+02    0.000e+00    6.696e+04    1.871e-01
+   47    1218   -7.531996e+02    0.000e+00    8.171e+04    2.142e-01
+   48    1243   -7.705211e+02    0.000e+00    1.136e+05    1.218e-01
+   49    1268   -7.837379e+02    0.000e+00    1.113e+05    2.131e-01
+   50    1293   -7.930163e+02    0.000e+00    2.266e+04    4.568e-01
+   51    1318   -7.996735e+02    0.000e+00    1.315e+04    2.648e-01
+   52    1344   -8.004644e+02    0.000e+00    9.275e+04    4.624e-01
+   53    1369   -8.024228e+02    0.000e+00    2.048e+05    7.484e-02
+   54    1394   -8.072557e+02    0.000e+00    1.421e+05    2.626e-01
+   55    1419   -8.100941e+02    0.000e+00    3.646e+04    2.663e-01
+   56    1444   -8.124896e+02    0.000e+00    1.467e+04    1.424e-01
+   57    1469   -8.165257e+02    0.000e+00    6.703e+03    2.273e-01
+   58    1495   -8.167165e+02    0.000e+00    9.219e+03    8.075e-03
+   59    1520   -8.192398e+02    0.000e+00    1.704e+04    1.605e-01
+   60    1546   -8.193702e+02    0.000e+00    1.686e+04    2.227e-02
+
+                                            First-order      Norm of
+ Iter F-count            f(x)  Feasibility   optimality         step
+   61    1571   -8.229801e+02    0.000e+00    8.854e+03    5.230e-01
+   62    1596   -8.248178e+02    0.000e+00    1.417e+04    2.133e-01
+   63    1621   -8.284243e+02    0.000e+00    1.118e+04    2.313e-01
+   64    1646   -8.354190e+02    0.000e+00    2.071e+03    7.824e-01
+   65    1671   -8.450440e+02    0.000e+00    1.774e+04    2.080e-01
+   66    1697   -8.480810e+02    0.000e+00    2.689e+04    1.494e-01
+   67    1722   -8.534838e+02    0.000e+00    1.265e+04    4.816e-01
+   68    1748   -8.564776e+02    0.000e+00    1.972e+03    5.075e-01
+   69    1773   -8.628271e+02    0.000e+00    2.221e+04    1.257e-01
+   70    1798   -8.663981e+02    0.000e+00    4.319e+04    2.487e-01
+   71    1823   -8.704725e+02    0.000e+00    4.813e+04    1.935e-01
+   72    1848   -8.751187e+02    0.000e+00    3.877e+04    1.515e-01
+   73    1873   -8.766534e+02    0.000e+00    1.090e+03    1.165e-01
+   74    1898   -8.772954e+02    0.000e+00    1.015e+04    1.554e-01
+   75    1923   -8.776204e+02    0.000e+00    2.104e+04    5.890e-02
+   76    1948   -8.777921e+02    0.000e+00    2.280e+04    8.537e-02
+   77    1973   -8.779482e+02    0.000e+00    1.362e+04    1.295e-01
+   78    1998   -8.780886e+02    0.000e+00    1.983e+03    2.292e-02
+   79    2023   -8.784101e+02    0.000e+00    1.550e+04    6.684e-02
+   80    2048   -8.797113e+02    0.000e+00    5.122e+04    1.516e-01
+   81    2073   -8.808554e+02    0.000e+00    9.202e+04    4.626e-01
+   82    2098   -8.817788e+02    0.000e+00    8.522e+04    3.840e-01
+   83    2123   -8.827537e+02    0.000e+00    7.377e+04    1.116e-01
+   84    2148   -8.857585e+02    0.000e+00    4.177e+04    8.451e-02
+   85    2174   -8.871336e+02    0.000e+00    2.522e+04    9.599e-02
+   86    2200   -8.878014e+02    0.000e+00    1.464e+04    3.810e-02
+   87    2225   -8.882207e+02    0.000e+00    4.919e+02    3.612e-02
+   88    2250   -8.883017e+02    0.000e+00    1.879e+03    1.536e-02
+   89    2275   -8.883570e+02    0.000e+00    4.879e+03    2.070e-02
+   90    2300   -8.883992e+02    0.000e+00    7.116e+03    7.231e-03
+
+                                            First-order      Norm of
+ Iter F-count            f(x)  Feasibility   optimality         step
+   91    2325   -8.885268e+02    0.000e+00    8.843e+03    1.799e-02
+   92    2350   -8.886904e+02    0.000e+00    7.889e+03    1.725e-02
+   93    2375   -8.888700e+02    0.000e+00    3.420e+03    2.469e-02
+   94    2400   -8.889534e+02    0.000e+00    3.318e+02    2.141e-02
+   95    2425   -8.889751e+02    0.000e+00    1.425e+03    7.028e-03
+   96    2450   -8.889821e+02    0.000e+00    1.627e+03    6.564e-03
+   97    2475   -8.889954e+02    0.000e+00    8.863e+02    1.409e-02
+   98    2500   -8.890054e+02    0.000e+00    2.433e+02    1.932e-02
+   99    2525   -8.890178e+02    0.000e+00    1.010e+03    1.930e-02
+  100    2550   -8.890210e+02    0.000e+00    9.393e+02    8.183e-03
+  101    2575   -8.890228e+02    0.000e+00    6.535e+02    3.244e-03
+  102    2600   -8.890216e+02    0.000e+00    4.015e+01    3.283e-03
+  103    2625   -8.890790e+02    0.000e+00    6.009e+02    9.490e-03
+  104    2650   -8.890808e+02    0.000e+00    4.454e+02    5.310e-03
+  105    2675   -8.890814e+02    0.000e+00    4.350e+02    1.640e-03
+  106    2700   -8.890818e+02    0.000e+00    9.528e+01    1.823e-03
+  107    2725   -8.890817e+02    0.000e+00    3.920e+01    1.745e-03
+  108    2750   -8.890817e+02    0.000e+00    1.047e+01    1.060e-03
+  109    2775   -8.890816e+02    0.000e+00    3.519e+00    2.123e-04
+  110    2800   -8.890912e+02    0.000e+00    8.587e+01    2.785e-03
+  111    2825   -8.890930e+02    0.000e+00    7.500e+00    7.045e-04
+  112    2850   -8.890932e+02    0.000e+00    5.781e+00    5.994e-05
+  113    2899   -8.890932e+02    0.000e+00    4.206e-03    2.684e-11
+  114    2924   -8.890960e+02    0.000e+00    4.625e+01    9.898e-04
+  115    2949   -8.890966e+02    0.000e+00    1.740e+01    4.401e-04
+  116    2974   -8.890967e+02    0.000e+00    2.678e+00    6.658e-05
+  117    2999   -8.890967e+02    0.000e+00    2.374e-01    2.619e-05
+  118    3025   -8.890967e+02    0.000e+00    1.638e-01    2.850e-06
+  119    3074   -8.890967e+02    0.000e+00    1.176e-01    8.741e-12
+  120    3102   -8.890967e+02    0.000e+00    1.176e-01    2.477e-12
+
+                                            First-order      Norm of
+ Iter F-count            f(x)  Feasibility   optimality         step
+  121    3133   -8.890967e+02    0.000e+00    1.176e-01    7.744e-12
+
+<a href = "matlab: helpview([docroot '/toolbox/optim/msg_csh/optim_msg_csh.map'],'local_min_poss_with_constr','CSHelpWindow');">Local minimum possible. Constraints satisfied</a>.
+
+fmincon stopped because the <a href = "matlab: helpview([docroot '/toolbox/optim/msg_csh/optim_msg_csh.map'],'norm_curr_step_simple_fminconip','CSHelpWindow');">size of the current step</a> is less than
+the selected value of the <a href = "matlab: helpview([docroot '/toolbox/optim/msg_csh/optim_msg_csh.map'],'step_size_tol','CSHelpWindow');">step size tolerance</a> and constraints are 
+satisfied to within the default value of the <a href = "matlab: helpview([docroot '/toolbox/optim/msg_csh/optim_msg_csh.map'],'constraint_tolerance','CSHelpWindow');">constraint tolerance</a>.
+
+<<a href = "matlab: createExitMsg('barrier',2.000000e+00,true,true,'fmincon',8.086152e-13,'selected',1.000000e-12,0.000000e+00,'default',1.000000e-06,0.000000e+00,'',0.000000e+00);">stopping criteria details</a>>
+
+
+Final value of minus the log posterior (or likelihood):-889.096659 
+
+MODE CHECK
+
+Fval obtained by the minimization routine (minus the posterior/likelihood)): -889.096659
+
+RESULTS FROM MAXIMUM LIKELIHOOD ESTIMATION
+parameters
+                 Estimate    s.d. t-stat
+
+JST2_scale         0.9764  0.0031 317.9894 
+JST2_kappa         0.1816  0.3197  0.5679 
+PWT_kappa          0.0000  0.0005  0.0001 
+DJST_TREND_rho     0.8824  0.0426 20.7158 
+DJST_TREND_sigma   0.0002  0.0000  7.4775 
+DJST_TREND_theta   0.8189  0.0576 14.2119 
+JST_rho            0.8688  0.0699 12.4348 
+JST_sigma          0.0123  0.0009 13.2557 
+JST_theta          0.1173  0.1200  0.9770 
+JST2_rho           0.9843  0.0210 46.9658 
+JST2_sigma         0.0066  0.0014  4.6211 
+JST2_theta         0.0598  0.1658  0.3605 
+
+Total computing time : 0h00m29s
