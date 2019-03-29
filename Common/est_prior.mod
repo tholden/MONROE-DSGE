@@ -57,19 +57,19 @@ rdy_      ,rdy_    ,       ,       ,NORMAL_PDF   ,0           ,0.2          ;
 
 @#if 1
 //country-specific parameters but must be constant across countries as required by the model
-logit_alphaCP   ,logit_alphaCP  , , ,NORMAL_PDF   ,0    ,0.5  ;
-logit_alphaCD   ,logit_alphaCD  , , ,NORMAL_PDF   ,0    ,0.5  ;
-logit_alphah    ,logit_alphah   , , ,NORMAL_PDF   ,0    ,0.5  ;
-logit_alphaKP   ,logit_alphaKP  , , ,NORMAL_PDF   ,0    ,0.5  ;
-logit_alphaHP   ,logit_alphaHP  , , ,NORMAL_PDF   ,0    ,0.5  ; 
-logit_alphaD    ,logit_alphaD   , , ,NORMAL_PDF   ,0    ,0.5  ; 
-logit_alphaND   ,logit_alphaND  , , ,NORMAL_PDF   ,0    ,0.5  ; 
-logit_alphaHW   ,logit_alphaHW  , , ,NORMAL_PDF   ,0    ,0.5  ; 
-logit_alphaHL   ,logit_alphaHL  , , ,NORMAL_PDF   ,0    ,0.5  ; 
-logit_alphaK    ,logit_alphaK   , , ,NORMAL_PDF   ,0    ,0.5  ; 
-logit_alphaKL   ,logit_alphaKL  , , ,NORMAL_PDF   ,0    ,0.5  ; 
-logit_alphaHLX  ,logit_alphaHLX , , ,NORMAL_PDF   ,0    ,0.5  ;
-logit_alphaY    ,logit_alphaY   , , ,NORMAL_PDF   ,0    ,0.5  ;
+logit_alphaCP   ,logit_alphaCP  , , ,NORMAL_PDF   ,0    ,sqrt(0.5)  ;
+logit_alphaCD   ,logit_alphaCD  , , ,NORMAL_PDF   ,0    ,sqrt(0.5)  ;
+logit_alphah    ,logit_alphah   , , ,NORMAL_PDF   ,0    ,sqrt(0.5)  ;
+logit_alphaKP   ,logit_alphaKP  , , ,NORMAL_PDF   ,0    ,sqrt(0.5)  ;
+logit_alphaHP   ,logit_alphaHP  , , ,NORMAL_PDF   ,0    ,sqrt(0.5)  ; 
+logit_alphaD    ,logit_alphaD   , , ,NORMAL_PDF   ,0    ,sqrt(0.5)  ; 
+logit_alphaND   ,logit_alphaND  , , ,NORMAL_PDF   ,0    ,sqrt(0.5)  ; 
+logit_alphaHW   ,logit_alphaHW  , , ,NORMAL_PDF   ,0    ,sqrt(0.5)  ; 
+logit_alphaHL   ,logit_alphaHL  , , ,NORMAL_PDF   ,0    ,sqrt(0.5)  ; 
+logit_alphaK    ,logit_alphaK   , , ,NORMAL_PDF   ,0    ,sqrt(0.5)  ; 
+logit_alphaKL   ,logit_alphaKL  , , ,NORMAL_PDF   ,0    ,sqrt(0.5)  ; 
+logit_alphaHLX  ,logit_alphaHLX , , ,NORMAL_PDF   ,0    ,sqrt(0.5)  ;
+logit_alphaY    ,logit_alphaY   , , ,NORMAL_PDF   ,0    ,sqrt(0.5)  ;
 betabarl  ,betabarl ,0.0001 ,0.9999 ,BETA_PDF   ,0.96   ,0.005     ;
 
 //country-specific parameters that are assumed to be constant across countries
@@ -110,12 +110,12 @@ thetaPD       ,thetaPD     ,       ,       ,GAMMA_PDF    ,10    ,5;
 thetaDU0      ,thetaDU0    ,       ,       ,GAMMA_PDF    ,0.2   ,0.1;
 thetaDU1      ,thetaDU1    ,       ,       ,GAMMA_PDF    ,1     ,0.5;
 
-eNC           ,eNC         ,       ,       ,GAMMA_PDF    ,1     ,0.5;
-alphaNC       ,alphaNC     ,0.0001 ,0.9999 ,BETA_PDF     ,0.5   ,0.05^0.5;
-eT            ,eT          ,       ,       ,GAMMA_PDF    ,1     ,0.5;
-eW            ,eW          ,       ,       ,GAMMA_PDF    ,1     ,0.5;
-FWCtilde      ,FWCtilde    ,       ,       ,GAMMA_PDF    ,1     ,1  ;
-FKtilde       ,FKtilde     ,       ,       ,GAMMA_PDF    ,1     ,1  ;
+eNC           ,eNC          ,       ,       ,GAMMA_PDF    ,1     ,0.5      ;
+logit_alphaNC ,logit_alphaNC,       ,       ,NORMAL_PDF   ,0     ,sqrt(0.5);
+eT            ,eT           ,       ,       ,GAMMA_PDF    ,1     ,0.5      ;
+eW            ,eW           ,       ,       ,GAMMA_PDF    ,1     ,0.5      ;
+FWCtilde      ,FWCtilde     ,       ,       ,GAMMA_PDF    ,1     ,1        ;
+FKtilde       ,FKtilde      ,       ,       ,GAMMA_PDF    ,1     ,1        ;
 
   o             ,o           ,       ,       ,GAMMA_PDF    ,100   ,70 ;
 //eKLT          ,eKLT        ,       ,       ,GAMMA_PDF    ,1     ,0.5;
@@ -194,24 +194,24 @@ FKtilde       ,FKtilde     ,       ,       ,GAMMA_PDF    ,1     ,1  ;
 //phiutauXT       ,phiutauXT       ,       ,   ,NORMAL_PDF ,0   ,0.5; 
 //phiutauXNT      ,phiutauXNT      ,       ,   ,NORMAL_PDF ,0   ,0.5; 
   
-//phitauD         ,phitauD         ,0.0001 ,0.9999 ,uniform_pdf  ,0.5   ,(1/12)^(0.5);                
-//phitauND        ,phitauND        ,0.0001 ,0.9999 ,uniform_pdf  ,0.5   ,(1/12)^(0.5);                
-  phitauNT        ,phitauNT        ,0.0001 ,0.9999 ,uniform_pdf  ,0.5   ,(1/12)^(0.5);                
-%%phitauTC        ,phitauTC        ,0.0001 ,0.9999 ,uniform_pdf  ,0.5   ,(1/12)^(0.5);                
-//phiiotaTX       ,phiiotaTX       ,0.0001 ,0.9999 ,uniform_pdf  ,0.5   ,(1/12)^(0.5);                
-//phiiotaTM       ,phiiotaTM       ,0.0001 ,0.9999 ,uniform_pdf  ,0.5   ,(1/12)^(0.5);                
-//phiiotaWX       ,phiiotaWX       ,0.0001 ,0.9999 ,uniform_pdf  ,0.5   ,(1/12)^(0.5);                
-//phiiotaWM       ,phiiotaWM       ,0.0001 ,0.9999 ,uniform_pdf  ,0.5   ,(1/12)^(0.5);                
-  phitauL         ,phitauL         ,0.0001 ,0.9999 ,uniform_pdf  ,0.5   ,(1/12)^(0.5);                
-//phitauHW        ,phitauHW        ,0.0001 ,0.9999 ,uniform_pdf  ,0.5   ,(1/12)^(0.5);                
-//phitauHT        ,phitauHT        ,0.0001 ,0.9999 ,uniform_pdf  ,0.5   ,(1/12)^(0.5);                
-//phitauHNT       ,phitauHNT       ,0.0001 ,0.9999 ,uniform_pdf  ,0.5   ,(1/12)^(0.5);                
-//phitauKW        ,phitauKW        ,0.0001 ,0.9999 ,uniform_pdf  ,0.5   ,(1/12)^(0.5);                
-//phitauKT        ,phitauKT        ,0.0001 ,0.9999 ,uniform_pdf  ,0.5   ,(1/12)^(0.5);                
-//phitauKNT       ,phitauKNT       ,0.0001 ,0.9999 ,uniform_pdf  ,0.5   ,(1/12)^(0.5);                
-//phitauscriptXW  ,phitauscriptXW  ,0.0001 ,0.9999 ,uniform_pdf  ,0.5   ,(1/12)^(0.5);                
-//phitauscriptXT  ,phitauscriptXT  ,0.0001 ,0.9999 ,uniform_pdf  ,0.5   ,(1/12)^(0.5);                
-//phitauscriptXNT ,phitauscriptXNT ,0.0001 ,0.9999 ,uniform_pdf  ,0.5   ,(1/12)^(0.5); 
+//phitauD         ,phitauD         ,0.0001 ,0.9999 ,BETA_PDF  ,3/4    ,sqrt(15)/20;                
+//phitauND        ,phitauND        ,0.0001 ,0.9999 ,BETA_PDF  ,3/4    ,sqrt(15)/20;                
+  phitauNT        ,phitauNT        ,0.0001 ,0.9999 ,BETA_PDF  ,3/4    ,sqrt(15)/20;                
+%%phitauTC        ,phitauTC        ,0.0001 ,0.9999 ,BETA_PDF  ,3/4    ,sqrt(15)/20;                
+//phiiotaTX       ,phiiotaTX       ,0.0001 ,0.9999 ,BETA_PDF  ,3/4    ,sqrt(15)/20;                
+//phiiotaTM       ,phiiotaTM       ,0.0001 ,0.9999 ,BETA_PDF  ,3/4    ,sqrt(15)/20;                
+//phiiotaWX       ,phiiotaWX       ,0.0001 ,0.9999 ,BETA_PDF  ,3/4    ,sqrt(15)/20;                
+//phiiotaWM       ,phiiotaWM       ,0.0001 ,0.9999 ,BETA_PDF  ,3/4    ,sqrt(15)/20;                
+  phitauL         ,phitauL         ,0.0001 ,0.9999 ,BETA_PDF  ,3/4    ,sqrt(15)/20;                
+//phitauHW        ,phitauHW        ,0.0001 ,0.9999 ,BETA_PDF  ,3/4    ,sqrt(15)/20;                
+//phitauHT        ,phitauHT        ,0.0001 ,0.9999 ,BETA_PDF  ,3/4    ,sqrt(15)/20;                
+//phitauHNT       ,phitauHNT       ,0.0001 ,0.9999 ,BETA_PDF  ,3/4    ,sqrt(15)/20;                
+//phitauKW        ,phitauKW        ,0.0001 ,0.9999 ,BETA_PDF  ,3/4    ,sqrt(15)/20;                
+//phitauKT        ,phitauKT        ,0.0001 ,0.9999 ,BETA_PDF  ,3/4    ,sqrt(15)/20;                
+//phitauKNT       ,phitauKNT       ,0.0001 ,0.9999 ,BETA_PDF  ,3/4    ,sqrt(15)/20;                
+//phitauscriptXW  ,phitauscriptXW  ,0.0001 ,0.9999 ,BETA_PDF  ,3/4    ,sqrt(15)/20;                
+//phitauscriptXT  ,phitauscriptXT  ,0.0001 ,0.9999 ,BETA_PDF  ,3/4    ,sqrt(15)/20;                
+//phitauscriptXNT ,phitauscriptXNT ,0.0001 ,0.9999 ,BETA_PDF  ,3/4    ,sqrt(15)/20; 
   
 //sigmauKG        ,sigmauKG        ,       ,       ,INV_GAMMA_PDF,0.001 ,0.02;
 //sigmauHG        ,sigmauHG        ,       ,       ,INV_GAMMA_PDF,0.001 ,0.02;
@@ -306,9 +306,9 @@ logit_rhodeltaItilde ,logit_rhodeltaItilde , , ,NORMAL_PDF   ,0    ,1.1  ;   sig
 logit_rhoscriptFI    ,logit_rhoscriptFI    , , ,NORMAL_PDF   ,0    ,1.1  ;   sigmascriptFI    ,sigmascriptFI    , , ,INV_GAMMA_PDF ,0.005 ,0.1;    scriptFI_     ,scriptFI_    ,      ,      ,GAMMA_PDF  ,5      ,5       ;
 logit_rhodeltaD      ,logit_rhodeltaD      , , ,NORMAL_PDF   ,0    ,1.1  ;   sigmadeltaD      ,sigmadeltaD      , , ,INV_GAMMA_PDF ,0.005 ,0.1;    deltaD_       ,deltaD_      ,0.001 ,0.999 ,BETA_PDF   ,0.05   ,0.025   ;
 logit_rhokappa0      ,logit_rhokappa0      , , ,NORMAL_PDF   ,0    ,1.1  ;   sigmakappa0      ,sigmakappa0      , , ,INV_GAMMA_PDF ,0.005 ,0.1;    kappa0_       ,kappa0_      ,      ,      ,NORMAL_PDF ,0      ,0.1     ;
-logit_rhokappah      ,logit_rhokappah      , , ,NORMAL_PDF   ,0    ,1.1  ;   sigmakappah      ,sigmakappah      , , ,INV_GAMMA_PDF ,0.005 ,0.1;    kappah_       ,kappah_      ,      ,      ,GAMMA_PDF  ,1      ,0.1     ;
+logit_rhokappah      ,logit_rhokappah      , , ,NORMAL_PDF   ,0    ,1.1  ;   sigmakappah      ,sigmakappah      , , ,INV_GAMMA_PDF ,0.005 ,0.1;    kappah_       ,kappah_      ,      ,      ,GAMMA_PDF  ,1      ,sqrt(0.5);
 @#for S in Sectors2                                                                                                                                                                                            
-logit_rhokappa@{S}   ,logit_rhokappa@{S}   , , ,NORMAL_PDF   ,0    ,1.1  ;   sigmakappa@{S}   ,sigmakappa@{S}   , , ,INV_GAMMA_PDF ,0.005 ,0.1;    kappa@{S}_    ,kappa@{S}_  ,      ,      ,GAMMA_PDF  ,1      ,0.1     ;
+logit_rhokappa@{S}   ,logit_rhokappa@{S}   , , ,NORMAL_PDF   ,0    ,1.1  ;   sigmakappa@{S}   ,sigmakappa@{S}   , , ,INV_GAMMA_PDF ,0.005 ,0.1;    kappa@{S}_    ,kappa@{S}_  ,      ,       ,GAMMA_PDF  ,1      ,sqrt(0.5);
 @#endfor
 rhodeltaK      ,rhodeltaK      ,0.0001 ,0.9999 ,BETA_PDF ,0.5 ,0.05^0.5;  sigmadeltaK      ,sigmadeltaK      , , ,INV_GAMMA_PDF ,0.005 ,0.1;    deltaK_      ,deltaK_       ,0.001 ,0.999 ,BETA_PDF   ,0.1    ,0.05;
 rhodeltaH      ,rhodeltaH      ,0.0001 ,0.9999 ,BETA_PDF ,0.5 ,0.05^0.5;  sigmadeltaH      ,sigmadeltaH      , , ,INV_GAMMA_PDF ,0.005 ,0.1;    deltaH_      ,deltaH_       ,0.001 ,0.999 ,BETA_PDF   ,0.0228 ,0.0128;
@@ -438,20 +438,20 @@ sigmaNtilde        ,sigmaNtilde       , , ,INV_GAMMA_PDF ,0.005 ,0.1;  %%Ntilde1
 //phiutauLaPriori    ,phiutauLaPriori      , , ,NORMAL_PDF ,0 ,0.1667;   
 //phiutauLbPriori    ,phiutauLbPriori      , , ,NORMAL_PDF ,0 ,0.1667;   
 //
-//phiiotaPriorALL    ,phiiotaPriorALL      ,       ,       ,NORMAL_PDF   ,0     ,1.3;
-//phitauCPriorALL    ,phitauCPriorALL      ,       ,       ,NORMAL_PDF   ,0     ,1.3;
-//phiiotaTXPriori    ,phiiotaTXPriori      ,       ,       ,NORMAL_PDF   ,0     ,0.5; 
-//phiiotaTMPriori    ,phiiotaTMPriori      ,       ,       ,NORMAL_PDF   ,0     ,0.5; 
-//phiiotaWXPriori    ,phiiotaWXPriori      ,       ,       ,NORMAL_PDF   ,0     ,0.5; 
-//phiiotaWMPriori    ,phiiotaWMPriori      ,       ,       ,NORMAL_PDF   ,0     ,0.5; 
-//phitauDPriori      ,phitauDPriori        ,       ,       ,NORMAL_PDF   ,0     ,0.5; 
-//phitauNDPriori     ,phitauNDPriori       ,       ,       ,NORMAL_PDF   ,0     ,0.5; 
-//phitauHPriorALL    ,phitauHPriorALL      ,       ,       ,NORMAL_PDF   ,0     ,1.2; 
-//phitauKPriorALL    ,phitauKPriorALL      ,       ,       ,NORMAL_PDF   ,0     ,1.2; 
-//phitauXPriorALL    ,phitauXPriorALL      ,       ,       ,NORMAL_PDF   ,0     ,1.2; 
-//phitauWPriorALL    ,phitauWPriorALL      ,       ,       ,NORMAL_PDF   ,0     ,1.2; 
-//phitauTPriorALL    ,phitauTPriorALL      ,       ,       ,NORMAL_PDF   ,0     ,1.2; 
-//phitauNTPriorALL   ,phitauNTPriorALL     ,       ,       ,NORMAL_PDF   ,0     ,1.2; 
+//phiiotaPriorALL    ,phiiotaPriorALL      , , ,NORMAL_PDF ,0.75 ,0.65 ;
+//phitauCPriorALL    ,phitauCPriorALL      , , ,NORMAL_PDF ,0.75 ,0.65 ;
+//phiiotaTXPriori    ,phiiotaTXPriori      , , ,NORMAL_PDF ,0.75 ,0.65 ; 
+//phiiotaTMPriori    ,phiiotaTMPriori      , , ,NORMAL_PDF ,0.75 ,0.65 ; 
+//phiiotaWXPriori    ,phiiotaWXPriori      , , ,NORMAL_PDF ,0.75 ,0.65 ; 
+//phiiotaWMPriori    ,phiiotaWMPriori      , , ,NORMAL_PDF ,0.75 ,0.65 ; 
+//phitauDPriori      ,phitauDPriori        , , ,NORMAL_PDF ,0.75 ,0.65 ; 
+//phitauNDPriori     ,phitauNDPriori       , , ,NORMAL_PDF ,0.75 ,0.65 ; 
+//phitauHPriorALL    ,phitauHPriorALL      , , ,NORMAL_PDF ,0.75 ,0.65 ; 
+//phitauKPriorALL    ,phitauKPriorALL      , , ,NORMAL_PDF ,0.75 ,0.65 ; 
+//phitauXPriorALL    ,phitauXPriorALL      , , ,NORMAL_PDF ,0.75 ,0.65 ; 
+//phitauWPriorALL    ,phitauWPriorALL      , , ,NORMAL_PDF ,0.75 ,0.65 ; 
+//phitauTPriorALL    ,phitauTPriorALL      , , ,NORMAL_PDF ,0.75 ,0.65 ; 
+//phitauNTPriorALL   ,phitauNTPriorALL     , , ,NORMAL_PDF ,0.75 ,0.65 ; 
 //
 //tauSG1PriorALL_    ,tauSG1PriorALL_      , , ,NORMAL_PDF ,-1   ,0.6;
 //tauKGPriori_       ,tauKGPriori_         , , ,NORMAL_PDF ,-0.5 ,0.3;
@@ -529,21 +529,21 @@ gryW gpopW
     popshare@{n}
   @#endfor
   @#if SN > 0
-    OECDihy1 ESrdy1 BEAcy1  JSTiy1  BEAgcy1  BEAgiy1  JSTxy1  BEAgpcgpy1  BEAgpigpy1  BEAgpgcgpy1 BEAgpgigpy1 BEAgpxgpy1  BEAgpmgpy1  BEAhpop1   BEAwhy1   BEAcfcy1  JSTexpostr1  FREDlrni1 JSTtauy1
+  OECDpihy1 OECDgihy1 ESrdy1 BEAcy1  JSTiy1  BEAgcy1  BEAgiy1  JSTxy1  BEAgpcgpy1  BEAgpigpy1  BEAgpgcgpy1 BEAgpgigpy1 BEAgpxgpy1  BEAgpmgpy1  BEAhpop1   BEAwhy1   BEAcfcy1  JSTexpostr1  FREDlrni1 JSTtauy1
   @#endif
   @#if SN > 1
-    OECDihy2 ESrdy2 PWTcy2  JSTiy2  JSTgy2            JSTxy2  PWTgpcgpy2  PWTgpigpy2  PWTgpgcgpy2             PWTgpxgpy2  PWTgpmgpy2  PWThpop2   PWTwhy2   PWTdelta2 JSTexpostr2  DBlrni2   JSTtauy2
+  OECDpihy2 OECDgihy2 ESrdy2 PWTcy2  JSTiy2  JSTgy2            JSTxy2  PWTgpcgpy2  PWTgpigpy2  PWTgpgcgpy2             PWTgpxgpy2  PWTgpmgpy2  PWThpop2   PWTwhy2   PWTdelta2 JSTexpostr2  DBlrni2   JSTtauy2
   @#endif
   @#if SN > 2
-    OECDihy3 ESrdy3 MILLcy3 MILLiy3 MILLgcy3 MILLgiy3 MILLxy3 MILLgpcgpy3 MILLgpigpy3 MILLgpgcgpy3            MILLgpxgpy3 MILLgpmgpy3 MILLhpop3  MILLwhy3  MILLcfcy3 MILLexpostr3 MILLlrni3 MILLtauy3
+  OECDpihy3 OECDgihy3 ESrdy3 MILLcy3 MILLiy3 MILLgcy3 MILLgiy3 MILLxy3 MILLgpcgpy3 MILLgpigpy3 MILLgpgcgpy3            MILLgpxgpy3 MILLgpmgpy3 MILLhpop3  MILLwhy3  MILLcfcy3 MILLexpostr3 MILLlrni3 MILLtauy3
   @#endif
   @#if SN > 3
-    OECDihy4 ESrdy4 PWTcy4  JSTiy4  JSTgy4            JSTxy4  PWTgpcgpy4  PWTgpigpy4  PWTgpgcgpy4             PWTgpxgpy4  PWTgpmgpy4  PWThpop4   PWTwhy4   PWTdelta4 JSTexpostr4  BDFlrni4  JSTtauy4
+  OECDpihy4 OECDgihy4 ESrdy4 PWTcy4  JSTiy4  JSTgy4            JSTxy4  PWTgpcgpy4  PWTgpigpy4  PWTgpgcgpy4             PWTgpxgpy4  PWTgpmgpy4  PWThpop4   PWTwhy4   PWTdelta4 JSTexpostr4  BDFlrni4  JSTtauy4
   @#endif
   @#if SN > 4
-    OECDihy5 ESrdy5 PWTcy5  JSTiy5  JSTgy5            JSTxy5  PWTgpcgpy5  PWTgpigpy5  PWTgpgcgpy5             PWTgpxgpy5  PWTgpmgpy5  PWThpop5   PWTwhy5   PWTcfcy5  JSTexpostr5            JSTtauy5
+  OECDpihy5 OECDgihy5 ESrdy5 PWTcy5  JSTiy5  JSTgy5            JSTxy5  PWTgpcgpy5  PWTgpigpy5  PWTgpgcgpy5             PWTgpxgpy5  PWTgpmgpy5  PWThpop5   PWTwhy5   PWTcfcy5  JSTexpostr5            JSTtauy5
   @#endif
   @#if SN > 5
-    OECDihy6 ESrdy6 PWTcy6  JSTiy6  JSTgy6            JSTxy6  PWTgpcgpy6  PWTgpigpy6  PWTgpgcgpy6             PWTgpxgpy6  PWTgpmgpy6  PWThpop6   PWTwhy6   PWTcfcy6  JSTexpostr6            JSTtauy6
+  OECDpihy6 OECDgihy6 ESrdy6 PWTcy6  JSTiy6  JSTgy6            JSTxy6  PWTgpcgpy6  PWTgpigpy6  PWTgpgcgpy6             PWTgpxgpy6  PWTgpmgpy6  PWThpop6   PWTwhy6   PWTcfcy6  JSTexpostr6            JSTtauy6
   @#endif
 ;

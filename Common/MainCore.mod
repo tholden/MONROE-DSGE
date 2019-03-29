@@ -366,22 +366,22 @@ var
     popshare@{n}
   @#endfor
   @#if SN > 0
-    OECDihy1 ESrdy1 BEAcy1  JSTiy1  BEAgcy1  BEAgiy1  JSTxy1  BEAgpcgpy1  BEAgpigpy1  BEAgpgcgpy1 BEAgpgigpy1 BEAgpxgpy1  BEAgpmgpy1  BEAhpop1   BEAwhy1   BEAcfcy1  JSTexpostr1  FREDlrni1 JSTtauy1
+    OECDpihy1 OECDgihy1 ESrdy1 BEAcy1  JSTiy1  BEAgcy1  BEAgiy1  JSTxy1  BEAgpcgpy1  BEAgpigpy1  BEAgpgcgpy1 BEAgpgigpy1 BEAgpxgpy1  BEAgpmgpy1  BEAhpop1   BEAwhy1   BEAcfcy1  JSTexpostr1  FREDlrni1 JSTtauy1
   @#endif
   @#if SN > 1
-    OECDihy2 ESrdy2 PWTcy2  JSTiy2  JSTgy2            JSTxy2  PWTgpcgpy2  PWTgpigpy2  PWTgpgcgpy2             PWTgpxgpy2  PWTgpmgpy2  PWThpop2   PWTwhy2   PWTdelta2 JSTexpostr2  DBlrni2   JSTtauy2
+    OECDpihy2 OECDgihy2 ESrdy2 PWTcy2  JSTiy2  JSTgy2            JSTxy2  PWTgpcgpy2  PWTgpigpy2  PWTgpgcgpy2             PWTgpxgpy2  PWTgpmgpy2  PWThpop2   PWTwhy2   PWTdelta2 JSTexpostr2  DBlrni2   JSTtauy2
   @#endif
   @#if SN > 2
-    OECDihy3 ESrdy3 MILLcy3 MILLiy3 MILLgcy3 MILLgiy3 MILLxy3 MILLgpcgpy3 MILLgpigpy3 MILLgpgcgpy3            MILLgpxgpy3 MILLgpmgpy3 MILLhpop3  MILLwhy3  MILLcfcy3 MILLexpostr3 MILLlrni3 MILLtauy3
+    OECDpihy3 OECDgihy3 ESrdy3 MILLcy3 MILLiy3 MILLgcy3 MILLgiy3 MILLxy3 MILLgpcgpy3 MILLgpigpy3 MILLgpgcgpy3            MILLgpxgpy3 MILLgpmgpy3 MILLhpop3  MILLwhy3  MILLcfcy3 MILLexpostr3 MILLlrni3 MILLtauy3
   @#endif
   @#if SN > 3
-    OECDihy4 ESrdy4 PWTcy4  JSTiy4  JSTgy4            JSTxy4  PWTgpcgpy4  PWTgpigpy4  PWTgpgcgpy4             PWTgpxgpy4  PWTgpmgpy4  PWThpop4   PWTwhy4   PWTdelta4 JSTexpostr4  BDFlrni4  JSTtauy4
+    OECDpihy4 OECDgihy4 ESrdy4 PWTcy4  JSTiy4  JSTgy4            JSTxy4  PWTgpcgpy4  PWTgpigpy4  PWTgpgcgpy4             PWTgpxgpy4  PWTgpmgpy4  PWThpop4   PWTwhy4   PWTdelta4 JSTexpostr4  BDFlrni4  JSTtauy4
   @#endif
   @#if SN > 4
-    OECDihy5 ESrdy5 PWTcy5  JSTiy5  JSTgy5            JSTxy5  PWTgpcgpy5  PWTgpigpy5  PWTgpgcgpy5             PWTgpxgpy5  PWTgpmgpy5  PWThpop5   PWTwhy5   PWTcfcy5  JSTexpostr5            JSTtauy5
+    OECDpihy5 OECDgihy5 ESrdy5 PWTcy5  JSTiy5  JSTgy5            JSTxy5  PWTgpcgpy5  PWTgpigpy5  PWTgpgcgpy5             PWTgpxgpy5  PWTgpmgpy5  PWThpop5   PWTwhy5   PWTcfcy5  JSTexpostr5            JSTtauy5
   @#endif
   @#if SN > 5
-    OECDihy6 ESrdy6 PWTcy6  JSTiy6  JSTgy6            JSTxy6  PWTgpcgpy6  PWTgpigpy6  PWTgpgcgpy6             PWTgpxgpy6  PWTgpmgpy6  PWThpop6   PWTwhy6   PWTcfcy6  JSTexpostr6            JSTtauy6
+    OECDpihy6 OECDgihy6 ESrdy6 PWTcy6  JSTiy6  JSTgy6            JSTxy6  PWTgpcgpy6  PWTgpigpy6  PWTgpgcgpy6             PWTgpxgpy6  PWTgpmgpy6  PWThpop6   PWTwhy6   PWTcfcy6  JSTexpostr6            JSTtauy6
   @#endif
 ;
 
@@ -540,7 +540,7 @@ parameters logit_rhoGN logit_rhoZ logit_rhodeltaItilde logit_rhoscriptFI logit_r
 parameters logit_rhokappa@{S};
 @#endfor
 
-parameters logit_alphaCP logit_alphaCD logit_alphah logit_alphaKP logit_alphaD logit_alphaND logit_alphaHP logit_alphaHW logit_alphaHL logit_alphaK logit_alphaKL logit_alphaHLX logit_alphaY;
+parameters logit_alphaCP logit_alphaCD logit_alphah logit_alphaKP logit_alphaD logit_alphaND logit_alphaHP logit_alphaHW logit_alphaHL logit_alphaK logit_alphaKL logit_alphaHLX logit_alphaY logit_alphaNC;
 
 //////////////////////////////////////Parameter hierarchical structure (not calibrated)//////////////////////////////////////////////////
 
@@ -2095,7 +2095,8 @@ gpopW   = log(GN) + epsilon_gpopW * sigma_gpopW;
 %US
 ESrdy1 - epsilon_ESrdy1 * sigma_rdy = exp(rdy_) * GERD1;
 (BEAcy1 - epsilon_BEAcy1 * sigma_cy) + (BEAgiy1 - epsilon_BEAgiy1 * sigma_giy + BEAgcy1 - epsilon_BEAgcy1 * sigma_gcy) * alpha_pubedu1 = PCE1 / GDP1;
-OECDihy1 = PHP1 * IHP1 / GDP1 + epsilon_OECDihy1 * sigma_ihy;
+OECDpihy1 + OECDgihy1 = PHP1 * IHP1 / GDP1 + epsilon_OECDihy1 * sigma_ihy;
+OECDgihy1 / (BEAgiy1 + BEAgcy1) = alpha_pubedu1;
 JSTiy1 = GDI1 / GDP1 + epsilon_JSTiy1 * sigma_iy;
 (BEAgiy1 - epsilon_BEAgiy1 * sigma_giy + BEAgcy1 - epsilon_BEAgcy1 * sigma_gcy) * ( 1 - alpha_pubedu1 ) = ( GCE1 + GGI1 ) / GDP1;
 BEAgiy1 = GGI1                 / GDP1          + epsilon_BEAgiy1 * sigma_giy;
@@ -2123,7 +2124,8 @@ JSTtauy1    = GovRev1       / GDP1 + epsilon_JSTtauy1    * sigma_tauy;
 %Germany
 ESrdy2 - epsilon_ESrdy2 * sigma_rdy = exp(rdy_) * GERD2;
 ( PWTcy2 - epsilon_PWTcy2 * sigma_cy ) + ( JSTgy2 - epsilon_JSTgy2 * sigma_gcy ) * alpha_pubedu2 = PCE2 / GDP2;
-OECDihy2 = PHP2 * IHP2 / GDP2 + epsilon_OECDihy2 * sigma_ihy;
+OECDpihy2 + OECDgihy2 = PHP2 * IHP2 / GDP2 + epsilon_OECDihy2 * sigma_ihy;
+OECDgihy2 / JSTgy2 = alpha_pubedu2;
 JSTiy2 = GDI2 / GDP2 + epsilon_JSTiy2 * sigma_iy;
 ( JSTgy2 - epsilon_JSTgy2 * sigma_gcy ) * ( 1 - alpha_pubedu2 ) = ( GCE2 + GGI2 ) / GDP2;
 JSTxy2      = Export2          / GDP2          + epsilon_JSTxy2     * sigma_xy;
@@ -2149,7 +2151,8 @@ JSTtauy2    = GovRev2       / GDP2  + epsilon_JSTtauy2    * sigma_tauy;
 %UK
 ESrdy3 - epsilon_ESrdy3 * sigma_rdy = exp(rdy_) * GERD3;
 ( MILLcy3 - epsilon_MILLcy3 * sigma_cy ) + ( MILLgcy3 - epsilon_MILLgcy3 * sigma_gcy + MILLgiy3 - epsilon_MILLgiy3 * sigma_giy ) * alpha_pubedu3 = PCE3 / GDP3;
-OECDihy3 = PHP3 * IHP3 / GDP3 + epsilon_OECDihy3 * sigma_ihy;
+OECDpihy3 + OECDgihy3 = PHP3 * IHP3 / GDP3 + epsilon_OECDihy3 * sigma_ihy;
+OECDgihy3 / (MILLgcy3 + MILLgiy3) = alpha_pubedu3;
 MILLiy3 = GDI3 / GDP3 + epsilon_MILLiy3 * sigma_iy;
 ( MILLgcy3 - epsilon_MILLgcy3 * sigma_gcy + MILLgiy3 - epsilon_MILLgiy3 * sigma_giy ) * ( 1 - alpha_pubedu3 ) = ( GCE3 + GGI3 ) / GDP3;
 MILLgiy3     = GGI3             / GDP3          + epsilon_MILLgiy3 * sigma_giy;
@@ -2176,7 +2179,8 @@ MILLtauy3    = GovRev3       / GDP3 + epsilon_MILLtauy3    * sigma_tauy;
 %France
 ESrdy4 - epsilon_ESrdy4 * sigma_rdy = exp(rdy_) * GERD4;
 ( PWTcy4 - epsilon_PWTcy4 * sigma_cy ) + ( JSTgy4 - epsilon_JSTgy4 * sigma_gcy ) * alpha_pubedu4 = PCE4 / GDP4;
-OECDihy4 = PHP4 * IHP4 / GDP4 + epsilon_OECDihy4 * sigma_ihy;
+OECDpihy4 + OECDgihy4 = PHP4 * IHP4 / GDP4 + epsilon_OECDihy4 * sigma_ihy;
+OECDgihy4 / JSTgy4 = alpha_pubedu4;
 JSTiy4 = GDI4 / GDP4 + epsilon_JSTiy4 * sigma_iy;
 ( JSTgy4 - epsilon_JSTgy4 * sigma_gcy ) * ( 1 - alpha_pubedu4 ) = ( GCE4 + GGI4 ) / GDP4;
 JSTxy4      = Export4          / GDP4          + epsilon_JSTxy4     * sigma_xy;
@@ -2202,7 +2206,8 @@ JSTtauy4    = GovRev4       / GDP4 + epsilon_JSTtauy4    * sigma_tauy;
 %REU
 ESrdy5 - epsilon_ESrdy5 * sigma_rdy = exp(rdy_) * GERD5;
 ( PWTcy5 - epsilon_PWTcy5 * sigma_cy ) + ( JSTgy5 - epsilon_JSTgy5 * sigma_gcy ) * alpha_pubedu5 = PCE5 / GDP5;
-OECDihy5 = PHP5 * IHP5 / GDP5 + epsilon_OECDihy5 * sigma_ihy;
+OECDpihy5 + OECDgihy5 = PHP5 * IHP5 / GDP5 + epsilon_OECDihy5 * sigma_ihy;
+OECDgihy5 / JSTgy5 = alpha_pubedu5;
 JSTiy5 = GDI5 / GDP5 + epsilon_JSTiy5 * sigma_iy;
 ( JSTgy5 - epsilon_JSTgy5 * sigma_gcy ) * ( 1 - alpha_pubedu5 ) = ( GCE5 + GGI5 ) / GDP5;
 JSTxy5      = Export5          / GDP5          + epsilon_JSTxy5     * sigma_xy;
@@ -2227,7 +2232,8 @@ JSTtauy5    = GovRev5       / GDP5 + epsilon_JSTtauy5    * sigma_tauy;
 %RMA
 ESrdy6 - epsilon_ESrdy6 * sigma_rdy = exp(rdy_) * GERD6;
 ( PWTcy6 - epsilon_PWTcy6 * sigma_cy ) + ( JSTgy6 - epsilon_JSTgy6 * sigma_gcy ) * alpha_pubedu6 = PCE6 / GDP6;
-OECDihy6 = PHP6 * IHP6 / GDP6 + epsilon_OECDihy6 * sigma_ihy;
+OECDpihy6 + OECDgihy6 = PHP6 * IHP6 / GDP6 + epsilon_OECDihy6 * sigma_ihy;
+OECDgihy6 / JSTgy6 = alpha_pubedu6;
 JSTiy6 = GDI6 / GDP6 + epsilon_JSTiy6 * sigma_iy;
 ( JSTgy6 - epsilon_JSTgy6 * sigma_gcy ) * ( 1 - alpha_pubedu6 ) = ( GCE6 + GGI6 ) / GDP6;
 JSTxy6      = Export6          / GDP6          + epsilon_JSTxy6     * sigma_xy;
@@ -2479,22 +2485,22 @@ gryW gpopW
     popshare@{n}
   @#endfor
 @#if SN > 0
-OECDihy1 ESrdy1 BEAcy1  JSTiy1  BEAgcy1  BEAgiy1  JSTxy1  BEAgpcgpy1  BEAgpigpy1  BEAgpgcgpy1 BEAgpgigpy1 BEAgpxgpy1  BEAgpmgpy1  BEAhpop1   BEAwhy1   BEAcfcy1  JSTexpostr1  FREDlrni1 JSTtauy1
+OECDpihy1 OECDgihy1 ESrdy1 BEAcy1  JSTiy1  BEAgcy1  BEAgiy1  JSTxy1  BEAgpcgpy1  BEAgpigpy1  BEAgpgcgpy1 BEAgpgigpy1 BEAgpxgpy1  BEAgpmgpy1  BEAhpop1   BEAwhy1   BEAcfcy1  JSTexpostr1  FREDlrni1 JSTtauy1
 @#endif
 @#if SN > 1
-OECDihy2 ESrdy2 PWTcy2  JSTiy2  JSTgy2            JSTxy2  PWTgpcgpy2  PWTgpigpy2  PWTgpgcgpy2             PWTgpxgpy2  PWTgpmgpy2  PWThpop2   PWTwhy2   PWTdelta2 JSTexpostr2  DBlrni2   JSTtauy2
+OECDpihy2 OECDgihy2 ESrdy2 PWTcy2  JSTiy2  JSTgy2            JSTxy2  PWTgpcgpy2  PWTgpigpy2  PWTgpgcgpy2             PWTgpxgpy2  PWTgpmgpy2  PWThpop2   PWTwhy2   PWTdelta2 JSTexpostr2  DBlrni2   JSTtauy2
 @#endif
 @#if SN > 2
-OECDihy3 ESrdy3 MILLcy3 MILLiy3 MILLgcy3 MILLgiy3 MILLxy3 MILLgpcgpy3 MILLgpigpy3 MILLgpgcgpy3            MILLgpxgpy3 MILLgpmgpy3 MILLhpop3  MILLwhy3  MILLcfcy3 MILLexpostr3 MILLlrni3 MILLtauy3
+OECDpihy3 OECDgihy3 ESrdy3 MILLcy3 MILLiy3 MILLgcy3 MILLgiy3 MILLxy3 MILLgpcgpy3 MILLgpigpy3 MILLgpgcgpy3            MILLgpxgpy3 MILLgpmgpy3 MILLhpop3  MILLwhy3  MILLcfcy3 MILLexpostr3 MILLlrni3 MILLtauy3
 @#endif
 @#if SN > 3
-OECDihy4 ESrdy4 PWTcy4  JSTiy4  JSTgy4            JSTxy4  PWTgpcgpy4  PWTgpigpy4  PWTgpgcgpy4             PWTgpxgpy4  PWTgpmgpy4  PWThpop4   PWTwhy4   PWTdelta4 JSTexpostr4  BDFlrni4  JSTtauy4
+OECDpihy4 OECDgihy4 ESrdy4 PWTcy4  JSTiy4  JSTgy4            JSTxy4  PWTgpcgpy4  PWTgpigpy4  PWTgpgcgpy4             PWTgpxgpy4  PWTgpmgpy4  PWThpop4   PWTwhy4   PWTdelta4 JSTexpostr4  BDFlrni4  JSTtauy4
 @#endif
 @#if SN > 4
-OECDihy5 ESrdy5 PWTcy5  JSTiy5  JSTgy5            JSTxy5  PWTgpcgpy5  PWTgpigpy5  PWTgpgcgpy5             PWTgpxgpy5  PWTgpmgpy5  PWThpop5   PWTwhy5   PWTcfcy5  JSTexpostr5            JSTtauy5
+OECDpihy5 OECDgihy5 ESrdy5 PWTcy5  JSTiy5  JSTgy5            JSTxy5  PWTgpcgpy5  PWTgpigpy5  PWTgpgcgpy5             PWTgpxgpy5  PWTgpmgpy5  PWThpop5   PWTwhy5   PWTcfcy5  JSTexpostr5            JSTtauy5
 @#endif
 @#if SN > 5
-OECDihy6 ESrdy6 PWTcy6  JSTiy6  JSTgy6            JSTxy6  PWTgpcgpy6  PWTgpigpy6  PWTgpgcgpy6             PWTgpxgpy6  PWTgpmgpy6  PWThpop6   PWTwhy6   PWTcfcy6  JSTexpostr6            JSTtauy6
+OECDpihy6 OECDgihy6 ESrdy6 PWTcy6  JSTiy6  JSTgy6            JSTxy6  PWTgpcgpy6  PWTgpigpy6  PWTgpgcgpy6             PWTgpxgpy6  PWTgpmgpy6  PWThpop6   PWTwhy6   PWTcfcy6  JSTexpostr6            JSTtauy6
 @#endif
 @#if ExtraVariable
 As_DivFromTrend
@@ -2527,7 +2533,7 @@ RDInc4 = 0.01 * [ 0; 0.048666667; 0.097333333; 0.146; 0.194666667; 0.243333333; 
 RDInc5 = 0.01 * [ 0; 0.038094626; 0.076189251; 0.114283877; 0.152378503; 0.190473128; 0.228567754; 0.26666238; 0.304757005; 0.342851631; 0.380946257; 0.419040883; 0.457135508; 0.495230134; 0.53332476; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385; 0.571419385 ];
 
 @#for n in 2 : 5
-    ihyPath@{n} = oo_.forecast.Mean.OECDihy@{n}( 1 : @{CFH} ) + 0.0001 * ( ( 1 : @{CFH} ).' - 1 );
+    pihyPath@{n} = oo_.forecast.Mean.OECDpihy@{n}( 1 : @{CFH} ) + 0.0001 * ( ( 1 : @{CFH} ).' - 1 );
     rdyPath@{n} = oo_.forecast.Mean.ESrdy@{n}( 1 : @{CFH} ) + RDInc@{n}( 1 : @{CFH} );
 @#endfor
 
@@ -2535,7 +2541,7 @@ conditional_forecast_paths;
 
     @#for n in 2 : 5
 
-        var OECDihy@{n};
+        var OECDpihy@{n};
         periods 
             @#for t in 1 : CFH
                 @{t}
@@ -2543,7 +2549,7 @@ conditional_forecast_paths;
         ;
         values
             @#for t in 1 : CFH
-                ( ihyPath@{n}( @{t} ) )
+                ( pihyPath@{n}( @{t} ) )
             @#endfor
         ;
 
@@ -2568,6 +2574,8 @@ options_.deterministic_conditional_forecast = 1;
 conditional_forecast( parameter_set = posterior_mode, controlled_varexo = ( epsilon_uHALL2, epsilon_uHG2, epsilon_uHALL3, epsilon_uHG3, epsilon_uHALL4, epsilon_uHG4, epsilon_uHALL5, epsilon_uHG5 ), periods = 120 );
 
 stoch_simul( periods = 0, irf = 40, order = 1, nocorr, nodecomposition, nofunctions, nomoments, nograph );
-
+% As_DivFromTrend
+% rGDPpc1_DivFromTrend Xpc1_DivFromTrend rPCEpc1_DivFromTrend NXY1 rPDIpc1_DivFromTrend IHPpc1_DivFromTrend PRDY1 rGSpendingpc1_DivFromTrend GovDifY1 GRDY1  BEAhpop1 
+% rGDPpc2_DivFromTrend Xpc2_DivFromTrend rPCEpc2_DivFromTrend NXY2 rPDIpc2_DivFromTrend IHPpc2_DivFromTrend PRDY2 rGSpendingpc2_DivFromTrend GovDifY2 GRDY2  PWThpop2;
 % note that extral final observables (rGDPpc1 rPCEpc1 rPDIpc1 Xpc1 rGCEpc1 rGGIpc1 NXY1) are in percentage, 1=1%
 % observables for estimation (BEAly1 BLShourspercapita1, etc) are of 0.01=1%
