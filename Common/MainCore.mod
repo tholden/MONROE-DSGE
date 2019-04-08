@@ -2447,6 +2447,8 @@ options_.sparse_kalman = 0;
 options_.qz_criterium = 1 + 2e-4;
 options_.endogenous_qz_criterium = 1;
 
+options_.endogenous_mean_prior = 1;
+
 options_.rootF_cond_penalty = 0.00001;
 options_.A_cond_penalty = 0.0001;
 options_.custom_penalty_scale = 1;
